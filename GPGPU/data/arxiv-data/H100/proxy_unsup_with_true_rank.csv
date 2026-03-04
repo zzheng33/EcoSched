@@ -1,0 +1,43 @@
+suite,app,power_cap,pred_rank_order,true_rank_order,top1_correct
+spec,lbm,800,[1],,
+spec,lbm,900,[1],,
+spec,lbm,1000,[1],,
+spec,lbm,1200,[1],,
+spec,lbm,1400,[1],,
+spec,lbm,1600,"[2, 1]","[2, 1]",1
+spec,lbm,2000,"[2, 1]","[2, 1]",1
+spec,cloverleaf,800,[1],,
+spec,cloverleaf,900,[1],,
+spec,cloverleaf,1000,[1],,
+spec,cloverleaf,1200,[1],,
+spec,cloverleaf,1400,[1],,
+spec,cloverleaf,1600,"[2, 1]","[2, 1]",1
+spec,cloverleaf,2000,"[2, 1]","[2, 1]",1
+spec,tealeaf,800,[1],,
+spec,tealeaf,900,[1],,
+spec,tealeaf,1000,[1],,
+spec,tealeaf,1200,[1],,
+spec,tealeaf,1400,[1],,
+spec,tealeaf,1600,"[2, 1]","[2, 1]",1
+spec,tealeaf,2000,"[2, 1]","[2, 1]",1
+spec,minisweep,800,[1],,
+spec,minisweep,900,[1],,
+spec,minisweep,1000,[1],,
+spec,minisweep,1200,[1],,
+spec,minisweep,1400,[1],,
+spec,minisweep,1600,"[2, 1]","[2, 1]",1
+spec,minisweep,2000,"[2, 1]","[2, 1]",1
+spec,pot3d,800,"[4, 3, 2]","[4, 3, 2]",1
+spec,pot3d,900,"[4, 3, 2]","[4, 3, 2]",1
+spec,pot3d,1000,"[4, 3, 2]","[4, 3, 2]",1
+spec,pot3d,1200,"[4, 3, 2]","[3, 4, 2]",0
+spec,pot3d,1400,"[4, 3, 2]","[3, 4, 2]",0
+spec,pot3d,1600,"[4, 3]","[3, 4]",0
+spec,pot3d,2000,"[4, 3]","[3, 4]",0
+spec,hpgmg,800,"[4, 3, 2]","[2, 3, 4]",0
+spec,hpgmg,900,"[4, 3, 2]","[2, 3, 4]",0
+spec,hpgmg,1000,"[4, 3, 2]","[2, 3, 4]",0
+spec,hpgmg,1200,"[4, 3, 2]","[2, 3, 4]",0
+spec,hpgmg,1400,"[4, 3, 2]","[2, 3, 4]",0
+spec,hpgmg,1600,"[4, 3]","[3, 4]",0
+spec,hpgmg,2000,"[4, 3]","[3, 4]",0
