@@ -501,104 +501,12 @@ gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_sca
 ===== SPEC/tealeaf =====
 (performance better when lower)
 
-cap=400	true_rank=[1, 2]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-1	43.15	1	0.82	1331.05	0.04	0.82	1331.05	0.04
-2	47.91	2	0.70	712.11	0.15	0.70	691.58	0.15
-
-cap=500	true_rank=[2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-2	38.25	2	0.94	1754.21	0.10	0.94	1124.21	0.06
-1	40.98	1	0.81	1663.42	0.03	0.81	1663.42	0.03
-
-cap=600	true_rank=[2, 3, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-2	31.41	2	1.23	2358.95	0.08	1.23	2188.42	0.08
-3	34.98	3	1.03	2522.37	0.13	1.00	1042.11	0.07
-1	41.81	1	0.86	1980.00	0.03	0.86	1980.00	0.03
-
-cap=700	true_rank=[2, 3, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-2	28.01	2	1.43	2643.95	0.08	1.42	2526.32	0.07
-3	30.33	3	1.24	2912.37	0.12	1.24	1653.16	0.08
-1	40.97	1	0.86	1980.00	0.03	0.86	1980.00	0.03
-
-cap=800	true_rank=[3, 2, 4, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-3	25.27	3	1.50	3386.84	0.11	1.48	2456.05	0.09
-2	25.77	2	1.51	2974.74	0.07	1.51	2804.21	0.07
-4	30.48	4	1.27	3135.79	0.15	1.25	1452.63	0.09
-1	40.94	1	0.83	1980.00	0.03	0.83	1980.00	0.03
-
-cap=900	true_rank=[3, 4, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-3	23.62	3	1.72	3851.84	0.10	1.70	3365.53	0.09
-4	24.60	4	1.58	4437.63	0.14	1.58	2115.79	0.09
-2	24.94	2	1.54	3417.63	0.06	1.54	3191.05	0.06
-1	41.00	1	0.84	1980.00	0.03	0.84	1980.00	0.03
-
 cap=1000	true_rank=[3, 4, 2, 1]
 gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-3	21.20	3	1.86	4193.68	0.10	1.84	3915.00	0.09
-4	23.78	4	1.88	4472.37	0.14	1.85	3735.79	0.11
-2	26.35	2	1.55	3817.89	0.06	1.55	3675.79	0.05
-1	40.99	1	0.86	1980.00	0.03	0.86	1980.00	0.03
-
-cap=1100	true_rank=[4, 3, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-4	19.14	4	2.15	5125.83	0.14	2.14	4460.00	0.11
-3	22.09	3	1.97	4508.68	0.09	1.95	4199.21	0.09
-2	25.54	2	1.53	3960.00	0.05	1.53	3960.00	0.05
-1	40.98	1	0.86	1980.00	0.03	0.86	1980.00	0.03
-
-cap=1200	true_rank=[4, 3, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-4	20.19	4	2.15	5595.00	0.12	2.14	5223.33	0.11
-3	21.67	3	2.02	5189.21	0.08	2.02	4545.00	0.08
-2	26.54	2	1.55	3960.00	0.05	1.55	3960.00	0.05
-1	41.01	1	0.82	1980.00	0.03	0.82	1980.00	0.03
-
-cap=1300	true_rank=[4, 3, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-4	18.52	4	2.25	5830.59	0.12	2.24	5248.24	0.11
-3	21.42	3	1.98	5692.89	0.07	1.96	5201.05	0.07
-2	25.78	2	1.53	3960.00	0.05	1.53	3960.00	0.05
-1	41.03	1	0.83	1980.00	0.03	0.83	1980.00	0.03
-
-cap=1400	true_rank=[4, 3, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-4	18.02	4	2.42	6045.00	0.12	2.42	5681.25	0.11
-3	20.38	3	1.97	5867.37	0.07	1.93	5722.11	0.07
-2	25.76	2	1.55	3960.00	0.05	1.55	3960.00	0.05
-1	41.00	1	0.82	1980.00	0.03	0.82	1980.00	0.03
-
-cap=1500	true_rank=[4, 3, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-4	19.28	4	2.66	6279.64	0.12	2.65	5652.86	0.10
-3	21.21	3	1.97	5940.00	0.07	1.92	5940.00	0.07
-2	25.56	2	1.54	3960.00	0.05	1.53	3960.00	0.05
-1	41.06	1	0.84	1980.00	0.03	0.84	1980.00	0.03
-
-cap=1600	true_rank=[4, 3, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-4	18.53	4	2.42	7149.38	0.10	2.39	6491.25	0.09
-3	19.79	3	2.00	5940.00	0.07	2.00	5940.00	0.07
-2	24.16	2	1.55	3960.00	0.05	1.55	3960.00	0.05
-1	40.76	1	0.86	1980.00	0.03	0.86	1980.00	0.03
-
-cap=1700	true_rank=[4, 3, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-4	15.91	4	2.55	7514.00	0.09	2.52	6732.00	0.09
-3	20.08	3	2.03	5940.00	0.07	2.03	5940.00	0.07
-2	25.17	2	1.55	3960.00	0.05	1.55	3960.00	0.05
-1	40.97	1	0.83	1980.00	0.03	0.83	1980.00	0.03
-
-cap=1800	true_rank=[4, 3, 2, 1]
-gpu_count	performance	n_active	dram_sum	sm_sum	fp_sum	dram_min_scaled	sm_min_scaled	fp_min_scaled
-4	16.21	4	2.56	7800.00	0.09	2.53	7440.00	0.09
-3	20.74	3	2.02	5940.00	0.07	2.00	5940.00	0.07
-2	25.19	2	1.49	3960.00	0.05	1.48	3960.00	0.05
-1	41.04	1	0.81	1980.00	0.03	0.81	1980.00	0.03
+3	22.08	3	1.85	4141.58	0.10	1.84	3900.79	0.09
+4	23.33	4	1.81	4624.74	0.13	1.81	3748.42	0.10
+2	25.56	2	1.56	3818.68	0.06	1.56	3677.37	0.05
+1	41.45	1	0.86	1980.00	0.03	0.86	1980.00	0.03
 
 ===== ML/bert =====
 (performance better when higher)

@@ -36,6 +36,7 @@ ecp_benchmarks = ['XSBench','miniGAN','CRADL','sw4lite','Laghos','bert','UNet','
 ecp_benchmarks = ['bert']
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
+spec_benchmarks = ['tealeaf']
 
 ml_models = ["resnet50", "vgg16"]
 
@@ -43,13 +44,87 @@ cpu_caps = [700]
 GPU_ct = [1,2,3,4]
 # GPU_ct = [4]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
-# gpu_caps = [400,500,600,700,800]
+gpu_caps = [1000]
 
 ML_MIN_PER_GPU_CAP = 200
 ML_MAX_PER_GPU_CAP = 700
 ML_BATCH_SIZE = 2048
 ML_EPOCHS = 3
 ML_LR = 0.001
+
+
+def _upsert_runtime_row(runtime_csv_path, power_cap, gpu_count, runtime_seconds):
+    """
+    Upsert runtime.csv by unique key (power_cap, gpu_count):
+      - update runtime_seconds if key exists
+      - append new row if key does not exist
+    """
+    rows = []
+    updated = False
+
+    if os.path.exists(runtime_csv_path) and os.path.getsize(runtime_csv_path) > 0:
+        with open(runtime_csv_path, newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                cap = f(row.get("power_cap"))
+                gct = f(row.get("gpu_count"))
+                if cap is None or gct is None:
+                    continue
+                if int(round(cap)) == int(power_cap) and int(round(gct)) == int(gpu_count):
+                    row["runtime_seconds"] = f"{runtime_seconds}"
+                    updated = True
+                rows.append(row)
+
+    if not updated:
+        rows.append({
+            "power_cap": str(power_cap),
+            "gpu_count": str(gpu_count),
+            "runtime_seconds": f"{runtime_seconds}",
+        })
+
+    with open(runtime_csv_path, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["power_cap", "gpu_count", "runtime_seconds"])
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({
+                "power_cap": row.get("power_cap", ""),
+                "gpu_count": row.get("gpu_count", ""),
+                "runtime_seconds": row.get("runtime_seconds", ""),
+            })
+
+
+def _upsert_csv_row(csv_path, fieldnames, key_fields, row_values):
+    """
+    Generic CSV upsert by key_fields:
+      - update row if key exists
+      - append row if key does not exist
+    """
+    rows = []
+    updated = False
+
+    if os.path.exists(csv_path) and os.path.getsize(csv_path) > 0:
+        with open(csv_path, newline="") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                is_match = True
+                for k in key_fields:
+                    if str(row.get(k, "")) != str(row_values.get(k, "")):
+                        is_match = False
+                        break
+                if is_match:
+                    for fn in fieldnames:
+                        row[fn] = str(row_values.get(fn, row.get(fn, "")))
+                    updated = True
+                rows.append(row)
+
+    if not updated:
+        rows.append({fn: str(row_values.get(fn, "")) for fn in fieldnames})
+
+    with open(csv_path, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({fn: row.get(fn, "") for fn in fieldnames})
 
 
 def _select_ml_python():
@@ -197,18 +272,17 @@ def run_ml_experiment(model_name=None):
         os.makedirs(model_output_dir, exist_ok=True)
         output_csv = os.path.join(model_output_dir, "throughput.csv")
         throughput_csv_by_model[model] = output_csv
-        if os.path.exists(output_csv):
-            os.remove(output_csv)
-        with open(output_csv, "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow([
-                "total_gpu_cap",
-                "gpu_count",
-                "per_gpu_cap",
-                "model",
-                "throughput_images_per_sec",
-                "status",
-            ])
+        if (not os.path.exists(output_csv)) or os.path.getsize(output_csv) == 0:
+            with open(output_csv, "w", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow([
+                    "total_gpu_cap",
+                    "gpu_count",
+                    "per_gpu_cap",
+                    "model",
+                    "throughput_images_per_sec",
+                    "status",
+                ])
 
     for model in models:
         for g_cnt in GPU_ct:
@@ -248,16 +322,26 @@ def run_ml_experiment(model_name=None):
                 throughput = _extract_avg_train_throughput(run_output)
                 status = "ok" if (return_code == 0 and throughput is not None) else "failed"
 
-                with open(throughput_csv_by_model[model], "a", newline="") as f:
-                    writer = csv.writer(f)
-                    writer.writerow([
-                        total_gpu_cap,
-                        g_cnt,
-                        per_gpu_cap_int,
-                        model,
-                        f"{throughput:.2f}" if throughput is not None else "",
-                        status,
-                    ])
+                _upsert_csv_row(
+                    csv_path=throughput_csv_by_model[model],
+                    fieldnames=[
+                        "total_gpu_cap",
+                        "gpu_count",
+                        "per_gpu_cap",
+                        "model",
+                        "throughput_images_per_sec",
+                        "status",
+                    ],
+                    key_fields=["total_gpu_cap", "gpu_count"],
+                    row_values={
+                        "total_gpu_cap": total_gpu_cap,
+                        "gpu_count": g_cnt,
+                        "per_gpu_cap": per_gpu_cap_int,
+                        "model": model,
+                        "throughput_images_per_sec": f"{throughput:.2f}" if throughput is not None else "",
+                        "status": status,
+                    },
+                )
 
                 if status != "ok":
                     print(
@@ -298,25 +382,20 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
     os.makedirs(output_dir, exist_ok=True)
     output_runtime = f"{output_dir}/runtime.csv"
 
-    # Delete existing runtime file to start fresh (non-BERT benchmark only).
-    if (not is_bert) and os.path.exists(output_runtime):
-        os.remove(output_runtime)
-
     bert_throughput_csv = None
     if is_bert:
         bert_throughput_csv = os.path.join(output_dir, "throughput.csv")
-        if os.path.exists(bert_throughput_csv):
-            os.remove(bert_throughput_csv)
-        with open(bert_throughput_csv, "w", newline="") as f:
-            writer = csv.writer(f)
-            writer.writerow([
-                "total_gpu_cap",
-                "gpu_count",
-                "per_gpu_cap",
-                "benchmark",
-                "throughput_tokens_per_sec",
-                "status",
-            ])
+        if (not os.path.exists(bert_throughput_csv)) or os.path.getsize(bert_throughput_csv) == 0:
+            with open(bert_throughput_csv, "w", newline="") as f:
+                writer = csv.writer(f)
+                writer.writerow([
+                    "total_gpu_cap",
+                    "gpu_count",
+                    "per_gpu_cap",
+                    "benchmark",
+                    "throughput_tokens_per_sec",
+                    "status",
+                ])
 
     for g_cnt in GPU_ct:
         for total_gpu_cap in gpu_caps:
@@ -345,27 +424,38 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
             )
             elapsed_time = time.time() - start
 
-            # Write runtime to CSV (append mode) for non-BERT benchmarks.
+            # Upsert runtime by (power_cap, gpu_count) for non-BERT benchmarks.
             if not is_bert:
-                file_exists = os.path.exists(output_runtime)
-                with open(output_runtime, 'a') as f:
-                    if not file_exists:
-                        f.write(f"power_cap,gpu_count,runtime_seconds\n")
-                    f.write(f"{total_gpu_cap},{g_cnt},{elapsed_time}\n")
+                _upsert_runtime_row(
+                    runtime_csv_path=output_runtime,
+                    power_cap=total_gpu_cap,
+                    gpu_count=g_cnt,
+                    runtime_seconds=elapsed_time,
+                )
 
             if bert_throughput_csv is not None:
                 tok_s = _extract_token_throughput(run_output)
                 status = "ok" if (return_code == 0 and tok_s is not None) else "failed"
-                with open(bert_throughput_csv, "a", newline="") as f:
-                    writer = csv.writer(f)
-                    writer.writerow([
-                        total_gpu_cap,
-                        g_cnt,
-                        per_gpu_cap,
-                        benchmark,
-                        f"{tok_s:.2f}" if tok_s is not None else "",
-                        status,
-                    ])
+                _upsert_csv_row(
+                    csv_path=bert_throughput_csv,
+                    fieldnames=[
+                        "total_gpu_cap",
+                        "gpu_count",
+                        "per_gpu_cap",
+                        "benchmark",
+                        "throughput_tokens_per_sec",
+                        "status",
+                    ],
+                    key_fields=["total_gpu_cap", "gpu_count"],
+                    row_values={
+                        "total_gpu_cap": total_gpu_cap,
+                        "gpu_count": g_cnt,
+                        "per_gpu_cap": per_gpu_cap,
+                        "benchmark": benchmark,
+                        "throughput_tokens_per_sec": f"{tok_s:.2f}" if tok_s is not None else "",
+                        "status": status,
+                    },
+                )
 
             if return_code != 0:
                 print(
