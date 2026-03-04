@@ -1,6 +1,6 @@
 """
 CNN Training with Multi-GPU Support
-Supports multiple CNN architectures: LeNet, ResNet, VGG
+Supports multiple CNN architectures for benchmarking.
 """
 
 # Core PyTorch libraries
@@ -10,8 +10,8 @@ import torch.nn.functional as F
 import torch.optim as optim
 from torch.utils.data import DataLoader, Dataset
 
-# Torchvision for datasets and transforms
-from torchvision import datasets, transforms
+# Torchvision for datasets, transforms, and model backbones
+from torchvision import datasets, transforms, models as tv_models
 
 # Standard libraries
 import numpy as np
@@ -22,7 +22,7 @@ from typing import Tuple, List, Optional
 import argparse
 
 # Import models from models folder
-from models import ResNet50, VGG16
+from models import ResNet18, ResNet34, ResNet50, VGG11, VGG16
 
 # Set random seeds for reproducibility
 torch.manual_seed(42)
@@ -31,10 +31,74 @@ if torch.cuda.is_available():
     torch.cuda.manual_seed_all(42)
 
 
+def _replace_first_conv(conv: nn.Conv2d, in_channels: int) -> nn.Conv2d:
+    """Create a new Conv2d with identical hyperparameters but different input channels."""
+    return nn.Conv2d(
+        in_channels=in_channels,
+        out_channels=conv.out_channels,
+        kernel_size=conv.kernel_size,
+        stride=conv.stride,
+        padding=conv.padding,
+        dilation=conv.dilation,
+        groups=conv.groups,
+        bias=(conv.bias is not None),
+        padding_mode=conv.padding_mode,
+    )
+
+
+def _tv_model_builder(model_fn_name: str):
+    """Build a torchvision model and adapt input/output layers for this benchmark."""
+
+    def _build(num_classes=10, input_channels=1):
+        model_fn = getattr(tv_models, model_fn_name)
+        try:
+            model = model_fn(weights=None)
+        except TypeError:
+            # Compatibility for older torchvision.
+            model = model_fn(pretrained=False)
+
+        if model_fn_name.startswith("resnet"):
+            if input_channels != 3:
+                model.conv1 = _replace_first_conv(model.conv1, input_channels)
+            model.fc = nn.Linear(model.fc.in_features, num_classes)
+        elif model_fn_name.startswith("densenet"):
+            if input_channels != 3:
+                model.features.conv0 = _replace_first_conv(model.features.conv0, input_channels)
+            model.classifier = nn.Linear(model.classifier.in_features, num_classes)
+        elif model_fn_name.startswith("mobilenet"):
+            if input_channels != 3:
+                model.features[0][0] = _replace_first_conv(model.features[0][0], input_channels)
+            model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, num_classes)
+        elif model_fn_name.startswith("efficientnet"):
+            if input_channels != 3:
+                model.features[0][0] = _replace_first_conv(model.features[0][0], input_channels)
+            model.classifier[-1] = nn.Linear(model.classifier[-1].in_features, num_classes)
+        elif model_fn_name.startswith("squeezenet"):
+            if input_channels != 3:
+                model.features[0] = _replace_first_conv(model.features[0], input_channels)
+            model.classifier[1] = nn.Conv2d(512, num_classes, kernel_size=1, stride=1)
+            model.num_classes = num_classes
+        else:
+            raise ValueError(f"Unsupported torchvision model family for '{model_fn_name}'")
+
+        return model
+
+    return _build
+
+
 # Model registry
 MODEL_REGISTRY = {
+    # Local models
+    'resnet18': ResNet18,
+    'resnet34': ResNet34,
     'resnet50': ResNet50,
+    'vgg11': VGG11,
     'vgg16': VGG16,
+    # Additional torchvision families
+    'mobilenet_v2': _tv_model_builder("mobilenet_v2"),
+    'densenet121': _tv_model_builder("densenet121"),
+    'efficientnet_b0': _tv_model_builder("efficientnet_b0"),
+    'squeezenet1_1': _tv_model_builder("squeezenet1_1"),
 }
 
 
@@ -73,7 +137,7 @@ def setup_device(num_gpus=None):
     return device, gpu_ids
 
 
-def create_model(model_name='lenet', num_gpus=None, num_classes=10, input_channels=1):
+def create_model(model_name='resnet50', num_gpus=None, num_classes=10, input_channels=1):
     """
     Create model with multi-GPU support
 
@@ -218,10 +282,11 @@ def print_system_info():
 
 def main():
     """Main training function"""
+    model_choices = sorted(MODEL_REGISTRY.keys())
     parser = argparse.ArgumentParser(description='CNN Training with Multi-GPU Support')
-    parser.add_argument('--model', type=str, default='lenet',
-                        choices=['lenet', 'resnet18', 'resnet34', 'resnet50', 'vgg11', 'vgg16'],
-                        help='Model architecture (default: lenet)')
+    parser.add_argument('--model', type=str, default='resnet50',
+                        choices=model_choices,
+                        help='Model architecture (default: resnet50)')
     parser.add_argument('--num-gpus', type=int, default=1,
                         help='Number of GPUs to use (default: 1, 0 for CPU)')
     parser.add_argument('--batch-size', type=int, default=128,
