@@ -33,7 +33,7 @@ altis_benchmarks_2 = ['cfd','cfd_double','fdtd2d','kmeans','lavamd',
                       'srad','where']
 ecp_benchmarks = ['XSBench','miniGAN','CRADL','sw4lite','Laghos','bert','UNet','Resnet50','lammps','gromacs',"NAMD"]
 
-ecp_benchmarks = ['gpt2']
+ecp_benchmarks = ['gpt2','bert']
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 spec_benchmarks = ['tealeaf']
@@ -44,7 +44,7 @@ cpu_caps = [700]
 GPU_ct = [1,2,3,4]
 # GPU_ct = [4]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
-gpu_caps = [400]
+# gpu_caps = [400]
 
 ML_MIN_PER_GPU_CAP = 200
 ML_MAX_PER_GPU_CAP = 700
@@ -168,11 +168,11 @@ def _extract_token_throughput(stdout_text):
     return None
 
 
-def _is_bert_benchmark(suite_name, benchmark_name):
+def _is_throughput_benchmark(suite_name, benchmark_name):
     if str(suite_name).lower() != "ecp":
         return False
     bn = str(benchmark_name).lower()
-    return bn == "bert" or bn == "bert_large" or "bert" in bn
+    return "bert" in bn or "gpt2" in bn
 
 
 def _per_gpu_cap_from_total(total_gpu_cap, gpu_count):
@@ -370,9 +370,9 @@ def run_ml_experiment(model_name=None):
 
 def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
     cpu_cap = 700
-    is_bert = _is_bert_benchmark(suite, benchmark)
+    is_bert = _is_throughput_benchmark(suite, benchmark)
 
-    # For ECP BERT, store both throughput and GPU metrics under ml_power_motif.
+    # For ECP BERT/GPT2, store both throughput and GPU metrics under ml_power_motif.
     if is_bert:
         output_dir = os.path.abspath(
             os.path.join(script_dir, "..", "data", "H100", "ml_power_motif", benchmark)
