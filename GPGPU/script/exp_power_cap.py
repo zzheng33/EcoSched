@@ -33,7 +33,7 @@ altis_benchmarks_2 = ['cfd','cfd_double','fdtd2d','kmeans','lavamd',
                       'srad','where']
 ecp_benchmarks = ['XSBench','miniGAN','CRADL','sw4lite','Laghos','bert','UNet','Resnet50','lammps','gromacs',"NAMD"]
 
-ecp_benchmarks = ['gpt2','bert']
+ecp_benchmarks = ['gpt2']
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 spec_benchmarks = ['tealeaf']
@@ -42,9 +42,9 @@ ml_models = ["vgg16"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-# GPU_ct = [4]
+GPU_ct = [1]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
-# gpu_caps = [400]
+gpu_caps = [400]
 
 ML_MIN_PER_GPU_CAP = 200
 ML_MAX_PER_GPU_CAP = 700
