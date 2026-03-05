@@ -1,6 +1,6 @@
 total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
 400,1,400,resnet50,5342.16,ok
-500,1,500,resnet50,5729.82,ok
+500,1,500,resnet50,5738.45,ok
 600,1,600,resnet50,5998.01,ok
 700,1,700,resnet50,6018.21,ok
 800,1,700,resnet50,6021.91,ok
@@ -15,7 +15,7 @@ total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
 1700,1,700,resnet50,6019.81,ok
 1800,1,700,resnet50,6012.88,ok
 400,2,200,resnet50,4428.70,ok
-500,2,250,resnet50,6400.81,ok
+500,2,250,resnet50,6432.38,ok
 600,2,300,resnet50,7975.27,ok
 700,2,350,resnet50,9251.50,ok
 800,2,400,resnet50,9921.39,ok

@@ -38,13 +38,13 @@ ecp_benchmarks = ['gpt2']
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 spec_benchmarks = ['tealeaf']
 
-ml_models = ["resnet50", "vgg16"]
+ml_models = ["vgg16"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
 # GPU_ct = [4]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
-# gpu_caps = [1000]
+gpu_caps = [400]
 
 ML_MIN_PER_GPU_CAP = 200
 ML_MAX_PER_GPU_CAP = 700
@@ -66,8 +66,8 @@ def _upsert_runtime_row(runtime_csv_path, power_cap, gpu_count, runtime_seconds)
         with open(runtime_csv_path, newline="") as f:
             reader = csv.DictReader(f)
             for row in reader:
-                cap = f(row.get("power_cap"))
-                gct = f(row.get("gpu_count"))
+                cap = float(row.get("power_cap"))
+                gct = float(row.get("gpu_count"))
                 if cap is None or gct is None:
                     continue
                 if int(round(cap)) == int(power_cap) and int(round(gct)) == int(gpu_count):
