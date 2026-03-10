@@ -6,6 +6,7 @@
 
 MPI_RANKS=${1:-4}  # Default to 4 GPUs if not specified
 
+
 # NOTE: Problem size is configured at COMPILE TIME
 # Current settings (from compile.txt):
 #   NX=800        (horizontal grid size)

@@ -31,14 +31,11 @@ altis_benchmarks_1 = ['bfs','gemm','gups','pathfinder','sort']
 altis_benchmarks_2 = ['cfd','cfd_double','fdtd2d','kmeans','lavamd',
                       'nw','particlefilter_float','particlefilter_naive','raytracing',
                       'srad','where']
-ecp_benchmarks = ['XSBench','miniGAN','CRADL','sw4lite','Laghos','bert','UNet','Resnet50','lammps','gromacs',"NAMD"]
-
-ecp_benchmarks = ['gpt2']
+ecp_benchmarks = ['XSBench','miniGAN','CRADL','sw4lite','Laghos','bert','UNet', "gpt2",'Resnet50','lammps','gromacs',"NAMD"]
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
-spec_benchmarks = ['tealeaf']
 
-ml_models = ["vgg16"]
+ml_models = ["resnet50","vgg16"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
