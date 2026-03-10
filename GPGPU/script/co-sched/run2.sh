@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./run2.sh --app gups --gpus 3
+./tenant2.sh --app miniweather --gpus 3

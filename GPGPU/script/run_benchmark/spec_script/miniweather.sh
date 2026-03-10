@@ -23,4 +23,13 @@ MPI_RANKS=${1:-4}  # Default to 4 GPUs if not specified
 
 cd /home/ac.zzheng/benchmark/spec/miniWeather/cpp/build
 
-mpirun -np ${MPI_RANKS} bash -c 'export CUDA_VISIBLE_DEVICES=$OMPI_COMM_WORLD_LOCAL_RANK; ./parallelfor'
+# If CUDA_VISIBLE_DEVICES is set, pick the Nth GPU from that list by MPI rank.
+# Otherwise fall back to using MPI local rank as the GPU id.
+mpirun -np ${MPI_RANKS} bash -c '
+if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
+    IFS="," read -ra GPULIST <<< "$CUDA_VISIBLE_DEVICES"
+    export CUDA_VISIBLE_DEVICES=${GPULIST[$OMPI_COMM_WORLD_LOCAL_RANK]}
+else
+    export CUDA_VISIBLE_DEVICES=$OMPI_COMM_WORLD_LOCAL_RANK
+fi
+./parallelfor'

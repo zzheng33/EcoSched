@@ -60,14 +60,16 @@ fi
 declare -a SPEC_APPS=(lbm cloverleaf tealeaf minisweep pot3d miniweather hpgmg)
 for s in "${SPEC_APPS[@]}"; do
     if [[ "$APP" == "$s" ]]; then
-        source /etc/profile >/dev/null 2>&1 || true
-        source /etc/profile.d/modules.sh >/dev/null 2>&1 || true
+        set +eu
+        source /etc/profile >/dev/null 2>&1
+        source /etc/profile.d/modules.sh >/dev/null 2>&1
         module use /soft/modulefiles
         module load cuda/12.3.0
         module load cmake
         module load gcc/12.2.0
         module load openmpi/4.1.1-gcc
         module load public_mkl/2019
+        set -eu
         export CUDA_DIR=/soft/compilers/cuda/cuda-12.3.0
         export PCM_NO_MSR=1
         export PCM_KEEP_NMI_WATCHDOG=1

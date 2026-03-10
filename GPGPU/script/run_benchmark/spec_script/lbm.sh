@@ -22,4 +22,14 @@ ${NITER}    # NITER
 ${SEED} # SEED
 EOF
 
-mpirun -np ${MPI_RANKS} --mca btl_openib_warn_no_device_params_found 0 --mca btl tcp,self,vader ./lbm_cuda
+# If CUDA_VISIBLE_DEVICES is set, pick the Nth GPU from that list by MPI rank.
+# Otherwise fall back to using MPI local rank as the GPU id.
+mpirun -np ${MPI_RANKS} --mca btl_openib_warn_no_device_params_found 0 --mca btl tcp,self,vader \
+  bash -c '
+if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
+    IFS="," read -ra GPULIST <<< "$CUDA_VISIBLE_DEVICES"
+    export CUDA_VISIBLE_DEVICES=${GPULIST[$OMPI_COMM_WORLD_LOCAL_RANK]}
+else
+    export CUDA_VISIBLE_DEVICES=$OMPI_COMM_WORLD_LOCAL_RANK
+fi
+./lbm_cuda'

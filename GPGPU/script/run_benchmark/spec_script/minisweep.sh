@@ -46,12 +46,21 @@ esac
 
 
 # Run with MPI and CUDA
+# If CUDA_VISIBLE_DEVICES is set, pick the Nth GPU from that list by MPI rank.
+# Otherwise fall back to using MPI local rank as the GPU id.
 mpirun -np ${MPI_RANKS} --mca btl_openib_warn_no_device_params_found 0 --mca btl tcp,self,vader \
-  ./sweep \
-  --ncell_x ${NCELL_X} --ncell_y ${NCELL_Y} --ncell_z ${NCELL_Z} \
-  --ne ${NE} --na ${NA} \
-  --nproc_x ${NPROC_X} --nproc_y ${NPROC_Y} \
-  --nblock_z ${NBLOCK_Z} \
+  bash -c '
+if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
+    IFS="," read -ra GPULIST <<< "$CUDA_VISIBLE_DEVICES"
+    export CUDA_VISIBLE_DEVICES=${GPULIST[$OMPI_COMM_WORLD_LOCAL_RANK]}
+else
+    export CUDA_VISIBLE_DEVICES=$OMPI_COMM_WORLD_LOCAL_RANK
+fi
+./sweep \
+  --ncell_x '"${NCELL_X}"' --ncell_y '"${NCELL_Y}"' --ncell_z '"${NCELL_Z}"' \
+  --ne '"${NE}"' --na '"${NA}"' \
+  --nproc_x '"${NPROC_X}"' --nproc_y '"${NPROC_Y}"' \
+  --nblock_z '"${NBLOCK_Z}"' \
   --is_using_device 1 \
   --nthread_octant 8 --nthread_e 16 \
-  --niterations ${NITERATIONS}
+  --niterations '"${NITERATIONS}"''
