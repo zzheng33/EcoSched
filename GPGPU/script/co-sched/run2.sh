@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./tenant2.sh --app miniweather --gpus 3
+./tenant2.sh --app gpt2 --gpus 3 --epochs 100
