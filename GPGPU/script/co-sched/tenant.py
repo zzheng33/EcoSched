@@ -281,54 +281,16 @@ def build_script_cmd(args):
     launch_shell = (
         SPEC_ENV_SETUP_SHELL
         + "export CUDA_VISIBLE_DEVICES={}; ".format(shlex.quote(gpu_csv))
-        + "numactl --physcpubind {} --membind {} ".format(shlex.quote(physcpubind), args.numa)
+        + "numactl --physcpubind {} ".format(shlex.quote(physcpubind))
         + "bash {} {} ".format(shlex.quote(str(script_path)), len(args.gpus))
     )
     cmd = ["bash", "-lc", launch_shell]
     return cmd, None, None
 
 
-def kill_stale_gpu_procs():
-    """Kill any existing GPU compute processes on all GPUs before launching."""
-    try:
-        result = subprocess.run(
-            ["nvidia-smi", "--query-compute-apps=pid", "--format=csv,noheader,nounits"],
-            capture_output=True, text=True, timeout=10,
-        )
-        if result.returncode != 0 or not result.stdout.strip():
-            return
-        pids = set()
-        for line in result.stdout.strip().splitlines():
-            line = line.strip()
-            if line:
-                try:
-                    pids.add(int(line))
-                except ValueError:
-                    continue
-        my_pid = os.getpid()
-        for pid in pids:
-            if pid == my_pid:
-                continue
-            try:
-                os.kill(pid, signal.SIGKILL)
-                print("[INFO] Killed stale GPU process PID={}".format(pid))
-            except ProcessLookupError:
-                pass
-            except PermissionError:
-                print("[WARN] No permission to kill PID={}".format(pid))
-    except subprocess.TimeoutExpired:
-        print("[WARN] nvidia-smi timed out; GPU may be in a bad state.")
-    except FileNotFoundError:
-        print("[WARN] nvidia-smi not found.")
-    except Exception as exc:
-        print("[WARN] Failed to clean stale GPU procs: {}".format(exc))
-
-
 def main():
     args = build_parser().parse_args()
     validate_app_and_gpus(args.app, args.gpus)
-
-    kill_stale_gpu_procs()
 
     if args.app in DL_MODELS:
         cmd, env, cwd = build_ml_cmd(args)
