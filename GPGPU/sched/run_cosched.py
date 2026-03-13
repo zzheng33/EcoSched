@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """
-Co-schedule benchmarks on 4 H100 GPUs using FCFS policy with NUMA-aware
-GPU mapping.
+Co-schedule benchmarks on 4 H100 GPUs with NUMA-aware GPU mapping.
+
+Policies:
+  - fcfs:       First-Come-First-Served (queue order)
+  - best-fit:   Pick the job whose GPU count best fills remaining GPUs
+  - sequential: Run apps one by one (baseline, no co-scheduling)
 
 NUMA topology (2-socket):
   NUMA 0: GPUs 0, 1   (tenant 1)
@@ -16,10 +20,11 @@ Scheduling rules:
   - If an app needs 4 GPUs, it runs alone using all GPUs
 
 Usage:
-    python3 run_cosched.py                     # co-scheduled only
-    python3 run_cosched.py --sequential        # sequential only
-    python3 run_cosched.py --both              # sequential then co-scheduled
-    python3 run_cosched.py --dry-run
+    python3 run_cosched.py --policy best-fit           # best-fit (default)
+    python3 run_cosched.py --policy fcfs               # FCFS
+    python3 run_cosched.py --policy sequential         # sequential baseline
+    python3 run_cosched.py --policy best-fit --dry-run # dry-run simulation
+    python3 run_cosched.py --both                      # sequential then best-fit
 """
 
 import argparse
@@ -360,13 +365,43 @@ def run_sequential(
     monitor.print_summary()
 
 
-def run_fcfs_scheduler(
+def _pick_next_app(candidates, gpu_counts, free_gpu_count, policy):
+    """Pick the next app to schedule from candidates.
+
+    - 'fcfs':     first app in queue order that fits.
+    - 'best-fit': app whose GPU count is closest to free_gpu_count
+                  (fills all remaining GPUs, minimizes waste).
+    """
+    if policy == "fcfs":
+        for app in candidates:
+            if gpu_counts[app] <= free_gpu_count:
+                return app
+        return None
+
+    # best-fit: prefer largest GPU count that fits (smallest waste)
+    best_app = None
+    best_diff = free_gpu_count + 1
+    for app in candidates:
+        needed = gpu_counts[app]
+        if needed <= free_gpu_count:
+            diff = free_gpu_count - needed  # 0 = perfect fit
+            if diff < best_diff:
+                best_diff = diff
+                best_app = app
+    return best_app
+
+
+def run_cosched(
     job_queue: List[str],
     gpu_counts: Dict[str, int],
     max_concurrent: int,
     dry_run: bool,
+    policy: str = "best-fit",
 ):
-    """Run FCFS co-scheduling on 4 GPUs with NUMA-aware placement."""
+    """Run co-scheduling on 4 GPUs with NUMA-aware placement.
+
+    policy: 'fcfs' = first-come-first-served, 'best-fit' = fill remaining GPUs.
+    """
     monitor = PowerMonitor()
 
     pending = list(job_queue)
@@ -376,7 +411,7 @@ def run_fcfs_scheduler(
     wall_start = time.time()
 
     print(f"Co-scheduling {len(pending)} apps on {TOTAL_GPUS} GPUs "
-          f"(max {max_concurrent} concurrent)")
+          f"(max {max_concurrent} concurrent, policy={policy})")
     print(f"NUMA 0 GPUs: {NUMA0_GPUS}  |  NUMA 1 GPUs: {NUMA1_GPUS}")
     print("=" * 80)
 
@@ -398,30 +433,36 @@ def run_fcfs_scheduler(
             scheduled = True
             while scheduled and sim_pending and len(sim_running) < max_concurrent:
                 scheduled = False
-                for app in list(sim_pending):
-                    needed = gpu_counts[app]
-                    if not sim_numas_in_use:
-                        numa = 0
-                    elif 0 not in sim_numas_in_use:
-                        numa = 0
-                    elif 1 not in sim_numas_in_use:
-                        numa = 1
-                    else:
-                        break
 
-                    gpu_ids = allocate_gpus_numa(needed, numa, sim_gpus_in_use)
-                    if gpu_ids is not None:
-                        rt = est_runtime.get(app, 30.0)
-                        end = sim_time + rt
-                        sim_running.append((app, needed, gpu_ids, numa, end))
-                        sim_gpus_in_use.update(gpu_ids)
-                        sim_numas_in_use.add(numa)
-                        sim_pending.remove(app)
-                        scheduled = True
-                        print(f"  t={sim_time:8.2f}s | START {app:<15} | "
-                              f"{needed} GPUs {gpu_ids} | NUMA {numa} | "
-                              f"ends ~t={end:.2f}s")
-                        break
+                if not sim_numas_in_use:
+                    numa = 0
+                elif 0 not in sim_numas_in_use:
+                    numa = 0
+                elif 1 not in sim_numas_in_use:
+                    numa = 1
+                else:
+                    break
+
+                free_gpu_count = TOTAL_GPUS - len(sim_gpus_in_use)
+                app = _pick_next_app(sim_pending, gpu_counts, free_gpu_count, policy)
+                if app is None:
+                    break
+
+                needed = gpu_counts[app]
+                gpu_ids = allocate_gpus_numa(needed, numa, sim_gpus_in_use)
+                if gpu_ids is not None:
+                    rt = est_runtime.get(app, 30.0)
+                    end = sim_time + rt
+                    sim_running.append((app, needed, gpu_ids, numa, end))
+                    sim_gpus_in_use.update(gpu_ids)
+                    sim_numas_in_use.add(numa)
+                    sim_pending.remove(app)
+                    scheduled = True
+                    print(f"  t={sim_time:8.2f}s | START {app:<15} | "
+                          f"{needed} GPUs {gpu_ids} | NUMA {numa} | "
+                          f"ends ~t={end:.2f}s")
+                else:
+                    break
 
             if not sim_running:
                 break
@@ -441,51 +482,56 @@ def run_fcfs_scheduler(
     monitor.start()
 
     while pending or running:
-        # Try to schedule pending apps (FCFS)
+        # Try to schedule pending apps (Best-Fit)
         scheduled_this_round = True
         while scheduled_this_round and pending and len(running) < max_concurrent:
             scheduled_this_round = False
-            for app in list(pending):
-                needed = gpu_counts[app]
 
-                # Pick NUMA node for this tenant
-                numa = pick_numa_for_tenant(running)
-                if numa is None:
-                    break  # both NUMA nodes occupied
+            # Pick NUMA node for this tenant
+            numa = pick_numa_for_tenant(running)
+            if numa is None:
+                break  # both NUMA nodes occupied
 
-                # Allocate GPUs with NUMA affinity
-                gpu_ids = allocate_gpus_numa(needed, numa, gpus_in_use)
-                if gpu_ids is None:
-                    continue  # not enough free GPUs, try next app
+            # Pick next app based on policy
+            free_gpu_count = TOTAL_GPUS - len(gpus_in_use)
+            app = _pick_next_app(pending, gpu_counts, free_gpu_count, policy)
+            if app is None:
+                break  # no app fits
 
-                # Launch the app
-                cmd, env, cwd = build_command(app, gpu_ids, numa)
-                devnull = _devnull()
+            needed = gpu_counts[app]
 
-                elapsed = time.time() - wall_start
-                print(f"  t={elapsed:8.2f}s | START {app:<15} | "
-                      f"{needed} GPUs {gpu_ids} | NUMA {numa}")
+            # Allocate GPUs with NUMA affinity
+            gpu_ids = allocate_gpus_numa(needed, numa, gpus_in_use)
+            if gpu_ids is None:
+                break  # shouldn't happen since _best_fit_pick checked
 
-                proc = subprocess.Popen(
-                    cmd,
-                    env=env,
-                    cwd=str(cwd) if cwd else None,
-                    stdout=devnull,
-                    stderr=subprocess.STDOUT,
-                )
+            # Launch the app
+            cmd, env, cwd = build_command(app, gpu_ids, numa)
+            devnull = _devnull()
 
-                job = RunningJob(
-                    app=app,
-                    gpu_ids=gpu_ids,
-                    numa_node=numa,
-                    process=proc,
-                    start_time=time.time(),
-                )
-                running.append(job)
-                gpus_in_use.update(gpu_ids)
-                pending.remove(app)
-                scheduled_this_round = True
-                break  # re-check from top of pending list
+            elapsed = time.time() - wall_start
+            print(f"  t={elapsed:8.2f}s | START {app:<15} | "
+                  f"{needed} GPUs {gpu_ids} | NUMA {numa}")
+
+            proc = subprocess.Popen(
+                cmd,
+                env=env,
+                cwd=str(cwd) if cwd else None,
+                stdout=devnull,
+                stderr=subprocess.STDOUT,
+            )
+
+            job = RunningJob(
+                app=app,
+                gpu_ids=gpu_ids,
+                numa_node=numa,
+                process=proc,
+                start_time=time.time(),
+            )
+            running.append(job)
+            gpus_in_use.update(gpu_ids)
+            pending.remove(app)
+            scheduled_this_round = True
 
         if not running:
             break
@@ -534,20 +580,21 @@ def run_fcfs_scheduler(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Run co-scheduled benchmarks on 4 H100 GPUs (FCFS, NUMA-aware)")
+        description="Run co-scheduled benchmarks on 4 H100 GPUs (NUMA-aware)")
 
     parser.add_argument(
         "--jobs", nargs="+", default=DEFAULT_JOB_QUEUE,
         help=f"Job queue (app names in order). Default: {DEFAULT_JOB_QUEUE}")
     parser.add_argument(
+        "--policy", type=str, default="best-fit",
+        choices=["fcfs", "best-fit", "sequential"],
+        help="Scheduling policy (default: best-fit)")
+    parser.add_argument(
         "--max-concurrent", type=int, default=2,
         help="Max number of concurrent apps (default: 2)")
     parser.add_argument(
-        "--sequential", action="store_true",
-        help="Run apps one by one (baseline, no co-scheduling)")
-    parser.add_argument(
         "--both", action="store_true",
-        help="Run sequential first, then co-scheduled")
+        help="Run sequential first, then co-scheduled (uses --policy for phase 2)")
     parser.add_argument(
         "--dry-run", action="store_true",
         help="Print simulated schedule without launching anything")
@@ -589,26 +636,29 @@ def main():
             gpu_counts=gpu_counts,
         )
         print("\n\n")
+        policy = args.policy if args.policy != "sequential" else "best-fit"
         print("=" * 80)
-        print("  PHASE 2: CO-SCHEDULED")
+        print(f"  PHASE 2: CO-SCHEDULED ({policy.upper()})")
         print("=" * 80)
-        run_fcfs_scheduler(
+        run_cosched(
             job_queue=args.jobs,
             gpu_counts=gpu_counts,
             max_concurrent=args.max_concurrent,
             dry_run=False,
+            policy=policy,
         )
-    elif args.sequential:
+    elif args.policy == "sequential":
         run_sequential(
             job_queue=args.jobs,
             gpu_counts=gpu_counts,
         )
     else:
-        run_fcfs_scheduler(
+        run_cosched(
             job_queue=args.jobs,
             gpu_counts=gpu_counts,
             max_concurrent=args.max_concurrent,
             dry_run=args.dry_run,
+            policy=args.policy,
         )
 
 

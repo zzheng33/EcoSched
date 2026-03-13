@@ -1,5 +1,0 @@
-Rank 1 using GPU 0 (of 1 available)
-Rank 3 using GPU 0 (of 1 available)
-Rank 0 using GPU 0 (of 1 available)
-Rank 2 using GPU 0 (of 1 available)
-Normsq result: 3.08274969e+15  diff: 0.000e+00  PASS  time: 34.505  GF/s: 756.794
