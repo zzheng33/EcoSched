@@ -35,6 +35,8 @@ ecp_benchmarks = ['XSBench','miniGAN','CRADL','sw4lite','Laghos','bert','UNet', 
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 
+spec_benchmarks = ['hpgmg']
+
 ml_models = ["resnet50","vgg16"]
 
 cpu_caps = [700]

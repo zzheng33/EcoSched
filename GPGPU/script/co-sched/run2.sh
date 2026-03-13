@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./tenant2.sh --app gpt2 --gpus 3 --epochs 100
+./tenant2.sh --app gemm --gpus 3 
