@@ -41,9 +41,9 @@ ml_models = ["resnet50","vgg16"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-GPU_ct = [1]
+# GPU_ct = [1]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
-gpu_caps = [400]
+gpu_caps = [2800]
 
 ML_MIN_PER_GPU_CAP = 200
 ML_MAX_PER_GPU_CAP = 700
