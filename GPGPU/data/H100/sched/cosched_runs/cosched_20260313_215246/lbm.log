@@ -1,0 +1,26 @@
+[MPI0001]: will execute on device 0 (total number of devices: 1) 
+[MPI0000]: will execute on device 0 (total number of devices: 1) 
+GSIZEX: 1200, GSIZEY: 4800 
+[MPI0003]: will execute on device 0 (total number of devices: 1) 
+[MPI0002]: will execute on device 0 (total number of devices: 1) 
+Starting batch at iteration: 1
+Completed iteration: 500, Time for last 500 iterations: 1.17 seconds (0.0023 sec/iter)
+Starting batch at iteration: 501
+Completed iteration: 1000, Time for last 500 iterations: 1.17 seconds (0.0023 sec/iter)
+Starting batch at iteration: 1001
+Completed iteration: 1500, Time for last 500 iterations: 1.17 seconds (0.0023 sec/iter)
+Starting batch at iteration: 1501
+Completed iteration: 2000, Time for last 500 iterations: 1.16 seconds (0.0023 sec/iter)
+Starting batch at iteration: 2001
+Completed iteration: 2500, Time for last 500 iterations: 1.16 seconds (0.0023 sec/iter)
+Starting batch at iteration: 2501
+Completed iteration: 3000, Time for last 500 iterations: 1.16 seconds (0.0023 sec/iter)
+Starting batch at iteration: 3001
+Completed iteration: 3500, Time for last 500 iterations: 1.16 seconds (0.0023 sec/iter)
+Starting batch at iteration: 3501
+Completed iteration: 4000, Time for last 500 iterations: 1.16 seconds (0.0023 sec/iter)
+Starting batch at iteration: 4001
+Completed iteration: 4500, Time for last 500 iterations: 1.16 seconds (0.0023 sec/iter)
+Starting batch at iteration: 4501
+Completed iteration: 5000, Time for last 500 iterations: 1.17 seconds (0.0023 sec/iter)
+Mass check: PASSED.

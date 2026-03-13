@@ -1,0 +1,85 @@
+# Opening tea.out as log file.
+TeaLeaf:
+ - Ver.:     2.000
+ - Deck:     tea.in
+ - Out:      tea.out
+ - Problem:  tea.problems
+ - Solver:   CG
+ - Profiler: true
+Model:
+ - Name:      CUDA
+ - Execution: Offload
+Devices:
+ 0: NVIDIA H100 80GB HBM3
+# Automatically selecting device 0 for rank 0 (rank % 1 devices)
+# Rank 0 using NVIDIA H100 80GB HBM3 device id 0
+MPI:
+ - Enabled:     true
+ - Total ranks: 4
+ - Header device-awareness (CUDA-awareness):  false
+ - Runtime device-awareness (CUDA-awareness): false
+ - Host-Device halo exchange staging buffer:  true
+ - X buffer elements: 240192
+ - Y buffer elements: 240192
+ - X buffer size:     480 KB
+ - Y buffer size:     480 KB
+# ---- 
+Output: |+1
+
+ Timestep 1
+ CG: 			10000 iterations
+ Wallclock: 		11.570s
+ Avg. time per cell: 	1.156988e-07
+ Error: 		7.721524e-23
+
+ Checking results...
+
+ WARNING: Problem was not found in the test problems file, expected value will be invalid.
+ Expected 1.000000000000000e+00
+ Actual   8.755508466515516e+01
+ This run FAILED (Difference is within 8655.50846652%)
+
+ -------------------------------------------------------------
+
+ Profiling Results:
+
+ Kernel Name                      Calls         Runtime (s)
+ run_set_chunk_data                   1               0.000
+ run_set_chunk_state                  1               0.000
+ run_pack_or_unpack               80040               0.134
+ send_recv_message                20008               0.005
+ run_send_recv_halo               20008               0.008
+ wait_for_requests                20008               0.417
+ run_restore_recv_halo            20008               0.165
+ run_local_halos                  10004               0.351
+ run_store_energy                     1               0.000
+ min_over_ranks                       1               0.000
+ run_cg_init                          1               0.001
+ sum_over_ranks                   20010               0.122
+ run_copy_u                           1               0.000
+ run_cg_calc_w                    10000               2.954
+ run_cg_calc_ur                   10000               4.414
+ run_cg_calc_p                    10000               0.018
+ run_calculate_residual               1               0.000
+ run_calculate_2norm                  1               0.000
+ run_finalise                         1               0.000
+ run_field_summary                    2               0.001
+
+ Total elapsed time: 8.590s, entries * are excluded.
+
+ -------------------------------------------------------------
+
+Result:
+ - Problem: 10000x10000@1
+ - Outcome: FAILED
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[49540,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

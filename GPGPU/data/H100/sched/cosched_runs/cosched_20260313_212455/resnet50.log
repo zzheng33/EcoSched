@@ -1,0 +1,51 @@
+Traceback (most recent call last):
+  File "/home/ac.zzheng/power/ML/dl.py", line 14, in <module>
+    from torchvision import datasets, transforms, models as tv_models
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torchvision/__init__.py", line 10, in <module>
+    from torchvision import _meta_registrations, datasets, io, models, ops, transforms, utils  # usort:skip
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torchvision/models/__init__.py", line 2, in <module>
+    from .convnext import *
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torchvision/models/convnext.py", line 9, in <module>
+    from ..ops.misc import Conv2dNormActivation, Permute
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torchvision/ops/__init__.py", line 23, in <module>
+    from .poolers import MultiScaleRoIAlign
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torchvision/ops/poolers.py", line 10, in <module>
+    from .roi_align import roi_align
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torchvision/ops/roi_align.py", line 7, in <module>
+    from torch._dynamo.utils import is_compile_supported
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torch/_dynamo/__init__.py", line 13, in <module>
+    from . import (
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torch/_dynamo/aot_compile.py", line 15, in <module>
+    from . import convert_frame
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torch/_dynamo/convert_frame.py", line 57, in <module>
+    from torch._dynamo.symbolic_convert import TensorifyState
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torch/_dynamo/symbolic_convert.py", line 53, in <module>
+    from torch._dynamo.exc import ObservedException, TensorifyScalarRestartAnalysis
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torch/_dynamo/exc.py", line 45, in <module>
+    from .utils import counters
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torch/_dynamo/utils.py", line 67, in <module>
+    import torch.fx.experimental.symbolic_shapes
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/torch/fx/experimental/symbolic_shapes.py", line 3, in <module>
+    import sympy
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/sympy/__init__.py", line 77, in <module>
+    from .polys import (Poly, PurePoly, poly_from_expr, parallel_poly_from_expr,
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/sympy/polys/__init__.py", line 124, in <module>
+    from .partfrac import apart, apart_list, assemble_partfrac_list
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/sympy/polys/partfrac.py", line 13, in <module>
+    @xthreaded
+     ^^^^^^^^^
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/sympy/utilities/decorator.py", line 82, in xthreaded
+    return threaded_factory(func, False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/sympy/utilities/decorator.py", line 19, in threaded_factory
+    from sympy.matrices import MatrixBase
+  File "/home/ac.zzheng/env/ml/lib64/python3.11/site-packages/sympy/matrices/__init__.py", line 6, in <module>
+    from .exceptions import ShapeError, NonSquareMatrixError
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1032, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1130, in get_data
+KeyboardInterrupt

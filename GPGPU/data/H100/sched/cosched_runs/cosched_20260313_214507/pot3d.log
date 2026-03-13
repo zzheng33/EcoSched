@@ -1,0 +1,50 @@
+ 
+ POT3D Version 4.6.1, updated on 06/08/2025
+ 
+ Compiler:
+ nvfortran 24.1-0
+ 
+ Compiler Flags:
+ pot3d_cpp.f90 -O3 -Mvect=simd -Mflushz -Mcache_align -Mrecip-div -Mfactorize -Mno-signed-zeros -Minline_cpu_f -mp=gpu -acc=gpu -stdpar=gpu -gpu=cc90,managed -Minfo=accel -cudalib=cusparse -I/home/ac.zzheng/hdf5-nvhpc/include -c -o pot3d.o -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib
+ 
+ ### COMMENT from CHECK_INPUT:
+ ### Field solve type:
+ 
+ OPTION = ss              
+ 
+ Total number of MPI ranks =             1
+ 
+ Number of MPI ranks in r =             1
+ Number of MPI ranks in t =             1
+ Number of MPI ranks in p =             1
+ 
+ Global mesh dimension in r =           133
+ Global mesh dimension in t =           361
+ Global mesh dimension in p =           901
+ 
+ Average # of r mesh pts per rank =  133.0
+ Average # of t mesh pts per rank =  361.0
+ Average # of p mesh pts per rank =  901.0
+ 
+ Estimated load imbalance =   0.00 %
+ 
+ ### COMMENT from READBR:
+ ### Reading Br file: br_input_tiny.h5
+ 
+ ### COMMENT from READBR:
+ ### Computed flux balance:
+ 
+ Positive flux =     34.64709615437650     
+ Negative flux =    -36.01934379604815     
+ 
+ ### COMMENT from READBR:
+ ### Flux balance correction:
+ 
+ BR00 (monopole Br field magnitude) =   -0.1091996492240855     
+ 
+ ### COMMENT from POT3D:
+ ### Starting PCG solve.
+ 
+ Iteration:        0   Residual:   1.000000000000000E+00
+ Iteration:     1000   Residual:   2.319591771593430E-03
+ Iteration:     2000   Residual:   4.523569459385062E-04
