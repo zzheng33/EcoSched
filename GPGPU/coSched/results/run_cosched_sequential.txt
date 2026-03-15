@@ -1,0 +1,57 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/run_cosched_sequential.txt
+Job queue and GPU assignments:
+  pot3d           -> 1 GPUs
+  minisweep       -> 4 GPUs
+  lbm             -> 4 GPUs
+  cloverleaf      -> 4 GPUs
+  tealeaf         -> 4 GPUs
+  miniweather     -> 1 GPUs
+  bert            -> 4 GPUs
+  gpt2            -> 3 GPUs
+  resnet50        -> 3 GPUs
+  hpgmg           -> 2 GPUs
+
+Sequential execution: 10 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START pot3d           | 1 GPUs [0] | NUMA 0
+  t=  135.68s | END   pot3d           | runtime=135.68s | OK
+  t=  135.68s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  179.83s | END   minisweep       | runtime=44.14s | OK
+  t=  179.83s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  198.60s | END   lbm             | runtime=18.77s | OK
+  t=  198.60s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  215.27s | END   cloverleaf      | runtime=16.67s | OK
+  t=  215.27s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  230.82s | END   tealeaf         | runtime=15.55s | FAILED(rc=1)
+  t=  230.82s | START miniweather     | 1 GPUs [0] | NUMA 0
+  t=  289.09s | END   miniweather     | runtime=58.27s | OK
+  t=  289.09s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  316.43s | END   bert            | runtime=27.34s | OK
+  t=  316.43s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  336.16s | END   gpt2            | runtime=19.73s | OK
+  t=  336.16s | START resnet50        | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  360.79s | END   resnet50        | runtime=24.63s | OK
+  t=  360.79s | START hpgmg           | 2 GPUs [0, 1] | NUMA 0
+  t=  372.14s | END   hpgmg           | runtime=11.34s | OK
+
+================================================================================
+Sequential summary:
+App              #GPUs      GPU IDs  Runtime (s)     Status
+------------------------------------------------------------
+pot3d                1          [0]       135.68         OK
+minisweep            4 [0, 1, 2, 3]        44.14         OK
+lbm                  4 [0, 1, 2, 3]        18.77         OK
+cloverleaf           4 [0, 1, 2, 3]        16.67         OK
+tealeaf              4 [0, 1, 2, 3]        15.55     FAILED
+miniweather          1          [0]        58.27         OK
+bert                 4 [0, 1, 2, 3]        27.34         OK
+gpt2                 3    [0, 1, 2]        19.73         OK
+resnet50             3    [0, 1, 2]        24.63         OK
+hpgmg                2       [0, 1]        11.34         OK
+------------------------------------------------------------
+
+Total makespan: 372.14s
+
+Power monitoring: 747 samples over 371.8s
+Total GPU energy: 250391.23 J (250.39 kJ)

@@ -34,11 +34,11 @@ import sys
 import threading
 import time
 from dataclasses import dataclass
-from datetime import datetime
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 HOME = Path.home()
+RESULTS_DIR = HOME / "power/GPGPU/coSched/results"
 SCRIPT_DIR = HOME / "power/GPGPU/script"
 SPEC_SCRIPT_DIR = SCRIPT_DIR / "run_benchmark/spec_script"
 ECP_SCRIPT_DIR = SCRIPT_DIR / "run_benchmark/ecp_script"
@@ -98,6 +98,20 @@ ML_EPOCHS = 3
 ML_LR = 0.001
 
 # All others are SPEC/MPI-based
+
+
+class TeeStream(object):
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for stream in self.streams:
+            stream.write(data)
+        return len(data)
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
 
 
 class PowerMonitor:
@@ -578,6 +592,21 @@ def run_cosched(
     monitor.print_summary()
 
 
+def _results_log_path(args: argparse.Namespace) -> Path:
+    args.results_dir.mkdir(parents=True, exist_ok=True)
+    if args.both:
+        policy = args.policy if args.policy != "sequential" else "best-fit"
+        safe_policy = policy.replace("-", "_")
+        name = f"run_cosched_both_{safe_policy}.txt"
+    elif args.policy == "sequential":
+        name = "run_cosched_sequential.txt"
+    else:
+        safe_policy = args.policy.replace("-", "_")
+        prefix = "run_cosched_dryrun" if args.dry_run else "run_cosched"
+        name = f"{prefix}_{safe_policy}.txt"
+    return args.results_dir / name
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Run co-scheduled benchmarks on 4 H100 GPUs (NUMA-aware)")
@@ -601,65 +630,81 @@ def main():
     parser.add_argument(
         "--gpu-override", nargs="+", default=None,
         help="Override GPU counts as app:count pairs, e.g. bert:2 gpt2:2")
+    parser.add_argument(
+        "--results-dir", type=Path, default=RESULTS_DIR,
+        help="Directory for fixed run logs. Default: {}".format(RESULTS_DIR))
 
     args = parser.parse_args()
+    log_path = _results_log_path(args)
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
 
-    gpu_counts = dict(PREDICTED_GPU_COUNTS)
+    with log_path.open("w", encoding="utf-8") as log_file:
+        tee = TeeStream(original_stdout, log_file)
+        sys.stdout = tee
+        sys.stderr = tee
+        try:
+            print(f"Results log: {log_path}")
 
-    # Apply overrides
-    if args.gpu_override:
-        for item in args.gpu_override:
-            app, count = item.split(":")
-            gpu_counts[app] = int(count)
+            gpu_counts = dict(PREDICTED_GPU_COUNTS)
 
-    # Validate
-    for app in args.jobs:
-        if app not in gpu_counts:
-            print(f"ERROR: No GPU count defined for '{app}'", file=sys.stderr)
-            sys.exit(1)
-        if gpu_counts[app] > TOTAL_GPUS:
-            print(f"ERROR: {app} needs {gpu_counts[app]} GPUs but only "
-                  f"{TOTAL_GPUS} available", file=sys.stderr)
-            sys.exit(1)
+            # Apply overrides
+            if args.gpu_override:
+                for item in args.gpu_override:
+                    app, count = item.split(":")
+                    gpu_counts[app] = int(count)
 
-    print("Job queue and GPU assignments:")
-    for app in args.jobs:
-        print(f"  {app:<15} -> {gpu_counts[app]} GPUs")
-    print()
+            # Validate
+            for app in args.jobs:
+                if app not in gpu_counts:
+                    print(f"ERROR: No GPU count defined for '{app}'", file=sys.stderr)
+                    sys.exit(1)
+                if gpu_counts[app] > TOTAL_GPUS:
+                    print(f"ERROR: {app} needs {gpu_counts[app]} GPUs but only "
+                          f"{TOTAL_GPUS} available", file=sys.stderr)
+                    sys.exit(1)
 
-    if args.both:
-        print("=" * 80)
-        print("  PHASE 1: SEQUENTIAL")
-        print("=" * 80)
-        run_sequential(
-            job_queue=args.jobs,
-            gpu_counts=gpu_counts,
-        )
-        print("\n\n")
-        policy = args.policy if args.policy != "sequential" else "best-fit"
-        print("=" * 80)
-        print(f"  PHASE 2: CO-SCHEDULED ({policy.upper()})")
-        print("=" * 80)
-        run_cosched(
-            job_queue=args.jobs,
-            gpu_counts=gpu_counts,
-            max_concurrent=args.max_concurrent,
-            dry_run=False,
-            policy=policy,
-        )
-    elif args.policy == "sequential":
-        run_sequential(
-            job_queue=args.jobs,
-            gpu_counts=gpu_counts,
-        )
-    else:
-        run_cosched(
-            job_queue=args.jobs,
-            gpu_counts=gpu_counts,
-            max_concurrent=args.max_concurrent,
-            dry_run=args.dry_run,
-            policy=args.policy,
-        )
+            print("Job queue and GPU assignments:")
+            for app in args.jobs:
+                print(f"  {app:<15} -> {gpu_counts[app]} GPUs")
+            print()
+
+            if args.both:
+                print("=" * 80)
+                print("  PHASE 1: SEQUENTIAL")
+                print("=" * 80)
+                run_sequential(
+                    job_queue=args.jobs,
+                    gpu_counts=gpu_counts,
+                )
+                print("\n\n")
+                policy = args.policy if args.policy != "sequential" else "best-fit"
+                print("=" * 80)
+                print(f"  PHASE 2: CO-SCHEDULED ({policy.upper()})")
+                print("=" * 80)
+                run_cosched(
+                    job_queue=args.jobs,
+                    gpu_counts=gpu_counts,
+                    max_concurrent=args.max_concurrent,
+                    dry_run=False,
+                    policy=policy,
+                )
+            elif args.policy == "sequential":
+                run_sequential(
+                    job_queue=args.jobs,
+                    gpu_counts=gpu_counts,
+                )
+            else:
+                run_cosched(
+                    job_queue=args.jobs,
+                    gpu_counts=gpu_counts,
+                    max_concurrent=args.max_concurrent,
+                    dry_run=args.dry_run,
+                    policy=args.policy,
+                )
+        finally:
+            sys.stdout = original_stdout
+            sys.stderr = original_stderr
 
 
 if __name__ == "__main__":
