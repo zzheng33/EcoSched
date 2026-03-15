@@ -1,0 +1,661 @@
+#!/usr/bin/env python3
+"""Hand-crafted event-driven online co-scheduler.
+
+This launcher uses only per-application mode curves derived from brief profiling
+(the rows in edp_metrics.txt) and makes decisions at each scheduling event:
+- enumerate feasible actions on the currently free GPUs
+- score each action with a hand-crafted online objective
+- launch the minimum-score action
+
+Policy design:
+- runtime is used as a guardrail: only modes within a slowdown tolerance of the
+  app's fastest mode are considered online-feasible
+- the main score term is normalized energy regret (or EDP regret)
+- idle GPUs are penalized using a weight derived from idle/busy power
+- actions that leave a residual GPU budget few remaining jobs can use receive a
+  blocking penalty
+"""
+
+import argparse
+import math
+import os
+import re
+import subprocess
+import time
+from pathlib import Path
+from typing import Dict, List, NamedTuple, Optional, Sequence, Tuple
+
+from run_cosched import (
+    DEFAULT_JOB_QUEUE,
+    NUMA0_GPUS,
+    NUMA1_GPUS,
+    PowerMonitor,
+    TOTAL_GPUS,
+    allocate_gpus_numa,
+    build_command,
+    pick_numa_for_tenant,
+)
+
+DEFAULT_IDLE_POWER = 70.0
+DEFAULT_SLOWDOWN_TOL = 0.20
+DEFAULT_SCORE_METRIC = "energy"
+DEFAULT_MAX_CONCURRENT = 2
+
+
+class ModeInfo(NamedTuple):
+    app: str
+    gpu_count: int
+    runtime_s: float
+    avg_power_w: float
+    total_power_w: float
+    active_energy_j: float
+    edp: float
+    norm_runtime: float
+    norm_energy: float
+    norm_edp: float
+
+
+class ActionEval(NamedTuple):
+    score: float
+    metric_regret: float
+    idle_frac: float
+    blocking_penalty: float
+    runtime_regret: float
+
+
+class LaunchSpec(NamedTuple):
+    mode: ModeInfo
+    gpu_ids: List[int]
+    numa_node: int
+
+
+class RunningJob(object):
+    def __init__(self, app, mode, gpu_ids, numa_node, process, start_time, devnull):
+        self.app = app
+        self.mode = mode
+        self.gpu_ids = gpu_ids
+        self.numa_node = numa_node
+        self.process = process
+        self.start_time = start_time
+        self.devnull = devnull
+
+
+class SimJob(NamedTuple):
+    app: str
+    mode: ModeInfo
+    gpu_ids: List[int]
+    numa_node: int
+    end_time: float
+
+
+SECTION_RE = re.compile(r"^===== .*?/([^/ ]+) =====$")
+
+
+def parse_metrics(metrics_path: Path, selected_jobs: Sequence[str]) -> Dict[str, Dict[int, ModeInfo]]:
+    raw_rows = {}
+    current_job = None
+
+    for raw_line in metrics_path.read_text().splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        match = SECTION_RE.match(line)
+        if match:
+            current_job = match.group(1)
+            raw_rows.setdefault(current_job, {})
+            continue
+        if current_job is None or line.startswith("cap=") or line.startswith("gpu_count"):
+            continue
+        parts = line.split()
+        if len(parts) < 3:
+            continue
+        gpu_count = int(parts[0])
+        runtime_s = float(parts[1])
+        avg_power_w = float(parts[2])
+        total_power_w = gpu_count * avg_power_w
+        active_energy_j = runtime_s * total_power_w
+        edp = active_energy_j * runtime_s
+        raw_rows[current_job][gpu_count] = (runtime_s, avg_power_w, total_power_w, active_energy_j, edp)
+
+    missing = [job for job in selected_jobs if job not in raw_rows]
+    if missing:
+        raise ValueError("Missing jobs in metrics file: {}".format(missing))
+
+    parsed = {}
+    for job in selected_jobs:
+        rows = raw_rows[job]
+        min_runtime = min(item[0] for item in rows.values())
+        min_energy = min(item[3] for item in rows.values())
+        min_edp = min(item[4] for item in rows.values())
+        parsed[job] = {}
+        for gpu_count, values in rows.items():
+            runtime_s, avg_power_w, total_power_w, active_energy_j, edp = values
+            parsed[job][gpu_count] = ModeInfo(
+                app=job,
+                gpu_count=gpu_count,
+                runtime_s=runtime_s,
+                avg_power_w=avg_power_w,
+                total_power_w=total_power_w,
+                active_energy_j=active_energy_j,
+                edp=edp,
+                norm_runtime=runtime_s / min_runtime,
+                norm_energy=active_energy_j / min_energy,
+                norm_edp=edp / min_edp,
+            )
+    return parsed
+
+
+def select_online_modes(
+    parsed: Dict[str, Dict[int, ModeInfo]],
+    slowdown_tol: float,
+) -> Dict[str, Tuple[ModeInfo, ...]]:
+    selected = {}
+    for app, rows in parsed.items():
+        modes = tuple(rows[g] for g in sorted(rows))
+        feasible = [m for m in modes if m.norm_runtime <= 1.0 + slowdown_tol + 1e-9]
+        if not feasible:
+            min_norm_rt = min(m.norm_runtime for m in modes)
+            feasible = [m for m in modes if abs(m.norm_runtime - min_norm_rt) < 1e-9]
+        selected[app] = tuple(sorted(feasible, key=lambda m: (m.gpu_count, m.norm_energy, m.norm_edp)))
+    return selected
+
+
+def mean_busy_power(parsed: Dict[str, Dict[int, ModeInfo]]) -> float:
+    values = []
+    for rows in parsed.values():
+        values.extend(mode.avg_power_w for mode in rows.values())
+    return sum(values) / float(len(values))
+
+
+def action_key(action: Sequence[ModeInfo]) -> Tuple[Tuple[str, int], ...]:
+    return tuple(sorted((mode.app, mode.gpu_count) for mode in action))
+
+
+def enumerate_actions(
+    pending: Sequence[str],
+    candidate_modes: Dict[str, Tuple[ModeInfo, ...]],
+    free_gpus: int,
+    free_slots: int,
+) -> List[Tuple[ModeInfo, ...]]:
+    if free_gpus <= 0 or free_slots <= 0:
+        return []
+
+    actions = []
+    seen = set()
+
+    for app in pending:
+        for mode in candidate_modes[app]:
+            if mode.gpu_count <= free_gpus:
+                action = (mode,)
+                key = action_key(action)
+                if key not in seen:
+                    seen.add(key)
+                    actions.append(action)
+
+    if free_slots < 2:
+        return actions
+
+    for i, app_a in enumerate(pending):
+        for app_b in pending[i + 1:]:
+            for mode_a in candidate_modes[app_a]:
+                for mode_b in candidate_modes[app_b]:
+                    if mode_a.gpu_count + mode_b.gpu_count > free_gpus:
+                        continue
+                    action = tuple(sorted((mode_a, mode_b), key=lambda m: (m.app, m.gpu_count)))
+                    key = action_key(action)
+                    if key not in seen:
+                        seen.add(key)
+                        actions.append(action)
+
+    return actions
+
+
+def score_action(
+    action: Sequence[ModeInfo],
+    pending: Sequence[str],
+    candidate_modes: Dict[str, Tuple[ModeInfo, ...]],
+    free_gpus: int,
+    score_metric: str,
+    idle_weight: float,
+    blocking_weight: float,
+) -> ActionEval:
+    used_gpus = sum(mode.gpu_count for mode in action)
+    leftover_gpus = max(0, free_gpus - used_gpus)
+    remaining_jobs = [app for app in pending if app not in {mode.app for mode in action}]
+
+    if score_metric == "edp":
+        regrets = [mode.norm_edp - 1.0 for mode in action]
+    else:
+        regrets = [mode.norm_energy - 1.0 for mode in action]
+    metric_regret = sum(regrets) / float(len(regrets))
+
+    runtime_regret = sum((mode.norm_runtime - 1.0) for mode in action) / float(len(action))
+    idle_frac = leftover_gpus / float(TOTAL_GPUS)
+
+    if leftover_gpus == 0 or not remaining_jobs:
+        blocking_penalty = 0.0
+    else:
+        compatible = 0
+        for app in remaining_jobs:
+            if any(mode.gpu_count <= leftover_gpus for mode in candidate_modes[app]):
+                compatible += 1
+        fit_fraction = compatible / float(len(remaining_jobs))
+        blocking_penalty = 1.0 - fit_fraction
+
+    score = metric_regret + idle_weight * idle_frac + blocking_weight * blocking_penalty
+    return ActionEval(
+        score=score,
+        metric_regret=metric_regret,
+        idle_frac=idle_frac,
+        blocking_penalty=blocking_penalty,
+        runtime_regret=runtime_regret,
+    )
+
+
+def _spill_count(gpu_ids: Sequence[int], numa_node: int) -> int:
+    local = set(NUMA0_GPUS if numa_node == 0 else NUMA1_GPUS)
+    return sum(1 for gpu in gpu_ids if gpu not in local)
+
+
+def materialize_action(
+    action: Sequence[ModeInfo],
+    running: Sequence[RunningJob],
+    gpus_in_use: set,
+) -> Optional[List[LaunchSpec]]:
+    if len(running) + len(action) > DEFAULT_MAX_CONCURRENT:
+        return None
+
+    if running:
+        if len(action) != 1:
+            return None
+        numa_node = pick_numa_for_tenant(list(running))
+        if numa_node is None:
+            return None
+        mode = action[0]
+        gpu_ids = allocate_gpus_numa(mode.gpu_count, numa_node, set(gpus_in_use))
+        if gpu_ids is None:
+            return None
+        return [LaunchSpec(mode=mode, gpu_ids=gpu_ids, numa_node=numa_node)]
+
+    if len(action) == 1:
+        mode = action[0]
+        gpu_ids = allocate_gpus_numa(mode.gpu_count, 0, set(gpus_in_use))
+        if gpu_ids is None:
+            return None
+        return [LaunchSpec(mode=mode, gpu_ids=gpu_ids, numa_node=0)]
+
+    if len(action) != 2:
+        return None
+
+    best = None
+    assignments = [(0, 1), (1, 0)]
+    for numa_a, numa_b in assignments:
+        used = set(gpus_in_use)
+        specs = [None, None]
+        indexed = list(enumerate(((action[0], numa_a), (action[1], numa_b))))
+        indexed.sort(key=lambda item: (-item[1][0].gpu_count, item[0]))
+        feasible = True
+        spill = 0
+        for original_idx, (mode, numa_node) in indexed:
+            gpu_ids = allocate_gpus_numa(mode.gpu_count, numa_node, used)
+            if gpu_ids is None:
+                feasible = False
+                break
+            spill += _spill_count(gpu_ids, numa_node)
+            used.update(gpu_ids)
+            specs[original_idx] = LaunchSpec(mode=mode, gpu_ids=gpu_ids, numa_node=numa_node)
+        if feasible:
+            candidate = (spill, tuple((spec.numa_node, tuple(spec.gpu_ids)) for spec in specs), specs)
+            if best is None or candidate < best:
+                best = candidate
+
+    return None if best is None else best[2]
+
+
+def pick_best_action(
+    pending: Sequence[str],
+    running: Sequence[RunningJob],
+    gpus_in_use: set,
+    candidate_modes: Dict[str, Tuple[ModeInfo, ...]],
+    score_metric: str,
+    idle_weight: float,
+    blocking_weight: float,
+) -> Tuple[Optional[Tuple[ModeInfo, ...]], Optional[List[LaunchSpec]], Optional[ActionEval]]:
+    free_gpus = TOTAL_GPUS - len(gpus_in_use)
+    free_slots = DEFAULT_MAX_CONCURRENT - len(running)
+    actions = enumerate_actions(pending, candidate_modes, free_gpus, free_slots)
+
+    best_item = None
+    for action in actions:
+        launches = materialize_action(action, running, gpus_in_use)
+        if launches is None:
+            continue
+        evaluation = score_action(action, pending, candidate_modes, free_gpus, score_metric, idle_weight, blocking_weight)
+        tie_key = (
+            evaluation.score,
+            evaluation.idle_frac,
+            evaluation.runtime_regret,
+            -sum(mode.gpu_count for mode in action),
+            action_key(action),
+        )
+        candidate = (tie_key, action, launches, evaluation)
+        if best_item is None or candidate < best_item:
+            best_item = candidate
+
+    if best_item is None:
+        return None, None, None
+    _, action, launches, evaluation = best_item
+    return action, launches, evaluation
+
+
+def _devnull():
+    return open(os.devnull, "w")
+
+
+def run_dry(
+    job_queue: Sequence[str],
+    candidate_modes: Dict[str, Tuple[ModeInfo, ...]],
+    score_metric: str,
+    idle_weight: float,
+    blocking_weight: float,
+):
+    pending = list(job_queue)
+    running = []
+    gpus_in_use = set()
+    sim_time = 0.0
+
+    print(
+        "Online dry-run: {} apps on {} GPUs (metric={}, slowdown_tol modes pre-filtered)".format(
+            len(pending), TOTAL_GPUS, score_metric
+        )
+    )
+    print("NUMA 0 GPUs: {}  |  NUMA 1 GPUs: {}".format(NUMA0_GPUS, NUMA1_GPUS))
+    print("=" * 96)
+
+    while pending or running:
+        scheduled = True
+        while scheduled and pending and len(running) < DEFAULT_MAX_CONCURRENT:
+            scheduled = False
+            action, launches, evaluation = pick_best_action(
+                pending, running, gpus_in_use, candidate_modes, score_metric, idle_weight, blocking_weight
+            )
+            if not launches:
+                break
+            for spec in launches:
+                end_time = sim_time + spec.mode.runtime_s
+                running.append(SimJob(spec.mode.app, spec.mode, spec.gpu_ids, spec.numa_node, end_time))
+                gpus_in_use.update(spec.gpu_ids)
+                pending.remove(spec.mode.app)
+                print(
+                    "  t={:8.2f}s | START {:<15} | {} GPUs {} | NUMA {} | score={:.4f} | "
+                    "regret={:.4f} idle={:.2f} block={:.2f}".format(
+                        sim_time,
+                        spec.mode.app,
+                        spec.mode.gpu_count,
+                        spec.gpu_ids,
+                        spec.numa_node,
+                        evaluation.score,
+                        evaluation.metric_regret,
+                        evaluation.idle_frac,
+                        evaluation.blocking_penalty,
+                    )
+                )
+            scheduled = True
+
+        if not running:
+            break
+
+        running.sort(key=lambda job: (job.end_time, job.app))
+        finished = running.pop(0)
+        sim_time = finished.end_time
+        gpus_in_use -= set(finished.gpu_ids)
+        print(
+            "  t={:8.2f}s | END   {:<15} | freed {} GPUs {} | NUMA {} | runtime={:.2f}s".format(
+                sim_time,
+                finished.app,
+                len(finished.gpu_ids),
+                finished.gpu_ids,
+                finished.numa_node,
+                finished.mode.runtime_s,
+            )
+        )
+
+    print("\nEstimated makespan: {:.2f}s".format(sim_time))
+
+
+def run_online(
+    job_queue: Sequence[str],
+    candidate_modes: Dict[str, Tuple[ModeInfo, ...]],
+    score_metric: str,
+    idle_weight: float,
+    blocking_weight: float,
+    poll_interval: float,
+):
+    pending = list(job_queue)
+    running = []
+    completed = []
+    gpus_in_use = set()
+    wall_start = time.time()
+    monitor = PowerMonitor()
+
+    print(
+        "Online co-scheduling: {} apps on {} GPUs (metric={})".format(
+            len(pending), TOTAL_GPUS, score_metric
+        )
+    )
+    print("NUMA 0 GPUs: {}  |  NUMA 1 GPUs: {}".format(NUMA0_GPUS, NUMA1_GPUS))
+    print("=" * 96)
+
+    monitor.start()
+    try:
+        while pending or running:
+            scheduled = True
+            while scheduled and pending and len(running) < DEFAULT_MAX_CONCURRENT:
+                scheduled = False
+                action, launches, evaluation = pick_best_action(
+                    pending, running, gpus_in_use, candidate_modes, score_metric, idle_weight, blocking_weight
+                )
+                if not launches:
+                    break
+                for spec in launches:
+                    cmd, env, cwd = build_command(spec.mode.app, spec.gpu_ids, spec.numa_node)
+                    devnull = _devnull()
+                    elapsed = time.time() - wall_start
+                    print(
+                        "  t={:8.2f}s | START {:<15} | {} GPUs {} | NUMA {} | score={:.4f} | "
+                        "regret={:.4f} idle={:.2f} block={:.2f}".format(
+                            elapsed,
+                            spec.mode.app,
+                            spec.mode.gpu_count,
+                            spec.gpu_ids,
+                            spec.numa_node,
+                            evaluation.score,
+                            evaluation.metric_regret,
+                            evaluation.idle_frac,
+                            evaluation.blocking_penalty,
+                        )
+                    )
+                    proc = subprocess.Popen(
+                        cmd,
+                        env=env,
+                        cwd=str(cwd) if cwd else None,
+                        stdout=devnull,
+                        stderr=subprocess.STDOUT,
+                    )
+                    running.append(
+                        RunningJob(
+                            app=spec.mode.app,
+                            mode=spec.mode,
+                            gpu_ids=spec.gpu_ids,
+                            numa_node=spec.numa_node,
+                            process=proc,
+                            start_time=time.time(),
+                            devnull=devnull,
+                        )
+                    )
+                    gpus_in_use.update(spec.gpu_ids)
+                    pending.remove(spec.mode.app)
+                scheduled = True
+
+            if not running:
+                break
+
+            time.sleep(poll_interval)
+            for job in list(running):
+                rc = job.process.poll()
+                if rc is None:
+                    continue
+                elapsed = time.time() - wall_start
+                runtime = time.time() - job.start_time
+                gpus_in_use -= set(job.gpu_ids)
+                running.remove(job)
+                job.devnull.close()
+                status = "OK" if rc == 0 else "FAILED(rc={})".format(rc)
+                print(
+                    "  t={:8.2f}s | END   {:<15} | freed {} GPUs {} | NUMA {} | runtime={:.2f}s | {}".format(
+                        elapsed,
+                        job.app,
+                        len(job.gpu_ids),
+                        job.gpu_ids,
+                        job.numa_node,
+                        runtime,
+                        status,
+                    )
+                )
+                completed.append({
+                    "app": job.app,
+                    "gpu_count": job.mode.gpu_count,
+                    "gpu_ids": job.gpu_ids,
+                    "numa_node": job.numa_node,
+                    "runtime": runtime,
+                    "return_code": rc,
+                })
+    finally:
+        for job in running:
+            try:
+                job.process.terminate()
+            except Exception:
+                pass
+            try:
+                job.devnull.close()
+            except Exception:
+                pass
+        monitor.stop()
+
+    total_time = time.time() - wall_start
+
+    print("\n" + "=" * 96)
+    print("Online co-schedule summary:")
+    print("{:<15} {:>6} {:>12} {:>5} {:>12} {:>10}".format("App", "#GPUs", "GPU IDs", "NUMA", "Runtime (s)", "Status"))
+    print("-" * 70)
+    for item in completed:
+        status = "OK" if item["return_code"] == 0 else "FAILED"
+        print(
+            "{:<15} {:>6} {:>12} {:>5} {:>12.2f} {:>10}".format(
+                item["app"],
+                item["gpu_count"],
+                str(item["gpu_ids"]),
+                item["numa_node"],
+                item["runtime"],
+                status,
+            )
+        )
+    print("-" * 70)
+    print("\nTotal makespan: {:.2f}s".format(total_time))
+    monitor.print_summary()
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Run the hand-crafted event-driven online co-scheduler.")
+    parser.add_argument(
+        "--metrics-file",
+        type=Path,
+        default=Path("/home/ac.zzheng/power/GPGPU/data/H100/edp_metrics.txt"),
+        help="Path to edp_metrics.txt",
+    )
+    parser.add_argument(
+        "--jobs",
+        nargs="+",
+        default=DEFAULT_JOB_QUEUE,
+        help="Job queue. Default: {}".format(DEFAULT_JOB_QUEUE),
+    )
+    parser.add_argument(
+        "--slowdown-tol",
+        type=float,
+        default=DEFAULT_SLOWDOWN_TOL,
+        help="Only consider modes with normalized runtime <= 1 + slowdown_tol. Default: {}".format(DEFAULT_SLOWDOWN_TOL),
+    )
+    parser.add_argument(
+        "--score-metric",
+        choices=["energy", "edp"],
+        default=DEFAULT_SCORE_METRIC,
+        help="Primary normalized regret term used in the action score.",
+    )
+    parser.add_argument(
+        "--idle-power",
+        type=float,
+        default=DEFAULT_IDLE_POWER,
+        help="Idle power per GPU in watts. Default: {}".format(DEFAULT_IDLE_POWER),
+    )
+    parser.add_argument(
+        "--idle-weight",
+        type=float,
+        default=None,
+        help="Override idle penalty weight. Default derives from idle_power / mean_busy_power.",
+    )
+    parser.add_argument(
+        "--blocking-weight",
+        type=float,
+        default=None,
+        help="Override residual blocking penalty weight. Default equals idle_weight.",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Simulate decisions using profiled runtimes instead of launching jobs.",
+    )
+    parser.add_argument(
+        "--poll-interval",
+        type=float,
+        default=1.0,
+        help="Polling interval in seconds for real execution. Default: 1.0",
+    )
+    args = parser.parse_args()
+
+    parsed = parse_metrics(args.metrics_file, args.jobs)
+    candidate_modes = select_online_modes(parsed, args.slowdown_tol)
+
+    busy_power = mean_busy_power(parsed)
+    idle_weight = args.idle_weight if args.idle_weight is not None else args.idle_power / busy_power
+    blocking_weight = args.blocking_weight if args.blocking_weight is not None else idle_weight
+
+    print("Online policy parameters:")
+    print("  score_metric      = {}".format(args.score_metric))
+    print("  slowdown_tol      = {:.2f}".format(args.slowdown_tol))
+    print("  idle_power        = {:.2f} W".format(args.idle_power))
+    print("  mean_busy_power   = {:.2f} W".format(busy_power))
+    print("  idle_weight       = {:.4f}".format(idle_weight))
+    print("  blocking_weight   = {:.4f}".format(blocking_weight))
+    print("  candidate modes:")
+    for app in args.jobs:
+        desc = [
+            "{}GPU(rt={:.2f}, nrt={:.2f}, ne={:.2f}, nedp={:.2f})".format(
+                mode.gpu_count,
+                mode.runtime_s,
+                mode.norm_runtime,
+                mode.norm_energy,
+                mode.norm_edp,
+            )
+            for mode in candidate_modes[app]
+        ]
+        print("    {:<15} -> {}".format(app, ", ".join(desc)))
+    print()
+
+    if args.dry_run:
+        run_dry(args.jobs, candidate_modes, args.score_metric, idle_weight, blocking_weight)
+    else:
+        run_online(args.jobs, candidate_modes, args.score_metric, idle_weight, blocking_weight, args.poll_interval)
+
+
+if __name__ == "__main__":
+    main()
