@@ -24,6 +24,7 @@ execution order.
 
 import argparse
 import re
+import sys
 from pathlib import Path
 from typing import Dict, List, NamedTuple, Sequence, Tuple
 
@@ -40,6 +41,9 @@ POWER_SCALE = 100
 DEFAULT_IDLE_POWER = 70.0
 DEFAULT_THREADS = 8
 DEFAULT_TIME_LIMIT_S = 20.0
+SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results"
+DEFAULT_SCHEDULE_OUTPUT = DEFAULT_RESULTS_DIR / "solver_schedule.txt"
 DEFAULT_JOBS = [
     "pot3d", "minisweep", "lbm", "cloverleaf", "tealeaf",
     "miniweather", "hpgmg", "bert", "gpt2", "resnet50",
@@ -78,6 +82,20 @@ class SolveRecord(NamedTuple):
     avg_power_w: float
     total_power_w: float
     active_energy_j: float
+
+
+class TeeStream(object):
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for stream in self.streams:
+            stream.write(data)
+        return len(data)
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
 
 
 def placement_candidates(gpu_count: int) -> List[Tuple[int, int]]:
@@ -361,16 +379,35 @@ def main():
         default=DEFAULT_TIME_LIMIT_S,
         help="CP-SAT time limit in seconds. Default: {}".format(DEFAULT_TIME_LIMIT_S),
     )
+    parser.add_argument(
+        "--output-file",
+        type=Path,
+        default=DEFAULT_SCHEDULE_OUTPUT,
+        help="Schedule output text file. Default: {}".format(DEFAULT_SCHEDULE_OUTPUT),
+    )
     args = parser.parse_args()
 
-    result = solve_schedule(
-        metrics_path=args.metrics_file,
-        jobs=args.jobs,
-        idle_power_w=args.idle_power,
-        threads=args.threads,
-        time_limit_s=args.time_limit,
-    )
-    print_summary(result, args.idle_power)
+    output_file = args.output_file
+    output_file.parent.mkdir(parents=True, exist_ok=True)
+
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
+    with output_file.open("w") as log_file:
+        sys.stdout = TeeStream(original_stdout, log_file)
+        sys.stderr = TeeStream(original_stderr, log_file)
+        try:
+            print("Solver schedule output: {}".format(output_file))
+            result = solve_schedule(
+                metrics_path=args.metrics_file,
+                jobs=args.jobs,
+                idle_power_w=args.idle_power,
+                threads=args.threads,
+                time_limit_s=args.time_limit,
+            )
+            print_summary(result, args.idle_power)
+        finally:
+            sys.stdout = original_stdout
+            sys.stderr = original_stderr
 
 
 if __name__ == "__main__":

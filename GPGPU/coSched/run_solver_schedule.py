@@ -11,13 +11,16 @@ Execution policy:
   GPUs are free.
 - If actual runtimes differ from the solver plan, later launches slip until the
   required GPUs become available.
+- All console output is also recorded in a timestamped text file under results/.
 """
 
 import argparse
 import os
 import re
 import subprocess
+import sys
 import time
+from datetime import datetime
 from pathlib import Path
 from typing import List, NamedTuple, Optional, Sequence, Tuple
 
@@ -28,6 +31,10 @@ from run_cosched import (
     TOTAL_GPUS,
     build_command,
 )
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results"
+DEFAULT_SCHEDULE_FILE = DEFAULT_RESULTS_DIR / "solver_schedule.txt"
 
 
 class PlannedJob(NamedTuple):
@@ -49,6 +56,20 @@ class RunningJob(object):
         self.process = process
         self.devnull = devnull
         self.actual_start_time = actual_start_time
+
+
+class TeeStream(object):
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for stream in self.streams:
+            stream.write(data)
+        return len(data)
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
 
 
 TABLE_ROW_RE = re.compile(
@@ -90,6 +111,23 @@ def parse_solver_schedule(schedule_file: Path) -> List[PlannedJob]:
     return plans
 
 
+def print_planned_decisions(plans: Sequence[PlannedJob]):
+    print("Planned solver decisions:")
+    print("=" * 80)
+    for plan in plans:
+        print(
+            "  {}. t={:.2f}s | {:<15} | {} GPUs | placement {} | planned_end={:.2f}s".format(
+                plan.order_idx,
+                plan.start_s,
+                plan.app,
+                plan.gpu_count,
+                plan.placement,
+                plan.end_s,
+            )
+        )
+    print()
+
+
 def home_numa_for_placement(placement: Tuple[int, int]) -> int:
     use0, use1 = placement
     if use0 == 0:
@@ -97,7 +135,6 @@ def home_numa_for_placement(placement: Tuple[int, int]) -> int:
     if use1 == 0:
         return 0
     return 0 if use0 >= use1 else 1
-
 
 
 def allocate_gpu_ids_for_placement(
@@ -119,10 +156,8 @@ def allocate_gpu_ids_for_placement(
     return gpu_ids, numa_node
 
 
-
 def _devnull():
     return open(os.devnull, "w")
-
 
 
 def dry_run(plans: Sequence[PlannedJob]):
@@ -134,7 +169,6 @@ def dry_run(plans: Sequence[PlannedJob]):
                 plan.start_s, plan.app, plan.gpu_count, plan.placement
             )
         )
-
 
 
 def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
@@ -285,7 +319,6 @@ def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
     monitor.print_summary()
 
 
-
 def main():
     parser = argparse.ArgumentParser(
         description="Run applications using a saved solver schedule."
@@ -293,7 +326,7 @@ def main():
     parser.add_argument(
         "--schedule-file",
         type=Path,
-        default=Path("./solver_schedule.txt"),
+        default=DEFAULT_SCHEDULE_FILE,
         help="Text file containing the stdout from solve_energy_optimal_cpsat.py",
     )
     parser.add_argument(
@@ -307,15 +340,38 @@ def main():
         default=1.0,
         help="Process polling interval in seconds. Default: 1.0",
     )
+    parser.add_argument(
+        "--results-dir",
+        type=Path,
+        default=DEFAULT_RESULTS_DIR,
+        help="Directory for timestamped run logs. Default: {}".format(DEFAULT_RESULTS_DIR),
+    )
     args = parser.parse_args()
 
     plans = parse_solver_schedule(args.schedule_file)
 
-    if args.dry_run:
-        dry_run(plans)
-        return
+    results_dir = args.results_dir
+    results_dir.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    mode = "dryrun" if args.dry_run else "run"
+    log_path = results_dir / "solver_execution_{}.txt".format(mode)
 
-    run_planned_schedule(plans, args.poll_interval)
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
+    with log_path.open("w") as log_file:
+        sys.stdout = TeeStream(original_stdout, log_file)
+        sys.stderr = TeeStream(original_stderr, log_file)
+        try:
+            print("Results log: {}".format(log_path))
+            print_planned_decisions(plans)
+            if args.dry_run:
+                dry_run(plans)
+                return
+
+            run_planned_schedule(plans, args.poll_interval)
+        finally:
+            sys.stdout = original_stdout
+            sys.stderr = original_stderr
 
 
 if __name__ == "__main__":
