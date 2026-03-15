@@ -21,6 +21,7 @@ import math
 import os
 import re
 import subprocess
+import sys
 import time
 from pathlib import Path
 from typing import Dict, List, NamedTuple, Optional, Sequence, Tuple
@@ -36,9 +37,12 @@ from run_cosched import (
     pick_numa_for_tenant,
 )
 
+SCRIPT_DIR = Path(__file__).resolve().parent
+DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results"
 DEFAULT_IDLE_POWER = 70.0
 DEFAULT_SLOWDOWN_TOL = 0.20
 DEFAULT_SCORE_METRIC = "energy"
+DEFAULT_ANCHOR_APP = "pot3d"
 DEFAULT_MAX_CONCURRENT = 2
 
 
@@ -86,6 +90,20 @@ class SimJob(NamedTuple):
     gpu_ids: List[int]
     numa_node: int
     end_time: float
+
+
+class TeeStream(object):
+    def __init__(self, *streams):
+        self.streams = streams
+
+    def write(self, data):
+        for stream in self.streams:
+            stream.write(data)
+        return len(data)
+
+    def flush(self):
+        for stream in self.streams:
+            stream.flush()
 
 
 SECTION_RE = re.compile(r"^===== .*?/([^/ ]+) =====$")
@@ -320,10 +338,14 @@ def pick_best_action(
     score_metric: str,
     idle_weight: float,
     blocking_weight: float,
+    anchor_app: Optional[str],
+    anchor_started: bool,
 ) -> Tuple[Optional[Tuple[ModeInfo, ...]], Optional[List[LaunchSpec]], Optional[ActionEval]]:
     free_gpus = TOTAL_GPUS - len(gpus_in_use)
     free_slots = DEFAULT_MAX_CONCURRENT - len(running)
     actions = enumerate_actions(pending, candidate_modes, free_gpus, free_slots)
+    if anchor_app and not anchor_started and anchor_app in pending:
+        actions = [action for action in actions if any(mode.app == anchor_app for mode in action)]
 
     best_item = None
     for action in actions:
@@ -358,11 +380,13 @@ def run_dry(
     score_metric: str,
     idle_weight: float,
     blocking_weight: float,
+    anchor_app: Optional[str],
 ):
     pending = list(job_queue)
     running = []
     gpus_in_use = set()
     sim_time = 0.0
+    anchor_started = anchor_app is None
 
     print(
         "Online dry-run: {} apps on {} GPUs (metric={}, slowdown_tol modes pre-filtered)".format(
@@ -377,7 +401,7 @@ def run_dry(
         while scheduled and pending and len(running) < DEFAULT_MAX_CONCURRENT:
             scheduled = False
             action, launches, evaluation = pick_best_action(
-                pending, running, gpus_in_use, candidate_modes, score_metric, idle_weight, blocking_weight
+                pending, running, gpus_in_use, candidate_modes, score_metric, idle_weight, blocking_weight, anchor_app, anchor_started
             )
             if not launches:
                 break
@@ -386,6 +410,8 @@ def run_dry(
                 running.append(SimJob(spec.mode.app, spec.mode, spec.gpu_ids, spec.numa_node, end_time))
                 gpus_in_use.update(spec.gpu_ids)
                 pending.remove(spec.mode.app)
+                if anchor_app and spec.mode.app == anchor_app:
+                    anchor_started = True
                 print(
                     "  t={:8.2f}s | START {:<15} | {} GPUs {} | NUMA {} | score={:.4f} | "
                     "regret={:.4f} idle={:.2f} block={:.2f}".format(
@@ -430,6 +456,7 @@ def run_online(
     idle_weight: float,
     blocking_weight: float,
     poll_interval: float,
+    anchor_app: Optional[str],
 ):
     pending = list(job_queue)
     running = []
@@ -437,6 +464,7 @@ def run_online(
     gpus_in_use = set()
     wall_start = time.time()
     monitor = PowerMonitor()
+    anchor_started = anchor_app is None
 
     print(
         "Online co-scheduling: {} apps on {} GPUs (metric={})".format(
@@ -453,7 +481,7 @@ def run_online(
             while scheduled and pending and len(running) < DEFAULT_MAX_CONCURRENT:
                 scheduled = False
                 action, launches, evaluation = pick_best_action(
-                    pending, running, gpus_in_use, candidate_modes, score_metric, idle_weight, blocking_weight
+                    pending, running, gpus_in_use, candidate_modes, score_metric, idle_weight, blocking_weight, anchor_app, anchor_started
                 )
                 if not launches:
                     break
@@ -495,6 +523,8 @@ def run_online(
                     )
                     gpus_in_use.update(spec.gpu_ids)
                     pending.remove(spec.mode.app)
+                    if anchor_app and spec.mode.app == anchor_app:
+                        anchor_started = True
                 scheduled = True
 
             if not running:
@@ -620,6 +650,18 @@ def main():
         default=1.0,
         help="Polling interval in seconds for real execution. Default: 1.0",
     )
+    parser.add_argument(
+        "--anchor-app",
+        type=str,
+        default=DEFAULT_ANCHOR_APP,
+        help="App that must be included in the first chosen action if it is waiting. Default: {}".format(DEFAULT_ANCHOR_APP),
+    )
+    parser.add_argument(
+        "--results-dir",
+        type=Path,
+        default=DEFAULT_RESULTS_DIR,
+        help="Directory for timestamped run logs. Default: {}".format(DEFAULT_RESULTS_DIR),
+    )
     args = parser.parse_args()
 
     parsed = parse_metrics(args.metrics_file, args.jobs)
@@ -629,32 +671,48 @@ def main():
     idle_weight = args.idle_weight if args.idle_weight is not None else args.idle_power / busy_power
     blocking_weight = args.blocking_weight if args.blocking_weight is not None else idle_weight
 
-    print("Online policy parameters:")
-    print("  score_metric      = {}".format(args.score_metric))
-    print("  slowdown_tol      = {:.2f}".format(args.slowdown_tol))
-    print("  idle_power        = {:.2f} W".format(args.idle_power))
-    print("  mean_busy_power   = {:.2f} W".format(busy_power))
-    print("  idle_weight       = {:.4f}".format(idle_weight))
-    print("  blocking_weight   = {:.4f}".format(blocking_weight))
-    print("  candidate modes:")
-    for app in args.jobs:
-        desc = [
-            "{}GPU(rt={:.2f}, nrt={:.2f}, ne={:.2f}, nedp={:.2f})".format(
-                mode.gpu_count,
-                mode.runtime_s,
-                mode.norm_runtime,
-                mode.norm_energy,
-                mode.norm_edp,
-            )
-            for mode in candidate_modes[app]
-        ]
-        print("    {:<15} -> {}".format(app, ", ".join(desc)))
-    print()
+    results_dir = args.results_dir
+    results_dir.mkdir(parents=True, exist_ok=True)
+    mode = "dryrun" if args.dry_run else "run"
+    log_path = results_dir / "online_cosched_{}.txt".format(mode)
 
-    if args.dry_run:
-        run_dry(args.jobs, candidate_modes, args.score_metric, idle_weight, blocking_weight)
-    else:
-        run_online(args.jobs, candidate_modes, args.score_metric, idle_weight, blocking_weight, args.poll_interval)
+    original_stdout = sys.stdout
+    original_stderr = sys.stderr
+    with log_path.open("w") as log_file:
+        sys.stdout = TeeStream(original_stdout, log_file)
+        sys.stderr = TeeStream(original_stderr, log_file)
+        try:
+            print("Results log: {}".format(log_path))
+            print("Online policy parameters:")
+            print("  score_metric      = {}".format(args.score_metric))
+            print("  slowdown_tol      = {:.2f}".format(args.slowdown_tol))
+            print("  idle_power        = {:.2f} W".format(args.idle_power))
+            print("  mean_busy_power   = {:.2f} W".format(busy_power))
+            print("  idle_weight       = {:.4f}".format(idle_weight))
+            print("  blocking_weight   = {:.4f}".format(blocking_weight))
+            print("  anchor_app        = {}".format(args.anchor_app if args.anchor_app else "None"))
+            print("  candidate modes:")
+            for app in args.jobs:
+                desc = [
+                    "{}GPU(rt={:.2f}, nrt={:.2f}, ne={:.2f}, nedp={:.2f})".format(
+                        mode.gpu_count,
+                        mode.runtime_s,
+                        mode.norm_runtime,
+                        mode.norm_energy,
+                        mode.norm_edp,
+                    )
+                    for mode in candidate_modes[app]
+                ]
+                print("    {:<15} -> {}".format(app, ", ".join(desc)))
+            print()
+
+            if args.dry_run:
+                run_dry(args.jobs, candidate_modes, args.score_metric, idle_weight, blocking_weight, args.anchor_app)
+            else:
+                run_online(args.jobs, candidate_modes, args.score_metric, idle_weight, blocking_weight, args.poll_interval, args.anchor_app)
+        finally:
+            sys.stdout = original_stdout
+            sys.stderr = original_stderr
 
 
 if __name__ == "__main__":

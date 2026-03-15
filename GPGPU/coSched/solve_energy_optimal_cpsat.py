@@ -26,7 +26,7 @@ import argparse
 import re
 import sys
 from pathlib import Path
-from typing import Dict, List, NamedTuple, Sequence, Tuple
+from typing import Dict, List, NamedTuple, Optional, Sequence, Tuple
 
 try:
     from ortools.sat.python import cp_model
@@ -157,16 +157,23 @@ def build_configs(
     parsed: Dict[str, Dict[int, ModeRow]],
     selected_jobs: Sequence[str],
     idle_power_w: float,
+    slowdown_tol: Optional[float],
 ) -> Tuple[Dict[str, List[Config]], int]:
     idle_power_scaled = int(round(idle_power_w * POWER_SCALE))
     configs_by_job = {}
     horizon = 0
 
     for job in selected_jobs:
+        rows = parsed[job]
+        min_runtime = min(row.runtime_s for row in rows.values())
+        runtime_limit = None if slowdown_tol is None else min_runtime * (1.0 + slowdown_tol)
+
         job_configs = []
         max_duration = 0
-        for gpu_count in sorted(parsed[job]):
-            row = parsed[job][gpu_count]
+        for gpu_count in sorted(rows):
+            row = rows[gpu_count]
+            if runtime_limit is not None and row.runtime_s > runtime_limit + 1e-9:
+                continue
             max_duration = max(max_duration, row.duration_ticks)
             total_power_scaled = int(round(row.total_power_w * POWER_SCALE))
             objective_coeff = row.duration_ticks * (total_power_scaled - idle_power_scaled * gpu_count)
@@ -184,6 +191,10 @@ def build_configs(
                         objective_coeff=objective_coeff,
                     )
                 )
+        if not job_configs:
+            raise ValueError(
+                "No feasible modes remain for {} under slowdown_tol={}".format(job, slowdown_tol)
+            )
         configs_by_job[job] = job_configs
         horizon += max_duration
 
@@ -196,9 +207,10 @@ def solve_schedule(
     idle_power_w: float,
     threads: int,
     time_limit_s: float,
+    slowdown_tol: Optional[float],
 ):
     parsed = parse_metrics(metrics_path, jobs)
-    configs_by_job, horizon = build_configs(parsed, jobs, idle_power_w)
+    configs_by_job, horizon = build_configs(parsed, jobs, idle_power_w, slowdown_tol)
     idle_power_scaled = int(round(idle_power_w * POWER_SCALE))
 
     model = cp_model.CpModel()
@@ -290,11 +302,12 @@ def solve_schedule(
     }
 
 
-def print_summary(result, idle_power_w: float):
+def print_summary(result, idle_power_w: float, slowdown_tol: Optional[float]):
     schedule = result["schedule"]
     print("Exact offline energy-optimal schedule")
     print("=" * 96)
     print("Idle power per GPU: {:.2f} W".format(idle_power_w))
+    print("Slowdown tolerance: {}".format("none" if slowdown_tol is None else "{:.2f}".format(slowdown_tol)))
     print("Makespan: {:.2f} s".format(result["makespan_s"]))
     print(
         "Active energy: {:.2f} J ({:.2f} kJ)".format(
@@ -380,6 +393,12 @@ def main():
         help="CP-SAT time limit in seconds. Default: {}".format(DEFAULT_TIME_LIMIT_S),
     )
     parser.add_argument(
+        "--slowdown-tol",
+        type=float,
+        default=None,
+        help="Optional runtime filter: only keep modes with runtime <= (1 + slowdown_tol) * fastest_mode_runtime for each app. Default: no filtering",
+    )
+    parser.add_argument(
         "--output-file",
         type=Path,
         default=DEFAULT_SCHEDULE_OUTPUT,
@@ -403,8 +422,9 @@ def main():
                 idle_power_w=args.idle_power,
                 threads=args.threads,
                 time_limit_s=args.time_limit,
+                slowdown_tol=args.slowdown_tol,
             )
-            print_summary(result, args.idle_power)
+            print_summary(result, args.idle_power, args.slowdown_tol)
         finally:
             sys.stdout = original_stdout
             sys.stderr = original_stderr
