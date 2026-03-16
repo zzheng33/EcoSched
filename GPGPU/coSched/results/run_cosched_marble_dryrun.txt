@@ -1,0 +1,43 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/run_cosched_marble_dryrun.txt
+Marble policy: pick the smallest GPU count within 5.00% of the minimum profiled runtime, then FCFS co-schedule.
+Metrics source: /home/ac.zzheng/power/GPGPU/data/H100/edp_metrics.txt
+Selected Marble GPU counts:
+  pot3d           -> 3 GPUs (runtime=104.33s)
+  minisweep       -> 4 GPUs (runtime=43.61s)
+  lbm             -> 4 GPUs (runtime=18.82s)
+  cloverleaf      -> 4 GPUs (runtime=16.83s)
+  tealeaf         -> 4 GPUs (runtime=16.21s)
+  miniweather     -> 1 GPUs (runtime=57.01s)
+  bert            -> 4 GPUs (runtime=21.03s)
+  gpt2            -> 2 GPUs (runtime=15.18s)
+  resnet50        -> 3 GPUs (runtime=20.81s)
+  hpgmg           -> 2 GPUs (runtime=10.78s)
+
+Marble dry-run: 10 apps on 4 GPUs (max 2 concurrent, fcfs queue)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+
+[DRY RUN] Simulating Marble schedule order:
+
+  t=    0.00s | START pot3d           | 3 GPUs [0, 1, 2] | NUMA 0 | ends ~t=104.33s
+  t=    0.00s | START miniweather     | 1 GPUs [3] | NUMA 1 | ends ~t=57.01s
+  t=   57.01s | END   miniweather     | freed 1 GPUs [3] | NUMA 1
+  t=  104.33s | END   pot3d           | freed 3 GPUs [0, 1, 2] | NUMA 0
+  t=  104.33s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0 | ends ~t=147.94s
+  t=  147.94s | END   minisweep       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  147.94s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0 | ends ~t=166.76s
+  t=  166.76s | END   lbm             | freed 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  166.76s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0 | ends ~t=183.59s
+  t=  183.59s | END   cloverleaf      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  183.59s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0 | ends ~t=199.80s
+  t=  199.80s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  199.80s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0 | ends ~t=220.83s
+  t=  220.83s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  220.83s | START gpt2            | 2 GPUs [0, 1] | NUMA 0 | ends ~t=236.01s
+  t=  220.83s | START hpgmg           | 2 GPUs [2, 3] | NUMA 1 | ends ~t=231.61s
+  t=  231.61s | END   hpgmg           | freed 2 GPUs [2, 3] | NUMA 1
+  t=  236.01s | END   gpt2            | freed 2 GPUs [0, 1] | NUMA 0
+  t=  236.01s | START resnet50        | 3 GPUs [0, 1, 2] | NUMA 0 | ends ~t=256.82s
+  t=  256.82s | END   resnet50        | freed 3 GPUs [0, 1, 2] | NUMA 0
+
+Estimated makespan: ~256.82s
