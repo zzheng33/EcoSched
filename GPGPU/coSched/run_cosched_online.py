@@ -40,7 +40,7 @@ from run_cosched import (
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results"
 DEFAULT_IDLE_POWER = 70.0
-DEFAULT_SLOWDOWN_TOL = 0.20
+DEFAULT_SLOWDOWN_TOL = 100
 DEFAULT_SCORE_METRIC = "energy"
 DEFAULT_ANCHOR_APP = "pot3d"
 DEFAULT_MAX_CONCURRENT = 2
@@ -540,16 +540,14 @@ def run_online(
                 gpus_in_use -= set(job.gpu_ids)
                 running.remove(job)
                 job.devnull.close()
-                status = "OK" if rc == 0 else "FAILED(rc={})".format(rc)
                 print(
-                    "  t={:8.2f}s | END   {:<15} | freed {} GPUs {} | NUMA {} | runtime={:.2f}s | {}".format(
+                    "  t={:8.2f}s | END   {:<15} | freed {} GPUs {} | NUMA {} | runtime={:.2f}s".format(
                         elapsed,
                         job.app,
                         len(job.gpu_ids),
                         job.gpu_ids,
                         job.numa_node,
                         runtime,
-                        status,
                     )
                 )
                 completed.append({
@@ -576,21 +574,19 @@ def run_online(
 
     print("\n" + "=" * 96)
     print("Online co-schedule summary:")
-    print("{:<15} {:>6} {:>12} {:>5} {:>12} {:>10}".format("App", "#GPUs", "GPU IDs", "NUMA", "Runtime (s)", "Status"))
-    print("-" * 70)
+    print("{:<15} {:>6} {:>12} {:>5} {:>12}".format("App", "#GPUs", "GPU IDs", "NUMA", "Runtime (s)"))
+    print("-" * 60)
     for item in completed:
-        status = "OK" if item["return_code"] == 0 else "FAILED"
         print(
-            "{:<15} {:>6} {:>12} {:>5} {:>12.2f} {:>10}".format(
+            "{:<15} {:>6} {:>12} {:>5} {:>12.2f}".format(
                 item["app"],
                 item["gpu_count"],
                 str(item["gpu_ids"]),
                 item["numa_node"],
                 item["runtime"],
-                status,
             )
         )
-    print("-" * 70)
+    print("-" * 60)
     print("\nTotal makespan: {:.2f}s".format(total_time))
     monitor.print_summary()
 
@@ -636,7 +632,7 @@ def main():
     parser.add_argument(
         "--blocking-weight",
         type=float,
-        default=None,
+        default=0,
         help="Override residual blocking penalty weight. Default equals idle_weight.",
     )
     parser.add_argument(
