@@ -296,25 +296,23 @@ def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
     print("\n" + "=" * 80)
     print("Solver-driven summary:")
     print(
-        "{:<15} {:>6} {:>12} {:>5} {:>12} {:>12} {:>10}".format(
-            "App", "#GPUs", "GPU IDs", "NUMA", "Planned (s)", "Runtime (s)", "Status"
+        "{:<15} {:>6} {:>12} {:>5} {:>12} {:>12}".format(
+            "App", "#GPUs", "GPU IDs", "NUMA", "Planned (s)", "Runtime (s)"
         )
     )
-    print("-" * 86)
+    print("-" * 74)
     for item in completed:
-        status = "OK" if item["return_code"] == 0 else "FAILED"
         print(
-            "{:<15} {:>6} {:>12} {:>5} {:>12.2f} {:>12.2f} {:>10}".format(
+            "{:<15} {:>6} {:>12} {:>5} {:>12.2f} {:>12.2f}".format(
                 item["app"],
                 item["gpu_count"],
                 str(item["gpu_ids"]),
                 item["numa_node"],
                 item["planned_start"],
                 item["runtime"],
-                status,
             )
         )
-    print("-" * 86)
+    print("-" * 74)
     print("\nTotal makespan: {:.2f}s".format(total_time))
     monitor.print_summary()
 

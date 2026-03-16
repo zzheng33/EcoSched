@@ -437,31 +437,28 @@ def run_cluster(
     print("\n" + "=" * 96)
     print("Cluster co-schedule summary:")
     print(
-        "{:<15} {:<8} {:>6} {:>12} {:>5} {:>12} {:>10}".format(
+        "{:<15} {:<8} {:>6} {:>12} {:>5} {:>12}".format(
             "App",
             "Host",
             "#GPUs",
             "GPU IDs",
             "NUMA",
             "Runtime (s)",
-            "Status",
         )
     )
-    print("-" * 86)
+    print("-" * 74)
     for item in completed:
-        status = "OK" if item["return_code"] == 0 else "FAILED"
         print(
-            "{:<15} {:<8} {:>6} {:>12} {:>5} {:>12.2f} {:>10}".format(
+            "{:<15} {:<8} {:>6} {:>12} {:>5} {:>12.2f}".format(
                 item["app"],
                 item["host"],
                 item["gpu_count"],
                 str(item["gpu_ids"]),
                 item["numa_node"],
                 item["runtime"],
-                status,
             )
         )
-    print("-" * 86)
+    print("-" * 74)
     print("\nTotal makespan: {:.2f}s".format(total_time))
 
 
