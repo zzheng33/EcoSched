@@ -367,13 +367,12 @@ def run_sequential(
 
     print("\n" + "=" * 80)
     print("Sequential summary:")
-    print(f"{'App':<15} {'#GPUs':>6} {'GPU IDs':>12} {'Runtime (s)':>12} {'Status':>10}")
-    print("-" * 60)
+    print(f"{'App':<15} {'#GPUs':>6} {'GPU IDs':>12} {'Runtime (s)':>12}")
+    print("-" * 52)
     for r in completed:
-        status = "OK" if r['return_code'] == 0 else "FAILED"
         print(f"{r['app']:<15} {r['gpu_count']:>6} {str(r['gpu_ids']):>12} "
-              f"{r['runtime']:>12.2f} {status:>10}")
-    print("-" * 60)
+              f"{r['runtime']:>12.2f}")
+    print("-" * 52)
     print(f"\nTotal makespan: {total_time:.2f}s")
     monitor.stop()
     monitor.print_summary()
@@ -580,13 +579,12 @@ def run_cosched(
     print("\n" + "=" * 80)
     print("Co-schedule summary:")
     print(f"{'App':<15} {'#GPUs':>6} {'GPU IDs':>12} {'NUMA':>5} "
-          f"{'Runtime (s)':>12} {'Status':>10}")
-    print("-" * 65)
+          f"{'Runtime (s)':>12}")
+    print("-" * 54)
     for r in completed:
-        status = "OK" if r['return_code'] == 0 else "FAILED"
         print(f"{r['app']:<15} {r['gpu_count']:>6} {str(r['gpu_ids']):>12} "
-              f"{r['numa_node']:>5} {r['runtime']:>12.2f} {status:>10}")
-    print("-" * 65)
+              f"{r['numa_node']:>5} {r['runtime']:>12.2f}")
+    print("-" * 54)
     print(f"\nTotal makespan: {total_time:.2f}s")
     monitor.stop()
     monitor.print_summary()
