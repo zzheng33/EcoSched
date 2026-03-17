@@ -13,11 +13,21 @@ cd /home/ac.zzheng/benchmark/spec/hpgmg
 # Run HPGMG
 # If CUDA_VISIBLE_DEVICES is set, pick the Nth GPU from that list by MPI rank.
 # Otherwise fall back to using MPI local rank as the GPU id.
-mpirun -np ${MPI_RANKS} bash -c '
-if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
-    IFS="," read -ra GPULIST <<< "$CUDA_VISIBLE_DEVICES"
-    export CUDA_VISIBLE_DEVICES=${GPULIST[$OMPI_COMM_WORLD_LOCAL_RANK]}
+if [ "${MPI_RANKS}" -eq 1 ]; then
+    if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
+        IFS="," read -ra GPULIST <<< "$CUDA_VISIBLE_DEVICES"
+        export CUDA_VISIBLE_DEVICES=${GPULIST[0]}
+    else
+        export CUDA_VISIBLE_DEVICES=0
+    fi
+    ./build/bin/hpgmg-fv ${LOG2_BOX_DIM} ${BOXES_PER_RANK}
 else
-    export CUDA_VISIBLE_DEVICES=$OMPI_COMM_WORLD_LOCAL_RANK
+    mpirun -np ${MPI_RANKS} bash -c '
+    if [[ -n "${CUDA_VISIBLE_DEVICES:-}" ]]; then
+        IFS="," read -ra GPULIST <<< "$CUDA_VISIBLE_DEVICES"
+        export CUDA_VISIBLE_DEVICES=${GPULIST[$OMPI_COMM_WORLD_LOCAL_RANK]}
+    else
+        export CUDA_VISIBLE_DEVICES=$OMPI_COMM_WORLD_LOCAL_RANK
+    fi
+    ./build/bin/hpgmg-fv '"${LOG2_BOX_DIM}"' '"${BOXES_PER_RANK}"''
 fi
-./build/bin/hpgmg-fv '"${LOG2_BOX_DIM}"' '"${BOXES_PER_RANK}"''
