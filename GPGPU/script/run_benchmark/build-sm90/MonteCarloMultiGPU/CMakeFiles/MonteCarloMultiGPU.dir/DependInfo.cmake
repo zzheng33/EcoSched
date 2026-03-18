@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o" "gcc" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o.d"
-  "/home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o" "gcc" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o.d"
-  "/home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o" "gcc" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o.d"
-  "/home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp" "CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o" "gcc" "CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o" "gcc" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o" "gcc" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o" "gcc" "CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp" "CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o" "gcc" "CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

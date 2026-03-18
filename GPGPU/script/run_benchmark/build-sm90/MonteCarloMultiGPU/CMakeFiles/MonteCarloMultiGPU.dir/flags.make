@@ -11,7 +11,7 @@ CUDA_FLAGS =  -Wno-deprecated-gpu-targets -lineinfo -O3 -DNDEBUG -std=c++17 "--g
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common -isystem /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include
+CXX_INCLUDES = -I/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common -isystem /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include
 
 CXX_FLAGS = -O3 -DNDEBUG -fPIE
 

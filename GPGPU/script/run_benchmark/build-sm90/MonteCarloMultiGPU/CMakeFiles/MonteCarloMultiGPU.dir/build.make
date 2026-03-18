@@ -53,7 +53,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU
@@ -70,25 +70,25 @@ include CMakeFiles/MonteCarloMultiGPU.dir/progress.make
 include CMakeFiles/MonteCarloMultiGPU.dir/flags.make
 
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o: CMakeFiles/MonteCarloMultiGPU.dir/flags.make
-CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o: /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp
+CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o: CMakeFiles/MonteCarloMultiGPU.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o -MF CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o.d -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o -c /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o -MF CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o.d -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp
 
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.i"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp > CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.i
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp > CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.i
 
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.s"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.s
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_gold.cpp -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_gold.cpp.s
 
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o: CMakeFiles/MonteCarloMultiGPU.dir/flags.make
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o: CMakeFiles/MonteCarloMultiGPU.dir/includes_CUDA.rsp
-CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o: /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu
+CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o: CMakeFiles/MonteCarloMultiGPU.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CUDA object CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o"
-	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o -MF CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o
+	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o -MF CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o
 
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.i"
@@ -99,32 +99,32 @@ CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.s: cmake_force
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
 CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o: CMakeFiles/MonteCarloMultiGPU.dir/flags.make
-CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o: /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp
+CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp
 CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o: CMakeFiles/MonteCarloMultiGPU.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o -MF CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o.d -o CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o -c /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o -MF CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o.d -o CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp
 
 CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.i"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp > CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.i
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp > CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.i
 
 CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.s"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp -o CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.s
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp -o CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.s
 
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o: CMakeFiles/MonteCarloMultiGPU.dir/flags.make
-CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o: /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp
+CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o: CMakeFiles/MonteCarloMultiGPU.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o -MF CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o.d -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o -c /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o -MF CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o.d -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp
 
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.i"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp > CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.i
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp > CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.i
 
 CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.s"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.s
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarloMultiGPU.cpp -o CMakeFiles/MonteCarloMultiGPU.dir/MonteCarloMultiGPU.cpp.s
 
 # Object files for target MonteCarloMultiGPU
 MonteCarloMultiGPU_OBJECTS = \
@@ -182,6 +182,6 @@ CMakeFiles/MonteCarloMultiGPU.dir/clean:
 .PHONY : CMakeFiles/MonteCarloMultiGPU.dir/clean
 
 CMakeFiles/MonteCarloMultiGPU.dir/depend:
-	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU/CMakeFiles/MonteCarloMultiGPU.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/MonteCarloMultiGPU/CMakeFiles/MonteCarloMultiGPU.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/MonteCarloMultiGPU.dir/depend
 

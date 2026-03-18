@@ -413,7 +413,7 @@ simpleCUFFT_MGPU_BINARY_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchm
 simpleCUFFT_MGPU_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-simpleCUFFT_MGPU_SOURCE_DIR:STATIC=/home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_MGPU
+simpleCUFFT_MGPU_SOURCE_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_MGPU
 
 
 ########################
@@ -484,7 +484,7 @@ CMAKE_GENERATOR_PLATFORM:INTERNAL=
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_MGPU
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_MGPU
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=0
 //ADVANCED property for variable: CMAKE_LINKER

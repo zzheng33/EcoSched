@@ -7,10 +7,10 @@ set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")
 # The top level Makefile was generated from the following files:
 set(CMAKE_MAKEFILE_DEPENDS
   "CMakeCache.txt"
-  "/home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/CMakeLists.txt"
-  "/home/ac.zzheng/benchmark/cuda/cmake/InstallSamples.cmake"
   "CMakeFiles/3.28.3/CMakeCUDACompiler.cmake"
   "CMakeFiles/3.28.3/CMakeSystem.cmake"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/CMakeLists.txt"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/cmake/InstallSamples.cmake"
   "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompiler.cmake.in"
   "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu"
   "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDAInformation.cmake"

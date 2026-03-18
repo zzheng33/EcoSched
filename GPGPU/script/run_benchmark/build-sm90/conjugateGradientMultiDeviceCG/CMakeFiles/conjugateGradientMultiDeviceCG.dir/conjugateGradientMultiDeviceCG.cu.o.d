@@ -1,4 +1,4 @@
-CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o : /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/conjugateGradientMultiDeviceCG.cu \
+CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/conjugateGradientMultiDeviceCG.cu \
     /usr/include/stdc-predef.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda_runtime.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/crt/host_config.h \
@@ -656,20 +656,20 @@ CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda/std/detail/libcxx/include/__iterator/reverse_iterator.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda/std/detail/libcxx/include/__iterator/size.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda/std/detail/libcxx/include/__iterator/wrap_iter.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_cuda.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_string.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_cuda.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_string.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/fstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/codecvt.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/basic_file.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/c++io.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/fstream.tcc \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_functions.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/exception.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_functions.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/exception.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/sstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/sstream.tcc \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/algorithm \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/pstl/glue_algorithm_defs.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/pstl/execution_defs.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_image.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_timer.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_image.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/../../../Common/helper_timer.h \
     /usr/include/sys/time.h

@@ -1,4 +1,4 @@
-CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o : /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/simpleCUFFT_2d_MGPU.cu \
+CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/simpleCUFFT_2d_MGPU.cu \
     /usr/include/stdc-predef.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda_runtime.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/crt/host_config.h \
@@ -226,12 +226,12 @@ CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o : /home/ac.zzheng/be
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cudalibxt.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cufft.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuComplex.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_cuda.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_cuda.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include/stdint.h \
     /usr/include/stdint.h \
     /usr/include/bits/wchar.h \
     /usr/include/bits/stdint-uintn.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_string.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_string.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/fstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/istream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/ios \
@@ -309,15 +309,15 @@ CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o : /home/ac.zzheng/be
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/basic_file.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/c++io.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/fstream.tcc \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_functions.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/exception.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_functions.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/exception.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/iostream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/sstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/sstream.tcc \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/algorithm \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/pstl/glue_algorithm_defs.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/pstl/execution_defs.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_image.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_timer.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_image.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/../../../Common/helper_timer.h \
     /usr/include/sys/time.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/ctime

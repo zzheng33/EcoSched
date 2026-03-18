@@ -53,7 +53,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU
@@ -71,10 +71,10 @@ include CMakeFiles/simpleCUFFT_2d_MGPU.dir/flags.make
 
 CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o: CMakeFiles/simpleCUFFT_2d_MGPU.dir/flags.make
 CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o: CMakeFiles/simpleCUFFT_2d_MGPU.dir/includes_CUDA.rsp
-CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o: /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/simpleCUFFT_2d_MGPU.cu
+CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/simpleCUFFT_2d_MGPU.cu
 CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o: CMakeFiles/simpleCUFFT_2d_MGPU.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o"
-	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o -MF CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/simpleCUFFT_2d_MGPU.cu -o CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o
+	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o -MF CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU/simpleCUFFT_2d_MGPU.cu -o CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.o
 
 CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/simpleCUFFT_2d_MGPU.dir/simpleCUFFT_2d_MGPU.cu.i"
@@ -130,6 +130,6 @@ CMakeFiles/simpleCUFFT_2d_MGPU.dir/clean:
 .PHONY : CMakeFiles/simpleCUFFT_2d_MGPU.dir/clean
 
 CMakeFiles/simpleCUFFT_2d_MGPU.dir/depend:
-	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU/CMakeFiles/simpleCUFFT_2d_MGPU.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_2d_MGPU/CMakeFiles/simpleCUFFT_2d_MGPU.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/simpleCUFFT_2d_MGPU.dir/depend
 

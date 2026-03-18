@@ -53,7 +53,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT
@@ -70,18 +70,18 @@ include CMakeFiles/simpleCUBLASXT.dir/progress.make
 include CMakeFiles/simpleCUBLASXT.dir/flags.make
 
 CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: CMakeFiles/simpleCUBLASXT.dir/flags.make
-CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp
+CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp
 CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: CMakeFiles/simpleCUBLASXT.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o -MF CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o.d -o CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o -c /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o -MF CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o.d -o CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp
 
 CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.i"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp > CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.i
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp > CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.i
 
 CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.s"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp -o CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.s
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp -o CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.s
 
 # Object files for target simpleCUBLASXT
 simpleCUBLASXT_OBJECTS = \
@@ -109,6 +109,6 @@ CMakeFiles/simpleCUBLASXT.dir/clean:
 .PHONY : CMakeFiles/simpleCUBLASXT.dir/clean
 
 CMakeFiles/simpleCUBLASXT.dir/depend:
-	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT/CMakeFiles/simpleCUBLASXT.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUBLASXT/CMakeFiles/simpleCUBLASXT.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/simpleCUBLASXT.dir/depend
 

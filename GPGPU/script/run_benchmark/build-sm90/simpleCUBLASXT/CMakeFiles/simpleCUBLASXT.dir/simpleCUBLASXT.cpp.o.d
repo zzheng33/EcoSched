@@ -1,5 +1,5 @@
 CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: \
- /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp \
+ /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/bits/libc-header-start.h /usr/include/features.h \
  /usr/include/features-time64.h /usr/include/bits/wordsize.h \
@@ -125,8 +125,8 @@ CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/library_types.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/channel_descriptor.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/driver_functions.h \
- /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common/helper_cuda.h \
- /home/ac.zzheng/benchmark/cuda/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common/helper_string.h \
+ /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common/helper_cuda.h \
+ /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common/helper_string.h \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/fstream \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/istream \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/ios \

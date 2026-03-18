@@ -1,4 +1,4 @@
-CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o : /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu \
+CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu \
     /usr/include/stdc-predef.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda_runtime.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/crt/host_config.h \
@@ -518,8 +518,8 @@ CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o : /home/ac.zzheng/bench
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_lognormal.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_poisson.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_discrete2.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/helper_cuda.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/helper_string.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/helper_cuda.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/helper_string.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/fstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/istream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/ios \
@@ -572,6 +572,6 @@ CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o : /home/ac.zzheng/bench
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/basic_file.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/c++io.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/fstream.tcc \
-    /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_common.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/realtype.h \
-    /home/ac.zzheng/benchmark/cuda/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_reduction.cuh
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_common.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/realtype.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_reduction.cuh
