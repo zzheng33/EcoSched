@@ -5,9 +5,9 @@ set -euo pipefail
 # Usage: CUDA_VISIBLE_DEVICES=0,1 ./simpleCUFFT_MGPU.sh [NUM_GPUS] [benchmark args...]
 # Edit PROBLEM_SIZE, FILTER_SIZE, and MAX_ITERS below to change the benchmark workload.
 
-PROBLEM_SIZE=1018
+PROBLEM_SIZE=2042
 FILTER_SIZE=11
-MAX_ITERS=1
+MAX_ITERS=100
 
 NUM_GPUS="${NUM_GPUS:-4}"
 if [[ $# -gt 0 && "$1" =~ ^[1-9][0-9]*$ ]]; then
@@ -80,4 +80,4 @@ if [[ ! -x "${BENCHMARK_BIN}" ]]; then
     exit 1
 fi
 
-exec "${BENCHMARK_BIN}" --problem-size="${PROBLEM_SIZE}" --filter-size="${FILTER_SIZE}" --max-iters="${MAX_ITERS}" "$@"
+exec "${BENCHMARK_BIN}" --problem-size="${PROBLEM_SIZE}" --filter-size="${FILTER_SIZE}" --max-iters="${MAX_ITERS}" --num-gpus="${NUM_GPUS}" "$@"

@@ -5,8 +5,8 @@ set -euo pipefail
 # Usage: CUDA_VISIBLE_DEVICES=0,1 ./MonteCarloMultiGPU.sh [NUM_GPUS] [benchmark args...]
 # Edit PROBLEM_SIZE and MAX_ITERS below to change the benchmark workload.
 
-PROBLEM_SIZE=8192
-MAX_ITERS=262144
+PROBLEM_SIZE=81920
+MAX_ITERS=10000000
 
 NUM_GPUS="${NUM_GPUS:-4}"
 if [[ $# -gt 0 && "$1" =~ ^[1-9][0-9]*$ ]]; then

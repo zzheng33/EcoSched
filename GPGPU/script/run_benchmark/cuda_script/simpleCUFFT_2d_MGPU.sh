@@ -3,10 +3,7 @@
 set -euo pipefail
 
 # Usage: CUDA_VISIBLE_DEVICES=0,1 ./simpleCUFFT_2d_MGPU.sh [NUM_GPUS] [benchmark args...]
-# Edit PROBLEM_SIZE and MAX_ITERS below to change the benchmark workload.
-
-PROBLEM_SIZE=64
-MAX_ITERS=1
+# This wrapper keeps the original benchmark behavior and does not inject custom workload flags.
 
 NUM_GPUS="${NUM_GPUS:-4}"
 if [[ $# -gt 0 && "$1" =~ ^[1-9][0-9]*$ ]]; then
@@ -16,21 +13,6 @@ fi
 
 if [[ ! "$NUM_GPUS" =~ ^[1-9][0-9]*$ ]]; then
     echo "Error: NUM_GPUS must be a positive integer." >&2
-    exit 1
-fi
-
-if [[ ! "$PROBLEM_SIZE" =~ ^[1-9][0-9]*$ ]]; then
-    echo "Error: PROBLEM_SIZE must be a positive integer." >&2
-    exit 1
-fi
-
-if (( PROBLEM_SIZE % 2 != 0 )); then
-    echo "Error: PROBLEM_SIZE must be divisible by 2 for simpleCUFFT_2d_MGPU." >&2
-    exit 1
-fi
-
-if [[ ! "$MAX_ITERS" =~ ^[1-9][0-9]*$ ]]; then
-    echo "Error: MAX_ITERS must be a positive integer." >&2
     exit 1
 fi
 
@@ -74,4 +56,4 @@ if [[ ! -x "${BENCHMARK_BIN}" ]]; then
     exit 1
 fi
 
-exec "${BENCHMARK_BIN}" --problem-size="${PROBLEM_SIZE}" --max-iters="${MAX_ITERS}" "$@"
+exec "${BENCHMARK_BIN}" "$@"

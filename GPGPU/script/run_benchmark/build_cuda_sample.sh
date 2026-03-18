@@ -22,9 +22,8 @@ export PCM_NO_MSR=1
 export PCM_KEEP_NMI_WATCHDOG=1
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
-CUDA_SOURCE_ROOT="/home/ac.zzheng/benchmark/cuda"
 BUILD_ROOT="${BUILD_ROOT:-$SCRIPT_DIR/build-sm90}"
-SOURCE_MIRROR_ROOT="${SOURCE_MIRROR_ROOT:-$BUILD_ROOT/source}"
+SOURCE_ROOT="${SOURCE_ROOT:-$BUILD_ROOT/source}"
 JOBS="${JOBS:-$(nproc)}"
 
 SAMPLES=(
@@ -34,63 +33,6 @@ SAMPLES=(
     "Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG"
     "Samples/5_Domain_Specific/MonteCarloMultiGPU"
 )
-
-SUPPORT_TREES=(
-    "Common"
-    "cmake"
-)
-
-prepare_source_mirror_root() {
-    python3 - "$SOURCE_MIRROR_ROOT" <<'INNERPY'
-import shutil
-import sys
-from pathlib import Path
-
-root = Path(sys.argv[1])
-if root.exists():
-    shutil.rmtree(root)
-root.mkdir(parents=True, exist_ok=True)
-INNERPY
-}
-
-sync_tree() {
-    local rel_path="$1"
-    local src_path="$CUDA_SOURCE_ROOT/$rel_path"
-    local dst_path="$SOURCE_MIRROR_ROOT/$rel_path"
-
-    python3 - "$src_path" "$dst_path" <<'INNERPY'
-import shutil
-import sys
-from pathlib import Path
-
-src = Path(sys.argv[1])
-dst = Path(sys.argv[2])
-ignore = shutil.ignore_patterns('build', '.vscode', '__pycache__', '.ipynb_checkpoints')
-
-if not src.exists():
-    raise SystemExit(f'missing source path: {src}')
-
-if dst.exists():
-    shutil.rmtree(dst)
-
-dst.parent.mkdir(parents=True, exist_ok=True)
-shutil.copytree(src, dst, ignore=ignore)
-INNERPY
-}
-
-sync_source_layout() {
-    echo "==> Refreshing mirrored source tree"
-    prepare_source_mirror_root
-
-    local rel_path
-    for rel_path in "${SUPPORT_TREES[@]}"; do
-        sync_tree "$rel_path"
-    done
-
-    for rel_path in "${SAMPLES[@]}"; do
-        sync_tree "$rel_path"
-    done
-}
 
 reset_build_dir_if_needed() {
     local src_dir="$1"
@@ -119,7 +61,7 @@ INNERPY
 configure_and_build() {
     local rel_path="$1"
     local sample_name="${rel_path##*/}"
-    local src_dir="$SOURCE_MIRROR_ROOT/$rel_path"
+    local src_dir="$SOURCE_ROOT/$rel_path"
     local build_dir="$BUILD_ROOT/$sample_name"
 
     reset_build_dir_if_needed "$src_dir" "$build_dir"
@@ -131,11 +73,9 @@ configure_and_build() {
     cmake --build "$build_dir" --parallel "$JOBS" --target "$sample_name"
 }
 
-sync_source_layout
-
 for sample in "${SAMPLES[@]}"; do
     configure_and_build "$sample"
 done
 
 echo "Built samples into $BUILD_ROOT"
-echo "Mirrored sources into $SOURCE_MIRROR_ROOT"
+echo "Sources at $SOURCE_ROOT"

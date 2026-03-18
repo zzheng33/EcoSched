@@ -545,7 +545,7 @@ std::multimap<std::pair<int, int>, int> getIdenticalGPUs()
 
 int main(int argc, char **argv)
 {
-    constexpr size_t kMinGpusRequired = 2;
+    constexpr size_t kMinGpusRequired = 1;
     constexpr size_t kMaxGpusSupported = 4;
     int              N = kDefaultProblemSize, nz = 0, max_iter = kDefaultMaxIters, *I = NULL, *J = NULL;
     float           *val = NULL;

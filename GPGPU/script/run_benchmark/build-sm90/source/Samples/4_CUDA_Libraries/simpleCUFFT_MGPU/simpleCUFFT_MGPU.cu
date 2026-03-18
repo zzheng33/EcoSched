@@ -67,14 +67,15 @@ int PadData(const Complex *, Complex **, int, const Complex *, Complex **, int);
 constexpr int kDefaultProblemSize = 1018;
 constexpr int kDefaultFilterSize   = 11;
 constexpr int kDefaultMaxIters     = 1;
-const int GPU_COUNT                = 2;
+constexpr int kDefaultNumGPUs      = 2;
 
 void usage()
 {
-    printf("Usage: simpleCUFFT_MGPU [--problem-size=<signal_size>] [--filter-size=<filter_size>] [--max-iters=<repeat_count>] [--help]\n");
+    printf("Usage: simpleCUFFT_MGPU [--problem-size=<signal_size>] [--filter-size=<filter_size>] [--max-iters=<repeat_count>] [--num-gpus=<N>] [--help]\n");
     printf("  problem-size : signal size [default: %d]\n", kDefaultProblemSize);
     printf("  filter-size  : filter kernel size [default: %d]\n", kDefaultFilterSize);
     printf("  max-iters    : number of FFT convolution passes [default: %d]\n", kDefaultMaxIters);
+    printf("  num-gpus     : number of GPUs to use [default: %d]\n", kDefaultNumGPUs);
 }
 
 bool hasOption(int argc, char **argv, const char *name)
@@ -160,6 +161,9 @@ int main(int argc, char **argv)
     if (parseIntOption(argc, argv, "max-iters", &max_iters) || parseIntOption(argc, argv, "iterations", &max_iters)) {
     }
 
+    int requested_gpus = kDefaultNumGPUs;
+    parseIntOption(argc, argv, "num-gpus", &requested_gpus);
+
     if (signal_size < 1) {
         fprintf(stderr, "problem-size must be >= 1, got %d\n", signal_size);
         return EXIT_FAILURE;
@@ -182,49 +186,30 @@ int main(int argc, char **argv)
     int GPU_N;
     checkCudaErrors(cudaGetDeviceCount(&GPU_N));
 
-    if (GPU_N < GPU_COUNT) {
-        printf("No. of GPU on node %d\n", GPU_N);
-        printf("Two GPUs are required to run simpleCUFFT_MGPU sample code\n");
+    int nGPUs = requested_gpus;
+    if (nGPUs < 1) {
+        fprintf(stderr, "num-gpus must be >= 1, got %d\n", nGPUs);
+        exit(EXIT_FAILURE);
+    }
+    if (GPU_N < nGPUs) {
+        printf("No. of GPU on node %d, but %d requested\n", GPU_N, nGPUs);
+        printf("%d GPUs are required to run simpleCUFFT_MGPU sample code\n", nGPUs);
         exit(EXIT_WAIVED);
     }
 
-    int *major_minor         = (int *)malloc(sizeof(int) * GPU_N * 2);
-    int  found2IdenticalGPUs = 0;
-    int  nGPUs               = 2;
-    int *whichGPUs;
-    whichGPUs = (int *)malloc(sizeof(int) * nGPUs);
+    int *whichGPUs = (int *)malloc(sizeof(int) * nGPUs);
+    for (int i = 0; i < nGPUs; i++) {
+        whichGPUs[i] = i;
+    }
 
     for (int i = 0; i < GPU_N; i++) {
         cudaDeviceProp deviceProp;
         checkCudaErrors(cudaGetDeviceProperties(&deviceProp, i));
-        major_minor[i * 2]     = deviceProp.major;
-        major_minor[i * 2 + 1] = deviceProp.minor;
         printf("GPU Device %d: \"%s\" with compute capability %d.%d\n",
                i,
                deviceProp.name,
                deviceProp.major,
                deviceProp.minor);
-    }
-
-    for (int i = 0; i < GPU_N; i++) {
-        for (int j = i + 1; j < GPU_N; j++) {
-            if ((major_minor[i * 2] == major_minor[j * 2]) && (major_minor[i * 2 + 1] == major_minor[j * 2 + 1])) {
-                whichGPUs[0]        = i;
-                whichGPUs[1]        = j;
-                found2IdenticalGPUs = 1;
-                break;
-            }
-        }
-        if (found2IdenticalGPUs) {
-            break;
-        }
-    }
-
-    free(major_minor);
-    if (!found2IdenticalGPUs) {
-        printf("No Two GPUs with same architecture found\nWaiving simpleCUFFT_2d_MGPU "
-               "sample\n");
-        exit(EXIT_WAIVED);
     }
 
     // Allocate host memory for the signal
@@ -313,10 +298,14 @@ int main(int argc, char **argv)
         if (iter == 0) {
             printf("\n\nValue of Library Descriptor\n");
             printf("Number of GPUs %d\n", d_out_signal->descriptor->nGPUs);
-            printf("Device id  %d %d\n", d_out_signal->descriptor->GPUs[0], d_out_signal->descriptor->GPUs[1]);
-            printf("Data size on GPU %ld %ld\n",
-                   (long)(d_out_signal->descriptor->size[0] / sizeof(cufftComplex)),
-                   (long)(d_out_signal->descriptor->size[1] / sizeof(cufftComplex)));
+            printf("Device id ");
+            for (int g = 0; g < d_out_signal->descriptor->nGPUs; g++)
+                printf(" %d", d_out_signal->descriptor->GPUs[g]);
+            printf("\n");
+            printf("Data size on GPU");
+            for (int g = 0; g < d_out_signal->descriptor->nGPUs; g++)
+                printf(" %ld", (long)(d_out_signal->descriptor->size[g] / sizeof(cufftComplex)));
+            printf("\n");
         }
 
         multiplyCoefficient(d_out_signal, d_out_filter_kernel, new_size, 1.0f / new_size, nGPUs);

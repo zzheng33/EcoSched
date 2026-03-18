@@ -44,8 +44,7 @@
 constexpr int kDefaultProblemSize = 1024;
 constexpr int kDefaultMaxIters      = 1;
 
-// Restricting the max used GPUs as input matrix is not so large
-#define MAX_NUM_OF_GPUS 2
+// Use all GPUs currently exposed to the process, typically via CUDA_VISIBLE_DEVICES.
 
 void usage()
 {
@@ -255,9 +254,11 @@ int main(int argc, char **argv)
 
     checkCudaErrors(cudaGetDeviceCount(&num_of_devices));
 
-    if (num_of_devices > MAX_NUM_OF_GPUS) {
-        num_of_devices = MAX_NUM_OF_GPUS;
+    if (num_of_devices < 1) {
+        fprintf(stderr, "!!!! no CUDA devices available\n");
+        return EXIT_FAILURE;
     }
+
     devices = (int *)malloc(sizeof(int) * num_of_devices);
 
     findMultipleBestGPUs(num_of_devices, devices);

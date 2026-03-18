@@ -60,73 +60,6 @@ typedef float2 Complex;
 const int GPU_COUNT = 2;
 const int BSZ_Y     = 4;
 const int BSZ_X     = 4;
-constexpr int kDefaultProblemSize = 64;
-constexpr int kDefaultMaxIters    = 1;
-
-void usage()
-{
-    printf("Usage: simpleCUFFT_2d_MGPU [--problem-size=<grid_dim>] [--max-iters=<repeat_count>] [--help]\n");
-    printf("  problem-size : square grid dimension [default: %d]\n", kDefaultProblemSize);
-    printf("  max-iters    : number of FFT Poisson solves [default: %d]\n", kDefaultMaxIters);
-}
-
-bool hasOption(int argc, char **argv, const char *name)
-{
-    for (int i = 1; i < argc; i++) {
-        const char *arg = argv[i];
-        if (!strcmp(arg, name)) {
-            return true;
-        }
-        if (arg[0] == '-' && !strcmp(arg + 1, name)) {
-            return true;
-        }
-        if (!strncmp(arg, "--", 2) && !strcmp(arg + 2, name)) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-bool parseIntOption(int argc, char **argv, const char *name, int *value)
-{
-    const size_t name_len = strlen(name);
-
-    for (int i = 1; i < argc; i++) {
-        const char *arg       = argv[i];
-        const char *value_str = NULL;
-
-        if ((arg[0] == '-' && !strcmp(arg + 1, name)) || (!strncmp(arg, "--", 2) && !strcmp(arg + 2, name))) {
-            if (i + 1 >= argc) {
-                fprintf(stderr, "Missing value for option %s\n", arg);
-                exit(EXIT_FAILURE);
-            }
-            value_str = argv[i + 1];
-        }
-        else if (!strncmp(arg, name, name_len) && arg[name_len] == '=') {
-            value_str = arg + name_len + 1;
-        }
-        else if (arg[0] == '-' && !strncmp(arg + 1, name, name_len) && arg[name_len + 1] == '=') {
-            value_str = arg + name_len + 2;
-        }
-        else if (!strncmp(arg, "--", 2) && !strncmp(arg + 2, name, name_len) && arg[name_len + 2] == '=') {
-            value_str = arg + name_len + 3;
-        }
-
-        if (value_str != NULL) {
-            char *end = NULL;
-            long  parsed = strtol(value_str, &end, 10);
-            if (end == value_str || *end != '\0') {
-                fprintf(stderr, "Invalid integer value for option %s: %s\n", name, value_str);
-                exit(EXIT_FAILURE);
-            }
-            *value = static_cast<int>(parsed);
-            return true;
-        }
-    }
-
-    return false;
-}
 
 // Forward Declaration
 void solvePoissonEquation(cudaLibXtDesc *, cudaLibXtDesc *, float **, int, int);
@@ -140,38 +73,6 @@ int main(int argc, char **argv)
 {
     printf("\nPoisson equation using CUFFT library on Multiple GPUs is "
            "starting...\n\n");
-
-    int N         = kDefaultProblemSize;
-    int max_iters = kDefaultMaxIters;
-
-    if (hasOption(argc, argv, "h") || hasOption(argc, argv, "help")) {
-        usage();
-        return EXIT_SUCCESS;
-    }
-
-    if (parseIntOption(argc, argv, "problem-size", &N) || parseIntOption(argc, argv, "n", &N)) {
-    }
-
-    if (parseIntOption(argc, argv, "max-iters", &max_iters) || parseIntOption(argc, argv, "iterations", &max_iters)) {
-    }
-
-    if (N < 1) {
-        fprintf(stderr, "problem-size must be >= 1, got %d\n", N);
-        return EXIT_FAILURE;
-    }
-
-    if (N % GPU_COUNT != 0) {
-        fprintf(stderr, "problem-size must be divisible by %d, got %d\n", GPU_COUNT, N);
-        return EXIT_FAILURE;
-    }
-
-    if (max_iters < 1) {
-        fprintf(stderr, "max-iters must be >= 1, got %d\n", max_iters);
-        return EXIT_FAILURE;
-    }
-
-    printf("Configured problem size N = %d\n", N);
-    printf("Configured fixed iterations = %d\n", max_iters);
 
     int GPU_N;
     checkCudaErrors(cudaGetDeviceCount(&GPU_N));
@@ -221,6 +122,7 @@ int main(int argc, char **argv)
         exit(EXIT_WAIVED);
     }
 
+    int    N    = 64;
     float  xMAX = 1.0f, xMIN = 0.0f, yMIN = 0.0f, h = (xMAX - xMIN) / ((float)N), s = 0.1f, s2 = s * s;
     float *x, *y, *f, *u_a, r2;
 
@@ -332,38 +234,38 @@ int main(int argc, char **argv)
         exit(EXIT_FAILURE);
     }
 
-    for (int iter = 0; iter < max_iters; ++iter) {
-        // cufftXtMemcpy() - Copy the data from host to device
-        result = cufftXtMemcpy(planComplex, d_f, h_f, CUFFT_COPY_HOST_TO_DEVICE);
-        if (result != CUFFT_SUCCESS) {
-            printf("*XtMemcpy failed\n");
-            exit(EXIT_FAILURE);
-        }
-
-        // cufftXtExecDescriptorC2C() - Execute FFT on data on multiple GPUs
-        result = cufftXtExecDescriptorC2C(planComplex, d_f, d_f, CUFFT_FORWARD);
-        if (result != CUFFT_SUCCESS) {
-            printf("*XtExecC2C  failed\n");
-            exit(EXIT_FAILURE);
-        }
-
-        // cufftXtMemcpy() - Copy the data to natural order on GPUs
-        result = cufftXtMemcpy(planComplex, d_d_f, d_f, CUFFT_COPY_DEVICE_TO_DEVICE);
-        if (result != CUFFT_SUCCESS) {
-            printf("*XtMemcpy failed\n");
-            exit(EXIT_FAILURE);
-        }
-
-        solvePoissonEquation(d_d_f, d_out, d_k, N, nGPUs);
-
-        result = cufftXtExecDescriptorC2C(planComplex, d_out, d_out, CUFFT_INVERSE);
-        if (result != CUFFT_SUCCESS) {
-            printf("*XtExecC2C  failed\n");
-            exit(EXIT_FAILURE);
-        }
+    // cufftXtMemcpy() - Copy the data from host to device
+    result = cufftXtMemcpy(planComplex, d_f, h_f, CUFFT_COPY_HOST_TO_DEVICE);
+    if (result != CUFFT_SUCCESS) {
+        printf("*XtMemcpy failed\n");
+        exit(EXIT_FAILURE);
     }
 
-    printf("Completed fixed iterations = %d\n", max_iters);
+    // cufftXtExecDescriptorC2C() - Execute FFT on data on multiple GPUs
+    printf("Forward 2d FFT on multiple GPUs\n");
+    result = cufftXtExecDescriptorC2C(planComplex, d_f, d_f, CUFFT_FORWARD);
+    if (result != CUFFT_SUCCESS) {
+        printf("*XtExecC2C  failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    // cufftXtMemcpy() - Copy the data to natural order on GPUs
+    result = cufftXtMemcpy(planComplex, d_d_f, d_f, CUFFT_COPY_DEVICE_TO_DEVICE);
+    if (result != CUFFT_SUCCESS) {
+        printf("*XtMemcpy failed\n");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Solve Poisson Equation\n");
+    solvePoissonEquation(d_d_f, d_out, d_k, N, nGPUs);
+
+    printf("Inverse 2d FFT on multiple GPUs\n");
+    // cufftXtExecDescriptorC2C() - Execute inverse  FFT on data on multiple GPUs
+    result = cufftXtExecDescriptorC2C(planComplex, d_out, d_out, CUFFT_INVERSE);
+    if (result != CUFFT_SUCCESS) {
+        printf("*XtExecC2C  failed\n");
+        exit(EXIT_FAILURE);
+    }
 
     // Create a variable on host to copy the data from device
     // h_d_out - variable store the output of device
@@ -432,8 +334,7 @@ int main(int argc, char **argv)
 void solvePoissonEquation(cudaLibXtDesc *d_ft, cudaLibXtDesc *d_ft_k, float **k, int N, int nGPUs)
 {
     int  device;
-    int  rowsPerGpu = N / nGPUs;
-    dim3 dimGrid((N + BSZ_X - 1) / BSZ_X, (rowsPerGpu + BSZ_Y - 1) / BSZ_Y);
+    dim3 dimGrid(int(N / BSZ_X), int((N / 2) / BSZ_Y));
     dim3 dimBlock(BSZ_X, BSZ_Y);
 
     for (int i = 0; i < nGPUs; i++) {
