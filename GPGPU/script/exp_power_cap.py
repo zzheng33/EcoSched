@@ -37,7 +37,15 @@ ecp_benchmarks = ["gpt2"]
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 
-spec_benchmarks = ['hpgmg']
+# spec_benchmarks = ['hpgmg']
+
+cuda_benchmarks = [
+    'conjugateGradientMultiDeviceCG',
+    'MonteCarloMultiGPU',
+    'simpleCUBLASXT',
+    'simpleCUFFT_MGPU',
+    'simpleCUFFT_2d_MGPU',
+]
 
 # ml_models = ["resnet50","vgg16"]
 ml_models = ["resnet101","resnet152","vgg19"]
@@ -496,7 +504,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Run benchmarks and monitor power consumption.')
     parser.add_argument('--benchmark', type=str, help='Optional name of the benchmark to run', default=None)
     parser.add_argument('--test', type=int, help='whether it is a test run', default=None)
-    parser.add_argument('--suite', type=int, help='0 for ECP, 1 for ALTIS, 2 for ML', default=1)
+    parser.add_argument('--suite', type=int, help='0 for ECP, 1 for ALTIS, 2 for ML, 3 for HEC, 4 for SPEC, 5 for ALL, 6 for CUDA', default=1)
     parser.add_argument('--benchmark_size', type=int, help='0 for big, 1 for small', default=0)
     parser.add_argument('--cap_type', type=int, help='0 for cpu, 1 for gpu, 2 for dual', default=2)
     parser.add_argument('--num_gpu', type=int, default=1)
@@ -586,3 +594,13 @@ if __name__ == "__main__":
         else:
             for benchmark in spec_benchmarks:
                 run_benchmark(benchmark_script_dir, benchmark,"spec",test,benchmark_size,cap_type)
+
+    if suite == 6 or suite == 5:
+        benchmark_script_dir = f"power/GPGPU/script/run_benchmark/cuda_script"
+        # single test
+        if benchmark:
+            run_benchmark(benchmark_script_dir, benchmark,"cuda",test,benchmark_size,cap_type)
+        # run listed CUDA benchmarks
+        else:
+            for benchmark in cuda_benchmarks:
+                run_benchmark(benchmark_script_dir, benchmark,"cuda",test,benchmark_size,cap_type)
