@@ -21,8 +21,9 @@ dcgmi dmon -i 0 -e 1008,1007,1006,1002,100,155,1005 -d 300 -c 1
 # # suite 4: spec
 
 # /home/ac.zzheng/env/ml/bin/python3 exp_power_cap.py --suite 4
-/home/ac.zzheng/env/ml/bin/python3 exp_power_cap.py --suite 2
+# /home/ac.zzheng/env/ml/bin/python3 exp_power_cap.py --suite 2
 # /home/ac.zzheng/env/ml/bin/python3 exp_power_cap.py --suite 0
+/home/ac.zzheng/env/ml/bin/python3 exp_power_cap.py --suite 6
 
 
 
