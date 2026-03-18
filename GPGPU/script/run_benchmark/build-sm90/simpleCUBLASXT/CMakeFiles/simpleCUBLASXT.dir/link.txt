@@ -1,0 +1,1 @@
+/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ -O3 -DNDEBUG CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o -o simpleCUBLASXT  /soft/compilers/cuda/cuda-12.3.0/lib64/libcudart.so /soft/compilers/cuda/cuda-12.3.0/lib64/libcublas.so /soft/compilers/cuda/cuda-12.3.0/lib64/libcublasLt.so /soft/compilers/cuda/cuda-12.3.0/lib64/libculibos.a 

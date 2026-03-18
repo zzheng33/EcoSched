@@ -1,0 +1,7 @@
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_MGPU/CMakeFiles/simpleCUFFT_MGPU.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_MGPU/CMakeFiles/edit_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_MGPU/CMakeFiles/rebuild_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_MGPU/CMakeFiles/list_install_components.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_MGPU/CMakeFiles/install.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_MGPU/CMakeFiles/install/local.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleCUFFT_MGPU/CMakeFiles/install/strip.dir
