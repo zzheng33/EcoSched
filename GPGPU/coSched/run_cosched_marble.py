@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 from typing import Dict, Sequence, Tuple
 
-from run_cosched import (
+from run_cosched_sequential import (
     DEFAULT_JOB_QUEUE,
     NUMA0_GPUS,
     NUMA1_GPUS,

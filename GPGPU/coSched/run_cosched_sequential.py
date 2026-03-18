@@ -83,7 +83,10 @@ PREDICTED_GPU_COUNTS = {
 DEFAULT_JOB_QUEUE = [
     'pot3d', 'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
     'miniweather', 'bert', 'gpt2', 'resnet50', 'hpgmg',
-]
+    'conjugateGradientMultiDeviceCG', 'MonteCarloMultiGPU',
+    'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU',
+    "resnet101","resnet152","vgg19", "vgg16"]
+
 
 def parse_available_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, List[int]]:
     """Read perf_metrics.txt and return the available GPU counts per app."""
@@ -666,7 +669,7 @@ def main():
         "--jobs", nargs="+", default=DEFAULT_JOB_QUEUE,
         help=f"Job queue (app names in order). Default: {DEFAULT_JOB_QUEUE}")
     parser.add_argument(
-        "--policy", type=str, default="best-fit",
+        "--policy", type=str, default="sequential",
         choices=["fcfs", "best-fit", "sequential"],
         help="Scheduling policy (default: best-fit)")
     parser.add_argument(

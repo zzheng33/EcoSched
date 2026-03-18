@@ -25,7 +25,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Set, Tuple
 
-from run_cosched import (
+from run_cosched_sequential import (
     DEFAULT_JOB_QUEUE,
     NUMA0_GPUS,
     NUMA1_GPUS,

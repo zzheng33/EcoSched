@@ -24,7 +24,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import List, NamedTuple, Optional, Sequence, Tuple
 
-from run_cosched import (
+from run_cosched_sequential import (
     NUMA0_GPUS,
     NUMA1_GPUS,
     PowerMonitor,
