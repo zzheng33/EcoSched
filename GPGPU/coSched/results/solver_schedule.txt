@@ -1,0 +1,37 @@
+Solver schedule output: /home/ac.zzheng/power/GPGPU/coSched/results/solver_schedule.txt
+Exact offline energy-optimal schedule
+================================================================================================
+Idle power per GPU: 70.00 W
+Slowdown tolerance vs max-GPU baseline: 20.00
+Makespan: 199.87 s
+Active energy: 218153.77 J (218.15 kJ)
+Idle energy: 5160.40 J (5.16 kJ)
+Total energy: 223314.17 J (223.31 kJ)
+Objective value: 223314.17 J
+Best bound: 215950.12 J
+Solver wall time: 60.15 s
+
+#       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
+------------------------------------------------------------------------------------------------
+1        0.00    29.83 lbm                2    (2,0)    29.83     308.18     616.36     18386.02
+2        0.00   109.34 pot3d              2    (0,2)   109.34     201.76     403.52     44120.88
+3       29.83    52.49 cloverleaf         2    (2,0)    22.66     500.29    1000.58     22673.14
+4       52.49    77.68 tealeaf            2    (2,0)    25.19     484.32     968.64     24400.04
+5       77.68   103.33 resnet50           2    (2,0)    25.65     435.67     871.34     22349.87
+6      103.33   160.34 miniweather        1    (1,0)    57.01     487.05     487.05     27766.72
+7      109.34   166.81 minisweep          3    (1,2)    57.47     141.75     425.25     24439.12
+8      160.34   198.28 bert               1    (1,0)    37.94     455.53     455.53     17282.81
+9      166.81   176.90 hpgmg              1    (1,0)    10.09     303.11     303.11      3058.38
+10     176.90   199.87 gpt2               1    (1,0)    22.97     595.42     595.42     13676.80
+
+Execution order:
+  1. t=0.00s start lbm on 2 GPU(s) at placement (2, 0)
+  2. t=0.00s start pot3d on 2 GPU(s) at placement (0, 2)
+  3. t=29.83s start cloverleaf on 2 GPU(s) at placement (2, 0)
+  4. t=52.49s start tealeaf on 2 GPU(s) at placement (2, 0)
+  5. t=77.68s start resnet50 on 2 GPU(s) at placement (2, 0)
+  6. t=103.33s start miniweather on 1 GPU(s) at placement (1, 0)
+  7. t=109.34s start minisweep on 3 GPU(s) at placement (1, 2)
+  8. t=160.34s start bert on 1 GPU(s) at placement (1, 0)
+  9. t=166.81s start hpgmg on 1 GPU(s) at placement (1, 0)
+  10. t=176.90s start gpt2 on 1 GPU(s) at placement (1, 0)
