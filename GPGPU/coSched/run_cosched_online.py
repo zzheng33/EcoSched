@@ -2,7 +2,7 @@
 """Hand-crafted event-driven online co-scheduler.
 
 This launcher uses only per-application mode curves derived from brief profiling
-(the rows in edp_metrics.txt) and makes decisions at each scheduling event:
+(the rows in perf_metrics.txt) and makes decisions at each scheduling event:
 - enumerate feasible actions on the currently free GPUs
 - score each action with a hand-crafted online objective
 - launch the minimum-score action
@@ -596,8 +596,8 @@ def main():
     parser.add_argument(
         "--metrics-file",
         type=Path,
-        default=Path("/home/ac.zzheng/power/GPGPU/data/H100/edp_metrics.txt"),
-        help="Path to edp_metrics.txt",
+        default=Path("/home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt"),
+        help="Path to perf_metrics.txt",
     )
     parser.add_argument(
         "--jobs",

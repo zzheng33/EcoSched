@@ -1,6 +1,6 @@
 Results log: /home/ac.zzheng/power/GPGPU/coSched/results/run_cosched_marble.txt
 Marble policy: pick the smallest GPU count within 5.00% of the minimum profiled runtime, then FCFS co-schedule.
-Metrics source: /home/ac.zzheng/power/GPGPU/data/H100/edp_metrics.txt
+Metrics source: /home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt
 Selected Marble GPU counts:
   pot3d           -> 3 GPUs (runtime=104.33s)
   minisweep       -> 4 GPUs (runtime=43.61s)

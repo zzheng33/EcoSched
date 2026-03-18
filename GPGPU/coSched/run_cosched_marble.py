@@ -23,7 +23,7 @@ from run_cosched import (
     run_cosched,
 )
 
-DEFAULT_METRICS_FILE = Path("/home/ac.zzheng/power/GPGPU/data/H100/edp_metrics.txt")
+DEFAULT_METRICS_FILE = Path("/home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt")
 DEFAULT_PERF_TOL = 0.05
 SECTION_RE = re.compile(r"^===== .*?/([^/ ]+) =====$")
 
@@ -160,7 +160,7 @@ def main() -> None:
         "--metrics-file",
         type=Path,
         default=DEFAULT_METRICS_FILE,
-        help="Path to edp_metrics.txt. Default: {}".format(DEFAULT_METRICS_FILE),
+        help="Path to perf_metrics.txt. Default: {}".format(DEFAULT_METRICS_FILE),
     )
     parser.add_argument(
         "--jobs",

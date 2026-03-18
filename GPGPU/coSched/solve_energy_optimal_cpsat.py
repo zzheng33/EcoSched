@@ -3,7 +3,7 @@
 
 Problem model:
 - All jobs are available at time 0.
-- Each job chooses exactly one GPU count from the rows available in edp_metrics.txt.
+- Each job chooses exactly one GPU count from the rows available in perf_metrics.txt.
 - At most 2 jobs may run concurrently.
 - The node has 2 NUMA domains and 4 GPUs total, with capacity 2 GPUs per NUMA.
 - Feasible placements follow the topology-aware patterns discussed in the project:
@@ -41,6 +41,7 @@ POWER_SCALE = 100
 DEFAULT_IDLE_POWER = 70.0
 DEFAULT_THREADS = 8
 DEFAULT_TIME_LIMIT_S = 20.0
+DEFAULT_SLOWDOWN_TOL = 0.15
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results"
 DEFAULT_SCHEDULE_OUTPUT = DEFAULT_RESULTS_DIR / "solver_schedule.txt"
@@ -165,8 +166,9 @@ def build_configs(
 
     for job in selected_jobs:
         rows = parsed[job]
-        min_runtime = min(row.runtime_s for row in rows.values())
-        runtime_limit = None if slowdown_tol is None else min_runtime * (1.0 + slowdown_tol)
+        baseline_gpu_count = max(rows)
+        baseline_row = rows[baseline_gpu_count]
+        runtime_limit = None if slowdown_tol is None else baseline_row.runtime_s * (1.0 + slowdown_tol)
 
         job_configs = []
         max_duration = 0
@@ -193,7 +195,7 @@ def build_configs(
                 )
         if not job_configs:
             raise ValueError(
-                "No feasible modes remain for {} under slowdown_tol={}".format(job, slowdown_tol)
+                "No feasible modes remain for {} under slowdown_tol={} relative to the max-GPU baseline".format(job, slowdown_tol)
             )
         configs_by_job[job] = job_configs
         horizon += max_duration
@@ -307,7 +309,7 @@ def print_summary(result, idle_power_w: float, slowdown_tol: Optional[float]):
     print("Exact offline energy-optimal schedule")
     print("=" * 96)
     print("Idle power per GPU: {:.2f} W".format(idle_power_w))
-    print("Slowdown tolerance: {}".format("none" if slowdown_tol is None else "{:.2f}".format(slowdown_tol)))
+    print("Slowdown tolerance vs max-GPU baseline: {}".format("none" if slowdown_tol is None else "{:.2f}".format(slowdown_tol)))
     print("Makespan: {:.2f} s".format(result["makespan_s"]))
     print(
         "Active energy: {:.2f} J ({:.2f} kJ)".format(
@@ -365,8 +367,8 @@ def main():
     parser.add_argument(
         "--metrics-file",
         type=Path,
-        default=Path("/home/ac.zzheng/power/GPGPU/data/H100/edp_metrics.txt"),
-        help="Path to edp_metrics.txt",
+        default=Path("/home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt"),
+        help="Path to perf_metrics.txt",
     )
     parser.add_argument(
         "--jobs",
@@ -395,8 +397,8 @@ def main():
     parser.add_argument(
         "--slowdown-tol",
         type=float,
-        default=None,
-        help="Optional runtime filter: only keep modes with runtime <= (1 + slowdown_tol) * fastest_mode_runtime for each app. Default: no filtering",
+        default=DEFAULT_SLOWDOWN_TOL,
+        help="Runtime filter: only keep modes with runtime <= (1 + slowdown_tol) * runtime_at_max_available_GPUs for each app. Default: {}".format(DEFAULT_SLOWDOWN_TOL),
     )
     parser.add_argument(
         "--output-file",
