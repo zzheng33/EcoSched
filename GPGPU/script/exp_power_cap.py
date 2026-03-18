@@ -39,7 +39,8 @@ spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniwe
 
 spec_benchmarks = ['hpgmg']
 
-ml_models = ["resnet50","vgg16"]
+# ml_models = ["resnet50","vgg16"]
+ml_models = ["resnet101","resnet152","vgg19"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]

@@ -66,3 +66,8 @@ def VGG11(num_classes=10, input_channels=1):
 def VGG16(num_classes=10, input_channels=1):
     """VGG-16 with batch normalization (~138M parameters)"""
     return VGG(make_layers(cfgs['VGG16'], input_channels, batch_norm=True), num_classes)
+
+
+def VGG19(num_classes=10, input_channels=1):
+    """VGG-19 with batch normalization (~143M parameters)"""
+    return VGG(make_layers(cfgs['VGG19'], input_channels, batch_norm=True), num_classes)

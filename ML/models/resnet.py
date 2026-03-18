@@ -122,3 +122,13 @@ def ResNet34(num_classes=10, input_channels=1):
 def ResNet50(num_classes=10, input_channels=1):
     """ResNet-50 (~25M parameters)"""
     return ResNet(Bottleneck, [3, 4, 6, 3], num_classes, input_channels)
+
+
+def ResNet101(num_classes=10, input_channels=1):
+    """ResNet-101 (~44M parameters)"""
+    return ResNet(Bottleneck, [3, 4, 23, 3], num_classes, input_channels)
+
+
+def ResNet152(num_classes=10, input_channels=1):
+    """ResNet-152 (~60M parameters)"""
+    return ResNet(Bottleneck, [3, 8, 36, 3], num_classes, input_channels)

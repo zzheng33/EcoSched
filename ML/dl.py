@@ -22,7 +22,7 @@ from typing import Tuple, List, Optional
 import argparse
 
 # Import models from models folder
-from models import ResNet18, ResNet34, ResNet50, VGG11, VGG16
+from models import ResNet18, ResNet34, ResNet50, ResNet101, ResNet152, VGG11, VGG16, VGG19
 
 # Set random seeds for reproducibility
 torch.manual_seed(42)
@@ -92,8 +92,11 @@ MODEL_REGISTRY = {
     'resnet18': ResNet18,
     'resnet34': ResNet34,
     'resnet50': ResNet50,
+    'resnet101': ResNet101,
+    'resnet152': ResNet152,
     'vgg11': VGG11,
     'vgg16': VGG16,
+    'vgg19': VGG19,
     # Additional torchvision families
     'mobilenet_v2': _tv_model_builder("mobilenet_v2"),
     'densenet121': _tv_model_builder("densenet121"),
