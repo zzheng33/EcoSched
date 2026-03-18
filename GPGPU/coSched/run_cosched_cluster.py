@@ -29,12 +29,15 @@ from run_cosched import (
     DEFAULT_JOB_QUEUE,
     NUMA0_GPUS,
     NUMA1_GPUS,
+    PERF_METRICS_FILE,
     PREDICTED_GPU_COUNTS,
     RESULTS_DIR,
     TOTAL_GPUS,
     allocate_gpus_numa,
     build_command,
+    parse_available_gpu_counts,
     pick_numa_for_tenant,
+    resolve_requested_gpu_count,
 )
 
 DEFAULT_CLUSTER_HOSTS = ("hopper00", "hopper01")
@@ -520,13 +523,43 @@ def main() -> None:
         default=RESULTS_DIR,
         help="Directory for fixed run logs. Default: {}".format(RESULTS_DIR),
     )
+    parser.add_argument(
+        "--perf-metrics-file",
+        type=Path,
+        default=PERF_METRICS_FILE,
+        help="perf_metrics.txt used to validate/fallback GPU counts. Default: {}".format(
+            PERF_METRICS_FILE
+        ),
+    )
     args = parser.parse_args()
 
-    gpu_counts = dict(PREDICTED_GPU_COUNTS)
+    available_gpu_counts = parse_available_gpu_counts(args.perf_metrics_file, args.jobs)
+    gpu_counts = {}
+    for app in args.jobs:
+        requested = PREDICTED_GPU_COUNTS[app]
+        resolved = resolve_requested_gpu_count(requested, available_gpu_counts[app])
+        gpu_counts[app] = resolved
+        if resolved != requested:
+            print(
+                "INFO: {} requested {} GPUs for co-scheduling, but perf_metrics.txt "
+                "only has rows {}; using {} GPUs instead.".format(
+                    app, requested, available_gpu_counts[app], resolved
+                )
+            )
+
     if args.gpu_override:
         for item in args.gpu_override:
             app, count = item.split(":")
-            gpu_counts[app] = int(count)
+            requested = int(count)
+            resolved = resolve_requested_gpu_count(requested, available_gpu_counts[app])
+            gpu_counts[app] = resolved
+            if resolved != requested:
+                print(
+                    "INFO: override for {} requested {} GPUs, but perf_metrics.txt "
+                    "only has rows {}; using {} GPUs instead.".format(
+                        app, requested, available_gpu_counts[app], resolved
+                    )
+                )
 
     for app in args.jobs:
         if app not in gpu_counts:

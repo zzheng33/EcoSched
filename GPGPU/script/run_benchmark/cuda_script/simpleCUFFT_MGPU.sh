@@ -36,6 +36,18 @@ if (( FILTER_SIZE >= PROBLEM_SIZE )); then
     exit 1
 fi
 
+PADDED_SIZE=$((PROBLEM_SIZE + FILTER_SIZE - (FILTER_SIZE / 2)))
+if (( NUM_GPUS > 1 )); then
+    if (( PADDED_SIZE % NUM_GPUS != 0 )); then
+        echo "Error: padded size ${PADDED_SIZE} must be divisible by NUM_GPUS=${NUM_GPUS} for multi-GPU CUFFT." >&2
+        exit 1
+    fi
+    if (( (PADDED_SIZE & (PADDED_SIZE - 1)) != 0 )); then
+        echo "Error: padded size ${PADDED_SIZE} must be a power of two for multi-GPU CUFFT." >&2
+        exit 1
+    fi
+fi
+
 if [[ ! "$MAX_ITERS" =~ ^[1-9][0-9]*$ ]]; then
     echo "Error: MAX_ITERS must be a positive integer." >&2
     exit 1

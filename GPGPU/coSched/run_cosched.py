@@ -85,8 +85,8 @@ DEFAULT_JOB_QUEUE = [
     'miniweather', 'bert', 'gpt2', 'resnet50', 'hpgmg',
 ]
 
-def parse_max_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, int]:
-    """Read perf_metrics.txt and return the maximum available GPU count per app."""
+def parse_available_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, List[int]]:
+    """Read perf_metrics.txt and return the available GPU counts per app."""
     import re
 
     section_re = re.compile(r"^===== .*?/([^/ ]+) =====$")
@@ -116,7 +116,25 @@ def parse_max_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[s
     if missing:
         raise ValueError("Missing jobs in perf metrics file: {}".format(missing))
 
-    return {job: max(rows[job]) for job in selected_jobs}
+    return {job: sorted(rows[job]) for job in selected_jobs}
+
+
+def parse_max_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, int]:
+    """Read perf_metrics.txt and return the maximum available GPU count per app."""
+    available = parse_available_gpu_counts(metrics_path, selected_jobs)
+    return {job: max(counts) for job, counts in available.items()}
+
+
+def resolve_requested_gpu_count(requested: int, available_counts: List[int]) -> int:
+    """Resolve a requested GPU count against the rows actually available in perf_metrics.txt."""
+    if requested in available_counts:
+        return requested
+
+    lower = [count for count in available_counts if count < requested]
+    if lower:
+        return max(lower)
+
+    return min(available_counts)
 
 
 # Benchmarks that use torchrun (bert, gpt2)
@@ -683,7 +701,18 @@ def main():
         try:
             print(f"Results log: {log_path}")
 
-            cosched_gpu_counts = dict(PREDICTED_GPU_COUNTS)
+            available_gpu_counts = parse_available_gpu_counts(args.perf_metrics_file, args.jobs)
+            cosched_gpu_counts = {}
+            for app in args.jobs:
+                requested = PREDICTED_GPU_COUNTS[app]
+                resolved = resolve_requested_gpu_count(requested, available_gpu_counts[app])
+                cosched_gpu_counts[app] = resolved
+                if resolved != requested:
+                    print(
+                        f"INFO: {app} requested {requested} GPUs for co-scheduling, "
+                        f"but perf_metrics.txt only has rows {available_gpu_counts[app]}; using {resolved} GPUs instead."
+                    )
+
             sequential_gpu_counts = parse_max_gpu_counts(args.perf_metrics_file, args.jobs)
 
             # Apply overrides
@@ -691,8 +720,14 @@ def main():
                 for item in args.gpu_override:
                     app, count = item.split(":")
                     count = int(count)
-                    cosched_gpu_counts[app] = count
-                    sequential_gpu_counts[app] = count
+                    resolved = resolve_requested_gpu_count(count, available_gpu_counts[app])
+                    cosched_gpu_counts[app] = resolved
+                    sequential_gpu_counts[app] = max(available_gpu_counts[app])
+                    if resolved != count:
+                        print(
+                            f"INFO: override for {app} requested {count} GPUs, "
+                            f"but perf_metrics.txt only has rows {available_gpu_counts[app]}; using {resolved} GPUs instead."
+                        )
 
             # Validate
             for app in args.jobs:

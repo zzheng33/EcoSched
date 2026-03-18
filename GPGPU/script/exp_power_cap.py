@@ -47,12 +47,14 @@ cuda_benchmarks = [
     'simpleCUFFT_2d_MGPU',
 ]
 
+cuda_benchmarks = ['simpleCUFFT_MGPU']
+
 # ml_models = ["resnet50","vgg16"]
 ml_models = ["resnet101","resnet152","vgg19"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-# GPU_ct = [2,3,4]
+# GPU_ct = [3]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
 gpu_caps = [2800]
 
@@ -190,6 +192,14 @@ def _is_throughput_benchmark(suite_name, benchmark_name):
     return "bert" in bn or "gpt2" in bn
 
 
+def _gpu_counts_for_benchmark(suite_name, benchmark_name):
+    if str(suite_name).lower() == "cuda":
+        if str(benchmark_name) == "simpleCUFFT_MGPU":
+            return [1, 2, 4]
+        return [1, 2, 3, 4]
+    return GPU_ct
+
+
 def _per_gpu_cap_from_total(total_gpu_cap, gpu_count):
     if gpu_count <= 0:
         return None
@@ -300,7 +310,9 @@ def run_ml_experiment(model_name=None):
                 ])
 
     for model in models:
-        for g_cnt in GPU_ct:
+        gpu_counts = _gpu_counts_for_benchmark(suite, benchmark)
+
+    for g_cnt in gpu_counts:
             for total_gpu_cap in gpu_caps:
                 per_gpu_cap_int = _per_gpu_cap_from_total(total_gpu_cap, g_cnt)
                 if per_gpu_cap_int is None:
@@ -412,7 +424,9 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
                     "status",
                 ])
 
-    for g_cnt in GPU_ct:
+    gpu_counts = _gpu_counts_for_benchmark(suite, benchmark)
+
+    for g_cnt in gpu_counts:
         for total_gpu_cap in gpu_caps:
             per_gpu_cap = _per_gpu_cap_from_total(total_gpu_cap, g_cnt)
             if per_gpu_cap is None:
