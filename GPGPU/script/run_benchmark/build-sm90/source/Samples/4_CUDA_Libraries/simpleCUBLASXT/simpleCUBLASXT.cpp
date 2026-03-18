@@ -41,11 +41,76 @@
 #include <cuda_runtime.h>
 #include <helper_cuda.h>
 
-/* Matrix size */
-// #define N  (275)
-#define N (1024)
+constexpr int kDefaultProblemSize = 1024;
+constexpr int kDefaultMaxIters      = 1;
+
 // Restricting the max used GPUs as input matrix is not so large
 #define MAX_NUM_OF_GPUS 2
+
+void usage()
+{
+    printf("Usage: simpleCUBLASXT [--problem-size=<matrix_dim>] [--max-iters=<repeat_count>] [--help]\n");
+    printf("  problem-size : square matrix dimension [default: %d]\n", kDefaultProblemSize);
+    printf("  max-iters    : number of SGEMM calls to issue [default: %d]\n", kDefaultMaxIters);
+}
+
+bool hasOption(int argc, char **argv, const char *name)
+{
+    for (int i = 1; i < argc; i++) {
+        const char *arg = argv[i];
+        if (!strcmp(arg, name)) {
+            return true;
+        }
+        if (arg[0] == '-' && !strcmp(arg + 1, name)) {
+            return true;
+        }
+        if (!strncmp(arg, "--", 2) && !strcmp(arg + 2, name)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool parseIntOption(int argc, char **argv, const char *name, int *value)
+{
+    const size_t name_len = strlen(name);
+
+    for (int i = 1; i < argc; i++) {
+        const char *arg       = argv[i];
+        const char *value_str = NULL;
+
+        if ((arg[0] == '-' && !strcmp(arg + 1, name)) || (!strncmp(arg, "--", 2) && !strcmp(arg + 2, name))) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Missing value for option %s\n", arg);
+                exit(EXIT_FAILURE);
+            }
+            value_str = argv[i + 1];
+        }
+        else if (!strncmp(arg, name, name_len) && arg[name_len] == '=') {
+            value_str = arg + name_len + 1;
+        }
+        else if (arg[0] == '-' && !strncmp(arg + 1, name, name_len) && arg[name_len + 1] == '=') {
+            value_str = arg + name_len + 2;
+        }
+        else if (!strncmp(arg, "--", 2) && !strncmp(arg + 2, name, name_len) && arg[name_len + 2] == '=') {
+            value_str = arg + name_len + 3;
+        }
+
+        if (value_str != NULL) {
+            char *end = NULL;
+            long  parsed = strtol(value_str, &end, 10);
+            if (end == value_str || *end != '\0') {
+                fprintf(stderr, "Invalid integer value for option %s: %s\n", name, value_str);
+                exit(EXIT_FAILURE);
+            }
+            *value = static_cast<int>(parsed);
+            return true;
+        }
+    }
+
+    return false;
+}
 
 /* Host implementation of a simple version of sgemm */
 static void simple_sgemm(int n, float alpha, const float *A, const float *B, float beta, float *C)
@@ -151,7 +216,9 @@ int main(int argc, char **argv)
     float           *d_C   = 0;
     float            alpha = 1.0f;
     float            beta  = 0.0f;
-    int              n2    = N * N;
+    int              N     = kDefaultProblemSize;
+    int              max_iters = kDefaultMaxIters;
+    int              n2;
     int              i;
     float            error_norm;
     float            ref_norm;
@@ -160,6 +227,31 @@ int main(int argc, char **argv)
     int             *devices = NULL;
 
     int num_of_devices = 0;
+
+    if (hasOption(argc, argv, "h") || hasOption(argc, argv, "help")) {
+        usage();
+        return EXIT_SUCCESS;
+    }
+
+    if (parseIntOption(argc, argv, "problem-size", &N) || parseIntOption(argc, argv, "n", &N)) {
+    }
+
+    if (parseIntOption(argc, argv, "max-iters", &max_iters) || parseIntOption(argc, argv, "iterations", &max_iters)) {
+    }
+
+    if (N < 1) {
+        fprintf(stderr, "problem-size must be >= 1, got %d\n", N);
+        return EXIT_FAILURE;
+    }
+
+    if (max_iters < 1) {
+        fprintf(stderr, "max-iters must be >= 1, got %d\n", max_iters);
+        return EXIT_FAILURE;
+    }
+
+    n2 = N * N;
+    printf("Configured problem size N = %d\n", N);
+    printf("Configured fixed iterations = %d\n", max_iters);
 
     checkCudaErrors(cudaGetDeviceCount(&num_of_devices));
 
@@ -243,12 +335,16 @@ int main(int argc, char **argv)
     simple_sgemm(N, alpha, h_A, h_B, beta, h_C_ref);
 
     /* Performs operation using cublas */
-    status = cublasXtSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, N, N, N, &alpha, h_A, N, h_B, N, &beta, h_C, N);
+    for (int iter = 0; iter < max_iters; ++iter) {
+        status = cublasXtSgemm(handle, CUBLAS_OP_N, CUBLAS_OP_N, N, N, N, &alpha, h_A, N, h_B, N, &beta, h_C, N);
 
-    if (status != CUBLAS_STATUS_SUCCESS) {
-        fprintf(stderr, "!!!! kernel execution error.\n");
-        return EXIT_FAILURE;
+        if (status != CUBLAS_STATUS_SUCCESS) {
+            fprintf(stderr, "!!!! kernel execution error.\n");
+            return EXIT_FAILURE;
+        }
     }
+
+    printf("Completed fixed iterations = %d\n", max_iters);
 
     /* Check result against reference */
     error_norm = 0;

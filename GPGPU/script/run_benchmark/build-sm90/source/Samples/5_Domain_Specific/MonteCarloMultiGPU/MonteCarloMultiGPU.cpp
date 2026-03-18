@@ -47,6 +47,72 @@
 int   *pArgc = NULL;
 char **pArgv = NULL;
 
+constexpr int kDefaultProblemSize = 8 * 1024;
+constexpr int kDefaultMaxIters    = 262144;
+
+bool hasOption(int argc, char **argv, const char *name)
+{
+    for (int i = 1; i < argc; i++) {
+        const char *arg = argv[i];
+        if (!strcmp(arg, name)) {
+            return true;
+        }
+        if (arg[0] == '-' && !strcmp(arg + 1, name)) {
+            return true;
+        }
+        if (!strncmp(arg, "--", 2) && !strcmp(arg + 2, name)) {
+            return true;
+        }
+    }
+
+    return checkCmdLineFlag(argc, (const char **)argv, name) != 0;
+}
+
+bool parseIntOption(int argc, char **argv, const char *name, int *value)
+{
+    const size_t name_len = strlen(name);
+
+    for (int i = 1; i < argc; i++) {
+        const char *arg       = argv[i];
+        const char *value_str = NULL;
+
+        if ((arg[0] == '-' && !strcmp(arg + 1, name)) || (!strncmp(arg, "--", 2) && !strcmp(arg + 2, name))) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Missing value for option %s\n", arg);
+                exit(EXIT_FAILURE);
+            }
+            value_str = argv[i + 1];
+        }
+        else if (!strncmp(arg, name, name_len) && arg[name_len] == '=') {
+            value_str = arg + name_len + 1;
+        }
+        else if (arg[0] == '-' && !strncmp(arg + 1, name, name_len) && arg[name_len + 1] == '=') {
+            value_str = arg + name_len + 2;
+        }
+        else if (!strncmp(arg, "--", 2) && !strncmp(arg + 2, name, name_len) && arg[name_len + 2] == '=') {
+            value_str = arg + name_len + 3;
+        }
+
+        if (value_str != NULL) {
+            char *end = NULL;
+            long  parsed = strtol(value_str, &end, 10);
+            if (end == value_str || *end != '\0') {
+                fprintf(stderr, "Invalid integer value for option %s: %s\n", name, value_str);
+                exit(EXIT_FAILURE);
+            }
+            *value = static_cast<int>(parsed);
+            return true;
+        }
+    }
+
+    if (checkCmdLineFlag(argc, (const char **)argv, name)) {
+        *value = getCmdLineArgumentInt(argc, (const char **)argv, name);
+        return true;
+    }
+
+    return false;
+}
+
 #ifdef WIN32
 #define strcasecmp _strcmpi
 #endif
@@ -207,13 +273,13 @@ static void multiSolver(TOptionPlan *plan, int nPlans)
 
 void usage()
 {
-    printf("--method=[threaded,streamed] --scaling=[strong,weak] [--help]\n");
+    printf("--method=[threaded,streamed] --scaling=[strong,weak] [--problem-size=<options>] [--max-iters=<paths>] [--help]\n");
     printf("Method=threaded: 1 CPU thread for each GPU     [default]\n");
-    printf("       streamed: 1 CPU thread handles all GPUs (requires CUDA 4.0 or "
-           "newer)\n");
+    printf("       streamed: 1 CPU thread handles all GPUs (requires CUDA 4.0 or newer)\n");
     printf("Scaling=strong : constant problem size\n");
-    printf("        weak   : problem size scales with number of available GPUs "
-           "[default]\n");
+    printf("        weak   : problem size scales with number of available GPUs [default]\n");
+    printf("problem-size   : base option count before scaling [default: %d]\n", kDefaultProblemSize);
+    printf("max-iters      : simulation paths per option [default: %d]\n", kDefaultMaxIters);
 }
 
 int main(int argc, char **argv)
@@ -223,6 +289,9 @@ int main(int argc, char **argv)
     bool  use_threads       = true;
     bool  bqatest           = false;
     bool  strongScaling     = false;
+    int   nOptions          = kDefaultProblemSize;
+    int   PATH_N            = kDefaultMaxIters;
+    bool  customProblemSize = false;
 
     pArgc = &argc;
     pArgv = argv;
@@ -236,9 +305,23 @@ int main(int argc, char **argv)
     getCmdLineArgumentString(argc, (const char **)argv, "method", &multiMethodChoice);
     getCmdLineArgumentString(argc, (const char **)argv, "scaling", &scalingChoice);
 
-    if (checkCmdLineFlag(argc, (const char **)argv, "h") || checkCmdLineFlag(argc, (const char **)argv, "help")) {
+    if (hasOption(argc, argv, "h") || hasOption(argc, argv, "help")) {
         usage();
         exit(EXIT_SUCCESS);
+    }
+
+    customProblemSize = parseIntOption(argc, argv, "problem-size", &nOptions) || parseIntOption(argc, argv, "options", &nOptions);
+    if (parseIntOption(argc, argv, "max-iters", &PATH_N) || parseIntOption(argc, argv, "paths", &PATH_N)) {
+    }
+
+    if (nOptions < 1) {
+        fprintf(stderr, "problem-size must be >= 1, got %d\n", nOptions);
+        exit(EXIT_FAILURE);
+    }
+
+    if (PATH_N < 1) {
+        fprintf(stderr, "max-iters must be >= 1, got %d\n", PATH_N);
+        exit(EXIT_FAILURE);
     }
 
     if (multiMethodChoice == NULL) {
@@ -272,14 +355,14 @@ int main(int argc, char **argv)
     // GPU number present in the system
     int GPU_N;
     checkCudaErrors(cudaGetDeviceCount(&GPU_N));
-    int nOptions = 8 * 1024;
 
-    nOptions = adjustProblemSize(GPU_N, nOptions);
+    if (!customProblemSize) {
+        nOptions = adjustProblemSize(GPU_N, nOptions);
+    }
 
     // select problem size
-    int scale  = (strongScaling) ? 1 : GPU_N;
-    int OPT_N  = nOptions * scale;
-    int PATH_N = 262144;
+    int scale = (strongScaling) ? 1 : GPU_N;
+    int OPT_N = nOptions * scale;
 
     // initialize the timers
     hTimer = new StopWatchInterface *[GPU_N];

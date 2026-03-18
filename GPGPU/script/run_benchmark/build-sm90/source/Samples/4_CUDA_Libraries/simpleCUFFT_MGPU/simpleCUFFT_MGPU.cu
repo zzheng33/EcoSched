@@ -64,9 +64,76 @@ int PadData(const Complex *, Complex **, int, const Complex *, Complex **, int);
 // Data configuration
 // The filter size is assumed to be a number smaller than the signal size
 ///////////////////////////////////////////////////////////////////////////////
-const int SIGNAL_SIZE        = 1018;
-const int FILTER_KERNEL_SIZE = 11;
-const int GPU_COUNT          = 2;
+constexpr int kDefaultProblemSize = 1018;
+constexpr int kDefaultFilterSize   = 11;
+constexpr int kDefaultMaxIters     = 1;
+const int GPU_COUNT                = 2;
+
+void usage()
+{
+    printf("Usage: simpleCUFFT_MGPU [--problem-size=<signal_size>] [--filter-size=<filter_size>] [--max-iters=<repeat_count>] [--help]\n");
+    printf("  problem-size : signal size [default: %d]\n", kDefaultProblemSize);
+    printf("  filter-size  : filter kernel size [default: %d]\n", kDefaultFilterSize);
+    printf("  max-iters    : number of FFT convolution passes [default: %d]\n", kDefaultMaxIters);
+}
+
+bool hasOption(int argc, char **argv, const char *name)
+{
+    for (int i = 1; i < argc; i++) {
+        const char *arg = argv[i];
+        if (!strcmp(arg, name)) {
+            return true;
+        }
+        if (arg[0] == '-' && !strcmp(arg + 1, name)) {
+            return true;
+        }
+        if (!strncmp(arg, "--", 2) && !strcmp(arg + 2, name)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool parseIntOption(int argc, char **argv, const char *name, int *value)
+{
+    const size_t name_len = strlen(name);
+
+    for (int i = 1; i < argc; i++) {
+        const char *arg       = argv[i];
+        const char *value_str = NULL;
+
+        if ((arg[0] == '-' && !strcmp(arg + 1, name)) || (!strncmp(arg, "--", 2) && !strcmp(arg + 2, name))) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Missing value for option %s\n", arg);
+                exit(EXIT_FAILURE);
+            }
+            value_str = argv[i + 1];
+        }
+        else if (!strncmp(arg, name, name_len) && arg[name_len] == '=') {
+            value_str = arg + name_len + 1;
+        }
+        else if (arg[0] == '-' && !strncmp(arg + 1, name, name_len) && arg[name_len + 1] == '=') {
+            value_str = arg + name_len + 2;
+        }
+        else if (!strncmp(arg, "--", 2) && !strncmp(arg + 2, name, name_len) && arg[name_len + 2] == '=') {
+            value_str = arg + name_len + 3;
+        }
+
+        if (value_str != NULL) {
+            char *end = NULL;
+            long  parsed = strtol(value_str, &end, 10);
+            if (end == value_str || *end != '\0') {
+                fprintf(stderr, "Invalid integer value for option %s: %s\n", name, value_str);
+                exit(EXIT_FAILURE);
+            }
+            *value = static_cast<int>(parsed);
+            return true;
+        }
+    }
+
+    return false;
+}
 
 ////////////////////////////////////////////////////////////////////////////////
 // Program main
@@ -74,6 +141,43 @@ const int GPU_COUNT          = 2;
 int main(int argc, char **argv)
 {
     printf("\n[simpleCUFFT_MGPU] is starting...\n\n");
+
+    int signal_size        = kDefaultProblemSize;
+    int filter_kernel_size = kDefaultFilterSize;
+    int max_iters          = kDefaultMaxIters;
+
+    if (hasOption(argc, argv, "h") || hasOption(argc, argv, "help")) {
+        usage();
+        return EXIT_SUCCESS;
+    }
+
+    if (parseIntOption(argc, argv, "problem-size", &signal_size) || parseIntOption(argc, argv, "signal-size", &signal_size)) {
+    }
+
+    if (parseIntOption(argc, argv, "filter-size", &filter_kernel_size)) {
+    }
+
+    if (parseIntOption(argc, argv, "max-iters", &max_iters) || parseIntOption(argc, argv, "iterations", &max_iters)) {
+    }
+
+    if (signal_size < 1) {
+        fprintf(stderr, "problem-size must be >= 1, got %d\n", signal_size);
+        return EXIT_FAILURE;
+    }
+
+    if (filter_kernel_size < 1 || filter_kernel_size >= signal_size) {
+        fprintf(stderr, "filter-size must be >= 1 and smaller than problem-size, got %d and %d\n", filter_kernel_size, signal_size);
+        return EXIT_FAILURE;
+    }
+
+    if (max_iters < 1) {
+        fprintf(stderr, "max-iters must be >= 1, got %d\n", max_iters);
+        return EXIT_FAILURE;
+    }
+
+    printf("Configured problem size = %d\n", signal_size);
+    printf("Configured filter size = %d\n", filter_kernel_size);
+    printf("Configured fixed iterations = %d\n", max_iters);
 
     int GPU_N;
     checkCudaErrors(cudaGetDeviceCount(&GPU_N));
@@ -124,19 +228,19 @@ int main(int argc, char **argv)
     }
 
     // Allocate host memory for the signal
-    Complex *h_signal = (Complex *)malloc(sizeof(Complex) * SIGNAL_SIZE);
+    Complex *h_signal = (Complex *)malloc(sizeof(Complex) * signal_size);
 
     // Initialize the memory for the signal
-    for (int i = 0; i < SIGNAL_SIZE; ++i) {
+    for (int i = 0; i < signal_size; ++i) {
         h_signal[i].x = rand() / (float)RAND_MAX;
         h_signal[i].y = 0;
     }
 
     // Allocate host memory for the filter
-    Complex *h_filter_kernel = (Complex *)malloc(sizeof(Complex) * FILTER_KERNEL_SIZE);
+    Complex *h_filter_kernel = (Complex *)malloc(sizeof(Complex) * filter_kernel_size);
 
     // Initialize the memory for the filter
-    for (int i = 0; i < FILTER_KERNEL_SIZE; ++i) {
+    for (int i = 0; i < filter_kernel_size; ++i) {
         h_filter_kernel[i].x = rand() / (float)RAND_MAX;
         h_filter_kernel[i].y = 0;
     }
@@ -145,7 +249,7 @@ int main(int argc, char **argv)
     Complex *h_padded_signal;
     Complex *h_padded_filter_kernel;
     int      new_size =
-        PadData(h_signal, &h_padded_signal, SIGNAL_SIZE, h_filter_kernel, &h_padded_filter_kernel, FILTER_KERNEL_SIZE);
+        PadData(h_signal, &h_padded_signal, signal_size, h_filter_kernel, &h_padded_filter_kernel, filter_kernel_size);
 
     // cufftCreate() - Create an empty plan
     cufftResult result;
@@ -193,48 +297,49 @@ int main(int argc, char **argv)
     cudaLibXtDesc *d_out_filter_kernel;
     checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_out_filter_kernel, CUFFT_XT_FORMAT_INPLACE));
 
-    // cufftXtMemcpy() - Copy data from host to multiple GPUs
-    checkCudaErrors(cufftXtMemcpy(plan_input, d_signal, h_padded_signal, CUFFT_COPY_HOST_TO_DEVICE));
-    checkCudaErrors(cufftXtMemcpy(plan_input, d_filter_kernel, h_padded_filter_kernel, CUFFT_COPY_HOST_TO_DEVICE));
+    for (int iter = 0; iter < max_iters; ++iter) {
+        // cufftXtMemcpy() - Copy data from host to multiple GPUs
+        checkCudaErrors(cufftXtMemcpy(plan_input, d_signal, h_padded_signal, CUFFT_COPY_HOST_TO_DEVICE));
+        checkCudaErrors(cufftXtMemcpy(plan_input, d_filter_kernel, h_padded_filter_kernel, CUFFT_COPY_HOST_TO_DEVICE));
 
-    // cufftXtExecDescriptorC2C() - Execute FFT on data on multiple GPUs
-    checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_signal, d_signal, CUFFT_FORWARD));
-    checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_filter_kernel, d_filter_kernel, CUFFT_FORWARD));
+        // cufftXtExecDescriptorC2C() - Execute FFT on data on multiple GPUs
+        checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_signal, d_signal, CUFFT_FORWARD));
+        checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_filter_kernel, d_filter_kernel, CUFFT_FORWARD));
 
-    // cufftXtMemcpy() - Copy the data to natural order on GPUs
-    checkCudaErrors(cufftXtMemcpy(plan_input, d_out_signal, d_signal, CUFFT_COPY_DEVICE_TO_DEVICE));
-    checkCudaErrors(cufftXtMemcpy(plan_input, d_out_filter_kernel, d_filter_kernel, CUFFT_COPY_DEVICE_TO_DEVICE));
+        // cufftXtMemcpy() - Copy the data to natural order on GPUs
+        checkCudaErrors(cufftXtMemcpy(plan_input, d_out_signal, d_signal, CUFFT_COPY_DEVICE_TO_DEVICE));
+        checkCudaErrors(cufftXtMemcpy(plan_input, d_out_filter_kernel, d_filter_kernel, CUFFT_COPY_DEVICE_TO_DEVICE));
 
-    printf("\n\nValue of Library Descriptor\n");
-    printf("Number of GPUs %d\n", d_out_signal->descriptor->nGPUs);
-    printf("Device id  %d %d\n", d_out_signal->descriptor->GPUs[0], d_out_signal->descriptor->GPUs[1]);
-    printf("Data size on GPU %ld %ld\n",
-           (long)(d_out_signal->descriptor->size[0] / sizeof(cufftComplex)),
-           (long)(d_out_signal->descriptor->size[1] / sizeof(cufftComplex)));
+        if (iter == 0) {
+            printf("\n\nValue of Library Descriptor\n");
+            printf("Number of GPUs %d\n", d_out_signal->descriptor->nGPUs);
+            printf("Device id  %d %d\n", d_out_signal->descriptor->GPUs[0], d_out_signal->descriptor->GPUs[1]);
+            printf("Data size on GPU %ld %ld\n",
+                   (long)(d_out_signal->descriptor->size[0] / sizeof(cufftComplex)),
+                   (long)(d_out_signal->descriptor->size[1] / sizeof(cufftComplex)));
+        }
 
-    // Multiply the coefficients together and normalize the result
-    printf("Launching ComplexPointwiseMulAndScale<<< >>>\n");
-    multiplyCoefficient(d_out_signal, d_out_filter_kernel, new_size, 1.0f / new_size, nGPUs);
+        multiplyCoefficient(d_out_signal, d_out_filter_kernel, new_size, 1.0f / new_size, nGPUs);
+        checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_out_signal, d_out_signal, CUFFT_INVERSE));
+    }
 
-    // cufftXtExecDescriptorC2C() - Execute inverse  FFT on data on multiple GPUs
-    printf("Transforming signal back cufftExecC2C\n");
-    checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_out_signal, d_out_signal, CUFFT_INVERSE));
+    printf("Completed fixed iterations = %d\n", max_iters);
 
     // Create host pointer pointing to padded signal
     Complex *h_convolved_signal = h_padded_signal;
 
     // Allocate host memory for the convolution result
-    Complex *h_convolved_signal_ref = (Complex *)malloc(sizeof(Complex) * SIGNAL_SIZE);
+    Complex *h_convolved_signal_ref = (Complex *)malloc(sizeof(Complex) * signal_size);
 
     // cufftXtMemcpy() - Copy data from multiple GPUs to host
     checkCudaErrors(cufftXtMemcpy(plan_input, h_convolved_signal, d_out_signal, CUFFT_COPY_DEVICE_TO_HOST));
 
     // Convolve on the host
-    Convolve(h_signal, SIGNAL_SIZE, h_filter_kernel, FILTER_KERNEL_SIZE, h_convolved_signal_ref);
+    Convolve(h_signal, signal_size, h_filter_kernel, filter_kernel_size, h_convolved_signal_ref);
 
     // Compare CPU and GPU result
     bool bTestResult =
-        sdkCompareL2fe((float *)h_convolved_signal_ref, (float *)h_convolved_signal, 2 * SIGNAL_SIZE, 1e-5f);
+        sdkCompareL2fe((float *)h_convolved_signal_ref, (float *)h_convolved_signal, 2 * signal_size, 1e-5f);
     printf("\nvalue of TestResult %d\n", bTestResult);
 
     // Cleanup memory

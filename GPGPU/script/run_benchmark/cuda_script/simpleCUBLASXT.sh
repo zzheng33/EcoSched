@@ -3,15 +3,29 @@
 set -euo pipefail
 
 # Usage: CUDA_VISIBLE_DEVICES=0,1 ./simpleCUBLASXT.sh [NUM_GPUS] [benchmark args...]
-# Example: CUDA_VISIBLE_DEVICES=0,1,2,3 ./simpleCUBLASXT.sh 4
+# Edit PROBLEM_SIZE and MAX_ITERS below to change the benchmark workload.
 
-NUM_GPUS="${1:-4}"
-if [[ $# -gt 0 ]]; then
+PROBLEM_SIZE=1024
+MAX_ITERS=1
+
+NUM_GPUS="${NUM_GPUS:-4}"
+if [[ $# -gt 0 && "$1" =~ ^[1-9][0-9]*$ ]]; then
+    NUM_GPUS="$1"
     shift
 fi
 
 if [[ ! "$NUM_GPUS" =~ ^[1-9][0-9]*$ ]]; then
     echo "Error: NUM_GPUS must be a positive integer." >&2
+    exit 1
+fi
+
+if [[ ! "$PROBLEM_SIZE" =~ ^[1-9][0-9]*$ ]]; then
+    echo "Error: PROBLEM_SIZE must be a positive integer." >&2
+    exit 1
+fi
+
+if [[ ! "$MAX_ITERS" =~ ^[1-9][0-9]*$ ]]; then
+    echo "Error: MAX_ITERS must be a positive integer." >&2
     exit 1
 fi
 
@@ -34,8 +48,7 @@ export PCM_KEEP_NMI_WATCHDOG=1
 export LD_LIBRARY_PATH="${CUDA_DIR}/targets/x86_64-linux/lib:${CUDA_DIR}/lib64:${LD_LIBRARY_PATH:-}"
 
 if [[ -z "${CUDA_VISIBLE_DEVICES:-}" ]]; then
-    echo "Error: CUDA_VISIBLE_DEVICES must be set externally before running this script." >&2
-    exit 1
+    export CUDA_VISIBLE_DEVICES="0,1,2,3"
 fi
 
 IFS=',' read -r -a gpu_list <<< "$CUDA_VISIBLE_DEVICES"
@@ -56,4 +69,4 @@ if [[ ! -x "${BENCHMARK_BIN}" ]]; then
     exit 1
 fi
 
-exec "${BENCHMARK_BIN}" "$@"
+exec "${BENCHMARK_BIN}" --problem-size="${PROBLEM_SIZE}" --max-iters="${MAX_ITERS}" "$@"

@@ -48,8 +48,7 @@ export PCM_KEEP_NMI_WATCHDOG=1
 export LD_LIBRARY_PATH="${CUDA_DIR}/targets/x86_64-linux/lib:${CUDA_DIR}/lib64:${LD_LIBRARY_PATH:-}"
 
 if [[ -z "${CUDA_VISIBLE_DEVICES:-}" ]]; then
-    echo "Error: CUDA_VISIBLE_DEVICES must be set externally before running this script." >&2
-    exit 1
+    export CUDA_VISIBLE_DEVICES="0,1,2,3"
 fi
 
 IFS=',' read -r -a gpu_list <<< "$CUDA_VISIBLE_DEVICES"
