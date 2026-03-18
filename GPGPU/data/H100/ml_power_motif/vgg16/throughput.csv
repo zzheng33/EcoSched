@@ -13,7 +13,7 @@ total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
 1500,1,700,vgg16,27058.41,ok
 1600,1,700,vgg16,27072.01,ok
 1700,1,700,vgg16,27180.82,ok
-1800,1,700,vgg16,27004.84,ok
+2800,1,700,vgg16,27004.84,ok
 400,2,200,vgg16,24650.91,ok
 500,2,250,vgg16,26301.35,ok
 600,2,300,vgg16,26480.42,ok
@@ -28,7 +28,7 @@ total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
 1500,2,700,vgg16,25817.79,ok
 1600,2,700,vgg16,25837.01,ok
 1700,2,700,vgg16,25573.09,ok
-1800,2,700,vgg16,25832.75,ok
+2800,2,700,vgg16,25832.75,ok
 600,3,200,vgg16,26692.69,ok
 700,3,233,vgg16,25916.24,ok
 800,3,266,vgg16,26194.29,ok
@@ -41,7 +41,7 @@ total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
 1500,3,500,vgg16,26076.72,ok
 1600,3,533,vgg16,26747.41,ok
 1700,3,566,vgg16,26621.76,ok
-1800,3,600,vgg16,26779.47,ok
+2800,3,600,vgg16,26779.47,ok
 800,4,200,vgg16,26275.00,ok
 900,4,225,vgg16,26708.82,ok
 1000,4,250,vgg16,25125.97,ok
@@ -52,4 +52,4 @@ total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
 1500,4,375,vgg16,25923.28,ok
 1600,4,400,vgg16,26068.60,ok
 1700,4,425,vgg16,26107.90,ok
-1800,4,450,vgg16,26039.48,ok
+2800,4,450,vgg16,26039.48,ok

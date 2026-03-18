@@ -13,7 +13,7 @@ total_gpu_cap,gpu_count,per_gpu_cap,benchmark,throughput_tokens_per_sec,status
 1500,1,700,bert,9492.71,ok
 1600,1,700,bert,9451.94,ok
 1700,1,700,bert,9457.44,ok
-1800,1,700,bert,9574.57,ok
+2800,1,700,bert,9574.57,ok
 400,2,200,bert,8978.44,ok
 500,2,250,bert,12269.47,ok
 600,2,300,bert,13774.15,ok
@@ -28,7 +28,7 @@ total_gpu_cap,gpu_count,per_gpu_cap,benchmark,throughput_tokens_per_sec,status
 1500,2,700,bert,16520.77,ok
 1600,2,700,bert,16536.16,ok
 1700,2,700,bert,16483.64,ok
-1800,2,700,bert,16603.63,ok
+2800,2,700,bert,16603.63,ok
 600,3,200,bert,12459.89,ok
 700,3,233,bert,16092.10,ok
 800,3,266,bert,19097.07,ok
@@ -41,7 +41,7 @@ total_gpu_cap,gpu_count,per_gpu_cap,benchmark,throughput_tokens_per_sec,status
 1500,3,500,bert,25504.96,ok
 1600,3,533,bert,25485.22,ok
 1700,3,566,bert,24960.13,ok
-1800,3,600,bert,25432.01,ok
+2800,3,600,bert,25432.01,ok
 800,4,200,bert,14873.04,ok
 900,4,225,bert,18621.13,ok
 1000,4,250,bert,22148.66,ok
@@ -52,4 +52,4 @@ total_gpu_cap,gpu_count,per_gpu_cap,benchmark,throughput_tokens_per_sec,status
 1500,4,375,bert,30159.40,ok
 1600,4,400,bert,31186.86,ok
 1700,4,425,bert,31745.96,ok
-1800,4,450,bert,32792.37,ok
+2800,4,450,bert,32792.37,ok
