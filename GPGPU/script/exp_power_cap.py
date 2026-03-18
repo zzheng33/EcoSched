@@ -44,13 +44,18 @@ ml_models = ["resnet101","resnet152","vgg19"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-GPU_ct = [1]
+GPU_ct = [2,3,4]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
 gpu_caps = [2800]
 
 ML_MIN_PER_GPU_CAP = 200
 ML_MAX_PER_GPU_CAP = 700
 ML_BATCH_SIZE = 2048
+ML_BATCH_SIZE_OVERRIDE = {
+    'resnet101': 512,
+    'resnet152': 512,
+    'vgg19': 512,
+}
 ML_EPOCHS = 3
 ML_LR = 0.001
 
@@ -301,7 +306,7 @@ def run_ml_experiment(model_name=None):
                     ml_script,
                     "--model", model,
                     "--num-gpus", str(g_cnt),
-                    "--batch-size", str(ML_BATCH_SIZE),
+                    "--batch-size", str(ML_BATCH_SIZE_OVERRIDE.get(model, ML_BATCH_SIZE)),
                     "--epochs", str(ML_EPOCHS),
                     "--lr", str(ML_LR),
                 ]
