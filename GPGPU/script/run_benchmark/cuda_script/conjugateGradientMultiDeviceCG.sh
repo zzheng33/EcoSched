@@ -6,7 +6,7 @@ set -euo pipefail
 # Edit PROBLEM_SIZE and MAX_ITERS below to change the benchmark workload.
 
 PROBLEM_SIZE=20971520
-MAX_ITERS=500
+MAX_ITERS=30000
 
 NUM_GPUS="${NUM_GPUS:-4}"
 if [[ $# -gt 0 && "$1" =~ ^[1-9][0-9]*$ ]]; then
