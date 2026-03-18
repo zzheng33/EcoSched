@@ -237,24 +237,18 @@ int main(int argc, char **argv)
         PadData(h_signal, &h_padded_signal, signal_size, h_filter_kernel, &h_padded_filter_kernel, filter_kernel_size);
 
     // cufftCreate() - Create an empty plan
-    cufftResult result;
-    cufftHandle plan_input;
-    checkCudaErrors(cufftCreate(&plan_input));
+    cufftResult    result                     = CUFFT_SUCCESS;
+    cufftHandle    plan_input                 = 0;
+    size_t        *worksize                   = NULL;
+    cudaLibXtDesc *d_signal                   = NULL;
+    cudaLibXtDesc *d_out_signal               = NULL;
+    cudaLibXtDesc *d_filter_kernel            = NULL;
+    cudaLibXtDesc *d_out_filter_kernel        = NULL;
+    cufftComplex  *d_signal_single            = NULL;
+    cufftComplex  *d_out_signal_single        = NULL;
+    cufftComplex  *d_filter_kernel_single     = NULL;
+    cufftComplex  *d_out_filter_kernel_single = NULL;
 
-    // cufftXtSetGPUs() - Define which GPUs to use
-    result = cufftXtSetGPUs(plan_input, nGPUs, whichGPUs);
-
-    if (result == CUFFT_INVALID_DEVICE) {
-        printf("This sample requires two GPUs on the same board.\n");
-        printf("No such board was found. Waiving sample.\n");
-        exit(EXIT_WAIVED);
-    }
-    else if (result != CUFFT_SUCCESS) {
-        printf("cufftXtSetGPUs failed\n");
-        exit(EXIT_FAILURE);
-    }
-
-    // Print the device information to run the code
     printf("\nRunning on GPUs\n");
     for (int i = 0; i < nGPUs; i++) {
         cudaDeviceProp deviceProp;
@@ -266,62 +260,118 @@ int main(int argc, char **argv)
                deviceProp.minor);
     }
 
-    size_t *worksize;
-    worksize = (size_t *)malloc(sizeof(size_t) * nGPUs);
-
-    // cufftMakePlan1d() - Create the plan
-    checkCudaErrors(cufftMakePlan1d(plan_input, new_size, CUFFT_C2C, 1, worksize));
-
-    // cufftXtMalloc() - Malloc data on multiple GPUs
-    cudaLibXtDesc *d_signal;
-    checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_signal, CUFFT_XT_FORMAT_INPLACE));
-    cudaLibXtDesc *d_out_signal;
-    checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_out_signal, CUFFT_XT_FORMAT_INPLACE));
-    cudaLibXtDesc *d_filter_kernel;
-    checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_filter_kernel, CUFFT_XT_FORMAT_INPLACE));
-    cudaLibXtDesc *d_out_filter_kernel;
-    checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_out_filter_kernel, CUFFT_XT_FORMAT_INPLACE));
-
-    for (int iter = 0; iter < max_iters; ++iter) {
-        // cufftXtMemcpy() - Copy data from host to multiple GPUs
-        checkCudaErrors(cufftXtMemcpy(plan_input, d_signal, h_padded_signal, CUFFT_COPY_HOST_TO_DEVICE));
-        checkCudaErrors(cufftXtMemcpy(plan_input, d_filter_kernel, h_padded_filter_kernel, CUFFT_COPY_HOST_TO_DEVICE));
-
-        // cufftXtExecDescriptorC2C() - Execute FFT on data on multiple GPUs
-        checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_signal, d_signal, CUFFT_FORWARD));
-        checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_filter_kernel, d_filter_kernel, CUFFT_FORWARD));
-
-        // cufftXtMemcpy() - Copy the data to natural order on GPUs
-        checkCudaErrors(cufftXtMemcpy(plan_input, d_out_signal, d_signal, CUFFT_COPY_DEVICE_TO_DEVICE));
-        checkCudaErrors(cufftXtMemcpy(plan_input, d_out_filter_kernel, d_filter_kernel, CUFFT_COPY_DEVICE_TO_DEVICE));
-
-        if (iter == 0) {
-            printf("\n\nValue of Library Descriptor\n");
-            printf("Number of GPUs %d\n", d_out_signal->descriptor->nGPUs);
-            printf("Device id ");
-            for (int g = 0; g < d_out_signal->descriptor->nGPUs; g++)
-                printf(" %d", d_out_signal->descriptor->GPUs[g]);
-            printf("\n");
-            printf("Data size on GPU");
-            for (int g = 0; g < d_out_signal->descriptor->nGPUs; g++)
-                printf(" %ld", (long)(d_out_signal->descriptor->size[g] / sizeof(cufftComplex)));
-            printf("\n");
-        }
-
-        multiplyCoefficient(d_out_signal, d_out_filter_kernel, new_size, 1.0f / new_size, nGPUs);
-        checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_out_signal, d_out_signal, CUFFT_INVERSE));
-    }
-
-    printf("Completed fixed iterations = %d\n", max_iters);
-
     // Create host pointer pointing to padded signal
     Complex *h_convolved_signal = h_padded_signal;
 
     // Allocate host memory for the convolution result
     Complex *h_convolved_signal_ref = (Complex *)malloc(sizeof(Complex) * signal_size);
 
-    // cufftXtMemcpy() - Copy data from multiple GPUs to host
-    checkCudaErrors(cufftXtMemcpy(plan_input, h_convolved_signal, d_out_signal, CUFFT_COPY_DEVICE_TO_HOST));
+    if (nGPUs == 1) {
+        checkCudaErrors(cudaSetDevice(whichGPUs[0]));
+        checkCudaErrors(cufftPlan1d(&plan_input, new_size, CUFFT_C2C, 1));
+
+        checkCudaErrors(cudaMalloc((void **)&d_signal_single, sizeof(cufftComplex) * new_size));
+        checkCudaErrors(cudaMalloc((void **)&d_out_signal_single, sizeof(cufftComplex) * new_size));
+        checkCudaErrors(cudaMalloc((void **)&d_filter_kernel_single, sizeof(cufftComplex) * new_size));
+        checkCudaErrors(cudaMalloc((void **)&d_out_filter_kernel_single, sizeof(cufftComplex) * new_size));
+
+        for (int iter = 0; iter < max_iters; ++iter) {
+            checkCudaErrors(cudaMemcpy(d_signal_single,
+                                       h_padded_signal,
+                                       sizeof(cufftComplex) * new_size,
+                                       cudaMemcpyHostToDevice));
+            checkCudaErrors(cudaMemcpy(d_filter_kernel_single,
+                                       h_padded_filter_kernel,
+                                       sizeof(cufftComplex) * new_size,
+                                       cudaMemcpyHostToDevice));
+
+            checkCudaErrors(cufftExecC2C(plan_input, d_signal_single, d_signal_single, CUFFT_FORWARD));
+            checkCudaErrors(cufftExecC2C(plan_input, d_filter_kernel_single, d_filter_kernel_single, CUFFT_FORWARD));
+
+            checkCudaErrors(cudaMemcpy(d_out_signal_single,
+                                       d_signal_single,
+                                       sizeof(cufftComplex) * new_size,
+                                       cudaMemcpyDeviceToDevice));
+            checkCudaErrors(cudaMemcpy(d_out_filter_kernel_single,
+                                       d_filter_kernel_single,
+                                       sizeof(cufftComplex) * new_size,
+                                       cudaMemcpyDeviceToDevice));
+
+            ComplexPointwiseMulAndScale<<<32, 256>>>(d_out_signal_single,
+                                                     d_out_filter_kernel_single,
+                                                     new_size,
+                                                     1.0f / new_size);
+            checkCudaErrors(cudaDeviceSynchronize());
+            getLastCudaError("Kernel execution failed [ ComplexPointwiseMulAndScale ]");
+
+            checkCudaErrors(cufftExecC2C(plan_input, d_out_signal_single, d_out_signal_single, CUFFT_INVERSE));
+        }
+
+        checkCudaErrors(cudaMemcpy(h_convolved_signal,
+                                   d_out_signal_single,
+                                   sizeof(cufftComplex) * new_size,
+                                   cudaMemcpyDeviceToHost));
+    }
+    else {
+        checkCudaErrors(cufftCreate(&plan_input));
+
+        // cufftXtSetGPUs() - Define which GPUs to use
+        result = cufftXtSetGPUs(plan_input, nGPUs, whichGPUs);
+
+        if (result == CUFFT_INVALID_DEVICE) {
+            printf("This sample requires two GPUs on the same board.\n");
+            printf("No such board was found. Waiving sample.\n");
+            exit(EXIT_WAIVED);
+        }
+        else if (result != CUFFT_SUCCESS) {
+            printf("cufftXtSetGPUs failed\n");
+            exit(EXIT_FAILURE);
+        }
+
+        worksize = (size_t *)malloc(sizeof(size_t) * nGPUs);
+
+        // cufftMakePlan1d() - Create the plan
+        checkCudaErrors(cufftMakePlan1d(plan_input, new_size, CUFFT_C2C, 1, worksize));
+
+        // cufftXtMalloc() - Malloc data on multiple GPUs
+        checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_signal, CUFFT_XT_FORMAT_INPLACE));
+        checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_out_signal, CUFFT_XT_FORMAT_INPLACE));
+        checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_filter_kernel, CUFFT_XT_FORMAT_INPLACE));
+        checkCudaErrors(cufftXtMalloc(plan_input, (cudaLibXtDesc **)&d_out_filter_kernel, CUFFT_XT_FORMAT_INPLACE));
+
+        for (int iter = 0; iter < max_iters; ++iter) {
+            checkCudaErrors(cufftXtMemcpy(plan_input, d_signal, h_padded_signal, CUFFT_COPY_HOST_TO_DEVICE));
+            checkCudaErrors(cufftXtMemcpy(plan_input, d_filter_kernel, h_padded_filter_kernel, CUFFT_COPY_HOST_TO_DEVICE));
+
+            checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_signal, d_signal, CUFFT_FORWARD));
+            checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_filter_kernel, d_filter_kernel, CUFFT_FORWARD));
+
+            checkCudaErrors(cufftXtMemcpy(plan_input, d_out_signal, d_signal, CUFFT_COPY_DEVICE_TO_DEVICE));
+            checkCudaErrors(cufftXtMemcpy(plan_input, d_out_filter_kernel, d_filter_kernel, CUFFT_COPY_DEVICE_TO_DEVICE));
+
+            if (iter == 0) {
+                printf("\n\nValue of Library Descriptor\n");
+                printf("Number of GPUs %d\n", d_out_signal->descriptor->nGPUs);
+                printf("Device id ");
+                for (int g = 0; g < d_out_signal->descriptor->nGPUs; g++) {
+                    printf(" %d", d_out_signal->descriptor->GPUs[g]);
+                }
+                printf("\n");
+                printf("Data size on GPU");
+                for (int g = 0; g < d_out_signal->descriptor->nGPUs; g++) {
+                    printf(" %ld", (long)(d_out_signal->descriptor->size[g] / sizeof(cufftComplex)));
+                }
+                printf("\n");
+            }
+
+            multiplyCoefficient(d_out_signal, d_out_filter_kernel, new_size, 1.0f / new_size, nGPUs);
+            checkCudaErrors(cufftXtExecDescriptorC2C(plan_input, d_out_signal, d_out_signal, CUFFT_INVERSE));
+        }
+
+        checkCudaErrors(cufftXtMemcpy(plan_input, h_convolved_signal, d_out_signal, CUFFT_COPY_DEVICE_TO_HOST));
+    }
+
+    printf("Completed fixed iterations = %d\n", max_iters);
 
     // Convolve on the host
     Convolve(h_signal, signal_size, h_filter_kernel, filter_kernel_size, h_convolved_signal_ref);
@@ -340,14 +390,24 @@ int main(int argc, char **argv)
     free(h_padded_filter_kernel);
     free(h_convolved_signal_ref);
 
-    // cudaXtFree() - Free GPU memory
-    checkCudaErrors(cufftXtFree(d_signal));
-    checkCudaErrors(cufftXtFree(d_filter_kernel));
-    checkCudaErrors(cufftXtFree(d_out_signal));
-    checkCudaErrors(cufftXtFree(d_out_filter_kernel));
+    if (nGPUs == 1) {
+        checkCudaErrors(cudaFree(d_signal_single));
+        checkCudaErrors(cudaFree(d_filter_kernel_single));
+        checkCudaErrors(cudaFree(d_out_signal_single));
+        checkCudaErrors(cudaFree(d_out_filter_kernel_single));
+    }
+    else {
+        // cudaXtFree() - Free GPU memory
+        checkCudaErrors(cufftXtFree(d_signal));
+        checkCudaErrors(cufftXtFree(d_filter_kernel));
+        checkCudaErrors(cufftXtFree(d_out_signal));
+        checkCudaErrors(cufftXtFree(d_out_filter_kernel));
+    }
 
-    // cufftDestroy() - Destroy FFT plan
-    checkCudaErrors(cufftDestroy(plan_input));
+    if (plan_input != 0) {
+        // cufftDestroy() - Destroy FFT plan
+        checkCudaErrors(cufftDestroy(plan_input));
+    }
 
     exit(bTestResult ? EXIT_SUCCESS : EXIT_FAILURE);
 }
