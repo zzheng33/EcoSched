@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
 """Hand-crafted event-driven online co-scheduler.
 
-This launcher uses only per-application mode curves derived from brief profiling
-(the rows in perf_metrics.txt) and makes decisions at each scheduling event:
+This launcher uses per-application profiled metrics from perf_metrics.txt and
+makes decisions at each scheduling event:
 - enumerate feasible actions on the currently free GPUs
+- predict normalized runtime from the best available per-app signal
+  (dram_sum, else fp_sum/gpu_count, else sm_sum/gpu_count)
 - score each action with a hand-crafted online objective
 - launch the minimum-score action
 
 Policy design:
-- runtime is used as a guardrail: only modes within a slowdown tolerance of the
-  app's fastest mode are considered online-feasible
+- predicted normalized runtime is used as a guardrail: only modes within a
+  slowdown tolerance of the app's best predicted mode are online-feasible
 - the main score term is normalized energy regret (or EDP regret)
 - idle GPUs are penalized using a weight derived from idle/busy power
 - actions that leave a residual GPU budget few remaining jobs can use receive a
@@ -54,6 +56,11 @@ class ModeInfo(NamedTuple):
     total_power_w: float
     active_energy_j: float
     edp: float
+    dram_sum: float
+    sm_sum: float
+    fp_sum: float
+    predictor_name: str
+    predictor_value: float
     norm_runtime: float
     norm_energy: float
     norm_edp: float
@@ -109,6 +116,46 @@ class TeeStream(object):
 SECTION_RE = re.compile(r"^===== .*?/([^/ ]+) =====$")
 
 
+def _predictor_name_and_value(rows: Dict[int, Tuple[float, float, float, float, float, float, float, float]]) -> Tuple[str, Dict[int, float]]:
+    dram_values = {gpu_count: values[5] for gpu_count, values in rows.items()}
+    if any(value > 0.0 for value in dram_values.values()):
+        return "dram_sum", dram_values
+
+    fp_per_gpu = {
+        gpu_count: (values[7] / float(gpu_count))
+        for gpu_count, values in rows.items()
+    }
+    if any(value > 0.0 for value in fp_per_gpu.values()):
+        return "fp_sum/gpu_count", fp_per_gpu
+
+    sm_per_gpu = {
+        gpu_count: (values[6] / float(gpu_count))
+        for gpu_count, values in rows.items()
+    }
+    return "sm_sum/gpu_count", sm_per_gpu
+
+
+def _predicted_norm_runtime(predictor_values: Dict[int, float]) -> Dict[int, float]:
+    max_value = max(predictor_values.values())
+    min_value = min(predictor_values.values())
+
+    if max_value <= 0.0:
+        return {gpu_count: 1.0 for gpu_count in predictor_values}
+
+    if abs(max_value - min_value) < 1e-12:
+        return {gpu_count: 1.0 for gpu_count in predictor_values}
+
+    norm_runtime = {}
+    for gpu_count, value in predictor_values.items():
+        if value <= 0.0:
+            raise ValueError(
+                "Predictor value must be positive for all modes when using predictor-based runtime; "
+                "got {} for {} GPUs".format(value, gpu_count)
+            )
+        norm_runtime[gpu_count] = max_value / value
+    return norm_runtime
+
+
 def parse_metrics(metrics_path: Path, selected_jobs: Sequence[str]) -> Dict[str, Dict[int, ModeInfo]]:
     raw_rows = {}
     current_job = None
@@ -125,15 +172,31 @@ def parse_metrics(metrics_path: Path, selected_jobs: Sequence[str]) -> Dict[str,
         if current_job is None or line.startswith("cap=") or line.startswith("gpu_count"):
             continue
         parts = line.split()
-        if len(parts) < 3:
-            continue
+        if len(parts) < 6:
+            raise ValueError(
+                "Expected 6 columns per metrics row in {} but got {} for line: {}".format(
+                    metrics_path, len(parts), line
+                )
+            )
         gpu_count = int(parts[0])
         runtime_s = float(parts[1])
         avg_power_w = float(parts[2])
+        dram_sum = float(parts[3])
+        sm_sum = float(parts[4])
+        fp_sum = float(parts[5])
         total_power_w = gpu_count * avg_power_w
         active_energy_j = runtime_s * total_power_w
         edp = active_energy_j * runtime_s
-        raw_rows[current_job][gpu_count] = (runtime_s, avg_power_w, total_power_w, active_energy_j, edp)
+        raw_rows[current_job][gpu_count] = (
+            runtime_s,
+            avg_power_w,
+            total_power_w,
+            active_energy_j,
+            edp,
+            dram_sum,
+            sm_sum,
+            fp_sum,
+        )
 
     missing = [job for job in selected_jobs if job not in raw_rows]
     if missing:
@@ -142,12 +205,22 @@ def parse_metrics(metrics_path: Path, selected_jobs: Sequence[str]) -> Dict[str,
     parsed = {}
     for job in selected_jobs:
         rows = raw_rows[job]
-        min_runtime = min(item[0] for item in rows.values())
-        min_energy = min(item[3] for item in rows.values())
-        min_edp = min(item[4] for item in rows.values())
+        predictor_name, predictor_values = _predictor_name_and_value(rows)
+        norm_runtime_by_gpu = _predicted_norm_runtime(predictor_values)
+        predicted_energy = {
+            gpu_count: rows[gpu_count][2] * norm_runtime_by_gpu[gpu_count]
+            for gpu_count in rows
+        }
+        predicted_edp = {
+            gpu_count: rows[gpu_count][2] * (norm_runtime_by_gpu[gpu_count] ** 2)
+            for gpu_count in rows
+        }
+        min_predicted_energy = min(predicted_energy.values())
+        min_predicted_edp = min(predicted_edp.values())
+
         parsed[job] = {}
         for gpu_count, values in rows.items():
-            runtime_s, avg_power_w, total_power_w, active_energy_j, edp = values
+            runtime_s, avg_power_w, total_power_w, active_energy_j, edp, dram_sum, sm_sum, fp_sum = values
             parsed[job][gpu_count] = ModeInfo(
                 app=job,
                 gpu_count=gpu_count,
@@ -156,9 +229,14 @@ def parse_metrics(metrics_path: Path, selected_jobs: Sequence[str]) -> Dict[str,
                 total_power_w=total_power_w,
                 active_energy_j=active_energy_j,
                 edp=edp,
-                norm_runtime=runtime_s / min_runtime,
-                norm_energy=active_energy_j / min_energy,
-                norm_edp=edp / min_edp,
+                dram_sum=dram_sum,
+                sm_sum=sm_sum,
+                fp_sum=fp_sum,
+                predictor_name=predictor_name,
+                predictor_value=predictor_values[gpu_count],
+                norm_runtime=norm_runtime_by_gpu[gpu_count],
+                norm_energy=predicted_energy[gpu_count] / min_predicted_energy,
+                norm_edp=predicted_edp[gpu_count] / min_predicted_edp,
             )
     return parsed
 
@@ -690,9 +768,11 @@ def main():
             print("  candidate modes:")
             for app in args.jobs:
                 desc = [
-                    "{}GPU(rt={:.2f}, nrt={:.2f}, ne={:.2f}, nedp={:.2f})".format(
+                    "{}GPU(rt={:.2f}, pred={}={:.4f}, nrt={:.2f}, ne={:.2f}, nedp={:.2f})".format(
                         mode.gpu_count,
                         mode.runtime_s,
+                        mode.predictor_name,
+                        mode.predictor_value,
                         mode.norm_runtime,
                         mode.norm_energy,
                         mode.norm_edp,

@@ -1,0 +1,22 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/online_cosched_dryrun.txt
+Online policy parameters:
+  score_metric      = energy
+  slowdown_tol      = 0.20
+  idle_power        = 70.00 W
+  mean_busy_power   = 335.84 W
+  idle_weight       = 0.2084
+  blocking_weight   = 0.0000
+  anchor_app        = pot3d
+  candidate modes:
+    pot3d           -> 2GPU(rt=109.34, pred=dram_sum=0.2500, nrt=1.12, ne=1.27, nedp=1.07), 3GPU(rt=104.33, pred=dram_sum=0.2800, nrt=1.00, ne=1.47, nedp=1.10), 4GPU(rt=102.72, pred=dram_sum=0.2800, nrt=1.00, ne=1.78, nedp=1.34)
+    cloverleaf      -> 3GPU(rt=19.37, pred=dram_sum=1.7900, nrt=1.18, ne=1.04, nedp=1.15), 4GPU(rt=16.83, pred=dram_sum=2.1200, nrt=1.00, ne=1.07, nedp=1.00)
+
+Online dry-run: 2 apps on 4 GPUs (metric=energy, slowdown_tol modes pre-filtered)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================================
+  t=    0.00s | START pot3d           | 2 GPUs [0, 1] | NUMA 0 | score=0.3770 | regret=0.2727 idle=0.50 block=1.00
+  t=  109.34s | END   pot3d           | freed 2 GPUs [0, 1] | NUMA 0 | runtime=109.34s
+  t=  109.34s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0 | score=0.0735 | regret=0.0735 idle=0.00 block=0.00
+  t=  126.17s | END   cloverleaf      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=16.83s
+
+Estimated makespan: 126.17s
