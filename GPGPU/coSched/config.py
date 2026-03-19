@@ -3,8 +3,15 @@
 from pathlib import Path
 
 HOME = Path.home()
+
+SYSTEM = "V100"
+# SYSTEM = "A100"
+# SYSTEM = "H100"
+
+IDLE_POWER_PER_GPU = {"V100": 43.0, "A100": 53.0, "H100": 70.0}
+
 RESULTS_DIR = HOME / "power/GPGPU/coSched/results"
-PERF_METRICS_FILE = HOME / "power/GPGPU/data/H100/perf_metrics.txt"
+PERF_METRICS_FILE = HOME / f"power/GPGPU/data/{SYSTEM}/perf_metrics.txt"
 SCRIPT_DIR = HOME / "power/GPGPU/script"
 SPEC_SCRIPT_DIR = SCRIPT_DIR / "run_benchmark/spec_script"
 ECP_SCRIPT_DIR = SCRIPT_DIR / "run_benchmark/ecp_script"

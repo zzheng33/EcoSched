@@ -21,7 +21,7 @@ MPI_RANKS=${1:-4}  # Default to 4 GPUs if not specified
 #   For 4 GPUs: NX=1600, NZ=800, SIM_TIME=30000
 #   For 4 GPUs (huge): NX=3200, NZ=1600, SIM_TIME=40000
 
-cd ${SPEC_BENCHMARK_ROOT:-/home/ac.zzheng/benchmark/spec}/miniWeather/cpp/build
+cd ${SPEC_BENCHMARK_ROOT:-$HOME/benchmark/spec}/miniWeather/cpp/build
 
 # If CUDA_VISIBLE_DEVICES is set, pick the Nth GPU from that list by MPI rank.
 # Otherwise fall back to using MPI local rank as the GPU id.

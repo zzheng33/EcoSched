@@ -30,8 +30,11 @@ from typing import Dict, List, NamedTuple, Optional, Sequence, Tuple
 
 from config import (
     DEFAULT_JOB_QUEUE,
+    IDLE_POWER_PER_GPU,
     NUMA0_GPUS,
     NUMA1_GPUS,
+    PERF_METRICS_FILE,
+    SYSTEM,
     TOTAL_GPUS,
 )
 from run_cosched_sequential import (
@@ -43,7 +46,7 @@ from run_cosched_sequential import (
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results"
-DEFAULT_IDLE_POWER = 70.0
+DEFAULT_IDLE_POWER = IDLE_POWER_PER_GPU.get(SYSTEM, 70.0)
 DEFAULT_SLOWDOWN_TOL = 0.2
 DEFAULT_SCORE_METRIC = "energy"
 DEFAULT_ANCHOR_APP = "pot3d"
@@ -935,7 +938,7 @@ def main():
     parser.add_argument(
         "--metrics-file",
         type=Path,
-        default=Path("/home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt"),
+        default=PERF_METRICS_FILE,
         help="Path to perf_metrics.txt",
     )
     parser.add_argument(

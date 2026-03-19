@@ -4,7 +4,7 @@
 # Usage: ./run_minisweep.sh [MPI_RANKS]
 # Example: ./run_minisweep.sh 4
 
-cd ${SPEC_BENCHMARK_ROOT:-/home/ac.zzheng/benchmark/spec}/minisweep/build
+cd ${SPEC_BENCHMARK_ROOT:-$HOME/benchmark/spec}/minisweep/build
 
 # Configure parameters
 NCELL_X=128

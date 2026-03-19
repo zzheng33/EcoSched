@@ -6,7 +6,7 @@
 
 MPI_RANKS=${1:-4}  # Default to 4 GPUs if not specified
 
-cd ${SPEC_BENCHMARK_ROOT:-/home/ac.zzheng/benchmark/spec}/CloverLeaf
+cd ${SPEC_BENCHMARK_ROOT:-$HOME/benchmark/spec}/CloverLeaf
 
 # Configure parameters
 X_CELLS=7680

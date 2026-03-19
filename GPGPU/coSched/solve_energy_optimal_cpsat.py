@@ -33,19 +33,20 @@ try:
 except ImportError:
     raise SystemExit(
         "ortools is not installed for this interpreter. Run with "
-        "/home/ac.zzheng/venv_sched/bin/python or install ortools first."
+        "venv_sched/bin/python (under $HOME) or install ortools first."
     )
 
 TIME_SCALE = 100
 POWER_SCALE = 100
-DEFAULT_IDLE_POWER = 70.0
+from config import DEFAULT_JOB_QUEUE as DEFAULT_JOBS, IDLE_POWER_PER_GPU, PERF_METRICS_FILE, SYSTEM
+
+DEFAULT_IDLE_POWER = IDLE_POWER_PER_GPU.get(SYSTEM, 70.0)
 DEFAULT_THREADS = 8
 DEFAULT_TIME_LIMIT_S = 20.0
 DEFAULT_SLOWDOWN_TOL = 0.2
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results"
 DEFAULT_SCHEDULE_OUTPUT = DEFAULT_RESULTS_DIR / "solver_schedule.txt"
-from config import DEFAULT_JOB_QUEUE as DEFAULT_JOBS
 
 
 class ModeRow(NamedTuple):
@@ -364,7 +365,7 @@ def main():
     parser.add_argument(
         "--metrics-file",
         type=Path,
-        default=Path("/home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt"),
+        default=PERF_METRICS_FILE,
         help="Path to perf_metrics.txt",
     )
     parser.add_argument(

@@ -16,6 +16,7 @@ from config import (
     DEFAULT_JOB_QUEUE,
     NUMA0_GPUS,
     NUMA1_GPUS,
+    PERF_METRICS_FILE,
     RESULTS_DIR,
     TOTAL_GPUS,
 )
@@ -25,7 +26,7 @@ from run_cosched_sequential import (
     run_cosched,
 )
 
-DEFAULT_METRICS_FILE = Path("/home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt")
+DEFAULT_METRICS_FILE = PERF_METRICS_FILE
 DEFAULT_PERF_TOL = 0.05
 SECTION_RE = re.compile(r"^===== .*?/([^/ ]+) =====$")
 

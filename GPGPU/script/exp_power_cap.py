@@ -334,9 +334,9 @@ def run_ml_experiment(model_name=None):
                 ])
 
     for model in models:
-        gpu_counts = _gpu_counts_for_benchmark(suite, benchmark)
+        gpu_counts = GPU_ct
 
-    for g_cnt in gpu_counts:
+        for g_cnt in gpu_counts:
             for total_gpu_cap in gpu_caps:
                 per_gpu_cap_int = _per_gpu_cap_from_total(total_gpu_cap, g_cnt)
                 if per_gpu_cap_int is None:
