@@ -79,34 +79,37 @@ gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 2	34.03	226.10	0.62	3025.87	0.00
 1	77.87	261.73	0.47	1504.87	0.00
 
+===== ML/MonteCarloMultiGPU =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+1	31.07	296.59	0.00	1462.94	0.00
+3	31.11	283.94	0.00	4443.38	0.00
+2	31.14	293.38	0.00	2942.88	0.00
+4	31.99	80.00	0.02	6112.00	0.00
+
 ===== ML/conjugateGradientMultiDeviceCG =====
 cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-1	1.14	73.50	0.00	1530.00	0.00
-2	1.14	66.50	0.01	2820.00	0.00
-3	1.17	62.67	0.00	4110.00	0.00
-4	1.18	64.88	0.00	5640.00	0.00
+4	25.39	144.15	2.52	6120.00	0.00
+3	37.60	135.69	1.57	4590.00	0.00
+2	45.10	147.38	1.29	3045.88	0.00
+1	84.31	156.06	0.71	1515.88	0.00
 
-===== ML/simpleCUBLASXT =====
-cap=2800
-gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-4	6.77	63.50	0.00	4725.00	0.00
-3	7.73	68.11	0.00	4328.33	0.00
-2	8.66	68.65	0.00	2940.00	0.00
-1	12.40	74.14	0.00	1530.00	0.00
 
 ===== ML/simpleMultiGPU =====
 cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-4	1.14	64.88	0.00	5640.00	0.00
-3	1.14	61.00	0.00	3712.50	0.00
+4	57.00	72.88	0.08	6113.82	0.00
+3	74.96	72.75	0.06	4583.82	0.00
+2	112.28	73.41	0.04	3060.00	0.00
+1	114.16	78.47	0.04	1530.00	0.00
 
 ===== ML/simpleP2P =====
 cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-2	67.38	77.91	0.16	3060.00	0.00
+2	68.42	78.29	0.16	3060.00	0.00
 
 ===== ML/streamOrderedAllocationP2P =====
 cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-2	29.40	66.28	0.03	2818.12	0.00
+2	32.18	67.44	0.05	2820.00	0.00

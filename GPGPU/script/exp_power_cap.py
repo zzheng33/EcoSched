@@ -71,7 +71,6 @@ cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simple
 
 
 
-
 # ml_models = ["resnet50","vgg16"]
 ml_models = ["resnet50","vgg16","resnet101","resnet152","vgg19"]
 
