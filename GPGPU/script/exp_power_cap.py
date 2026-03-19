@@ -7,6 +7,9 @@ import csv
 import re
 
 num_gpu = 4
+system = "V100"
+# system = "A100"
+# system = "H100"
 
 # Define paths and executables
 home_dir = os.path.expanduser('~')
@@ -288,7 +291,7 @@ def run_ml_experiment(model_name=None):
         models = ml_models
 
     output_root_dir = os.path.abspath(
-        os.path.join(script_dir, "..", "data", "H100", "ml_power_motif")
+        os.path.join(script_dir, "..", "data", system, "ml_power_motif")
     )
     os.makedirs(output_root_dir, exist_ok=True)
     throughput_csv_by_model = {}
@@ -402,10 +405,10 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
     # For ECP BERT/GPT2, store both throughput and GPU metrics under ml_power_motif.
     if is_bert:
         output_dir = os.path.abspath(
-            os.path.join(script_dir, "..", "data", "H100", "ml_power_motif", benchmark)
+            os.path.join(script_dir, "..", "data", system, "ml_power_motif", benchmark)
         )
     else:
-        output_dir = f"../data/H100/{suite}_power_motif/{benchmark}"
+        output_dir = f"../data/{system}/{suite}_power_motif/{benchmark}"
     os.makedirs(output_dir, exist_ok=True)
     output_runtime = f"{output_dir}/runtime.csv"
 
