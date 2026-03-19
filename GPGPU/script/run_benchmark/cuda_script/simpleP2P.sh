@@ -3,9 +3,9 @@
 set -euo pipefail
 
 # Usage: CUDA_VISIBLE_DEVICES=0,1 ./simpleP2P.sh [NUM_GPUS] [benchmark args...]
-# Uses exactly 2 P2P-capable GPUs. MAX_ITERS controls how many times the binary is launched.
+# Uses exactly 2 P2P-capable GPUs. MAX_ITERS controls iterations inside the binary.
 
-MAX_ITERS=100
+MAX_ITERS=30
 
 NUM_GPUS="${NUM_GPUS:-2}"
 if [[ $# -gt 0 && "$1" =~ ^[1-9][0-9]*$ ]]; then
@@ -63,6 +63,4 @@ if [[ ! -x "${BENCHMARK_BIN}" ]]; then
     exit 1
 fi
 
-for ((iter = 1; iter <= MAX_ITERS; iter++)); do
-    "${BENCHMARK_BIN}" "$@"
-done
+exec "${BENCHMARK_BIN}" --max-iters="${MAX_ITERS}" "$@"

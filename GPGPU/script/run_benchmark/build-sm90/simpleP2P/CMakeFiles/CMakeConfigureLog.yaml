@@ -91,7 +91,7 @@ events:
       #$ TOP=/soft/compilers/cuda/cuda-12.3.0/bin/..
       #$ NVVMIR_LIBRARY_DIR=/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/libdevice
       #$ LD_LIBRARY_PATH=/soft/compilers/cuda/cuda-12.3.0/bin/../lib:/soft/compilers/intel-2019/compilers_and_libraries/linux/mkl/lib/intel64_lin:/soft/libraries/mpi/openmpi/4.1.1/lib:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64:/soft/compilers/cuda/cuda-12.3.0/lib64
-      #$ PATH=/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin
+      #$ PATH=/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/usr/bin:/home/ac.zzheng/.vscode-server/cli/servers/Stable-ce099c1ed25d9eb3076c11e4a280f3eb52b4fbeb/server/bin/remote-cli:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin
       #$ INCLUDES="-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"  
       #$ LIBRARIES=  "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"
       #$ CUDAFE_FLAGS=
@@ -123,7 +123,7 @@ events:
       - "CMakeLists.txt:5 (project)"
     message: |
       Parsed CUDA nvcc implicit link information:
-        found 'PATH=' string: [/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin]
+        found 'PATH=' string: [/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/usr/bin:/home/ac.zzheng/.vscode-server/cli/servers/Stable-ce099c1ed25d9eb3076c11e4a280f3eb52b4fbeb/server/bin/remote-cli:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin]
         found 'LIBRARIES=' string: ["-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"]
         found 'INCLUDES=' string: ["-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"  ]
         considering line: [#$ rm tmp/a_dlink.reg.c]
@@ -179,7 +179,7 @@ events:
       - "CMakeLists.txt:5 (project)"
     message: |
       Parsed CUDA nvcc include information:
-        found 'PATH=' string: [/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin]
+        found 'PATH=' string: [/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/usr/bin:/home/ac.zzheng/.vscode-server/cli/servers/Stable-ce099c1ed25d9eb3076c11e4a280f3eb52b4fbeb/server/bin/remote-cli:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin]
         found 'LIBRARIES=' string: ["-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"]
         found 'INCLUDES=' string: ["-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"  ]
         considering line: [#$ rm tmp/a_dlink.reg.c]
@@ -236,8 +236,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-DC0vTu"
-      binary: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-DC0vTu"
+      source: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-0O3sw0"
+      binary: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-0O3sw0"
     cmakeVariables:
       CMAKE_CUDA_ARCHITECTURES: "90"
       CMAKE_C_FLAGS: ""
@@ -248,13 +248,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-DC0vTu'
+        Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-0O3sw0'
         
-        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7c42d/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_7c42d.dir/build.make CMakeFiles/cmTC_7c42d.dir/build
-        gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-DC0vTu'
-        Building C object CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o
-        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc   -v -o CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f863f/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f863f.dir/build.make CMakeFiles/cmTC_f863f.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-0O3sw0'
+        Building C object CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o
+        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc   -v -o CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -263,8 +263,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c42d.dir/'
-         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1 -quiet -v /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_7c42d.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccXU7FAz.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f863f.dir/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1 -quiet -v /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_f863f.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccH2IMRb.s
         GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
         	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
         
@@ -284,15 +284,15 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: 633fc1144b439c5681b32ed6a75df4d1
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c42d.dir/'
-         as -v --64 -o CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o /tmp/ccXU7FAz.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f863f.dir/'
+         as -v --64 -o CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o /tmp/ccH2IMRb.s
         GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils; SUSE Linux Enterprise 15) 2.45.0.20251103-150100757
         COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.'
-        Linking C executable cmTC_7c42d
-        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7c42d.dir/link.txt --verbose=1
-        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc  -v CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o -o cmTC_7c42d 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_f863f
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f863f.dir/link.txt --verbose=1
+        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc  -v CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o -o cmTC_f863f 
         Using built-in specs.
         COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc
         COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper
@@ -304,10 +304,10 @@ events:
         gcc version 12.2.0 (GCC) 
         COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c42d' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7c42d.'
-         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc5ZX0q3.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_7c42d /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c42d' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7c42d.'
-        gmake[1]: Leaving directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-DC0vTu'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f863f' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f863f.'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPqtm1m.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f863f /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f863f' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f863f.'
+        gmake[1]: Leaving directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-0O3sw0'
         
       exitCode: 0
   -
@@ -345,13 +345,13 @@ events:
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-DC0vTu']
+        ignore line: [Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-0O3sw0']
         ignore line: []
-        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7c42d/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_7c42d.dir/build.make CMakeFiles/cmTC_7c42d.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-DC0vTu']
-        ignore line: [Building C object CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o]
-        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc   -v -o CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f863f/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_f863f.dir/build.make CMakeFiles/cmTC_f863f.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-0O3sw0']
+        ignore line: [Building C object CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc   -v -o CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -360,8 +360,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c42d.dir/']
-        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1 -quiet -v /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_7c42d.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccXU7FAz.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f863f.dir/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1 -quiet -v /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_f863f.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccH2IMRb.s]
         ignore line: [GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
         ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
         ignore line: []
@@ -381,16 +381,16 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: 633fc1144b439c5681b32ed6a75df4d1]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c42d.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o /tmp/ccXU7FAz.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f863f.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o /tmp/ccH2IMRb.s]
         ignore line: [GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils]
         ignore line: [ SUSE Linux Enterprise 15) 2.45.0.20251103-150100757]
         ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C executable cmTC_7c42d]
-        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7c42d.dir/link.txt --verbose=1]
-        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc  -v CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o -o cmTC_7c42d ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_f863f]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f863f.dir/link.txt --verbose=1]
+        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc  -v CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o -o cmTC_f863f ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc]
         ignore line: [COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper]
@@ -402,13 +402,13 @@ events:
         ignore line: [gcc version 12.2.0 (GCC) ]
         ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_7c42d' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_7c42d.']
-        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/cc5ZX0q3.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_7c42d /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_f863f' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_f863f.']
+        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPqtm1m.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_f863f /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o -lgcc --push-state --as-needed -lgcc_s --pop-state -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/cc5ZX0q3.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccPqtm1m.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -420,7 +420,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_7c42d] ==> ignore
+          arg [cmTC_f863f] ==> ignore
           arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
           arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
@@ -430,7 +430,7 @@ events:
           arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
           arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
           arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
-          arg [CMakeFiles/cmTC_7c42d.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [CMakeFiles/cmTC_f863f.dir/CMakeCCompilerABI.c.o] ==> ignore
           arg [-lgcc] ==> lib [gcc]
           arg [--push-state] ==> ignore
           arg [--as-needed] ==> ignore
@@ -468,8 +468,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-WsZNTa"
-      binary: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-WsZNTa"
+      source: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-aE8aWa"
+      binary: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-aE8aWa"
     cmakeVariables:
       CMAKE_CUDA_ARCHITECTURES: "90"
       CMAKE_CXX_FLAGS: ""
@@ -480,13 +480,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-WsZNTa'
+        Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-aE8aWa'
         
-        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3d5fa/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_3d5fa.dir/build.make CMakeFiles/cmTC_3d5fa.dir/build
-        gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-WsZNTa'
-        Building CXX object CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o
-        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++   -v -o CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ef54b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ef54b.dir/build.make CMakeFiles/cmTC_ef54b.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-aE8aWa'
+        Building CXX object CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o
+        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++   -v -o CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -495,8 +495,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d5fa.dir/'
-         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -D_GNU_SOURCE /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_3d5fa.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccZ7od2l.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ef54b.dir/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -D_GNU_SOURCE /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_ef54b.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccgB8uB9.s
         GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
         	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
         
@@ -518,15 +518,15 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: e236158c8a2002ae12fe327bd6fa1801
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d5fa.dir/'
-         as -v --64 -o CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccZ7od2l.s
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ef54b.dir/'
+         as -v --64 -o CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccgB8uB9.s
         GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils; SUSE Linux Enterprise 15) 2.45.0.20251103-150100757
         COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX executable cmTC_3d5fa
-        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3d5fa.dir/link.txt --verbose=1
-        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_3d5fa 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_ef54b
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef54b.dir/link.txt --verbose=1
+        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ef54b 
         Using built-in specs.
         COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++
         COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper
@@ -538,10 +538,10 @@ events:
         gcc version 12.2.0 (GCC) 
         COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3d5fa' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3d5fa.'
-         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccYXHxJJ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3d5fa /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3d5fa' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3d5fa.'
-        gmake[1]: Leaving directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-WsZNTa'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ef54b' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ef54b.'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccx677f7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_ef54b /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ef54b' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ef54b.'
+        gmake[1]: Leaving directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-aE8aWa'
         
       exitCode: 0
   -
@@ -583,13 +583,13 @@ events:
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-WsZNTa']
+        ignore line: [Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-aE8aWa']
         ignore line: []
-        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3d5fa/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_3d5fa.dir/build.make CMakeFiles/cmTC_3d5fa.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-WsZNTa']
-        ignore line: [Building CXX object CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o]
-        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++   -v -o CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ef54b/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_ef54b.dir/build.make CMakeFiles/cmTC_ef54b.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-aE8aWa']
+        ignore line: [Building CXX object CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++   -v -o CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -598,8 +598,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d5fa.dir/']
-        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -D_GNU_SOURCE /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_3d5fa.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccZ7od2l.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ef54b.dir/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -D_GNU_SOURCE /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_ef54b.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/ccgB8uB9.s]
         ignore line: [GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
         ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
         ignore line: []
@@ -621,16 +621,16 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: e236158c8a2002ae12fe327bd6fa1801]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d5fa.dir/']
-        ignore line: [ as -v --64 -o CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccZ7od2l.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ef54b.dir/']
+        ignore line: [ as -v --64 -o CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o /tmp/ccgB8uB9.s]
         ignore line: [GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils]
         ignore line: [ SUSE Linux Enterprise 15) 2.45.0.20251103-150100757]
         ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX executable cmTC_3d5fa]
-        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3d5fa.dir/link.txt --verbose=1]
-        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_3d5fa ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_ef54b]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef54b.dir/link.txt --verbose=1]
+        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_ef54b ]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++]
         ignore line: [COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper]
@@ -642,13 +642,13 @@ events:
         ignore line: [gcc version 12.2.0 (GCC) ]
         ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_3d5fa' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_3d5fa.']
-        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccYXHxJJ.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_3d5fa /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_ef54b' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_ef54b.']
+        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccx677f7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_ef54b /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccYXHxJJ.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccx677f7.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -660,7 +660,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_3d5fa] ==> ignore
+          arg [cmTC_ef54b] ==> ignore
           arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
           arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
@@ -670,7 +670,7 @@ events:
           arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
           arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
           arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
-          arg [CMakeFiles/cmTC_3d5fa.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [CMakeFiles/cmTC_ef54b.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
           arg [-lstdc++] ==> lib [stdc++]
           arg [-lm] ==> lib [m]
           arg [-lgcc_s] ==> lib [gcc_s]
@@ -704,8 +704,8 @@ events:
     checks:
       - "Detecting CUDA compiler ABI info"
     directories:
-      source: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-Yp4uqd"
-      binary: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-Yp4uqd"
+      source: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-ByhgY6"
+      binary: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-ByhgY6"
     cmakeVariables:
       CMAKE_CUDA_ARCHITECTURES: "90"
       CMAKE_CUDA_FLAGS: ""
@@ -717,13 +717,13 @@ events:
       variable: "CMAKE_CUDA_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-Yp4uqd'
+        Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-ByhgY6'
         
-        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b25ed/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_b25ed.dir/build.make CMakeFiles/cmTC_b25ed.dir/build
-        gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-Yp4uqd'
-        Building CUDA object CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o
-        /soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler   "--generate-code=arch=compute_90,code=[compute_90,sm_90]"   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_309ef/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_309ef.dir/build.make CMakeFiles/cmTC_309ef.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-ByhgY6'
+        Building CUDA object CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o
+        /soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler   "--generate-code=arch=compute_90,code=[compute_90,sm_90]"   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o
         Using built-in specs.
         COLLECT_GCC=gcc
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -732,8 +732,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/'
-         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=900 -D __CUDA_ARCH_LIST__=900 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.cu -dumpbase-ext .cu
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=900 -D __CUDA_ARCH_LIST__=900 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.cu -dumpbase-ext .cu
         ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
         #include "..." search starts here:
         #include <...> search starts here:
@@ -749,7 +749,7 @@ events:
         End of search list.
         COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.'
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.'
         Using built-in specs.
         COLLECT_GCC=gcc
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -758,8 +758,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/'
-         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH_LIST__=900 -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.cu -dumpbase-ext .cu
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH_LIST__=900 -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.cu -dumpbase-ext .cu
         ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
         #include "..." search starts here:
         #include <...> search starts here:
@@ -775,7 +775,7 @@ events:
         End of search list.
         COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.'
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.'
         Using built-in specs.
         COLLECT_GCC=gcc
         OFFLOAD_TARGET_NAMES=nvptx-none
@@ -784,8 +784,8 @@ events:
         Thread model: posix
         Supported LTO compression algorithms: zlib zstd
         gcc version 12.2.0 (GCC) 
-        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b25ed.dir/'
-         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=900 -D __CUDA_ARCH_LIST__=900 -D CUDA_DOUBLE_MATH_FUNCTIONS /tmp/tmpxft_000171bc_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpdir CMakeFiles/cmTC_b25ed.dir/ -dumpbase CMakeCUDACompilerABI.cu.cpp -dumpbase-ext .cpp -m64 -mtune=generic -march=x86-64 -version -o /tmp/cczNQDNt.s
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_309ef.dir/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=900 -D __CUDA_ARCH_LIST__=900 -D CUDA_DOUBLE_MATH_FUNCTIONS /tmp/tmpxft_00002983_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpdir CMakeFiles/cmTC_309ef.dir/ -dumpbase CMakeCUDACompilerABI.cu.cpp -dumpbase-ext .cpp -m64 -mtune=generic -march=x86-64 -version -o /tmp/ccnWJPIb.s
         GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
         	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
         
@@ -808,15 +808,15 @@ events:
         
         GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
         Compiler executable checksum: e236158c8a2002ae12fe327bd6fa1801
-        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b25ed.dir/'
-         as -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include --64 -o CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o /tmp/cczNQDNt.s
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_309ef.dir/'
+         as -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include --64 -o CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o /tmp/ccnWJPIb.s
         GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils; SUSE Linux Enterprise 15) 2.45.0.20251103-150100757
         COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.'
-        Linking CUDA executable cmTC_b25ed
-        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b25ed.dir/link.txt --verbose=1
-        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o -o cmTC_b25ed  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.'
+        Linking CUDA executable cmTC_309ef
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_309ef.dir/link.txt --verbose=1
+        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o -o cmTC_309ef  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"
         Using built-in specs.
         COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++
         COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper
@@ -828,10 +828,10 @@ events:
         gcc version 12.2.0 (GCC) 
         COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
         LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b25ed' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b25ed.'
-         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccTxLQIN.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_b25ed /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
-        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b25ed' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b25ed.'
-        gmake[1]: Leaving directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-Yp4uqd'
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_309ef' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_309ef.'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccHRBbX4.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_309ef /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_309ef' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_309ef.'
+        gmake[1]: Leaving directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-ByhgY6'
         
       exitCode: 0
   -
@@ -875,13 +875,13 @@ events:
     message: |
       Parsed CUDA implicit link information:
         link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
-        ignore line: [Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-Yp4uqd']
+        ignore line: [Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-ByhgY6']
         ignore line: []
-        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_b25ed/fast]
-        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_b25ed.dir/build.make CMakeFiles/cmTC_b25ed.dir/build]
-        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-Yp4uqd']
-        ignore line: [Building CUDA object CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o]
-        ignore line: [/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler   "--generate-code=arch=compute_90 code=[compute_90 sm_90]"   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o]
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_309ef/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_309ef.dir/build.make CMakeFiles/cmTC_309ef.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-ByhgY6']
+        ignore line: [Building CUDA object CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o]
+        ignore line: [/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler   "--generate-code=arch=compute_90 code=[compute_90 sm_90]"   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=gcc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -890,8 +890,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/']
-        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=900 -D __CUDA_ARCH_LIST__=900 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.cu -dumpbase-ext .cu]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=900 -D __CUDA_ARCH_LIST__=900 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.cu -dumpbase-ext .cu]
         ignore line: [ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
         ignore line: [#include "..." search starts here:]
         ignore line: [#include <...> search starts here:]
@@ -907,7 +907,7 @@ events:
         ignore line: [End of search list.]
         ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_000171bc_00000000-7_CMakeCUDACompilerABI.cpp1.']
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_00002983_00000000-7_CMakeCUDACompilerABI.cpp1.']
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=gcc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -916,8 +916,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/']
-        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH_LIST__=900 -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.cu -dumpbase-ext .cu]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH_LIST__=900 -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.cu -dumpbase-ext .cu]
         ignore line: [ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
         ignore line: [#include "..." search starts here:]
         ignore line: [#include <...> search starts here:]
@@ -933,7 +933,7 @@ events:
         ignore line: [End of search list.]
         ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_000171bc_00000000-5_CMakeCUDACompilerABI.cpp4.']
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=900' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_00002983_00000000-5_CMakeCUDACompilerABI.cpp4.']
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=gcc]
         ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
@@ -942,8 +942,8 @@ events:
         ignore line: [Thread model: posix]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 12.2.0 (GCC) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b25ed.dir/']
-        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=900 -D __CUDA_ARCH_LIST__=900 -D CUDA_DOUBLE_MATH_FUNCTIONS /tmp/tmpxft_000171bc_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpdir CMakeFiles/cmTC_b25ed.dir/ -dumpbase CMakeCUDACompilerABI.cu.cpp -dumpbase-ext .cpp -m64 -mtune=generic -march=x86-64 -version -o /tmp/cczNQDNt.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_309ef.dir/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=900 -D __CUDA_ARCH_LIST__=900 -D CUDA_DOUBLE_MATH_FUNCTIONS /tmp/tmpxft_00002983_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpdir CMakeFiles/cmTC_309ef.dir/ -dumpbase CMakeCUDACompilerABI.cu.cpp -dumpbase-ext .cpp -m64 -mtune=generic -march=x86-64 -version -o /tmp/ccnWJPIb.s]
         ignore line: [GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
         ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
         ignore line: []
@@ -966,16 +966,16 @@ events:
         ignore line: []
         ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
         ignore line: [Compiler executable checksum: e236158c8a2002ae12fe327bd6fa1801]
-        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b25ed.dir/']
-        ignore line: [ as -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include --64 -o CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o /tmp/cczNQDNt.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_309ef.dir/']
+        ignore line: [ as -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include --64 -o CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o /tmp/ccnWJPIb.s]
         ignore line: [GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils]
         ignore line: [ SUSE Linux Enterprise 15) 2.45.0.20251103-150100757]
         ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.']
-        ignore line: [Linking CUDA executable cmTC_b25ed]
-        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b25ed.dir/link.txt --verbose=1]
-        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o -o cmTC_b25ed  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=900' '-D' '__CUDA_ARCH_LIST__=900' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.']
+        ignore line: [Linking CUDA executable cmTC_309ef]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_309ef.dir/link.txt --verbose=1]
+        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o -o cmTC_309ef  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++]
         ignore line: [COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper]
@@ -987,13 +987,13 @@ events:
         ignore line: [gcc version 12.2.0 (GCC) ]
         ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
         ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_b25ed' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_b25ed.']
-        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccTxLQIN.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_b25ed /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_309ef' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_309ef.']
+        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccHRBbX4.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_309ef /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2] ==> ignore
           arg [-plugin] ==> ignore
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
           arg [-plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper] ==> ignore
-          arg [-plugin-opt=-fresolution=/tmp/ccTxLQIN.res] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccHRBbX4.res] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
           arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
           arg [-plugin-opt=-pass-through=-lc] ==> ignore
@@ -1005,7 +1005,7 @@ events:
           arg [-dynamic-linker] ==> ignore
           arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
           arg [-o] ==> ignore
-          arg [cmTC_b25ed] ==> ignore
+          arg [cmTC_309ef] ==> ignore
           arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
           arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
           arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
@@ -1017,7 +1017,7 @@ events:
           arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
           arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
           arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
-          arg [CMakeFiles/cmTC_b25ed.dir/CMakeCUDACompilerABI.cu.o] ==> ignore
+          arg [CMakeFiles/cmTC_309ef.dir/CMakeCUDACompilerABI.cu.o] ==> ignore
           arg [-lcudadevrt] ==> lib [cudadevrt]
           arg [-lcudart_static] ==> lib [cudart_static]
           arg [-lrt] ==> lib [rt]
@@ -1061,8 +1061,8 @@ events:
     checks:
       - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
     directories:
-      source: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-RR3tzR"
-      binary: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-RR3tzR"
+      source: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-QmcHTS"
+      binary: "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-QmcHTS"
     cmakeVariables:
       CMAKE_CUDA_ARCHITECTURES: "90"
       CMAKE_C_FLAGS: ""
@@ -1073,17 +1073,17 @@ events:
       variable: "CMAKE_HAVE_LIBC_PTHREAD"
       cached: true
       stdout: |
-        Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-RR3tzR'
+        Change Dir: '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-QmcHTS'
         
-        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_478f9/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_478f9.dir/build.make CMakeFiles/cmTC_478f9.dir/build
-        gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-RR3tzR'
-        Building C object CMakeFiles/cmTC_478f9.dir/src.c.o
-        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_478f9.dir/src.c.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-RR3tzR/src.c
-        Linking C executable cmTC_478f9
-        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_478f9.dir/link.txt --verbose=1
-        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc CMakeFiles/cmTC_478f9.dir/src.c.o -o cmTC_478f9 
-        gmake[1]: Leaving directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-RR3tzR'
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f3623/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_f3623.dir/build.make CMakeFiles/cmTC_f3623.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-QmcHTS'
+        Building C object CMakeFiles/cmTC_f3623.dir/src.c.o
+        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_f3623.dir/src.c.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-QmcHTS/src.c
+        Linking C executable cmTC_f3623
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f3623.dir/link.txt --verbose=1
+        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc CMakeFiles/cmTC_f3623.dir/src.c.o -o cmTC_f3623 
+        gmake[1]: Leaving directory '/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleP2P/CMakeFiles/CMakeScratch/TryCompile-QmcHTS'
         
       exitCode: 0
 ...

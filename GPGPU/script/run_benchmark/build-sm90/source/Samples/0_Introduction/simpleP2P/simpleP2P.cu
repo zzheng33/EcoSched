@@ -33,6 +33,7 @@
 // includes, system
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 // CUDA includes
 #include <cuda_runtime.h>
@@ -40,6 +41,16 @@
 // includes, project
 #include <helper_cuda.h>
 #include <helper_functions.h> // helper for shared that are common to CUDA Samples
+
+static int parseIntArg(int argc, char **argv, const char *flag, int defaultVal) {
+    size_t len = strlen(flag);
+    for (int i = 1; i < argc; i++) {
+        if (strncmp(argv[i], flag, len) == 0 && argv[i][len] == '=') {
+            return atoi(argv[i] + len + 1);
+        }
+    }
+    return defaultVal;
+}
 
 __global__ void SimpleKernel(float *src, float *dst)
 {
@@ -53,6 +64,8 @@ inline bool IsAppBuiltAs64() { return sizeof(void *) == 8; }
 
 int main(int argc, char **argv)
 {
+    int maxIters = parseIntArg(argc, argv, "--max-iters", 100);
+
     printf("[%s] - Starting...\n", argv[0]);
 
     if (!IsAppBuiltAs64()) {
@@ -132,7 +145,7 @@ int main(int argc, char **argv)
     checkCudaErrors(cudaDeviceEnablePeerAccess(gpuid[0], 0));
 
     // Allocate buffers
-    const size_t buf_size = 1024 * 1024 * 16 * sizeof(float);
+    const size_t buf_size = 1024 * 1024 * 256 * sizeof(float);
     printf(
         "Allocating buffers (%iMB on GPU%d, GPU%d and CPU Host)...\n", int(buf_size / 1024 / 1024), gpuid[0], gpuid[1]);
     checkCudaErrors(cudaSetDevice(gpuid[0]));
@@ -143,37 +156,6 @@ int main(int argc, char **argv)
     checkCudaErrors(cudaMalloc(&g1, buf_size));
     float *h0;
     checkCudaErrors(cudaMallocHost(&h0, buf_size)); // Automatically portable with UVA
-
-    // Create CUDA event handles
-    printf("Creating event handles...\n");
-    cudaEvent_t start_event, stop_event;
-    float       time_memcpy;
-    int         eventflags = cudaEventBlockingSync;
-    checkCudaErrors(cudaEventCreateWithFlags(&start_event, eventflags));
-    checkCudaErrors(cudaEventCreateWithFlags(&stop_event, eventflags));
-
-    // P2P memcopy() benchmark
-    checkCudaErrors(cudaEventRecord(start_event, 0));
-
-    for (int i = 0; i < 100; i++) {
-        // With UVA we don't need to specify source and target devices, the
-        // runtime figures this out by itself from the pointers
-        // Ping-pong copy between GPUs
-        if (i % 2 == 0) {
-            checkCudaErrors(cudaMemcpy(g1, g0, buf_size, cudaMemcpyDefault));
-        }
-        else {
-            checkCudaErrors(cudaMemcpy(g0, g1, buf_size, cudaMemcpyDefault));
-        }
-    }
-
-    checkCudaErrors(cudaEventRecord(stop_event, 0));
-    checkCudaErrors(cudaEventSynchronize(stop_event));
-    checkCudaErrors(cudaEventElapsedTime(&time_memcpy, start_event, stop_event));
-    printf("cudaMemcpyPeer / cudaMemcpy between GPU%d and GPU%d: %.2fGB/s\n",
-           gpuid[0],
-           gpuid[1],
-           (1.0f / (time_memcpy / 1000.0f)) * ((100.0f * buf_size)) / 1024.0f / 1024.0f / 1024.0f);
 
     // Prepare host buffer and copy to GPU 0
     printf("Preparing host buffer and memcpy to GPU%d...\n", gpuid[0]);
@@ -189,29 +171,44 @@ int main(int argc, char **argv)
     const dim3 threads(512, 1);
     const dim3 blocks((buf_size / sizeof(float)) / threads.x, 1);
 
-    // Run kernel on GPU 1, reading input from the GPU 0 buffer, writing
-    // output to the GPU 1 buffer
-    printf("Run kernel on GPU%d, taking source data from GPU%d and writing to "
-           "GPU%d...\n",
-           gpuid[1],
-           gpuid[0],
-           gpuid[1]);
-    checkCudaErrors(cudaSetDevice(gpuid[1]));
-    SimpleKernel<<<blocks, threads>>>(g0, g1);
+    // Create CUDA event handles on GPU 0
+    cudaEvent_t start_event, stop_event;
+    float       time_memcpy;
+    int         eventflags = cudaEventBlockingSync;
+    checkCudaErrors(cudaEventCreateWithFlags(&start_event, eventflags));
+    checkCudaErrors(cudaEventCreateWithFlags(&stop_event, eventflags));
 
-    checkCudaErrors(cudaDeviceSynchronize());
+    printf("Running %d iterations of P2P memcpy + kernel between GPU%d and GPU%d...\n",
+           maxIters, gpuid[0], gpuid[1]);
 
-    // Run kernel on GPU 0, reading input from the GPU 1 buffer, writing
-    // output to the GPU 0 buffer
-    printf("Run kernel on GPU%d, taking source data from GPU%d and writing to "
-           "GPU%d...\n",
-           gpuid[0],
-           gpuid[1],
-           gpuid[0]);
-    checkCudaErrors(cudaSetDevice(gpuid[0]));
-    SimpleKernel<<<blocks, threads>>>(g1, g0);
+    checkCudaErrors(cudaEventRecord(start_event, 0));
 
-    checkCudaErrors(cudaDeviceSynchronize());
+    for (int iter = 0; iter < maxIters; iter++) {
+        // P2P memcopy ping-pong
+        for (int i = 0; i < 100; i++) {
+            if (i % 2 == 0) {
+                checkCudaErrors(cudaMemcpy(g1, g0, buf_size, cudaMemcpyDefault));
+            }
+            else {
+                checkCudaErrors(cudaMemcpy(g0, g1, buf_size, cudaMemcpyDefault));
+            }
+        }
+
+        // Run kernel on GPU 1, reading from GPU 0
+        checkCudaErrors(cudaSetDevice(gpuid[1]));
+        SimpleKernel<<<blocks, threads>>>(g0, g1);
+        checkCudaErrors(cudaDeviceSynchronize());
+
+        // Run kernel on GPU 0, reading from GPU 1
+        checkCudaErrors(cudaSetDevice(gpuid[0]));
+        SimpleKernel<<<blocks, threads>>>(g1, g0);
+        checkCudaErrors(cudaDeviceSynchronize());
+    }
+
+    checkCudaErrors(cudaEventRecord(stop_event, 0));
+    checkCudaErrors(cudaEventSynchronize(stop_event));
+    checkCudaErrors(cudaEventElapsedTime(&time_memcpy, start_event, stop_event));
+    printf("Total time for %d iterations: %.2f ms\n", maxIters, time_memcpy);
 
     // Copy data back to host and verify
     printf("Copy data back to host from GPU%d and verify results...\n", gpuid[0]);
