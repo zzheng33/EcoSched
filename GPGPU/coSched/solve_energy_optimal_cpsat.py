@@ -45,10 +45,7 @@ DEFAULT_SLOWDOWN_TOL = 0.2
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results"
 DEFAULT_SCHEDULE_OUTPUT = DEFAULT_RESULTS_DIR / "solver_schedule.txt"
-DEFAULT_JOBS = [
-    "pot3d", "minisweep", "lbm", "cloverleaf", "tealeaf",
-    "miniweather", "hpgmg", "bert", "gpt2", "resnet50",
-]
+from config import DEFAULT_JOB_QUEUE as DEFAULT_JOBS
 
 
 class ModeRow(NamedTuple):

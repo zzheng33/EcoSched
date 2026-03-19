@@ -44,27 +44,24 @@ from config import (
     SCRIPT_DIR,
     SPEC_SCRIPT_DIR,
     ECP_SCRIPT_DIR,
+    CUDA_SCRIPT_DIR,
     TOTAL_GPUS,
     NUMA0_GPUS,
     NUMA1_GPUS,
     PREDICTED_GPU_COUNTS,
     DEFAULT_JOB_QUEUE,
+    SPEC_ENV_SETUP,
+    CUDA_APPS,
+    TORCHRUN_APPS,
+    ML_DL_APPS,
+    ML_PYTHON,
+    ML_SCRIPT,
+    ML_WORKDIR,
+    ML_BATCH_SIZE,
+    ML_EPOCHS,
+    ML_LR,
 )
 
-# Environment setup for SPEC benchmarks (MPI + CUDA modules)
-SPEC_ENV_SETUP = (
-    "source /etc/profile >/dev/null 2>&1 || true; "
-    "source /etc/profile.d/modules.sh >/dev/null 2>&1 || true; "
-    "module use /soft/modulefiles; "
-    "module load cuda/12.3.0; "
-    "module load cmake; "
-    "module load gcc/12.2.0; "
-    "module load openmpi/4.1.1-gcc; "
-    "module load public_mkl/2019; "
-    "export CUDA_DIR=/soft/compilers/cuda/cuda-12.3.0; "
-    "export PCM_NO_MSR=1; "
-    "export PCM_KEEP_NMI_WATCHDOG=1; "
-)
 
 
 
@@ -120,20 +117,6 @@ def resolve_requested_gpu_count(requested: int, available_counts: List[int]) -> 
     return min(available_counts)
 
 
-# Benchmarks that use torchrun (bert, gpt2)
-TORCHRUN_APPS = {'bert', 'gpt2'}
-
-# Benchmarks that use dl.py via the ML python env (resnet50, etc.)
-ML_DL_APPS = {'resnet50'}
-
-ML_PYTHON = HOME / "env/ml/bin/python3"
-ML_SCRIPT = HOME / "power/ML/dl.py"
-ML_WORKDIR = HOME / "power/ML"
-ML_BATCH_SIZE = 2048
-ML_EPOCHS = 3
-ML_LR = 0.001
-
-# All others are SPEC/MPI-based
 
 
 class TeeStream(object):
@@ -330,12 +313,31 @@ def build_ml_dl_command(app: str, gpu_ids: List[int], numa_node: int):
     return cmd, env, ML_WORKDIR
 
 
+def build_cuda_command(app: str, gpu_ids: List[int], numa_node: int):
+    """Build command for CUDA sample benchmarks with NUMA binding."""
+    gpu_count = len(gpu_ids)
+    gpu_csv = ",".join(str(g) for g in gpu_ids)
+    script_path = CUDA_SCRIPT_DIR / f"{app}.sh"
+
+    shell_cmd = (
+        SPEC_ENV_SETUP
+        + f"export CUDA_VISIBLE_DEVICES={gpu_csv}; "
+        + f"numactl --cpunodebind={numa_node} --membind={numa_node} "
+        + f"bash {script_path} {gpu_count}"
+    )
+    cmd = ["bash", "-lc", shell_cmd]
+    env = os.environ.copy()
+    return cmd, env, None
+
+
 def build_command(app: str, gpu_ids: List[int], numa_node: int):
     """Dispatch to the right command builder based on app type."""
     if app in TORCHRUN_APPS:
         return build_torchrun_command(app, gpu_ids, numa_node)
     elif app in ML_DL_APPS:
         return build_ml_dl_command(app, gpu_ids, numa_node)
+    elif app in CUDA_APPS:
+        return build_cuda_command(app, gpu_ids, numa_node)
     else:
         return build_spec_command(app, gpu_ids, numa_node)
 
