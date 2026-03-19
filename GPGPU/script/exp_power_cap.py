@@ -36,7 +36,7 @@ altis_benchmarks_2 = ['cfd','cfd_double','fdtd2d','kmeans','lavamd',
                       'srad','where']
 ecp_benchmarks = ['XSBench','miniGAN','CRADL','sw4lite','Laghos','bert','UNet', "gpt2",'Resnet50','lammps','gromacs',"NAMD"]
 
-ecp_benchmarks = ["gpt2"]
+ecp_benchmarks = ["gpt2","bert"]
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 
@@ -50,12 +50,11 @@ cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simple
 
 
 # ml_models = ["resnet50","vgg16"]
-ml_models = ["resnet101","resnet152","vgg19"]
+ml_models = ["resnet50","vgg16","resnet101","resnet152","vgg19"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
 # GPU_ct = [4]
-gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
 gpu_caps = [2800]
 
 ML_MIN_PER_GPU_CAP = 200
@@ -322,7 +321,7 @@ def run_ml_experiment(model_name=None):
                     # Skip invalid combinations that violate H100 per-GPU cap range.
                     continue
 
-                _set_power_cap(cpu_cap, per_gpu_cap_int)
+                # _set_power_cap(cpu_cap, per_gpu_cap_int)
 
                 cmd = [
                     ml_python,
@@ -389,7 +388,7 @@ def run_ml_experiment(model_name=None):
                         print("[ML][MONITOR STDERR]")
                         print(monitor_stderr[-1000:])
 
-    subprocess.run([os.path.join(script_dir, "power_util/cap.sh"), str(700), str(700)], check=True)
+    # subprocess.run([os.path.join(script_dir, "power_util/cap.sh"), str(700), str(700)], check=True)
     print("[ML] Throughput results saved to:")
     for model in models:
         print(f"  {throughput_csv_by_model[model]}")
@@ -436,7 +435,7 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
                 continue
 
             output_gpu_metrics = f"{output_dir}/{total_gpu_cap}_{g_cnt}_gpu_metrics.csv"
-            _set_power_cap(cpu_cap, per_gpu_cap)
+            # _set_power_cap(cpu_cap, per_gpu_cap)
             run_benchmark_command = [
                 "bash",
                 os.path.join(home_dir, benchmark_script_dir, f"{benchmark}.sh"),
@@ -510,7 +509,7 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
 
 
 
-    subprocess.run([os.path.join(script_dir, "power_util/cap.sh"), str(700), str(700)], check=True)
+    # subprocess.run([os.path.join(script_dir, "power_util/cap.sh"), str(700), str(700)], check=True)
     if bert_throughput_csv is not None:
         print(f"[ECP] BERT throughput saved to: {bert_throughput_csv}")
 
