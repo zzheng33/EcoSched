@@ -37,6 +37,8 @@
 #include <map>
 #include <set>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <utility>
 
 // CUDA runtime
@@ -45,6 +47,16 @@
 // helper functions and utilities to work with CUDA
 #include <helper_cuda.h>
 #include <helper_functions.h>
+
+static int parseIntArg(int argc, char **argv, const char *flag, int defaultVal) {
+    size_t len = strlen(flag);
+    for (int i = 1; i < argc; i++) {
+        if (strncmp(argv[i], flag, len) == 0 && argv[i][len] == '=') {
+            return atoi(argv[i] + len + 1);
+        }
+    }
+    return defaultVal;
+}
 
 // Simple kernel to demonstrate copying cudaMallocAsync memory via P2P to peer
 // device
@@ -159,22 +171,22 @@ std::pair<int, int> getP2PCapableGpuPair()
     return p2pGpuPair;
 }
 
-int memPoolP2PCopy()
+int memPoolP2PCopy(int maxIters)
 {
     int          *dev0_srcVec, *dev1_dstVec; // Device buffers
     cudaStream_t  stream1, stream2;
     cudaMemPool_t memPool;
     cudaEvent_t   waitOnStream1;
 
-    // Allocate CPU memory.
-    size_t nelem = 1048576;
+    // Allocate CPU memory — 256M elements = 1GB
+    size_t nelem = 256 * 1048576;
     size_t bytes = nelem * sizeof(int);
 
     int *a      = (int *)malloc(bytes);
     int *output = (int *)malloc(bytes);
 
     /* Initialize the vectors. */
-    for (int n = 0; n < nelem; n++) {
+    for (size_t n = 0; n < nelem; n++) {
         a[n] = rand() / (int)RAND_MAX;
     }
 
@@ -188,17 +200,8 @@ int memPoolP2PCopy()
     // Get the default mempool for device p2pDevices.first from the pair
     checkCudaErrors(cudaDeviceGetDefaultMemPool(&memPool, p2pDevices.first));
 
-    // Allocate memory in a stream from the pool set above.
-    checkCudaErrors(cudaMallocAsync(&dev0_srcVec, bytes, stream1));
-
-    checkCudaErrors(cudaMemcpyAsync(dev0_srcVec, a, bytes, cudaMemcpyHostToDevice, stream1));
-    checkCudaErrors(cudaEventRecord(waitOnStream1, stream1));
-
     checkCudaErrors(cudaSetDevice(p2pDevices.second));
     checkCudaErrors(cudaStreamCreateWithFlags(&stream2, cudaStreamNonBlocking));
-
-    // Allocate memory in p2pDevices.second device
-    checkCudaErrors(cudaMallocAsync(&dev1_dstVec, bytes, stream2));
 
     // Setup peer mappings for p2pDevices.second device
     cudaMemAccessDesc desc;
@@ -208,12 +211,40 @@ int memPoolP2PCopy()
     desc.flags         = cudaMemAccessFlagsProtReadWrite;
     checkCudaErrors(cudaMemPoolSetAccess(memPool, &desc, 1));
 
-    printf("> copyP2PAndScale kernel running ...\n");
     dim3 block(256);
-    dim3 grid((unsigned int)ceil(nelem / (int)block.x));
+    dim3 grid((unsigned int)ceil((double)nelem / (int)block.x));
+
+    printf("> Running %d iterations with %zuMB data...\n", maxIters, bytes / (1024 * 1024));
+
+    for (int iter = 0; iter < maxIters; iter++) {
+        // Allocate on device 0 and copy host data
+        checkCudaErrors(cudaSetDevice(p2pDevices.first));
+        checkCudaErrors(cudaMallocAsync(&dev0_srcVec, bytes, stream1));
+        checkCudaErrors(cudaMemcpyAsync(dev0_srcVec, a, bytes, cudaMemcpyHostToDevice, stream1));
+        checkCudaErrors(cudaEventRecord(waitOnStream1, stream1));
+
+        // Allocate on device 1 and run P2P kernel
+        checkCudaErrors(cudaSetDevice(p2pDevices.second));
+        checkCudaErrors(cudaMallocAsync(&dev1_dstVec, bytes, stream2));
+        checkCudaErrors(cudaStreamWaitEvent(stream2, waitOnStream1));
+        copyP2PAndScale<<<grid, block, 0, stream2>>>(dev0_srcVec, dev1_dstVec, nelem);
+
+        // Free both allocations
+        checkCudaErrors(cudaFreeAsync(dev0_srcVec, stream2));
+        checkCudaErrors(cudaFreeAsync(dev1_dstVec, stream2));
+        checkCudaErrors(cudaStreamSynchronize(stream2));
+    }
+
+    // Verify last iteration
+    checkCudaErrors(cudaSetDevice(p2pDevices.first));
+    checkCudaErrors(cudaMallocAsync(&dev0_srcVec, bytes, stream1));
+    checkCudaErrors(cudaMemcpyAsync(dev0_srcVec, a, bytes, cudaMemcpyHostToDevice, stream1));
+    checkCudaErrors(cudaEventRecord(waitOnStream1, stream1));
+
+    checkCudaErrors(cudaSetDevice(p2pDevices.second));
+    checkCudaErrors(cudaMallocAsync(&dev1_dstVec, bytes, stream2));
     checkCudaErrors(cudaStreamWaitEvent(stream2, waitOnStream1));
     copyP2PAndScale<<<grid, block, 0, stream2>>>(dev0_srcVec, dev1_dstVec, nelem);
-
     checkCudaErrors(cudaMemcpyAsync(output, dev1_dstVec, bytes, cudaMemcpyDeviceToHost, stream2));
     checkCudaErrors(cudaFreeAsync(dev0_srcVec, stream2));
     checkCudaErrors(cudaFreeAsync(dev1_dstVec, stream2));
@@ -222,9 +253,13 @@ int memPoolP2PCopy()
     /* Compare the results */
     printf("> Checking the results from copyP2PAndScale() ...\n");
 
-    for (int n = 0; n < nelem; n++) {
+    for (size_t n = 0; n < nelem; n++) {
         if ((2 * a[n]) != output[n]) {
-            printf("mismatch i = %d expected = %d val = %d\n", n, 2 * a[n], output[n]);
+            printf("mismatch i = %zu expected = %d val = %d\n", n, 2 * a[n], output[n]);
+            free(a);
+            free(output);
+            checkCudaErrors(cudaStreamDestroy(stream1));
+            checkCudaErrors(cudaStreamDestroy(stream2));
             return EXIT_FAILURE;
         }
     }
@@ -240,6 +275,7 @@ int memPoolP2PCopy()
 
 int main(int argc, char **argv)
 {
-    int ret = memPoolP2PCopy();
+    int maxIters = parseIntArg(argc, argv, "--max-iters", 100);
+    int ret = memPoolP2PCopy(maxIters);
     return ret;
 }

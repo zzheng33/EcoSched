@@ -39,22 +39,18 @@ spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniwe
 
 # spec_benchmarks = ['hpgmg']
 
-cuda_benchmarks = [
-    'conjugateGradientMultiDeviceCG',
-    'MonteCarloMultiGPU',
-    'simpleCUBLASXT',
-    'simpleCUFFT_MGPU',
-    'simpleCUFFT_2d_MGPU',
-]
+cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simpleCUBLASXT',
+                   'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU']
 
-cuda_benchmarks = ['simpleCUFFT_MGPU']
+# 'simpleP2P','streamOrderedAllocationP2P'
+cuda_benchmarks = ['simpleMultiGPU']
 
 # ml_models = ["resnet50","vgg16"]
 ml_models = ["resnet101","resnet152","vgg19"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-GPU_ct = [1,2,4]
+# GPU_ct = [1,2]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
 gpu_caps = [2800]
 

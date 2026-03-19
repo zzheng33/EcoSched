@@ -5,8 +5,10 @@ set -euo pipefail
 # Usage: CUDA_VISIBLE_DEVICES=0,1,2,3 ./simpleIPC.sh [NUM_GPUS] [benchmark args...]
 # Auto-detects all P2P-capable GPUs, spawns one child process per GPU.
 # MAX_ITERS controls how many times the binary is launched.
+# IPC_DATA_SIZE_MB controls the data size per GPU in MB (default 4096 = 4GB).
 
-MAX_ITERS=100
+MAX_ITERS=1
+export IPC_DATA_SIZE_MB="${IPC_DATA_SIZE_MB:-1024}"
 
 NUM_GPUS="${NUM_GPUS:-4}"
 if [[ $# -gt 0 && "$1" =~ ^[1-9][0-9]*$ ]]; then

@@ -40,7 +40,17 @@ static const char shmName[] = "simpleIPCshm";
 // For NVSWITCH connected peers like DGX-2, simultaneous peers are not limited
 // in the same way.
 #define MAX_DEVICES (32)
-#define DATA_SIZE   (64ULL << 20ULL) // 64MB
+
+static size_t initDataSize() {
+    const char *env = getenv("IPC_DATA_SIZE_MB");
+    if (env) {
+        unsigned long long mb = strtoull(env, NULL, 10);
+        if (mb > 0) return mb << 20ULL;
+    }
+    return 4096ULL << 20ULL; // default 4GB
+}
+
+static size_t DATA_SIZE;
 
 #if defined(__linux__)
 #define cpu_atomic_add32(a, x) __sync_add_and_fetch(a, x)
@@ -346,6 +356,9 @@ int main(int argc, char **argv)
     printf("Not supported on ARM\n");
     return EXIT_WAIVED;
 #else
+    DATA_SIZE = initDataSize();
+    printf("DATA_SIZE = %zuMB\n", DATA_SIZE >> 20);
+
     if (argc == 1) {
         parentProcess(argv[0]);
     }
