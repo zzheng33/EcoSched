@@ -40,17 +40,19 @@ spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniwe
 # spec_benchmarks = ['hpgmg']
 
 cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simpleCUBLASXT',
-                   'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU']
+                   'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU','simpleMultiGPU','simpleP2P',
+                   'streamOrderedAllocationP2P']
 
-# 'simpleP2P','streamOrderedAllocationP2P'
-cuda_benchmarks = ['simpleMultiGPU']
+
+
+cuda_benchmarks = ['simpleCUFFT_MGPU']
 
 # ml_models = ["resnet50","vgg16"]
 ml_models = ["resnet101","resnet152","vgg19"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-# GPU_ct = [1,2]
+GPU_ct = [4]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
 gpu_caps = [2800]
 
@@ -190,9 +192,12 @@ def _is_throughput_benchmark(suite_name, benchmark_name):
 
 def _gpu_counts_for_benchmark(suite_name, benchmark_name):
     if str(suite_name).lower() == "cuda":
-        if str(benchmark_name) == "simpleCUFFT_MGPU":
-            return [1, 2, 4]
-        return [1, 2, 3, 4]
+        bn = str(benchmark_name)
+        if bn == "simpleCUFFT_MGPU":
+            return sorted(set([1, 2, 4]) & set(GPU_ct))
+        if bn in ("simpleP2P", "streamOrderedAllocationP2P"):
+            return sorted(set([2]) & set(GPU_ct))
+        return sorted(set([1, 2, 3, 4]) & set(GPU_ct))
     return GPU_ct
 
 
