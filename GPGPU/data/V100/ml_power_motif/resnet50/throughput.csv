@@ -1,1 +1,5 @@
 total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
+2800,1,700,resnet50,,failed
+2800,2,700,resnet50,1908.97,ok
+2800,3,700,resnet50,2806.88,ok
+2800,4,700,resnet50,3698.10,ok

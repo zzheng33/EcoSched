@@ -18,7 +18,7 @@ SYSTEM_CONFIG = {
         "cuda_build_root": "build-sm70",
     },
     "H100": {
-        "spec_benchmark_root": os.path.expanduser("~/benchmark/spec"),
+        "spec_benchmark_root": os.path.expanduser("~/benchmark/spec-H100"),
         "cuda_build_root": "build-sm90",
     },
     "A100": {
