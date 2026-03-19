@@ -34,6 +34,11 @@ SPEC_ENV_SETUP = (
 # ---------------------------------------------------------------------------
 # App categories — controls which command builder is used
 # ---------------------------------------------------------------------------
+SPEC_APPS = {
+    'pot3d', 'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
+    'miniweather', 'hpgmg',
+}
+
 CUDA_APPS = {
     'conjugateGradientMultiDeviceCG', 'MonteCarloMultiGPU',
     'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU',

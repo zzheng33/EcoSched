@@ -51,6 +51,7 @@ from config import (
     PREDICTED_GPU_COUNTS,
     DEFAULT_JOB_QUEUE,
     SPEC_ENV_SETUP,
+    SPEC_APPS,
     CUDA_APPS,
     TORCHRUN_APPS,
     ML_DL_APPS,
@@ -332,14 +333,16 @@ def build_cuda_command(app: str, gpu_ids: List[int], numa_node: int):
 
 def build_command(app: str, gpu_ids: List[int], numa_node: int):
     """Dispatch to the right command builder based on app type."""
-    if app in TORCHRUN_APPS:
+    if app in SPEC_APPS:
+        return build_spec_command(app, gpu_ids, numa_node)
+    elif app in CUDA_APPS:
+        return build_cuda_command(app, gpu_ids, numa_node)
+    elif app in TORCHRUN_APPS:
         return build_torchrun_command(app, gpu_ids, numa_node)
     elif app in ML_DL_APPS:
         return build_ml_dl_command(app, gpu_ids, numa_node)
-    elif app in CUDA_APPS:
-        return build_cuda_command(app, gpu_ids, numa_node)
     else:
-        return build_spec_command(app, gpu_ids, numa_node)
+        raise ValueError(f"Unknown app '{app}': not in SPEC_APPS, CUDA_APPS, TORCHRUN_APPS, or ML_DL_APPS")
 
 
 def _devnull():
