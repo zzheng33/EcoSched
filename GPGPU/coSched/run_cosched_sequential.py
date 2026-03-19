@@ -690,18 +690,21 @@ def main():
             print(f"Results log: {log_path}")
 
             available_gpu_counts = parse_available_gpu_counts(args.perf_metrics_file, args.jobs)
-            cosched_gpu_counts = {}
-            for app in args.jobs:
-                requested = PREDICTED_GPU_COUNTS[app]
-                resolved = resolve_requested_gpu_count(requested, available_gpu_counts[app])
-                cosched_gpu_counts[app] = resolved
-                if resolved != requested:
-                    print(
-                        f"INFO: {app} requested {requested} GPUs for co-scheduling, "
-                        f"but perf_metrics.txt only has rows {available_gpu_counts[app]}; using {resolved} GPUs instead."
-                    )
-
             sequential_gpu_counts = parse_max_gpu_counts(args.perf_metrics_file, args.jobs)
+
+            # Only compute co-schedule GPU counts when needed
+            cosched_gpu_counts = {}
+            needs_cosched = args.both or args.policy != "sequential"
+            if needs_cosched:
+                for app in args.jobs:
+                    requested = PREDICTED_GPU_COUNTS[app]
+                    resolved = resolve_requested_gpu_count(requested, available_gpu_counts[app])
+                    cosched_gpu_counts[app] = resolved
+                    if resolved != requested:
+                        print(
+                            f"INFO: {app} requested {requested} GPUs for co-scheduling, "
+                            f"but perf_metrics.txt only has rows {available_gpu_counts[app]}; using {resolved} GPUs instead."
+                        )
 
             # Apply overrides
             if args.gpu_override:
@@ -719,20 +722,21 @@ def main():
 
             # Validate
             for app in args.jobs:
-                if app not in cosched_gpu_counts:
-                    print(f"ERROR: No co-schedule GPU count defined for '{app}'", file=sys.stderr)
-                    sys.exit(1)
                 if app not in sequential_gpu_counts:
                     print(f"ERROR: No sequential GPU count defined for '{app}'", file=sys.stderr)
-                    sys.exit(1)
-                if cosched_gpu_counts[app] > TOTAL_GPUS:
-                    print(f"ERROR: {app} needs {cosched_gpu_counts[app]} GPUs but only "
-                          f"{TOTAL_GPUS} available", file=sys.stderr)
                     sys.exit(1)
                 if sequential_gpu_counts[app] > TOTAL_GPUS:
                     print(f"ERROR: {app} needs {sequential_gpu_counts[app]} GPUs but only "
                           f"{TOTAL_GPUS} available", file=sys.stderr)
                     sys.exit(1)
+                if needs_cosched:
+                    if app not in cosched_gpu_counts:
+                        print(f"ERROR: No co-schedule GPU count defined for '{app}'", file=sys.stderr)
+                        sys.exit(1)
+                    if cosched_gpu_counts[app] > TOTAL_GPUS:
+                        print(f"ERROR: {app} needs {cosched_gpu_counts[app]} GPUs but only "
+                              f"{TOTAL_GPUS} available", file=sys.stderr)
+                        sys.exit(1)
 
             if args.both:
                 print("Job queue and GPU assignments:")
