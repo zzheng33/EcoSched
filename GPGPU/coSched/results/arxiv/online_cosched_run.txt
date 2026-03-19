@@ -1,0 +1,65 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/online_cosched_run.txt
+Online policy parameters:
+  score_metric      = energy
+  slowdown_tol      = 0.20
+  idle_power        = 70.00 W
+  mean_busy_power   = 344.01 W
+  idle_weight       = 0.2035
+  blocking_weight   = 0.0000
+  anchor_app        = pot3d
+  candidate modes:
+    pot3d           -> 2GPU(rt=109.34, nrt=1.06, ne=1.24, nedp=1.02), 3GPU(rt=104.33, nrt=1.02, ne=1.53, nedp=1.20), 4GPU(rt=102.72, nrt=1.00, ne=1.84, nedp=1.42)
+    minisweep       -> 4GPU(rt=43.61, nrt=1.00, ne=1.07, nedp=1.00)
+    lbm             -> 3GPU(rt=21.98, nrt=1.17, ne=1.08, nedp=1.06), 4GPU(rt=18.82, nrt=1.00, ne=1.19, nedp=1.00)
+    cloverleaf      -> 3GPU(rt=19.37, nrt=1.15, ne=1.18, nedp=1.09), 4GPU(rt=16.83, nrt=1.00, ne=1.25, nedp=1.00)
+    tealeaf         -> 4GPU(rt=16.21, nrt=1.00, ne=1.17, nedp=1.00)
+    miniweather     -> 1GPU(rt=57.01, nrt=1.00, ne=1.00, nedp=1.00)
+    bert            -> 3GPU(rt=24.34, nrt=1.16, ne=1.80, nedp=1.32), 4GPU(rt=21.03, nrt=1.00, ne=1.94, nedp=1.23)
+    gpt2            -> 2GPU(rt=18.02, nrt=1.03, ne=1.38, nedp=1.08), 3GPU(rt=17.43, nrt=1.00, ne=1.64, nedp=1.24), 4GPU(rt=18.79, nrt=1.08, ne=1.99, nedp=1.63)
+    resnet50        -> 3GPU(rt=21.01, nrt=1.01, ne=1.31, nedp=1.00), 4GPU(rt=20.85, nrt=1.00, ne=1.36, nedp=1.03)
+    hpgmg           -> 1GPU(rt=10.09, nrt=1.00, ne=1.00, nedp=1.00), 2GPU(rt=11.95, nrt=1.18, ne=1.94, nedp=2.30)
+
+Online co-scheduling: 10 apps on 4 GPUs (metric=energy)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================================
+  t=    0.00s | START hpgmg           | 1 GPUs [0] | NUMA 0 | score=0.1733 | regret=0.1224 idle=0.25 block=0.88
+  t=    0.00s | START pot3d           | 2 GPUs [2, 3] | NUMA 1 | score=0.1733 | regret=0.1224 idle=0.25 block=0.88
+  t=   12.02s | END   hpgmg           | freed 1 GPUs [0] | NUMA 0 | runtime=12.01s
+  t=   12.02s | START miniweather     | 1 GPUs [0] | NUMA 0 | score=0.0509 | regret=0.0000 idle=0.25 block=1.00
+  t=   71.08s | END   miniweather     | freed 1 GPUs [0] | NUMA 0 | runtime=59.06s
+  t=   71.08s | START gpt2            | 2 GPUs [0, 1] | NUMA 0 | score=0.3752 | regret=0.3752 idle=0.00 block=0.00
+  t=   91.10s | END   gpt2            | freed 2 GPUs [0, 1] | NUMA 0 | runtime=20.02s
+  t=  110.12s | END   pot3d           | freed 2 GPUs [2, 3] | NUMA 1 | runtime=110.12s
+  t=  110.12s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0 | score=0.0692 | regret=0.0692 idle=0.00 block=0.00
+  t=  155.18s | END   minisweep       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=45.05s
+  t=  155.18s | START lbm             | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.1269 | regret=0.0760 idle=0.25 block=1.00
+  t=  177.20s | END   lbm             | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=22.02s
+  t=  177.20s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0 | score=0.1724 | regret=0.1724 idle=0.00 block=0.00
+  t=  195.22s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=18.02s
+  t=  195.22s | START cloverleaf      | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.2286 | regret=0.1777 idle=0.25 block=1.00
+  t=  215.25s | END   cloverleaf      | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=20.02s
+  t=  215.25s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0 | score=0.3575 | regret=0.3575 idle=0.00 block=0.00
+  t=  238.27s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=23.02s
+  t=  238.27s | START bert            | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.8502 | regret=0.7993 idle=0.25 block=0.00
+  t=  265.30s | END   bert            | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=27.03s
+
+================================================================================================
+Online co-schedule summary:
+App              #GPUs      GPU IDs  NUMA  Runtime (s)
+------------------------------------------------------------
+hpgmg                1          [0]     0        12.01
+miniweather          1          [0]     0        59.06
+gpt2                 2       [0, 1]     0        20.02
+pot3d                2       [2, 3]     1       110.12
+minisweep            4 [0, 1, 2, 3]     0        45.05
+lbm                  3    [0, 1, 2]     0        22.02
+tealeaf              4 [0, 1, 2, 3]     0        18.02
+cloverleaf           3    [0, 1, 2]     0        20.02
+resnet50             4 [0, 1, 2, 3]     0        23.02
+bert                 3    [0, 1, 2]     0        27.03
+------------------------------------------------------------
+
+Total makespan: 265.35s
+
+Power monitoring: 543 samples over 265.2s
+Total GPU energy: 219026.04 J (219.03 kJ)

@@ -1,0 +1,58 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/solver_execution_run.txt
+Planned solver decisions:
+================================================================================
+  1. t=0.00s | lbm             | 2 GPUs | placement (2, 0) | planned_end=29.83s
+  2. t=0.00s | pot3d           | 2 GPUs | placement (0, 2) | planned_end=109.34s
+  3. t=29.83s | cloverleaf      | 2 GPUs | placement (2, 0) | planned_end=52.49s
+  4. t=52.49s | tealeaf         | 2 GPUs | placement (2, 0) | planned_end=77.68s
+  5. t=77.68s | resnet50        | 2 GPUs | placement (2, 0) | planned_end=103.33s
+  6. t=103.33s | miniweather     | 1 GPUs | placement (1, 0) | planned_end=160.34s
+  7. t=109.34s | minisweep       | 3 GPUs | placement (1, 2) | planned_end=166.81s
+  8. t=160.34s | bert            | 1 GPUs | placement (1, 0) | planned_end=198.28s
+  9. t=166.81s | hpgmg           | 1 GPUs | placement (1, 0) | planned_end=176.90s
+  10. t=176.90s | gpt2            | 1 GPUs | placement (1, 0) | planned_end=199.87s
+
+Solver-driven execution: 10 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START lbm             | 2 GPUs [0, 1] | NUMA 0 | planned=0.00s | delay=+0.00s
+  t=    0.00s | START pot3d           | 2 GPUs [2, 3] | NUMA 1 | planned=0.00s | delay=+0.00s
+  t=   35.04s | END   lbm             | freed 2 GPUs [0, 1] | NUMA 0 | runtime=35.04s | OK
+  t=   35.04s | START cloverleaf      | 2 GPUs [0, 1] | NUMA 0 | planned=29.83s | delay=+5.21s
+  t=   58.07s | END   cloverleaf      | freed 2 GPUs [0, 1] | NUMA 0 | runtime=23.02s | OK
+  t=   58.07s | START tealeaf         | 2 GPUs [0, 1] | NUMA 0 | planned=52.49s | delay=+5.58s
+  t=   83.09s | END   tealeaf         | freed 2 GPUs [0, 1] | NUMA 0 | runtime=25.03s | FAILED(rc=1)
+  t=   83.10s | START resnet50        | 2 GPUs [0, 1] | NUMA 0 | planned=77.68s | delay=+5.42s
+  t=  108.12s | END   pot3d           | freed 2 GPUs [2, 3] | NUMA 1 | runtime=108.12s | OK
+  t=  109.12s | END   resnet50        | freed 2 GPUs [0, 1] | NUMA 0 | runtime=26.03s | OK
+  t=  109.13s | START miniweather     | 1 GPUs [0] | NUMA 0 | planned=103.33s | delay=+5.80s
+  t=  110.13s | START minisweep       | 3 GPUs [2, 3, 1] | NUMA 1 | planned=109.34s | delay=+0.79s
+  t=  167.19s | END   miniweather     | freed 1 GPUs [0] | NUMA 0 | runtime=58.06s | OK
+  t=  167.19s | START bert            | 1 GPUs [0] | NUMA 0 | planned=160.34s | delay=+6.85s
+  t=  168.19s | END   minisweep       | freed 3 GPUs [2, 3, 1] | NUMA 1 | runtime=58.06s | OK
+  t=  168.19s | START hpgmg           | 1 GPUs [1] | NUMA 0 | planned=166.81s | delay=+1.38s
+  t=  177.20s | END   hpgmg           | freed 1 GPUs [1] | NUMA 0 | runtime=9.01s | OK
+  t=  177.21s | START gpt2            | 1 GPUs [1] | NUMA 0 | planned=176.90s | delay=+0.31s
+  t=  179.21s | END   gpt2            | freed 1 GPUs [1] | NUMA 0 | runtime=2.00s | OK
+  t=  208.24s | END   bert            | freed 1 GPUs [0] | NUMA 0 | runtime=41.05s | OK
+
+================================================================================
+Solver-driven summary:
+App              #GPUs      GPU IDs  NUMA  Planned (s)  Runtime (s)
+--------------------------------------------------------------------------
+lbm                  2       [0, 1]     0         0.00        35.04
+cloverleaf           2       [0, 1]     0        29.83        23.02
+tealeaf              2       [0, 1]     0        52.49        25.03
+pot3d                2       [2, 3]     1         0.00       108.12
+resnet50             2       [0, 1]     0        77.68        26.03
+miniweather          1          [0]     0       103.33        58.06
+minisweep            3    [2, 3, 1]     1       109.34        58.06
+hpgmg                1          [1]     0       166.81         9.01
+gpt2                 1          [1]     0       176.90         2.00
+bert                 1          [0]     0       160.34        41.05
+--------------------------------------------------------------------------
+
+Total makespan: 208.24s
+
+Power monitoring: 433 samples over 207.8s
+Total GPU energy: 194013.07 J (194.01 kJ)
