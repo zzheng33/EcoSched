@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/cc/power/GPGPU/script/run_benchmark/build-sm80/conjugateGradientMultiDeviceCG/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

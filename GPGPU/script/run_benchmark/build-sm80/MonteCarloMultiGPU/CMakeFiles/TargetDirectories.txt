@@ -1,0 +1,7 @@
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/MonteCarloMultiGPU/CMakeFiles/MonteCarloMultiGPU.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/MonteCarloMultiGPU/CMakeFiles/edit_cache.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/MonteCarloMultiGPU/CMakeFiles/rebuild_cache.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/MonteCarloMultiGPU/CMakeFiles/list_install_components.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/MonteCarloMultiGPU/CMakeFiles/install.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/MonteCarloMultiGPU/CMakeFiles/install/local.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/MonteCarloMultiGPU/CMakeFiles/install/strip.dir

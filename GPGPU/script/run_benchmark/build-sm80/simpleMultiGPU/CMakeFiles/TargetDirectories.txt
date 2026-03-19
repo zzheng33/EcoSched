@@ -1,0 +1,7 @@
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/simpleMultiGPU/CMakeFiles/simpleMultiGPU.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/simpleMultiGPU/CMakeFiles/edit_cache.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/simpleMultiGPU/CMakeFiles/rebuild_cache.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/simpleMultiGPU/CMakeFiles/list_install_components.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/simpleMultiGPU/CMakeFiles/install.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/simpleMultiGPU/CMakeFiles/install/local.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/simpleMultiGPU/CMakeFiles/install/strip.dir

@@ -1,0 +1,1 @@
+/usr/bin/g++ @CMakeFiles/simpleCUFFT_2d_MGPU.dir/objects1.rsp CMakeFiles/simpleCUFFT_2d_MGPU.dir/cmake_device_link.o -o simpleCUFFT_2d_MGPU @CMakeFiles/simpleCUFFT_2d_MGPU.dir/linkLibs.rsp -L"/usr/local/cuda-12.6/targets/x86_64-linux/lib/stubs" -L"/usr/local/cuda-12.6/targets/x86_64-linux/lib"

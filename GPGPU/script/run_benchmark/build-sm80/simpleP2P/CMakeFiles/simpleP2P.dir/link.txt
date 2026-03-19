@@ -1,0 +1,1 @@
+/usr/bin/g++ @CMakeFiles/simpleP2P.dir/objects1.rsp CMakeFiles/simpleP2P.dir/cmake_device_link.o -o simpleP2P @CMakeFiles/simpleP2P.dir/linkLibs.rsp -L"/usr/local/cuda-12.6/targets/x86_64-linux/lib/stubs" -L"/usr/local/cuda-12.6/targets/x86_64-linux/lib"

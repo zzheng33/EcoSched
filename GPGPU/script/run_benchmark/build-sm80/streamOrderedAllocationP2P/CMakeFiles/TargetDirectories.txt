@@ -1,0 +1,7 @@
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/streamOrderedAllocationP2P/CMakeFiles/streamOrderedAllocationP2P.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/streamOrderedAllocationP2P/CMakeFiles/edit_cache.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/streamOrderedAllocationP2P/CMakeFiles/rebuild_cache.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/streamOrderedAllocationP2P/CMakeFiles/list_install_components.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/streamOrderedAllocationP2P/CMakeFiles/install.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/streamOrderedAllocationP2P/CMakeFiles/install/local.dir
+/home/cc/power/GPGPU/script/run_benchmark/build-sm80/streamOrderedAllocationP2P/CMakeFiles/install/strip.dir
