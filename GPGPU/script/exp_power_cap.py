@@ -71,8 +71,8 @@ cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simple
 
 
 
-# ml_models = ["resnet50","vgg16"]"vgg19"
-ml_models = ["resnet50","vgg16","resnet101","resnet152"]
+# ml_models = ["resnet50","vgg16"]"vgg19""resnet50","vgg16"
+ml_models = ["resnet101","resnet152"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
@@ -86,6 +86,9 @@ ML_BATCH_SIZE_OVERRIDE = {
     'resnet101': 512,
     'resnet152': 512,
     'vgg19': 512,
+}
+ML_DATASET_FRACTION_OVERRIDE = {
+    'V100': {'resnet101': 0.5, 'resnet152': 0.5},
 }
 ML_EPOCHS = 3
 ML_LR = 0.001
@@ -345,6 +348,7 @@ def run_ml_experiment(model_name=None):
 
                 # _set_power_cap(cpu_cap, per_gpu_cap_int)
 
+                dataset_frac = ML_DATASET_FRACTION_OVERRIDE.get(system, {}).get(model, 1.0)
                 cmd = [
                     ml_python,
                     ml_script,
@@ -353,6 +357,7 @@ def run_ml_experiment(model_name=None):
                     "--batch-size", str(ML_BATCH_SIZE_OVERRIDE.get(model, ML_BATCH_SIZE)),
                     "--epochs", str(ML_EPOCHS),
                     "--lr", str(ML_LR),
+                    "--dataset-fraction", str(dataset_frac),
                 ]
 
                 print(

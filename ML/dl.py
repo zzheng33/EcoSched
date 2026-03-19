@@ -8,7 +8,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.utils.data import DataLoader, Dataset
+from torch.utils.data import DataLoader, Dataset, Subset
 
 # Torchvision for datasets, transforms, and model backbones
 from torchvision import datasets, transforms, models as tv_models
@@ -243,12 +243,13 @@ def test(model, device, test_loader, criterion):
     return test_loss, accuracy
 
 
-def prepare_data(batch_size=64):
+def prepare_data(batch_size=64, dataset_fraction=1.0):
     """
     Prepare MNIST dataset for training
 
     Args:
         batch_size: Batch size for data loaders
+        dataset_fraction: Fraction of training data to use (default: 1.0)
 
     Returns:
         train_loader, test_loader: DataLoader objects
@@ -261,6 +262,10 @@ def prepare_data(batch_size=64):
 
     train_dataset = datasets.MNIST('./data', train=True, download=True, transform=transform)
     test_dataset = datasets.MNIST('./data', train=False, transform=transform)
+
+    if dataset_fraction < 1.0:
+        n = int(len(train_dataset) * dataset_fraction)
+        train_dataset = Subset(train_dataset, range(n))
 
     train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=2)
     test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False, num_workers=2)
@@ -298,6 +303,8 @@ def main():
                         help='Number of epochs to train (default: 3)')
     parser.add_argument('--lr', type=float, default=0.001,
                         help='Learning rate (default: 0.001)')
+    parser.add_argument('--dataset-fraction', type=float, default=1.0,
+                        help='Fraction of training dataset to use (default: 1.0)')
     parser.add_argument('--save-model', action='store_true', default=False,
                         help='Save the trained model')
     parser.add_argument('--model-path', type=str, default='model.pth',
@@ -324,7 +331,7 @@ def main():
 
     # Prepare data
     print("Preparing data...")
-    train_loader, test_loader = prepare_data(BATCH_SIZE)
+    train_loader, test_loader = prepare_data(BATCH_SIZE, args.dataset_fraction)
 
     # Create model
     print("\nCreating model...")
