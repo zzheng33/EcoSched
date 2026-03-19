@@ -28,12 +28,14 @@ import time
 from pathlib import Path
 from typing import Dict, List, NamedTuple, Optional, Sequence, Tuple
 
-from run_cosched_sequential import (
+from config import (
     DEFAULT_JOB_QUEUE,
     NUMA0_GPUS,
     NUMA1_GPUS,
-    PowerMonitor,
     TOTAL_GPUS,
+)
+from run_cosched_sequential import (
+    PowerMonitor,
     allocate_gpus_numa,
     build_command,
     pick_numa_for_tenant,

@@ -25,7 +25,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional, Sequence, Set, Tuple
 
-from run_cosched_sequential import (
+from config import (
     DEFAULT_JOB_QUEUE,
     NUMA0_GPUS,
     NUMA1_GPUS,
@@ -33,6 +33,8 @@ from run_cosched_sequential import (
     PREDICTED_GPU_COUNTS,
     RESULTS_DIR,
     TOTAL_GPUS,
+)
+from run_cosched_sequential import (
     allocate_gpus_numa,
     build_command,
     parse_available_gpu_counts,

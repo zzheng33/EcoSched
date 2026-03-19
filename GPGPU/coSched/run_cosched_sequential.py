@@ -37,18 +37,19 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
-HOME = Path.home()
-RESULTS_DIR = HOME / "power/GPGPU/coSched/results"
-PERF_METRICS_FILE = HOME / "power/GPGPU/data/H100/perf_metrics.txt"
-SCRIPT_DIR = HOME / "power/GPGPU/script"
-SPEC_SCRIPT_DIR = SCRIPT_DIR / "run_benchmark/spec_script"
-ECP_SCRIPT_DIR = SCRIPT_DIR / "run_benchmark/ecp_script"
-
-TOTAL_GPUS = 4
-
-# NUMA-to-GPU mapping
-NUMA0_GPUS = [0, 1]
-NUMA1_GPUS = [2, 3]
+from config import (
+    HOME,
+    RESULTS_DIR,
+    PERF_METRICS_FILE,
+    SCRIPT_DIR,
+    SPEC_SCRIPT_DIR,
+    ECP_SCRIPT_DIR,
+    TOTAL_GPUS,
+    NUMA0_GPUS,
+    NUMA1_GPUS,
+    PREDICTED_GPU_COUNTS,
+    DEFAULT_JOB_QUEUE,
+)
 
 # Environment setup for SPEC benchmarks (MPI + CUDA modules)
 SPEC_ENV_SETUP = (
@@ -65,27 +66,6 @@ SPEC_ENV_SETUP = (
     "export PCM_KEEP_NMI_WATCHDOG=1; "
 )
 
-# Predicted optimal GPU counts from the notebook's EDP model
-# (dram_sum proxy, w=0.0, alpha=1.30)
-PREDICTED_GPU_COUNTS = {
-    'pot3d':       1,
-    'minisweep':   4,
-    'lbm':         4,
-    'cloverleaf':  4,
-    'tealeaf':     4,
-    'miniweather': 1,
-    'hpgmg':       2,
-    'bert':        4,
-    'gpt2':        3,
-    'resnet50':    3,
-}
-
-DEFAULT_JOB_QUEUE = [
-    'pot3d', 'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
-    'miniweather', 'bert', 'gpt2', 'resnet50', 'hpgmg',
-    'conjugateGradientMultiDeviceCG', 'MonteCarloMultiGPU',
-    'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU',
-    "resnet101","resnet152","vgg19", "vgg16"]
 
 
 def parse_available_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, List[int]]:

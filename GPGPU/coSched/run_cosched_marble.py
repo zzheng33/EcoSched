@@ -12,12 +12,14 @@ import sys
 from pathlib import Path
 from typing import Dict, Sequence, Tuple
 
-from run_cosched_sequential import (
+from config import (
     DEFAULT_JOB_QUEUE,
     NUMA0_GPUS,
     NUMA1_GPUS,
     RESULTS_DIR,
     TOTAL_GPUS,
+)
+from run_cosched_sequential import (
     TeeStream,
     allocate_gpus_numa,
     run_cosched,
