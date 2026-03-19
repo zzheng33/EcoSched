@@ -1,0 +1,7 @@
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleIPC/CMakeFiles/simpleIPC.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleIPC/CMakeFiles/edit_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleIPC/CMakeFiles/rebuild_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleIPC/CMakeFiles/list_install_components.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleIPC/CMakeFiles/install.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleIPC/CMakeFiles/install/local.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/simpleIPC/CMakeFiles/install/strip.dir

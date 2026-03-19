@@ -27,6 +27,11 @@ SOURCE_ROOT="${SOURCE_ROOT:-$BUILD_ROOT/source}"
 JOBS="${JOBS:-$(nproc)}"
 
 SAMPLES=(
+    "Samples/0_Introduction/simpleMultiGPU"
+    "Samples/0_Introduction/simpleP2P"
+    "Samples/0_Introduction/simpleIPC"
+    "Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P"
+    "Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC"
     "Samples/4_CUDA_Libraries/simpleCUFFT_2d_MGPU"
     "Samples/4_CUDA_Libraries/simpleCUFFT_MGPU"
     "Samples/4_CUDA_Libraries/simpleCUBLASXT"
