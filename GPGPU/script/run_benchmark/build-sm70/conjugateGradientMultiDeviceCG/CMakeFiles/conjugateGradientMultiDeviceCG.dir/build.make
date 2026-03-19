@@ -53,7 +53,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG
@@ -71,10 +71,10 @@ include CMakeFiles/conjugateGradientMultiDeviceCG.dir/flags.make
 
 CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o: CMakeFiles/conjugateGradientMultiDeviceCG.dir/flags.make
 CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o: CMakeFiles/conjugateGradientMultiDeviceCG.dir/includes_CUDA.rsp
-CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/conjugateGradientMultiDeviceCG.cu
+CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/conjugateGradientMultiDeviceCG.cu
 CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o: CMakeFiles/conjugateGradientMultiDeviceCG.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o"
-	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o -MF CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/conjugateGradientMultiDeviceCG.cu -o CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o
+	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o -MF CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG/conjugateGradientMultiDeviceCG.cu -o CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.o
 
 CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/conjugateGradientMultiDeviceCG.dir/conjugateGradientMultiDeviceCG.cu.i"
@@ -138,6 +138,6 @@ CMakeFiles/conjugateGradientMultiDeviceCG.dir/clean:
 .PHONY : CMakeFiles/conjugateGradientMultiDeviceCG.dir/clean
 
 CMakeFiles/conjugateGradientMultiDeviceCG.dir/depend:
-	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/conjugateGradientMultiDeviceCG.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/conjugateGradientMultiDeviceCG /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/conjugateGradientMultiDeviceCG.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/conjugateGradientMultiDeviceCG.dir/depend
 

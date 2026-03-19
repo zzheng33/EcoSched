@@ -53,7 +53,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleMultiGPU
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleMultiGPU
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU
@@ -71,10 +71,10 @@ include CMakeFiles/simpleMultiGPU.dir/flags.make
 
 CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o: CMakeFiles/simpleMultiGPU.dir/flags.make
 CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o: CMakeFiles/simpleMultiGPU.dir/includes_CUDA.rsp
-CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleMultiGPU/simpleMultiGPU.cu
+CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleMultiGPU/simpleMultiGPU.cu
 CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o: CMakeFiles/simpleMultiGPU.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o"
-	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o -MF CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleMultiGPU/simpleMultiGPU.cu -o CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o
+	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o -MF CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleMultiGPU/simpleMultiGPU.cu -o CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.o
 
 CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/simpleMultiGPU.dir/simpleMultiGPU.cu.i"
@@ -128,6 +128,6 @@ CMakeFiles/simpleMultiGPU.dir/clean:
 .PHONY : CMakeFiles/simpleMultiGPU.dir/clean
 
 CMakeFiles/simpleMultiGPU.dir/depend:
-	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/simpleMultiGPU.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/simpleMultiGPU.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/simpleMultiGPU.dir/depend
 

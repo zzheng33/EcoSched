@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC/simpleIPC.cu" "CMakeFiles/simpleIPC.dir/simpleIPC.cu.o" "gcc" "CMakeFiles/simpleIPC.dir/simpleIPC.cu.o.d"
-  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp" "CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o" "gcc" "CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC/simpleIPC.cu" "CMakeFiles/simpleIPC.dir/simpleIPC.cu.o" "gcc" "CMakeFiles/simpleIPC.dir/simpleIPC.cu.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp" "CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o" "gcc" "CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

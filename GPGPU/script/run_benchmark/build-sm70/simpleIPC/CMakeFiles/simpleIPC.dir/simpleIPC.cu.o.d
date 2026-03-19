@@ -1,4 +1,4 @@
-CMakeFiles/simpleIPC.dir/simpleIPC.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC/simpleIPC.cu \
+CMakeFiles/simpleIPC.dir/simpleIPC.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC/simpleIPC.cu \
     /usr/include/stdc-predef.h \
     /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include/cuda_runtime.h \
     /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include/crt/host_config.h \
@@ -222,12 +222,12 @@ CMakeFiles/simpleIPC.dir/simpleIPC.cu.o : /home/ac.zzheng/power/GPGPU/script/run
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/uniform_int_dist.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/utility \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/stl_relops.h \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC/../../../Common/helper_cuda.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC/../../../Common/helper_cuda.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include/stdint.h \
     /usr/include/stdint.h \
     /usr/include/bits/wchar.h \
     /usr/include/bits/stdint-uintn.h \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC/../../../Common/helper_string.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC/../../../Common/helper_string.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/fstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/istream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/ios \
@@ -305,7 +305,7 @@ CMakeFiles/simpleIPC.dir/simpleIPC.cu.o : /home/ac.zzheng/power/GPGPU/script/run
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/basic_file.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/c++io.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/fstream.tcc \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC/../../../Common/helper_multiprocess.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC/../../../Common/helper_multiprocess.h \
     /usr/include/fcntl.h \
     /usr/include/bits/fcntl.h \
     /usr/include/bits/fcntl-linux.h \

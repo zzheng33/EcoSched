@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P/streamOrderedAllocationP2P.cu" "CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o" "gcc" "CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P/streamOrderedAllocationP2P.cu" "CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o" "gcc" "CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

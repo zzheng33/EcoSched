@@ -1,4 +1,4 @@
-# Install script for directory: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P
+# Install script for directory: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -61,19 +61,19 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
         # Copy data files from sample's own data directory
         file(GLOB_RECURSE SAMPLE_DATA_FILES
              LIST_DIRECTORIES false
-             "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P/data/*")
+             "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P/data/*")
         
         # Copy shared data files from Common/data directory
         # Try both paths: ../../../Common (for regular samples) and ../../../../Common (for Tegra)
         set(COMMON_DATA_FILES "")
-        if(EXISTS "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P/../../../Common/data")
+        if(EXISTS "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P/../../../Common/data")
             file(GLOB_RECURSE COMMON_DATA_FILES
                  LIST_DIRECTORIES false
-                 "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P/../../../Common/data/*")
-        elseif(EXISTS "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P/../../../../Common/data")
+                 "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P/../../../Common/data/*")
+        elseif(EXISTS "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P/../../../../Common/data")
             file(GLOB_RECURSE COMMON_DATA_FILES
                  LIST_DIRECTORIES false
-                 "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P/../../../../Common/data/*")
+                 "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P/../../../../Common/data/*")
         endif()
         
         # Copy shared library files from bin/win64 directory (Windows only)
@@ -91,9 +91,9 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
             
             # Try multiple possible paths for bin/win64 directory
             set(BIN_WIN64_PATHS
-                "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P/../../../bin/win64/${INSTALL_CONFIG_LOWER}"
-                "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P/../../../../bin/win64/${INSTALL_CONFIG_LOWER}"
-                "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleP2P/bin/win64/${INSTALL_CONFIG_LOWER}"
+                "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P/../../../bin/win64/${INSTALL_CONFIG_LOWER}"
+                "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P/../../../../bin/win64/${INSTALL_CONFIG_LOWER}"
+                "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleP2P/bin/win64/${INSTALL_CONFIG_LOWER}"
             )
             foreach(BIN_PATH IN LISTS BIN_WIN64_PATHS)
                 if(EXISTS "${BIN_PATH}")

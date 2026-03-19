@@ -1,4 +1,4 @@
-CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu \
+CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_kernel.cu \
     /usr/include/stdc-predef.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda_runtime.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/crt/host_config.h \
@@ -502,24 +502,24 @@ CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o : /home/ac.zzheng/power
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda/std/detail/libcxx/include/__cuda/atomic.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cooperative_groups/details/partitioning.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cooperative_groups/details/invoke.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_kernel.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_discrete.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_precalc.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_mrg32k3a.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_mtgp32_kernel.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_kernel.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_discrete.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_precalc.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_mrg32k3a.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_mtgp32_kernel.h \
     /usr/include/memory.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_mtgp32.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_philox4x32_x.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_globals.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_uniform.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_normal.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_normal_static.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_lognormal.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_poisson.h \
-    /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/curand_discrete2.h \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/helper_cuda.h \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/helper_string.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_mtgp32.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_philox4x32_x.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_globals.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_uniform.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_normal.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_normal_static.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_lognormal.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_poisson.h \
+    /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/curand_discrete2.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/helper_cuda.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/helper_string.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/fstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/istream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/ios \
@@ -572,6 +572,6 @@ CMakeFiles/MonteCarloMultiGPU.dir/MonteCarlo_kernel.cu.o : /home/ac.zzheng/power
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/basic_file.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/c++io.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/fstream.tcc \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_common.h \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/realtype.h \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_reduction.cuh
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_common.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/realtype.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/MonteCarlo_reduction.cuh

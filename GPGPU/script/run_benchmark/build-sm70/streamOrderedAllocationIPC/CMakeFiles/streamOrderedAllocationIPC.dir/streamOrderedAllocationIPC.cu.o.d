@@ -1,4 +1,4 @@
-CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/streamOrderedAllocationIPC.cu \
+CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o : /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/streamOrderedAllocationIPC.cu \
     /usr/include/stdc-predef.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda_runtime.h \
     /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/crt/host_config.h \
@@ -227,8 +227,8 @@ CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o : /hom
     /usr/include/stdint.h \
     /usr/include/bits/wchar.h \
     /usr/include/bits/stdint-uintn.h \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/../../../Common/helper_cuda.h \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/../../../Common/helper_string.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/../../../Common/helper_cuda.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/../../../Common/helper_string.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/fstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/istream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/ios \
@@ -306,12 +306,12 @@ CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o : /hom
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/basic_file.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu/bits/c++io.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/fstream.tcc \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/../../../Common/helper_cuda_drvapi.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/../../../Common/helper_cuda_drvapi.h \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/iostream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/cstring \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/sstream \
     /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/sstream.tcc \
-    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/../../../Common/helper_multiprocess.h \
+    /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/../../../Common/helper_multiprocess.h \
     /usr/include/fcntl.h \
     /usr/include/bits/fcntl.h \
     /usr/include/bits/fcntl-linux.h \

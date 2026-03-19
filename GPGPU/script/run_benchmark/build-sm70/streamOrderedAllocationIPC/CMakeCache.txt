@@ -465,7 +465,7 @@ streamOrderedAllocationIPC_BINARY_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/
 streamOrderedAllocationIPC_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-streamOrderedAllocationIPC_SOURCE_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC
+streamOrderedAllocationIPC_SOURCE_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC
 
 
 ########################
@@ -570,7 +570,7 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=0
 //ADVANCED property for variable: CMAKE_LINKER

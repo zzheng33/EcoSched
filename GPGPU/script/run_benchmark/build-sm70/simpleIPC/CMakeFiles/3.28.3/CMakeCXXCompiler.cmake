@@ -79,7 +79,7 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include;/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/backward;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include;/usr/local/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed;/usr/include")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/backward;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include;/usr/local/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed;/usr/include")
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "stdc++;m;gcc_s;gcc;c;gcc_s;gcc")
 set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64;/lib64;/usr/lib64;/soft/compilers/cuda/cuda-12.3.0/lib64;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

@@ -30,8 +30,8 @@ CMAKE_COLOR_MAKEFILE:BOOL=ON
 //No help, variable specified on the command line.
 CMAKE_CUDA_ARCHITECTURES:UNINITIALIZED=70
 
-//No help, variable specified on the command line.
-CMAKE_CUDA_COMPILER:UNINITIALIZED=/soft/compilers/cuda/cuda-12.3.0/bin/nvcc
+//CUDA compiler
+CMAKE_CUDA_COMPILER:STRING=/soft/compilers/cuda/cuda-12.3.0/bin/nvcc
 
 //Flags used by the CUDA compiler during all build types.
 CMAKE_CUDA_FLAGS:STRING=
@@ -465,7 +465,7 @@ simpleMultiGPU_BINARY_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchmar
 simpleMultiGPU_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-simpleMultiGPU_SOURCE_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleMultiGPU
+simpleMultiGPU_SOURCE_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleMultiGPU
 
 
 ########################
@@ -570,7 +570,7 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleMultiGPU
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleMultiGPU
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=0
 //ADVANCED property for variable: CMAKE_LINKER

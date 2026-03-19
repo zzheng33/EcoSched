@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/streamOrderedAllocationIPC.dir/cmake_device_link.o"
-  "CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o"
-  "CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o.d"
+  "CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o"
+  "CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o.d"
   "CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o"
   "CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o.d"
   "streamOrderedAllocationIPC"

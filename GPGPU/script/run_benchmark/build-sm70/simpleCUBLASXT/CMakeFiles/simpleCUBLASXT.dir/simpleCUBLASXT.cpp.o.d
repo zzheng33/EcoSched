@@ -1,5 +1,5 @@
 CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: \
- /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp \
+ /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp \
  /usr/include/stdc-predef.h /usr/include/stdio.h \
  /usr/include/bits/libc-header-start.h /usr/include/features.h \
  /usr/include/features-time64.h /usr/include/bits/wordsize.h \
@@ -41,7 +41,7 @@ CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: \
  /usr/include/bits/stdlib-bsearch.h /usr/include/bits/stdlib-float.h \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/bits/std_abs.h \
  /usr/include/string.h /usr/include/strings.h \
- /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/cublasXt.h \
+ /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cublasXt.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/driver_types.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/crt/host_defines.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/vector_types.h \
@@ -94,8 +94,8 @@ CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/tr1/poly_hermite.tcc \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/tr1/poly_laguerre.tcc \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/tr1/riemann_zeta.tcc \
- /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/cublas_v2.h \
- /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include/cublas_api.h \
+ /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cublas_v2.h \
+ /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cublas_api.h \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include/stdint.h \
  /usr/include/stdint.h /usr/include/bits/wchar.h \
  /usr/include/bits/stdint-uintn.h \
@@ -104,7 +104,6 @@ CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda_runtime_api.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/builtin_types.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/device_types.h \
- /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/driver_types.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/surface_types.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/texture_types.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/cuda_device_runtime_api.h \
@@ -126,8 +125,8 @@ CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o: \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/library_types.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/channel_descriptor.h \
  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include/driver_functions.h \
- /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common/helper_cuda.h \
- /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common/helper_string.h \
+ /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common/helper_cuda.h \
+ /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common/helper_string.h \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/fstream \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/istream \
  /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/ios \

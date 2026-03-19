@@ -7,11 +7,11 @@ CUDA_DEFINES =
 
 CUDA_INCLUDES = --options-file CMakeFiles/MonteCarloMultiGPU.dir/includes_CUDA.rsp
 
-CUDA_FLAGS =  -Wno-deprecated-gpu-targets -lineinfo -O3 -DNDEBUG -std=c++17 "--generate-code=arch=compute_90,code=[compute_90,sm_90]" -Xcompiler=-fPIE --extended-lambda
+CUDA_FLAGS =  -Wno-deprecated-gpu-targets -lineinfo -O3 -DNDEBUG -std=c++17 "--generate-code=arch=compute_70,code=[compute_70,sm_70]" -Xcompiler=-fPIE --extended-lambda
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common -isystem /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include
+CXX_INCLUDES = -I/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common -isystem /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include
 
 CXX_FLAGS = -O3 -DNDEBUG -fPIE
 

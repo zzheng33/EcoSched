@@ -57,7 +57,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC
@@ -174,29 +174,29 @@ simpleIPC/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/simpleIPC.dir/build.make CMakeFiles/simpleIPC.dir/build
 .PHONY : simpleIPC/fast
 
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.o: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.o
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.o: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.o
 
 # target to build an object file
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simpleIPC.dir/build.make CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simpleIPC.dir/build.make CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
 
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.i: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.i
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.i: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.i
 
 # target to preprocess a source file
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simpleIPC.dir/build.make CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simpleIPC.dir/build.make CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i
 
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.s: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.s
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.s: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.s
 
 # target to generate assembly for a file
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simpleIPC.dir/build.make CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/simpleIPC.dir/build.make CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s
 
 simpleIPC.o: simpleIPC.cu.o
 .PHONY : simpleIPC.o
@@ -235,9 +235,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... simpleIPC"
-	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.o"
-	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.i"
-	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.s"
+	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.o"
+	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.i"
+	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.s"
 	@echo "... simpleIPC.o"
 	@echo "... simpleIPC.i"
 	@echo "... simpleIPC.s"

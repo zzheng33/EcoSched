@@ -61,7 +61,7 @@ selected_gpus=$(IFS=,; echo "${gpu_list[*]:0:NUM_GPUS}")
 export CUDA_VISIBLE_DEVICES="$selected_gpus"
 
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
-BENCHMARK_BUILD_ROOT="${BENCHMARK_BUILD_ROOT:-$SCRIPT_DIR/../build-sm90}"
+BENCHMARK_BUILD_ROOT="${BENCHMARK_BUILD_ROOT:-$SCRIPT_DIR/../build-sm70}"
 BENCHMARK_BIN="${BENCHMARK_BUILD_ROOT}/simpleCUBLASXT/simpleCUBLASXT"
 
 if [[ ! -x "${BENCHMARK_BIN}" ]]; then

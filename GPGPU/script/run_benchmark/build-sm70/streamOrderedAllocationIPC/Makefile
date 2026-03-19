@@ -57,7 +57,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC
@@ -174,29 +174,29 @@ streamOrderedAllocationIPC/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/streamOrderedAllocationIPC.dir/build.make CMakeFiles/streamOrderedAllocationIPC.dir/build
 .PHONY : streamOrderedAllocationIPC/fast
 
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.o: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.o
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.o: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.o
 
 # target to build an object file
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/streamOrderedAllocationIPC.dir/build.make CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/streamOrderedAllocationIPC.dir/build.make CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
 
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.i: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.i
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.i: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.i
 
 # target to preprocess a source file
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/streamOrderedAllocationIPC.dir/build.make CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/streamOrderedAllocationIPC.dir/build.make CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i
 
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.s: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.s
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.s: home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.s
 
 # target to generate assembly for a file
-home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/streamOrderedAllocationIPC.dir/build.make CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s
-.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s
+home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/streamOrderedAllocationIPC.dir/build.make CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s
+.PHONY : home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s
 
 streamOrderedAllocationIPC.o: streamOrderedAllocationIPC.cu.o
 .PHONY : streamOrderedAllocationIPC.o
@@ -235,9 +235,9 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... streamOrderedAllocationIPC"
-	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.o"
-	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.i"
-	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.s"
+	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.o"
+	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.i"
+	@echo "... home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.s"
 	@echo "... streamOrderedAllocationIPC.o"
 	@echo "... streamOrderedAllocationIPC.i"
 	@echo "... streamOrderedAllocationIPC.s"

@@ -53,7 +53,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC
@@ -71,10 +71,10 @@ include CMakeFiles/simpleIPC.dir/flags.make
 
 CMakeFiles/simpleIPC.dir/simpleIPC.cu.o: CMakeFiles/simpleIPC.dir/flags.make
 CMakeFiles/simpleIPC.dir/simpleIPC.cu.o: CMakeFiles/simpleIPC.dir/includes_CUDA.rsp
-CMakeFiles/simpleIPC.dir/simpleIPC.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC/simpleIPC.cu
+CMakeFiles/simpleIPC.dir/simpleIPC.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC/simpleIPC.cu
 CMakeFiles/simpleIPC.dir/simpleIPC.cu.o: CMakeFiles/simpleIPC.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/simpleIPC.dir/simpleIPC.cu.o"
-	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/simpleIPC.dir/simpleIPC.cu.o -MF CMakeFiles/simpleIPC.dir/simpleIPC.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC/simpleIPC.cu -o CMakeFiles/simpleIPC.dir/simpleIPC.cu.o
+	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/simpleIPC.dir/simpleIPC.cu.o -MF CMakeFiles/simpleIPC.dir/simpleIPC.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC/simpleIPC.cu -o CMakeFiles/simpleIPC.dir/simpleIPC.cu.o
 
 CMakeFiles/simpleIPC.dir/simpleIPC.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/simpleIPC.dir/simpleIPC.cu.i"
@@ -84,30 +84,30 @@ CMakeFiles/simpleIPC.dir/simpleIPC.cu.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/simpleIPC.dir/simpleIPC.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o: CMakeFiles/simpleIPC.dir/flags.make
-CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp
-CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o: CMakeFiles/simpleIPC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o -MF CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o.d -o CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp
+CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o: CMakeFiles/simpleIPC.dir/flags.make
+CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp
+CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o: CMakeFiles/simpleIPC.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o"
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o -MF CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o.d -o CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp
 
-CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp > CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i
+CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i"
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp > CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i
 
-CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp -o CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s
+CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s"
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp -o CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s
 
 # Object files for target simpleIPC
 simpleIPC_OBJECTS = \
 "CMakeFiles/simpleIPC.dir/simpleIPC.cu.o" \
-"CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o"
+"CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o"
 
 # External object files for target simpleIPC
 simpleIPC_EXTERNAL_OBJECTS =
 
 CMakeFiles/simpleIPC.dir/cmake_device_link.o: CMakeFiles/simpleIPC.dir/simpleIPC.cu.o
-CMakeFiles/simpleIPC.dir/cmake_device_link.o: CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
+CMakeFiles/simpleIPC.dir/cmake_device_link.o: CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
 CMakeFiles/simpleIPC.dir/cmake_device_link.o: CMakeFiles/simpleIPC.dir/build.make
 CMakeFiles/simpleIPC.dir/cmake_device_link.o: CMakeFiles/simpleIPC.dir/deviceLinkLibs.rsp
 CMakeFiles/simpleIPC.dir/cmake_device_link.o: CMakeFiles/simpleIPC.dir/deviceObjects1.rsp
@@ -122,13 +122,13 @@ CMakeFiles/simpleIPC.dir/build: CMakeFiles/simpleIPC.dir/cmake_device_link.o
 # Object files for target simpleIPC
 simpleIPC_OBJECTS = \
 "CMakeFiles/simpleIPC.dir/simpleIPC.cu.o" \
-"CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o"
+"CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o"
 
 # External object files for target simpleIPC
 simpleIPC_EXTERNAL_OBJECTS =
 
 simpleIPC: CMakeFiles/simpleIPC.dir/simpleIPC.cu.o
-simpleIPC: CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
+simpleIPC: CMakeFiles/simpleIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
 simpleIPC: CMakeFiles/simpleIPC.dir/build.make
 simpleIPC: CMakeFiles/simpleIPC.dir/cmake_device_link.o
 simpleIPC: CMakeFiles/simpleIPC.dir/link.txt
@@ -144,6 +144,6 @@ CMakeFiles/simpleIPC.dir/clean:
 .PHONY : CMakeFiles/simpleIPC.dir/clean
 
 CMakeFiles/simpleIPC.dir/depend:
-	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/0_Introduction/simpleIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC/CMakeFiles/simpleIPC.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/0_Introduction/simpleIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleIPC/CMakeFiles/simpleIPC.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/simpleIPC.dir/depend
 

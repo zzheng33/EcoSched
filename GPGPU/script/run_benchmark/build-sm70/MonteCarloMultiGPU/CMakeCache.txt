@@ -465,7 +465,7 @@ MonteCarloMultiGPU_BINARY_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benc
 MonteCarloMultiGPU_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-MonteCarloMultiGPU_SOURCE_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU
+MonteCarloMultiGPU_SOURCE_DIR:STATIC=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU
 
 
 ########################
@@ -570,7 +570,7 @@ CMAKE_GENERATOR_TOOLSET:INTERNAL=
 CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
-CMAKE_HOME_DIRECTORY:INTERNAL=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU
+CMAKE_HOME_DIRECTORY:INTERNAL=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU
 //Install .so files without execute permission.
 CMAKE_INSTALL_SO_NO_EXE:INTERNAL=0
 //ADVANCED property for variable: CMAKE_LINKER

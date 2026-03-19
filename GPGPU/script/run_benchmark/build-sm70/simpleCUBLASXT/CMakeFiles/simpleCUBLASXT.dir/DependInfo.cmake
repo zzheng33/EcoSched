@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp" "CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o" "gcc" "CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/simpleCUBLASXT/simpleCUBLASXT.cpp" "CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o" "gcc" "CMakeFiles/simpleCUBLASXT.dir/simpleCUBLASXT.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

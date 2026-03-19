@@ -53,7 +53,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P
@@ -71,10 +71,10 @@ include CMakeFiles/streamOrderedAllocationP2P.dir/flags.make
 
 CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o: CMakeFiles/streamOrderedAllocationP2P.dir/flags.make
 CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o: CMakeFiles/streamOrderedAllocationP2P.dir/includes_CUDA.rsp
-CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P/streamOrderedAllocationP2P.cu
+CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P/streamOrderedAllocationP2P.cu
 CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o: CMakeFiles/streamOrderedAllocationP2P.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o"
-	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o -MF CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P/streamOrderedAllocationP2P.cu -o CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o
+	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o -MF CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P/streamOrderedAllocationP2P.cu -o CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.o
 
 CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/streamOrderedAllocationP2P.dir/streamOrderedAllocationP2P.cu.i"
@@ -128,6 +128,6 @@ CMakeFiles/streamOrderedAllocationP2P.dir/clean:
 .PHONY : CMakeFiles/streamOrderedAllocationP2P.dir/clean
 
 CMakeFiles/streamOrderedAllocationP2P.dir/depend:
-	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P/CMakeFiles/streamOrderedAllocationP2P.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationP2P /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationP2P/CMakeFiles/streamOrderedAllocationP2P.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/streamOrderedAllocationP2P.dir/depend
 

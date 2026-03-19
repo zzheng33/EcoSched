@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUFFT_MGPU/simpleCUFFT_MGPU.cu" "CMakeFiles/simpleCUFFT_MGPU.dir/simpleCUFFT_MGPU.cu.o" "gcc" "CMakeFiles/simpleCUFFT_MGPU.dir/simpleCUFFT_MGPU.cu.o.d"
+  "/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/simpleCUFFT_MGPU/simpleCUFFT_MGPU.cu" "CMakeFiles/simpleCUFFT_MGPU.dir/simpleCUFFT_MGPU.cu.o" "gcc" "CMakeFiles/simpleCUFFT_MGPU.dir/simpleCUFFT_MGPU.cu.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

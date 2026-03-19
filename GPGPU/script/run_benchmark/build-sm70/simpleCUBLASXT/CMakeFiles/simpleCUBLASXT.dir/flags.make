@@ -4,7 +4,7 @@
 # compile CXX with /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common -isystem /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include
+CXX_INCLUDES = -I/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/4_CUDA_Libraries/simpleCUBLASXT/../../../Common -isystem /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include
 
 CXX_FLAGS = -O3 -DNDEBUG -fPIE
 

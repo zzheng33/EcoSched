@@ -53,7 +53,7 @@ RM = /soft/buildtools/cmake/3.28.3/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC
+CMAKE_SOURCE_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC
@@ -71,10 +71,10 @@ include CMakeFiles/streamOrderedAllocationIPC.dir/flags.make
 
 CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o: CMakeFiles/streamOrderedAllocationIPC.dir/flags.make
 CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o: CMakeFiles/streamOrderedAllocationIPC.dir/includes_CUDA.rsp
-CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/streamOrderedAllocationIPC.cu
+CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/streamOrderedAllocationIPC.cu
 CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o: CMakeFiles/streamOrderedAllocationIPC.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CUDA object CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o"
-	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o -MF CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/streamOrderedAllocationIPC.cu -o CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o
+	/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler $(CUDA_DEFINES) $(CUDA_INCLUDES) $(CUDA_FLAGS) -MD -MT CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o -MF CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o.d -x cu -rdc=true -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC/streamOrderedAllocationIPC.cu -o CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o
 
 CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CUDA source to CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.i"
@@ -84,30 +84,30 @@ CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.s: cmake
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CUDA source to assembly CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CUDA_CREATE_ASSEMBLY_SOURCE
 
-CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o: CMakeFiles/streamOrderedAllocationIPC.dir/flags.make
-CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp
-CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o: CMakeFiles/streamOrderedAllocationIPC.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o -MF CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o.d -o CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp
+CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o: CMakeFiles/streamOrderedAllocationIPC.dir/flags.make
+CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o: /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp
+CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o: CMakeFiles/streamOrderedAllocationIPC.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o"
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o -MF CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o.d -o CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o -c /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp
 
-CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp > CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.i
+CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i"
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp > CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.i
 
-CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s"
-	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp -o CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.s
+CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s"
+	/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp -o CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.s
 
 # Object files for target streamOrderedAllocationIPC
 streamOrderedAllocationIPC_OBJECTS = \
 "CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o" \
-"CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o"
+"CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o"
 
 # External object files for target streamOrderedAllocationIPC
 streamOrderedAllocationIPC_EXTERNAL_OBJECTS =
 
 CMakeFiles/streamOrderedAllocationIPC.dir/cmake_device_link.o: CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o
-CMakeFiles/streamOrderedAllocationIPC.dir/cmake_device_link.o: CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
+CMakeFiles/streamOrderedAllocationIPC.dir/cmake_device_link.o: CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
 CMakeFiles/streamOrderedAllocationIPC.dir/cmake_device_link.o: CMakeFiles/streamOrderedAllocationIPC.dir/build.make
 CMakeFiles/streamOrderedAllocationIPC.dir/cmake_device_link.o: /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs/libcuda.so
 CMakeFiles/streamOrderedAllocationIPC.dir/cmake_device_link.o: CMakeFiles/streamOrderedAllocationIPC.dir/deviceLinkLibs.rsp
@@ -123,13 +123,13 @@ CMakeFiles/streamOrderedAllocationIPC.dir/build: CMakeFiles/streamOrderedAllocat
 # Object files for target streamOrderedAllocationIPC
 streamOrderedAllocationIPC_OBJECTS = \
 "CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o" \
-"CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o"
+"CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o"
 
 # External object files for target streamOrderedAllocationIPC
 streamOrderedAllocationIPC_EXTERNAL_OBJECTS =
 
 streamOrderedAllocationIPC: CMakeFiles/streamOrderedAllocationIPC.dir/streamOrderedAllocationIPC.cu.o
-streamOrderedAllocationIPC: CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Common/helper_multiprocess.cpp.o
+streamOrderedAllocationIPC: CMakeFiles/streamOrderedAllocationIPC.dir/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Common/helper_multiprocess.cpp.o
 streamOrderedAllocationIPC: CMakeFiles/streamOrderedAllocationIPC.dir/build.make
 streamOrderedAllocationIPC: /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs/libcuda.so
 streamOrderedAllocationIPC: CMakeFiles/streamOrderedAllocationIPC.dir/cmake_device_link.o
@@ -146,6 +146,6 @@ CMakeFiles/streamOrderedAllocationIPC.dir/clean:
 .PHONY : CMakeFiles/streamOrderedAllocationIPC.dir/clean
 
 CMakeFiles/streamOrderedAllocationIPC.dir/depend:
-	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC/CMakeFiles/streamOrderedAllocationIPC.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/2_Concepts_and_Techniques/streamOrderedAllocationIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/streamOrderedAllocationIPC/CMakeFiles/streamOrderedAllocationIPC.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/streamOrderedAllocationIPC.dir/depend
 

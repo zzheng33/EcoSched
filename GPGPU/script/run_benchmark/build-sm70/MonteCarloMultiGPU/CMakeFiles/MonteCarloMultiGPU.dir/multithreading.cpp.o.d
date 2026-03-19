@@ -1,7 +1,7 @@
 CMakeFiles/MonteCarloMultiGPU.dir/multithreading.cpp.o: \
- /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp \
+ /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/multithreading.cpp \
  /usr/include/stdc-predef.h \
- /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm90/source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/multithreading.h \
+ /home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70-source/Samples/5_Domain_Specific/MonteCarloMultiGPU/../../../Common/multithreading.h \
  /usr/include/pthread.h /usr/include/features.h \
  /usr/include/features-time64.h /usr/include/bits/wordsize.h \
  /usr/include/bits/timesize.h /usr/include/sys/cdefs.h \
