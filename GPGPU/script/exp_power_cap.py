@@ -45,14 +45,13 @@ cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simple
 
 
 
-cuda_benchmarks = ['simpleCUFFT_MGPU']
 
 # ml_models = ["resnet50","vgg16"]
 ml_models = ["resnet101","resnet152","vgg19"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-GPU_ct = [4]
+# GPU_ct = [4]
 gpu_caps = [400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800]
 gpu_caps = [2800]
 

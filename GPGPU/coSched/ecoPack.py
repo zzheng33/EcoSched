@@ -750,7 +750,7 @@ def main():
     results_dir = args.results_dir
     results_dir.mkdir(parents=True, exist_ok=True)
     mode = "dryrun" if args.dry_run else "run"
-    log_path = results_dir / "online_cosched_{}.txt".format(mode)
+    log_path = results_dir / "EcoPack_{}.txt".format(mode)
 
     original_stdout = sys.stdout
     original_stderr = sys.stderr
