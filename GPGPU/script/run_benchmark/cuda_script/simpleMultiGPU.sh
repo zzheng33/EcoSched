@@ -3,9 +3,9 @@
 set -euo pipefail
 
 # Usage: CUDA_VISIBLE_DEVICES=0,1,2,3 ./simpleMultiGPU.sh [NUM_GPUS] [benchmark args...]
-# Uses all visible GPUs automatically. MAX_ITERS controls how many times the binary is launched.
+# Uses all visible GPUs automatically. MAX_ITERS controls iterations inside the binary.
 
-MAX_ITERS=1
+MAX_ITERS=10000
 
 NUM_GPUS="${NUM_GPUS:-4}"
 if [[ $# -gt 0 && "$1" =~ ^[1-9][0-9]*$ ]]; then
@@ -63,6 +63,4 @@ if [[ ! -x "${BENCHMARK_BIN}" ]]; then
     exit 1
 fi
 
-for ((iter = 1; iter <= MAX_ITERS; iter++)); do
-    "${BENCHMARK_BIN}" "$@"
-done
+exec "${BENCHMARK_BIN}" --max-iters="${MAX_ITERS}" "$@"

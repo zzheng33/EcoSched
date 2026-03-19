@@ -39,6 +39,8 @@
 // System includes
 #include <assert.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 // CUDA runtime
 #include <cuda_runtime.h>
@@ -79,8 +81,20 @@ __global__ static void reduceKernel(float *d_Result, float *d_Input, int N)
 ////////////////////////////////////////////////////////////////////////////////
 // Program main
 ////////////////////////////////////////////////////////////////////////////////
+static int parseIntArg(int argc, char **argv, const char *flag, int defaultVal) {
+    size_t len = strlen(flag);
+    for (int i = 1; i < argc; i++) {
+        if (strncmp(argv[i], flag, len) == 0 && argv[i][len] == '=') {
+            return atoi(argv[i] + len + 1);
+        }
+    }
+    return defaultVal;
+}
+
 int main(int argc, char **argv)
 {
+    int maxIters = parseIntArg(argc, argv, "--max-iters", 100);
+
     // Solver config
     TGPUplan plan[MAX_GPU_COUNT];
 
@@ -143,7 +157,7 @@ int main(int argc, char **argv)
     }
 
     // Start timing and compute on GPU(s)
-    printf("Computing with %d GPUs...\n", GPU_N);
+    printf("Computing with %d GPUs, %d iterations...\n", GPU_N, maxIters);
     // create and start timer
     StopWatchInterface *timer = NULL;
     sdkCreateTimer(&timer);
@@ -151,54 +165,41 @@ int main(int argc, char **argv)
     // start the timer
     sdkStartTimer(&timer);
 
-    // Copy data to GPU, launch the kernel and copy data back. All asynchronously
-    for (i = 0; i < GPU_N; i++) {
-        // Set device
-        checkCudaErrors(cudaSetDevice(i));
+    for (int iter = 0; iter < maxIters; iter++) {
+        // Copy data to GPU, launch the kernel and copy data back. All asynchronously
+        for (i = 0; i < GPU_N; i++) {
+            // Set device
+            checkCudaErrors(cudaSetDevice(i));
 
-        // Copy input data from CPU
-        checkCudaErrors(cudaMemcpyAsync(
-            plan[i].d_Data, plan[i].h_Data, plan[i].dataN * sizeof(float), cudaMemcpyHostToDevice, plan[i].stream));
+            // Copy input data from CPU
+            checkCudaErrors(cudaMemcpyAsync(
+                plan[i].d_Data, plan[i].h_Data, plan[i].dataN * sizeof(float), cudaMemcpyHostToDevice, plan[i].stream));
 
-        // Perform GPU computations
-        reduceKernel<<<BLOCK_N, THREAD_N, 0, plan[i].stream>>>(plan[i].d_Sum, plan[i].d_Data, plan[i].dataN);
-        getLastCudaError("reduceKernel() execution failed.\n");
+            // Perform GPU computations
+            reduceKernel<<<BLOCK_N, THREAD_N, 0, plan[i].stream>>>(plan[i].d_Sum, plan[i].d_Data, plan[i].dataN);
+            getLastCudaError("reduceKernel() execution failed.\n");
 
-        // Read back GPU results
-        checkCudaErrors(cudaMemcpyAsync(
-            plan[i].h_Sum_from_device, plan[i].d_Sum, ACCUM_N * sizeof(float), cudaMemcpyDeviceToHost, plan[i].stream));
+            // Read back GPU results
+            checkCudaErrors(cudaMemcpyAsync(
+                plan[i].h_Sum_from_device, plan[i].d_Sum, ACCUM_N * sizeof(float), cudaMemcpyDeviceToHost, plan[i].stream));
+        }
+
+        // Process GPU results
+        for (i = 0; i < GPU_N; i++) {
+            checkCudaErrors(cudaSetDevice(i));
+            cudaStreamSynchronize(plan[i].stream);
+        }
     }
 
-    // Process GPU results
+    // Final reduction on last iteration
+    sumGPU = 0;
     for (i = 0; i < GPU_N; i++) {
-        float sum;
-
-        // Set device
-        checkCudaErrors(cudaSetDevice(i));
-
-        // Wait for all operations to finish
-        cudaStreamSynchronize(plan[i].stream);
-
-        // Finalize GPU reduction for current subvector
-        sum = 0;
-
+        float sum = 0;
         for (j = 0; j < ACCUM_N; j++) {
             sum += plan[i].h_Sum_from_device[j];
         }
-
-        *(plan[i].h_Sum) = (float)sum;
-
-        // Shut down this GPU
-        checkCudaErrors(cudaFreeHost(plan[i].h_Sum_from_device));
-        checkCudaErrors(cudaFree(plan[i].d_Sum));
-        checkCudaErrors(cudaFree(plan[i].d_Data));
-        checkCudaErrors(cudaStreamDestroy(plan[i].stream));
-    }
-
-    sumGPU = 0;
-
-    for (i = 0; i < GPU_N; i++) {
-        sumGPU += h_SumGPU[i];
+        *(plan[i].h_Sum) = sum;
+        sumGPU += sum;
     }
 
     sdkStopTimer(&timer);
@@ -225,6 +226,10 @@ int main(int argc, char **argv)
     // Cleanup and shutdown
     for (i = 0; i < GPU_N; i++) {
         checkCudaErrors(cudaSetDevice(i));
+        checkCudaErrors(cudaFreeHost(plan[i].h_Sum_from_device));
+        checkCudaErrors(cudaFree(plan[i].d_Sum));
+        checkCudaErrors(cudaFree(plan[i].d_Data));
+        checkCudaErrors(cudaStreamDestroy(plan[i].stream));
         checkCudaErrors(cudaFreeHost(plan[i].h_Data));
     }
 
