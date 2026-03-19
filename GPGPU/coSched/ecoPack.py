@@ -76,6 +76,21 @@ class ActionEval(NamedTuple):
     runtime_regret: float
 
 
+class CMABDecision(NamedTuple):
+    predicted_reward: float
+    exploration_bonus: float
+    ucb_value: float
+
+
+class CMABInterval(NamedTuple):
+    features: Tuple[float, float]
+    idle_frac: float
+    busy_total_power_w: float
+    start_time_s: float
+    sample_start_idx: int
+    action_label: str
+
+
 class LaunchSpec(NamedTuple):
     mode: ModeInfo
     gpu_ids: List[int]
@@ -258,6 +273,66 @@ def select_online_modes(
     return selected
 
 
+class LinUCBPolicy(object):
+    def __init__(self, idle_weight: float, alpha: float, prior_strength: float = 10.0):
+        self.alpha = alpha
+        self.prior_strength = prior_strength
+        self.A = [
+            [prior_strength, 0.0],
+            [0.0, prior_strength],
+        ]
+        self.b = [
+            -prior_strength * 1.0,
+            -prior_strength * idle_weight,
+        ]
+
+    def features(self, evaluation: ActionEval) -> Tuple[float, float]:
+        return (evaluation.metric_regret, evaluation.idle_frac)
+
+    def _inverse(self) -> List[List[float]]:
+        a, b = self.A[0]
+        c, d = self.A[1]
+        det = a * d - b * c
+        if abs(det) < 1e-12:
+            raise ValueError('Singular LinUCB covariance matrix')
+        inv_det = 1.0 / det
+        return [
+            [d * inv_det, -b * inv_det],
+            [-c * inv_det, a * inv_det],
+        ]
+
+    def theta(self) -> Tuple[float, float]:
+        inv = self._inverse()
+        return (
+            inv[0][0] * self.b[0] + inv[0][1] * self.b[1],
+            inv[1][0] * self.b[0] + inv[1][1] * self.b[1],
+        )
+
+    def evaluate(self, features: Tuple[float, float]) -> CMABDecision:
+        inv = self._inverse()
+        theta0, theta1 = self.theta()
+        x0, x1 = features
+        predicted_reward = theta0 * x0 + theta1 * x1
+        inv_x0 = inv[0][0] * x0 + inv[0][1] * x1
+        inv_x1 = inv[1][0] * x0 + inv[1][1] * x1
+        variance = max(0.0, x0 * inv_x0 + x1 * inv_x1)
+        exploration_bonus = self.alpha * math.sqrt(variance)
+        return CMABDecision(
+            predicted_reward=predicted_reward,
+            exploration_bonus=exploration_bonus,
+            ucb_value=predicted_reward + exploration_bonus,
+        )
+
+    def update(self, features: Tuple[float, float], reward: float) -> None:
+        x0, x1 = features
+        self.A[0][0] += x0 * x0
+        self.A[0][1] += x0 * x1
+        self.A[1][0] += x1 * x0
+        self.A[1][1] += x1 * x1
+        self.b[0] += reward * x0
+        self.b[1] += reward * x1
+
+
 def mean_busy_power(parsed: Dict[str, Dict[int, ModeInfo]]) -> float:
     values = []
     for rows in parsed.values():
@@ -420,7 +495,9 @@ def pick_best_action(
     blocking_weight: float,
     anchor_app: Optional[str],
     anchor_started: bool,
-) -> Tuple[Optional[Tuple[ModeInfo, ...]], Optional[List[LaunchSpec]], Optional[ActionEval]]:
+    policy: str,
+    cmab_policy: Optional[LinUCBPolicy],
+) -> Tuple[Optional[Tuple[ModeInfo, ...]], Optional[List[LaunchSpec]], Optional[ActionEval], Optional[CMABDecision]]:
     free_gpus = TOTAL_GPUS - len(gpus_in_use)
     free_slots = DEFAULT_MAX_CONCURRENT - len(running)
     actions = enumerate_actions(pending, candidate_modes, free_gpus, free_slots)
@@ -433,21 +510,116 @@ def pick_best_action(
         if launches is None:
             continue
         evaluation = score_action(action, pending, candidate_modes, free_gpus, score_metric, idle_weight, blocking_weight)
-        tie_key = (
-            evaluation.score,
-            evaluation.idle_frac,
-            evaluation.runtime_regret,
-            -sum(mode.gpu_count for mode in action),
-            action_key(action),
-        )
-        candidate = (tie_key, action, launches, evaluation)
+        if policy == "cmab":
+            if cmab_policy is None:
+                raise ValueError("cmab policy selected without a LinUCB policy instance")
+            decision = cmab_policy.evaluate(cmab_policy.features(evaluation))
+            tie_key = (
+                -decision.ucb_value,
+                evaluation.idle_frac,
+                evaluation.runtime_regret,
+                -sum(mode.gpu_count for mode in action),
+                action_key(action),
+            )
+        else:
+            decision = None
+            tie_key = (
+                evaluation.score,
+                evaluation.idle_frac,
+                evaluation.runtime_regret,
+                -sum(mode.gpu_count for mode in action),
+                action_key(action),
+            )
+        candidate = (tie_key, action, launches, evaluation, decision)
         if best_item is None or candidate < best_item:
             best_item = candidate
 
     if best_item is None:
-        return None, None, None
-    _, action, launches, evaluation = best_item
-    return action, launches, evaluation
+        return None, None, None, None
+    _, action, launches, evaluation, decision = best_item
+    return action, launches, evaluation, decision
+
+
+def _action_label(action: Sequence[ModeInfo]) -> str:
+    return "+".join("{}:{}GPU".format(mode.app, mode.gpu_count) for mode in action)
+
+
+def _energy_between_samples(samples, start_idx: int, end_idx: Optional[int] = None) -> float:
+    if end_idx is None:
+        end_idx = len(samples)
+    if end_idx - start_idx < 2:
+        return 0.0
+    total = 0.0
+    begin = max(start_idx + 1, 1)
+    for i in range(begin, end_idx):
+        t0, p0 = samples[i - 1]
+        t1, p1 = samples[i]
+        dt = t1 - t0
+        avg_power = sum((a + b) / 2.0 for a, b in zip(p0, p1))
+        total += avg_power * dt
+    return total
+
+
+def _make_cmab_interval(
+    action: Sequence[ModeInfo],
+    evaluation: ActionEval,
+    running: Sequence[RunningJob],
+    start_time_s: float,
+    sample_start_idx: int,
+) -> CMABInterval:
+    busy_total_power_w = sum(job.mode.total_power_w for job in running)
+    return CMABInterval(
+        features=(evaluation.metric_regret, evaluation.idle_frac),
+        idle_frac=evaluation.idle_frac,
+        busy_total_power_w=busy_total_power_w,
+        start_time_s=start_time_s,
+        sample_start_idx=sample_start_idx,
+        action_label=_action_label(action),
+    )
+
+
+def _compute_cmab_reward(
+    interval: CMABInterval,
+    duration_s: float,
+    idle_power_w: float,
+    idle_weight: float,
+    mean_busy_power_w: float,
+    total_energy_j: Optional[float] = None,
+) -> Tuple[float, float]:
+    if duration_s <= 0.0:
+        return -(idle_weight * interval.idle_frac), 0.0
+
+    idle_gpus = int(round(interval.idle_frac * TOTAL_GPUS))
+    if total_energy_j is None:
+        total_energy_j = duration_s * (interval.busy_total_power_w + idle_power_w * idle_gpus)
+
+    idle_energy_j = idle_power_w * idle_gpus * duration_s
+    active_energy_j = max(0.0, total_energy_j - idle_energy_j)
+    denom = mean_busy_power_w * TOTAL_GPUS * duration_s
+    realized_metric = 0.0 if denom <= 0.0 else active_energy_j / denom
+    reward = -(realized_metric + idle_weight * interval.idle_frac)
+    return reward, realized_metric
+
+
+def _cmab_update_message(
+    interval: CMABInterval,
+    reward: float,
+    realized_metric: float,
+    cmab_policy: LinUCBPolicy,
+) -> str:
+    theta0, theta1 = cmab_policy.theta()
+    return (
+        "    CMAB update | action={} | x=({:.4f}, {:.4f}) | realized_metric={:.4f} | "
+        "reward={:.4f} | theta=({:.4f}, {:.4f})"
+    ).format(
+        interval.action_label,
+        interval.features[0],
+        interval.features[1],
+        realized_metric,
+        reward,
+        theta0,
+        theta1,
+    )
 
 
 def _devnull():
@@ -461,16 +633,21 @@ def run_dry(
     idle_weight: float,
     blocking_weight: float,
     anchor_app: Optional[str],
+    policy: str,
+    cmab_policy: Optional[LinUCBPolicy],
+    idle_power: float,
+    mean_busy_power_w: float,
 ):
     pending = list(job_queue)
     running = []
     gpus_in_use = set()
     sim_time = 0.0
     anchor_started = anchor_app is None
+    pending_interval = None
 
     print(
-        "Online dry-run: {} apps on {} GPUs (metric={}, slowdown_tol modes pre-filtered)".format(
-            len(pending), TOTAL_GPUS, score_metric
+        "Online dry-run: {} apps on {} GPUs (metric={}, slowdown_tol modes pre-filtered, policy={})".format(
+            len(pending), TOTAL_GPUS, score_metric, policy
         )
     )
     print("NUMA 0 GPUs: {}  |  NUMA 1 GPUs: {}".format(NUMA0_GPUS, NUMA1_GPUS))
@@ -480,8 +657,18 @@ def run_dry(
         scheduled = True
         while scheduled and pending and len(running) < DEFAULT_MAX_CONCURRENT:
             scheduled = False
-            action, launches, evaluation = pick_best_action(
-                pending, running, gpus_in_use, candidate_modes, score_metric, idle_weight, blocking_weight, anchor_app, anchor_started
+            action, launches, evaluation, cmab_decision = pick_best_action(
+                pending,
+                running,
+                gpus_in_use,
+                candidate_modes,
+                score_metric,
+                idle_weight,
+                blocking_weight,
+                anchor_app,
+                anchor_started,
+                policy,
+                cmab_policy,
             )
             if not launches:
                 break
@@ -492,20 +679,30 @@ def run_dry(
                 pending.remove(spec.mode.app)
                 if anchor_app and spec.mode.app == anchor_app:
                     anchor_started = True
-                print(
+                message = (
                     "  t={:8.2f}s | START {:<15} | {} GPUs {} | NUMA {} | score={:.4f} | "
-                    "regret={:.4f} idle={:.2f} block={:.2f}".format(
-                        sim_time,
-                        spec.mode.app,
-                        spec.mode.gpu_count,
-                        spec.gpu_ids,
-                        spec.numa_node,
-                        evaluation.score,
-                        evaluation.metric_regret,
-                        evaluation.idle_frac,
-                        evaluation.blocking_penalty,
-                    )
+                    "regret={:.4f} idle={:.2f} block={:.2f}"
+                ).format(
+                    sim_time,
+                    spec.mode.app,
+                    spec.mode.gpu_count,
+                    spec.gpu_ids,
+                    spec.numa_node,
+                    evaluation.score,
+                    evaluation.metric_regret,
+                    evaluation.idle_frac,
+                    evaluation.blocking_penalty,
                 )
+                if cmab_decision is not None:
+                    message += " | cmab_ucb={:.4f} mu={:.4f} bonus={:.4f}".format(
+                        cmab_decision.ucb_value,
+                        cmab_decision.predicted_reward,
+                        cmab_decision.exploration_bonus,
+                    )
+                print(message)
+            if policy == "cmab":
+                pending_interval = _make_cmab_interval(action, evaluation, running, sim_time, 0)
+                break
             scheduled = True
 
         if not running:
@@ -513,6 +710,18 @@ def run_dry(
 
         running.sort(key=lambda job: (job.end_time, job.app))
         finished = running.pop(0)
+        if policy == "cmab" and pending_interval is not None and cmab_policy is not None:
+            duration = finished.end_time - pending_interval.start_time_s
+            reward, realized_metric = _compute_cmab_reward(
+                pending_interval,
+                duration,
+                idle_power,
+                idle_weight,
+                mean_busy_power_w,
+            )
+            cmab_policy.update(pending_interval.features, reward)
+            print(_cmab_update_message(pending_interval, reward, realized_metric, cmab_policy))
+            pending_interval = None
         sim_time = finished.end_time
         gpus_in_use -= set(finished.gpu_ids)
         print(
@@ -537,6 +746,10 @@ def run_online(
     blocking_weight: float,
     poll_interval: float,
     anchor_app: Optional[str],
+    policy: str,
+    cmab_policy: Optional[LinUCBPolicy],
+    idle_power: float,
+    mean_busy_power_w: float,
 ):
     pending = list(job_queue)
     running = []
@@ -545,10 +758,11 @@ def run_online(
     wall_start = time.time()
     monitor = PowerMonitor()
     anchor_started = anchor_app is None
+    pending_interval = None
 
     print(
-        "Online co-scheduling: {} apps on {} GPUs (metric={})".format(
-            len(pending), TOTAL_GPUS, score_metric
+        "Online co-scheduling: {} apps on {} GPUs (metric={}, policy={})".format(
+            len(pending), TOTAL_GPUS, score_metric, policy
         )
     )
     print("NUMA 0 GPUs: {}  |  NUMA 1 GPUs: {}".format(NUMA0_GPUS, NUMA1_GPUS))
@@ -560,8 +774,18 @@ def run_online(
             scheduled = True
             while scheduled and pending and len(running) < DEFAULT_MAX_CONCURRENT:
                 scheduled = False
-                action, launches, evaluation = pick_best_action(
-                    pending, running, gpus_in_use, candidate_modes, score_metric, idle_weight, blocking_weight, anchor_app, anchor_started
+                action, launches, evaluation, cmab_decision = pick_best_action(
+                    pending,
+                    running,
+                    gpus_in_use,
+                    candidate_modes,
+                    score_metric,
+                    idle_weight,
+                    blocking_weight,
+                    anchor_app,
+                    anchor_started,
+                    policy,
+                    cmab_policy,
                 )
                 if not launches:
                     break
@@ -569,20 +793,27 @@ def run_online(
                     cmd, env, cwd = build_command(spec.mode.app, spec.gpu_ids, spec.numa_node)
                     devnull = _devnull()
                     elapsed = time.time() - wall_start
-                    print(
+                    message = (
                         "  t={:8.2f}s | START {:<15} | {} GPUs {} | NUMA {} | score={:.4f} | "
-                        "regret={:.4f} idle={:.2f} block={:.2f}".format(
-                            elapsed,
-                            spec.mode.app,
-                            spec.mode.gpu_count,
-                            spec.gpu_ids,
-                            spec.numa_node,
-                            evaluation.score,
-                            evaluation.metric_regret,
-                            evaluation.idle_frac,
-                            evaluation.blocking_penalty,
-                        )
+                        "regret={:.4f} idle={:.2f} block={:.2f}"
+                    ).format(
+                        elapsed,
+                        spec.mode.app,
+                        spec.mode.gpu_count,
+                        spec.gpu_ids,
+                        spec.numa_node,
+                        evaluation.score,
+                        evaluation.metric_regret,
+                        evaluation.idle_frac,
+                        evaluation.blocking_penalty,
                     )
+                    if cmab_decision is not None:
+                        message += " | cmab_ucb={:.4f} mu={:.4f} bonus={:.4f}".format(
+                            cmab_decision.ucb_value,
+                            cmab_decision.predicted_reward,
+                            cmab_decision.exploration_bonus,
+                        )
+                    print(message)
                     proc = subprocess.Popen(
                         cmd,
                         env=env,
@@ -605,16 +836,44 @@ def run_online(
                     pending.remove(spec.mode.app)
                     if anchor_app and spec.mode.app == anchor_app:
                         anchor_started = True
+                if policy == "cmab":
+                    pending_interval = _make_cmab_interval(
+                        action,
+                        evaluation,
+                        running,
+                        time.time(),
+                        len(monitor._samples),
+                    )
+                    break
                 scheduled = True
 
             if not running:
                 break
 
             time.sleep(poll_interval)
-            for job in list(running):
+            finished_jobs = [job for job in list(running) if job.process.poll() is not None]
+            if not finished_jobs:
+                continue
+
+            if policy == "cmab" and pending_interval is not None and cmab_policy is not None:
+                now = time.time()
+                samples = list(monitor._samples)
+                total_energy_j = _energy_between_samples(samples, pending_interval.sample_start_idx, len(samples))
+                duration = now - pending_interval.start_time_s
+                reward, realized_metric = _compute_cmab_reward(
+                    pending_interval,
+                    duration,
+                    idle_power,
+                    idle_weight,
+                    mean_busy_power_w,
+                    total_energy_j=total_energy_j,
+                )
+                cmab_policy.update(pending_interval.features, reward)
+                print(_cmab_update_message(pending_interval, reward, realized_metric, cmab_policy))
+                pending_interval = None
+
+            for job in finished_jobs:
                 rc = job.process.poll()
-                if rc is None:
-                    continue
                 elapsed = time.time() - wall_start
                 runtime = time.time() - job.start_time
                 gpus_in_use -= set(job.gpu_ids)
@@ -686,6 +945,12 @@ def main():
         help="Job queue. Default: {}".format(DEFAULT_JOB_QUEUE),
     )
     parser.add_argument(
+        "--policy",
+        choices=["heuristic", "cmab"],
+        default="heuristic",
+        help="Action selection policy. 'heuristic' keeps the original fixed score, 'cmab' uses warm-started LinUCB.",
+    )
+    parser.add_argument(
         "--slowdown-tol",
         type=float,
         default=DEFAULT_SLOWDOWN_TOL,
@@ -708,6 +973,12 @@ def main():
         type=float,
         default=None,
         help="Override idle penalty weight. Default derives from idle_power / mean_busy_power.",
+    )
+    parser.add_argument(
+        "--ucb-alpha",
+        type=float,
+        default=0.5,
+        help="Exploration strength for --policy cmab. Default: 0.5",
     )
     parser.add_argument(
         "--blocking-weight",
@@ -746,11 +1017,15 @@ def main():
     busy_power = mean_busy_power(parsed)
     idle_weight = args.idle_weight if args.idle_weight is not None else args.idle_power / busy_power
     blocking_weight = args.blocking_weight if args.blocking_weight is not None else idle_weight
+    cmab_policy = LinUCBPolicy(idle_weight=idle_weight, alpha=args.ucb_alpha) if args.policy == "cmab" else None
 
     results_dir = args.results_dir
     results_dir.mkdir(parents=True, exist_ok=True)
     mode = "dryrun" if args.dry_run else "run"
-    log_path = results_dir / "EcoPack_{}.txt".format(mode)
+    if args.policy == "heuristic":
+        log_path = results_dir / "EcoPack_{}.txt".format(mode)
+    else:
+        log_path = results_dir / "EcoPack_{}_{}.txt".format(args.policy, mode)
 
     original_stdout = sys.stdout
     original_stderr = sys.stderr
@@ -760,12 +1035,17 @@ def main():
         try:
             print("Results log: {}".format(log_path))
             print("Online policy parameters:")
+            print("  policy            = {}".format(args.policy))
             print("  score_metric      = {}".format(args.score_metric))
             print("  slowdown_tol      = {:.2f}".format(args.slowdown_tol))
             print("  idle_power        = {:.2f} W".format(args.idle_power))
             print("  mean_busy_power   = {:.2f} W".format(busy_power))
             print("  idle_weight       = {:.4f}".format(idle_weight))
             print("  blocking_weight   = {:.4f}".format(blocking_weight))
+            if cmab_policy is not None:
+                theta0, theta1 = cmab_policy.theta()
+                print("  ucb_alpha         = {:.4f}".format(args.ucb_alpha))
+                print("  cmab_theta_init   = ({:.4f}, {:.4f})".format(theta0, theta1))
             print("  anchor_app        = {}".format(args.anchor_app if args.anchor_app else "None"))
             print("  candidate modes:")
             for app in args.jobs:
@@ -785,9 +1065,32 @@ def main():
             print()
 
             if args.dry_run:
-                run_dry(args.jobs, candidate_modes, args.score_metric, idle_weight, blocking_weight, args.anchor_app)
+                run_dry(
+                    args.jobs,
+                    candidate_modes,
+                    args.score_metric,
+                    idle_weight,
+                    blocking_weight,
+                    args.anchor_app,
+                    args.policy,
+                    cmab_policy,
+                    args.idle_power,
+                    busy_power,
+                )
             else:
-                run_online(args.jobs, candidate_modes, args.score_metric, idle_weight, blocking_weight, args.poll_interval, args.anchor_app)
+                run_online(
+                    args.jobs,
+                    candidate_modes,
+                    args.score_metric,
+                    idle_weight,
+                    blocking_weight,
+                    args.poll_interval,
+                    args.anchor_app,
+                    args.policy,
+                    cmab_policy,
+                    args.idle_power,
+                    busy_power,
+                )
         finally:
             sys.stdout = original_stdout
             sys.stderr = original_stderr
