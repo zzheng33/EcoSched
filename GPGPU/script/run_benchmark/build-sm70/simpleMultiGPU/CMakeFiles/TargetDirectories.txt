@@ -1,0 +1,7 @@
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/simpleMultiGPU.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/edit_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/rebuild_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/list_install_components.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/install.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/install/local.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleMultiGPU/CMakeFiles/install/strip.dir

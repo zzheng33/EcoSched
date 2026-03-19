@@ -1,0 +1,1 @@
+/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ @CMakeFiles/simpleMultiGPU.dir/objects1.rsp CMakeFiles/simpleMultiGPU.dir/cmake_device_link.o -o simpleMultiGPU @CMakeFiles/simpleMultiGPU.dir/linkLibs.rsp -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"

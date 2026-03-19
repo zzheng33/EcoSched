@@ -8,7 +8,7 @@ MPI_RANKS=${1:-4}         # Default to 4 GPUs if not specified
 LOG2_BOX_DIM=${2:-8}      # Default to 512³ boxes (2^9)
 BOXES_PER_RANK=${3:-8}    # Default to 2 boxes per rank
 
-cd /home/ac.zzheng/benchmark/spec/hpgmg
+cd ${SPEC_BENCHMARK_ROOT:-/home/ac.zzheng/benchmark/spec}/hpgmg
 
 # Run HPGMG
 # If CUDA_VISIBLE_DEVICES is set, pick the Nth GPU from that list by MPI rank.

@@ -1,6 +1,7 @@
 ## LBM Compilation
 
-cd /home/ac.zzheng/benchmark/spec/LBM/build
+# cd /home/ac.zzheng/benchmark/spec/LBM/build
+cd /home/ac.zzheng/benchmark/spec-V100/LBM/build
 
 # Load modules
 module use /soft/modulefiles
@@ -20,7 +21,8 @@ mpicc -c -DSPEC ../src/specrand/specrand.c -o specrand.o
 mpicc -c -DSPEC -I../src/specmpitime ../src/specmpitime/specmpitime.c -o specmpitime.o
 
 # Compile CUDA file
-nvcc -c -DSPEC -DSPEC_CUDA -I../src -I../src/specmpitime -I${MPI_INCLUDE} ../src/lbm.cu -o lbm.o -arch=sm_90
+# nvcc -c -DSPEC -DSPEC_CUDA -I../src -I../src/specmpitime -I${MPI_INCLUDE} ../src/lbm.cu -o lbm.o -arch=sm_90
+nvcc -c -DSPEC -DSPEC_CUDA -I../src -I../src/specmpitime -I${MPI_INCLUDE} ../src/lbm.cu -o lbm.o -arch=sm_70
 
 # Link
 mpicc main.o lbm.o specrand.o specmpitime.o -L${CUDA_DIR}/lib64 -lcudart -lm -lstdc++ -o lbm_cuda
@@ -30,22 +32,25 @@ cp lbm_cuda ../run/
 
 ## CloverLeaf Compilation
 
-cd /home/ac.zzheng/benchmark/spec/CloverLeaf
+# cd /home/ac.zzheng/benchmark/spec/CloverLeaf
+cd /home/ac.zzheng/benchmark/spec-V100/CloverLeaf
 
 # Clean and compile (Makefile automatically compiles all Fortran .f90, C .c, and CUDA .cu files)
 make clean
-make COMPILER=GNU NV_ARCH=HOPPER -j
+# make COMPILER=GNU NV_ARCH=HOPPER -j
+make COMPILER=GNU NV_ARCH=VOLTA -j
 
 ## TeaLeaf Compilation
 
-cd /home/ac.zzheng/benchmark/spec/TeaLeaf
+# cd /home/ac.zzheng/benchmark/spec/TeaLeaf
+cd /home/ac.zzheng/benchmark/spec-V100/TeaLeaf
 
 # Clean and configure
 rm -rf build
 cmake -Bbuild -H. \
   -DMODEL=cuda \
   -DCMAKE_CUDA_COMPILER=${CUDA_HOME}/bin/nvcc \
-  -DCUDA_ARCH=sm_90 \
+  -DCUDA_ARCH=sm_70 \
   -DENABLE_MPI=ON \
   -DENABLE_PROFILING=ON \
   -DCMAKE_BUILD_TYPE=Release
@@ -55,7 +60,8 @@ cmake --build build -j
 
 ## Minisweep Compilation
 
-cd /home/ac.zzheng/benchmark/spec/minisweep
+# cd /home/ac.zzheng/benchmark/spec/minisweep
+cd /home/ac.zzheng/benchmark/spec-V100/minisweep
 
 # Clean and configure
 rm -rf build

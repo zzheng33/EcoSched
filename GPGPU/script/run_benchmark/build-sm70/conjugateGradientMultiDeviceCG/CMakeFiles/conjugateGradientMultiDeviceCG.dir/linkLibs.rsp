@@ -1,0 +1,1 @@
+ "/soft/compilers/cuda/cuda-12.3.0/lib64/libcublas.so" "/soft/compilers/cuda/cuda-12.3.0/lib64/libcusparse.so" "/soft/compilers/cuda/cuda-12.3.0/lib64/libcublasLt.so" "/soft/compilers/cuda/cuda-12.3.0/lib64/libculibos.a" "/soft/compilers/cuda/cuda-12.3.0/lib64/libnvJitLink.so" -lcudadevrt -lcudart_static -lrt -lpthread -ldl 

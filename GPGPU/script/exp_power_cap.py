@@ -11,9 +11,32 @@ system = "V100"
 # system = "A100"
 # system = "H100"
 
+# System-dependent benchmark paths
+SYSTEM_CONFIG = {
+    "V100": {
+        "spec_benchmark_root": os.path.expanduser("~/benchmark/spec-V100"),
+        "cuda_build_root": "build-sm70",
+    },
+    "H100": {
+        "spec_benchmark_root": os.path.expanduser("~/benchmark/spec"),
+        "cuda_build_root": "build-sm90",
+    },
+    "A100": {
+        "spec_benchmark_root": os.path.expanduser("~/benchmark/spec-A100"),
+        "cuda_build_root": "build-sm80",
+    },
+}
+
 # Define paths and executables
 home_dir = os.path.expanduser('~')
 script_dir = os.path.dirname(os.path.abspath(__file__))
+
+# Set system-dependent env vars for benchmark scripts
+_sys_cfg = SYSTEM_CONFIG.get(system, {})
+os.environ["SPEC_BENCHMARK_ROOT"] = _sys_cfg.get("spec_benchmark_root", "")
+os.environ["BENCHMARK_BUILD_ROOT"] = os.path.join(
+    script_dir, "run_benchmark", _sys_cfg.get("cuda_build_root", "build-sm90")
+)
 python_executable = os.path.join(home_dir, "env/ml/bin/python3")
 
 # scripts for CPU, GPU power monitoring

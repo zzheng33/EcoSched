@@ -6,7 +6,7 @@
 
 MPI_RANKS=${1:-4}  # Default to 4 GPUs if not specified
 
-cd /home/ac.zzheng/benchmark/spec/LBM/run
+cd ${SPEC_BENCHMARK_ROOT:-/home/ac.zzheng/benchmark/spec}/LBM/run
 
 # Configure problem size
 GSIZEX=1200

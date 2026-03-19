@@ -1,0 +1,5 @@
+total_gpu_cap,gpu_count,per_gpu_cap,benchmark,throughput_tokens_per_sec,status
+2800,1,700,gpt2,12838.87,ok
+2800,2,700,gpt2,25007.08,ok
+2800,3,700,gpt2,37045.80,ok
+2800,4,700,gpt2,48607.04,ok

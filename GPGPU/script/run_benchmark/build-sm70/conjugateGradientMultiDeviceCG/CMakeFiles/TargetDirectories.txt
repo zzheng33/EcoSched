@@ -1,0 +1,7 @@
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/conjugateGradientMultiDeviceCG.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/edit_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/rebuild_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/list_install_components.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/install.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/install/local.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/conjugateGradientMultiDeviceCG/CMakeFiles/install/strip.dir

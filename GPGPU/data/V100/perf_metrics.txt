@@ -1,0 +1,106 @@
+
+===== SPEC/cloverleaf =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+1	1.14	72.50	0.00	1530.00	0.00
+
+===== SPEC/hpgmg =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+3	1.22	57.33	0.00	3870.00	0.00
+1	1.38	66.00	0.00	1425.00	0.00
+4	3.46	59.75	0.01	5160.00	0.00
+2	7.70	59.00	0.01	2580.00	0.00
+
+===== SPEC/lbm =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+4	7.84	66.25	0.06	5640.00	0.00
+3	11.30	66.05	0.00	4333.23	0.00
+2	13.38	69.50	0.01	3060.00	0.00
+1	18.90	56.94	0.00	1154.12	0.00
+
+===== SPEC/minisweep =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+4	30.41	71.38	0.04	6120.00	0.00
+3	38.32	71.92	0.03	4590.00	0.00
+1	48.77	74.71	0.02	1530.00	0.00
+2	55.30	72.15	0.02	3060.00	0.00
+
+===== SPEC/miniweather =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+1	8.62	63.00	0.07	1290.00	0.00
+2	56.31	62.76	0.00	2715.00	0.00
+3	64.87	60.59	0.00	3952.94	0.00
+4	65.55	59.82	0.00	5247.35	0.00
+
+===== SPEC/pot3d =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+4	1.05	63.12	0.00	5062.50	0.00
+3	1.17	67.33	0.00	4350.00	0.00
+2	2.05	65.33	0.00	2820.00	0.00
+1	5.94	72.86	0.00	1530.00	0.00
+
+===== SPEC/tealeaf =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+1	1.14	77.00	0.09	1530.00	0.00
+
+===== ML/bert =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+4	34.06	214.06	1.49	5977.00	0.00
+3	41.43	254.27	1.41	4507.38	0.00
+2	57.60	230.17	0.89	2788.83	0.00
+1	91.30	261.00	0.38	1448.47	0.00
+
+===== ML/gpt2 =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+4	20.85	240.11	1.07	5752.00	0.00
+3	23.65	224.71	0.80	4232.33	0.00
+2	29.36	261.00	0.58	2798.94	0.00
+1	103.17	254.23	0.27	1373.54	0.00
+
+===== ML/vgg19 =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+4	25.71	170.22	1.13	6072.00	0.00
+3	28.18	218.90	0.72	4554.71	0.00
+2	34.03	226.10	0.62	3025.87	0.00
+1	77.87	261.73	0.47	1504.87	0.00
+
+===== ML/conjugateGradientMultiDeviceCG =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+2	1.14	78.50	0.03	3060.00	0.00
+4	1.15	69.62	0.00	5302.50	0.00
+3	1.16	75.83	0.00	4590.00	0.00
+1	2.08	80.00	0.00	1530.00	0.00
+
+===== ML/simpleCUBLASXT =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+4	6.78	69.91	0.00	5825.62	0.00
+3	6.79	70.54	0.00	4325.62	0.00
+2	8.54	70.90	0.00	2919.00	0.00
+1	12.36	77.57	0.00	1530.00	0.00
+
+===== ML/simpleMultiGPU =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+3	1.14	72.67	0.00	4590.00	0.00
+4	1.14	69.00	0.00	5880.00	0.00
+
+===== ML/simpleP2P =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+2	67.48	79.06	0.16	3060.00	0.00
+
+===== ML/streamOrderedAllocationP2P =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+2	29.44	66.56	0.03	2813.44	0.00

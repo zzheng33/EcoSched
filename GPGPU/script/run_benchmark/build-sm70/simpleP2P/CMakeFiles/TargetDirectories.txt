@@ -1,0 +1,7 @@
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleP2P/CMakeFiles/simpleP2P.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleP2P/CMakeFiles/edit_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleP2P/CMakeFiles/rebuild_cache.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleP2P/CMakeFiles/list_install_components.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleP2P/CMakeFiles/install.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleP2P/CMakeFiles/install/local.dir
+/home/ac.zzheng/power/GPGPU/script/run_benchmark/build-sm70/simpleP2P/CMakeFiles/install/strip.dir
