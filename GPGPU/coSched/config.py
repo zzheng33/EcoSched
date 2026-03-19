@@ -15,6 +15,7 @@ TOTAL_GPUS = 4
 NUMA0_GPUS = [0, 1]
 NUMA1_GPUS = [2, 3]
 
+#  co-scheduling mode only (not sequential): depreciated
 # Predicted optimal GPU counts from the notebook's EDP model
 # (dram_sum proxy, w=0.0, alpha=1.30)
 PREDICTED_GPU_COUNTS = {
@@ -30,10 +31,11 @@ PREDICTED_GPU_COUNTS = {
     'resnet50':    3,
 }
 
+# 'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU'
 DEFAULT_JOB_QUEUE = [
     'pot3d', 'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
     'miniweather', 'bert', 'gpt2', 'resnet50', 'hpgmg',
     'conjugateGradientMultiDeviceCG', 'MonteCarloMultiGPU',
-    'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU',
+    'simpleMultiGPU', 'simpleP2P','streamOrderedAllocationP2P',
     "resnet101", "resnet152", "vgg19", "vgg16",
 ]
