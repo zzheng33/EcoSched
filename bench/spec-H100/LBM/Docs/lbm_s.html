@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>605.lbm_s SPEChpc 2021 Benchmark Description</title>
+</head>
+<body>
+<div style="text-align: center">
+<h1>605.lbm_s<br />
+SPEChpc&trade; 2021 Benchmark Description</h1>
+</div>
+
+<h2>Benchmark Name</h2>
+
+<p>605.lbm_s (D2Q37)</p>
+
+<hr />
+
+<h2>Benchmark Author</h2>
+
+<p>Submitted by Sebastiano Fabio Schifano sebastiano.schifano __at__ unife.it</p>
+
+<p>Authors listed in alphabetic order: <br/>
+---------------------------------- <br/>
+<ul>
+<li>Luca Biferale (University of Rome "Tor Vergata" and INFN)</li> 
+<li>Enrico Calore (University of Ferrara and INFN)</li>
+<li>Alessandro Gabbana (University of Ferrara and INFN)</li>
+<li>Mauro Sbragaglia (University of Rome "Tor Vergata" and INFN)</li>
+<li>Andrea Scagliarini (CNR-IAC, Roma)</li>
+<li>Sebastiano Fabio Schifano (University of Ferrara and INFN)(*)</li>
+<li>Raffaele Tripiccione (University of Ferrara and INFN)</li>
+</ul>
+(*) corresponding author, sebastiano.schifano __at__ unife.it<br/>
+<br/>
+We also thanks the following students:</br>
+-------------------------------------<br/>
+<ul>
+<li>Elisa Pellegrini (University of Ferrara)</li>
+<li>Marco Zanella (University of Ferrara)</li>
+</ul>
+</p>
+
+<hr />
+
+<h2>Benchmark Program General Category</h2>
+
+<p>Computational Fluid Dynamics</p>
+
+<hr />
+
+<h2>Benchmark Description</h2>
+
+<p>D2Q37 is a Computational Fluid Dynamics code for simulating 2D-fluids using the Lattice Boltzmann Method (LBM) with 37 components of velocity. From a physics point of view, this model improves the accuracy of simpler LBM methods -- e.g. D2Q7 or D2Q9 -- as it is able to describe in full details the thermo-hydrodynamical behavior of a fluid, whose equation of state is that of a perfect gas. Computation is performed in double-precision, and the code includes two computational relevant kernels: one kernel, "propagate", is strongly memory bound, and the other, "collide", is compute bound with an arithmetic intensity of approx 11 FLOP/BYTE. The two kernels are therefore able to stress and benchmark both the memory and computation sub-systems of recent GPU and CPU processors. The code is implemented in several versions, including MPI+CUDA and MPI+OPENACC running on GPU-clusters, and also MPI+C, running on CPUs clusters. The MPI+CUDA and MPI+OpenACC versions also support CUDA-aware MPI communications that overlap with compute, while the MPI+C version is vectorized and multithreaded. The code supports 1D and 2D domain decomposition. 
+</p>
+
+<hr />
+
+<h2>Input Description</h2>
+
+<p>
+The control file provides -- one per row -- the following input parameters: 
+
+<ul>
+<li> X-dimension of lattice
+<li> Y-dimension of lattice
+<li> number of iterations
+<li> seed for random number generator
+</ul> 
+
+In the present setup the code performs a simulation of the evolution of the Rayleigh-Taylor instability. To do this, a reasonable choice of the lattice size is such that the aspect ratio of the X and Y sizes is
+1:4 (e.g. X=1024 and Y=4096) and number of iterations is approximately 100000.
+</p>
+
+</pre>
+
+<hr />
+
+<h2>Output Description</h2>
+
+
+<p>
+The code performs the simulation, and at the end it checks that the fluid mass in the whole simulation domain has not changed from its initial value (up to a relative error of 10<sup>-10</sup>). This simple check is enough to make sure that the code has executed correctly.
+</p>
+
+If the simulation gives a correct result the following message is print:
+<pre>
+Mass check: PASSED.
+</pre>
+
+Otherwise, the message warns that the check FAILED and displays the initial and final values of the mass together with the corresponding relative error. The following is an example of message in case of check failure:
+<pre>
+Mass check: FAILED 8.8510211292e+06 <> 8.8510211178e+06 (Er: 1.287987e-09).
+</pre>
+
+<h2>Programming Language</h2>
+
+<p><ul><li>C</li><li>POSIX</li></ul></p>
+
+<hr />
+
+<h2>External Dependencies</h2>
+
+<p>None</p>
+
+<h2>Runtime Limitations (such as number of ranks)</h2>
+
+<p>None</p>
+
+<h2>Known portability issues</h2>
+
+<p>None<p>
+
+<hr />
+
+<h2>Version and Licensing</h2>
+
+<p>Application Version: 1.6.29</p>
+<p>License: BSD 3 Clause</p>
+
+<hr />
+
+<h2>References</h2>
+
+<ul>
+<li><a href="http://dx.doi.org/10.1016/j.parco.2016.08.005">http://dx.doi.org/10.1016/j.parco.2016.08.005</a>
+<li><a href="http://dx.doi.org/10.1002/cpe.3862">http://dx.doi.org/10.1002/cpe.3862</a>
+</li>
+
+<hr />
+
+<p>Last updated: $Date$</p>
+</body>
+</html>

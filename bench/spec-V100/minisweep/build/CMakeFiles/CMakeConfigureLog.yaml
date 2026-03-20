@@ -1,0 +1,603 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      The system is: Linux - 6.4.0-150600.23.87-default - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /soft/libraries/mpi/openmpi/4.1.1/bin/mpicc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/3.28.3/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/3.28.3/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-kTAerm"
+      binary: "/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-kTAerm"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-kTAerm'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2422c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_2422c.dir/build.make CMakeFiles/cmTC_2422c.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-kTAerm'
+        Building C object CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o
+        /soft/libraries/mpi/openmpi/4.1.1/bin/mpicc   -v -o CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c,c++,fortran,lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 12.2.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_2422c.dir/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1 -quiet -v -I /soft/libraries/mpi/openmpi/4.1.1/include -D_REENTRANT /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_2422c.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccFVNj4B.s
+        GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /soft/libraries/mpi/openmpi/4.1.1/include
+         /soft/compilers/cuda/cuda-12.3.0/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include
+         /usr/local/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed
+         /usr/include
+        End of search list.
+        GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 633fc1144b439c5681b32ed6a75df4d1
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_2422c.dir/'
+         as -v -I /soft/libraries/mpi/openmpi/4.1.1/include --64 -o CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o /tmp/ccFVNj4B.s
+        GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils; SUSE Linux Enterprise 15) 2.45.0.20251103-150100757
+        COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.'
+        Linking C executable cmTC_2422c
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2422c.dir/link.txt --verbose=1
+        /soft/libraries/mpi/openmpi/4.1.1/bin/mpicc  -v -rdynamic CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o -o cmTC_2422c 
+        Using built-in specs.
+        COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc
+        COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c,c++,fortran,lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 12.2.0 (GCC) 
+        COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_2422c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-L/soft/libraries/mpi/openmpi/4.1.1/lib' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_2422c.'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJq1gjT.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_2422c /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/libraries/mpi/openmpi/4.1.1/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o -rpath /soft/libraries/mpi/openmpi/4.1.1/lib --enable-new-dtags -lmpi -lgcc --push-state --as-needed -lgcc_s --pop-state -lpthread -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_2422c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-L/soft/libraries/mpi/openmpi/4.1.1/lib' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_2422c.'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-kTAerm'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/soft/libraries/mpi/openmpi/4.1.1/include]
+          add: [/soft/compilers/cuda/cuda-12.3.0/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+          add: [/usr/local/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/soft/libraries/mpi/openmpi/4.1.1/include] ==> [/soft/libraries/mpi/openmpi/4.1.1/include]
+        collapse include dir [/soft/compilers/cuda/cuda-12.3.0/include] ==> [/soft/compilers/cuda/cuda-12.3.0/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/soft/libraries/mpi/openmpi/4.1.1/include;/soft/compilers/cuda/cuda-12.3.0/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include;/usr/local/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-kTAerm']
+        ignore line: []
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2422c/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_2422c.dir/build.make CMakeFiles/cmTC_2422c.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-kTAerm']
+        ignore line: [Building C object CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/soft/libraries/mpi/openmpi/4.1.1/bin/mpicc   -v -o CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c c++ fortran lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 12.2.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_2422c.dir/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1 -quiet -v -I /soft/libraries/mpi/openmpi/4.1.1/include -D_REENTRANT /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_2422c.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mtune=generic -march=x86-64 -version -o /tmp/ccFVNj4B.s]
+        ignore line: [GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /soft/libraries/mpi/openmpi/4.1.1/include]
+        ignore line: [ /soft/compilers/cuda/cuda-12.3.0/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 633fc1144b439c5681b32ed6a75df4d1]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_2422c.dir/']
+        ignore line: [ as -v -I /soft/libraries/mpi/openmpi/4.1.1/include --64 -o CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o /tmp/ccFVNj4B.s]
+        ignore line: [GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils]
+        ignore line: [ SUSE Linux Enterprise 15) 2.45.0.20251103-150100757]
+        ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C executable cmTC_2422c]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2422c.dir/link.txt --verbose=1]
+        ignore line: [/soft/libraries/mpi/openmpi/4.1.1/bin/mpicc  -v -rdynamic CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o -o cmTC_2422c ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/gcc]
+        ignore line: [COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c c++ fortran lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 12.2.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_2422c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-L/soft/libraries/mpi/openmpi/4.1.1/lib' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_2422c.']
+        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccJq1gjT.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_2422c /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/libraries/mpi/openmpi/4.1.1/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o -rpath /soft/libraries/mpi/openmpi/4.1.1/lib --enable-new-dtags -lmpi -lgcc --push-state --as-needed -lgcc_s --pop-state -lpthread -lc -lgcc --push-state --as-needed -lgcc_s --pop-state /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccJq1gjT.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-export-dynamic] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_2422c] ==> ignore
+          arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
+          arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
+          arg [-L/soft/libraries/mpi/openmpi/4.1.1/lib] ==> dir [/soft/libraries/mpi/openmpi/4.1.1/lib]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
+          arg [CMakeFiles/cmTC_2422c.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/soft/libraries/mpi/openmpi/4.1.1/lib] ==> ignore
+          arg [--enable-new-dtags] ==> ignore
+          arg [-lmpi] ==> lib [mpi]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--push-state] ==> ignore
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--pop-state] ==> ignore
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o]
+          arg [/usr/lib/../lib64/crtn.o] ==> obj [/usr/lib/../lib64/crtn.o]
+        collapse obj [/usr/lib/../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+        collapse obj [/usr/lib/../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/lib/../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/soft/libraries/mpi/openmpi/4.1.1/lib] ==> [/soft/libraries/mpi/openmpi/4.1.1/lib]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/lib64] ==> [/soft/compilers/cuda/cuda-12.3.0/lib64]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib]
+        implicit libs: [mpi;gcc;gcc_s;pthread;c;gcc;gcc_s]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/soft/libraries/mpi/openmpi/4.1.1/lib;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64;/lib64;/usr/lib64;/soft/compilers/cuda/cuda-12.3.0/lib64;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-iGD6GW"
+      binary: "/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-iGD6GW"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-iGD6GW'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_323ee/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_323ee.dir/build.make CMakeFiles/cmTC_323ee.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-iGD6GW'
+        Building CXX object CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o
+        /soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx   -v -o CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c,c++,fortran,lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 12.2.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_323ee.dir/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -I /soft/libraries/mpi/openmpi/4.1.1/include -D_GNU_SOURCE -D_REENTRANT /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_323ee.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/cc8zzpSS.s
+        GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /soft/libraries/mpi/openmpi/4.1.1/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include
+         /usr/local/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed
+         /usr/include
+        End of search list.
+        GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: e236158c8a2002ae12fe327bd6fa1801
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_323ee.dir/'
+         as -v -I /soft/libraries/mpi/openmpi/4.1.1/include --64 -o CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc8zzpSS.s
+        GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils; SUSE Linux Enterprise 15) 2.45.0.20251103-150100757
+        COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX executable cmTC_323ee
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_323ee.dir/link.txt --verbose=1
+        /soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx  -v -rdynamic CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_323ee 
+        Using built-in specs.
+        COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++
+        COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c,c++,fortran,lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 12.2.0 (GCC) 
+        COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_323ee' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-L/soft/libraries/mpi/openmpi/4.1.1/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_323ee.'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQjSxZe.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_323ee /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/libraries/mpi/openmpi/4.1.1/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o -rpath /soft/libraries/mpi/openmpi/4.1.1/lib --enable-new-dtags -lmpi -lstdc++ -lm -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_323ee' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-L/soft/libraries/mpi/openmpi/4.1.1/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_323ee.'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-iGD6GW'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/soft/libraries/mpi/openmpi/4.1.1/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+          add: [/usr/local/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/soft/libraries/mpi/openmpi/4.1.1/include] ==> [/soft/libraries/mpi/openmpi/4.1.1/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/backward]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/soft/libraries/mpi/openmpi/4.1.1/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/backward;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include;/usr/local/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-iGD6GW']
+        ignore line: []
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_323ee/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_323ee.dir/build.make CMakeFiles/cmTC_323ee.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-iGD6GW']
+        ignore line: [Building CXX object CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx   -v -o CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c c++ fortran lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 12.2.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_323ee.dir/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -I /soft/libraries/mpi/openmpi/4.1.1/include -D_GNU_SOURCE -D_REENTRANT /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_323ee.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mtune=generic -march=x86-64 -version -o /tmp/cc8zzpSS.s]
+        ignore line: [GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /soft/libraries/mpi/openmpi/4.1.1/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: e236158c8a2002ae12fe327bd6fa1801]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_323ee.dir/']
+        ignore line: [ as -v -I /soft/libraries/mpi/openmpi/4.1.1/include --64 -o CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc8zzpSS.s]
+        ignore line: [GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils]
+        ignore line: [ SUSE Linux Enterprise 15) 2.45.0.20251103-150100757]
+        ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX executable cmTC_323ee]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_323ee.dir/link.txt --verbose=1]
+        ignore line: [/soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx  -v -rdynamic CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_323ee ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++]
+        ignore line: [COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c c++ fortran lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 12.2.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_323ee' '-I' '/soft/libraries/mpi/openmpi/4.1.1/include' '-pthread' '-L/soft/libraries/mpi/openmpi/4.1.1/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_323ee.']
+        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccQjSxZe.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lpthread -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_323ee /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/libraries/mpi/openmpi/4.1.1/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o -rpath /soft/libraries/mpi/openmpi/4.1.1/lib --enable-new-dtags -lmpi -lstdc++ -lm -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccQjSxZe.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lpthread] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-export-dynamic] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_323ee] ==> ignore
+          arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
+          arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
+          arg [-L/soft/libraries/mpi/openmpi/4.1.1/lib] ==> dir [/soft/libraries/mpi/openmpi/4.1.1/lib]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
+          arg [CMakeFiles/cmTC_323ee.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/soft/libraries/mpi/openmpi/4.1.1/lib] ==> ignore
+          arg [--enable-new-dtags] ==> ignore
+          arg [-lmpi] ==> lib [mpi]
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o]
+          arg [/usr/lib/../lib64/crtn.o] ==> obj [/usr/lib/../lib64/crtn.o]
+        collapse obj [/usr/lib/../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+        collapse obj [/usr/lib/../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/lib/../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/soft/libraries/mpi/openmpi/4.1.1/lib] ==> [/soft/libraries/mpi/openmpi/4.1.1/lib]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/lib64] ==> [/soft/compilers/cuda/cuda-12.3.0/lib64]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib]
+        implicit libs: [mpi;stdc++;m;gcc_s;gcc;pthread;c;gcc_s;gcc]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/soft/libraries/mpi/openmpi/4.1.1/lib;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64;/lib64;/usr/lib64;/soft/compilers/cuda/cuda-12.3.0/lib64;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-PlOtTb"
+      binary: "/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-PlOtTb"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-PlOtTb'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_ef67d/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_ef67d.dir/build.make CMakeFiles/cmTC_ef67d.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-PlOtTb'
+        Building CXX object CMakeFiles/cmTC_ef67d.dir/test_mpi.cpp.o
+        /soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx    -o CMakeFiles/cmTC_ef67d.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-PlOtTb/test_mpi.cpp
+        Linking CXX executable cmTC_ef67d
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ef67d.dir/link.txt --verbose=1
+        /soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx -rdynamic CMakeFiles/cmTC_ef67d.dir/test_mpi.cpp.o -o cmTC_ef67d 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-PlOtTb'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindCUDA.cmake:1071 (find_package)"
+      - "CMakeLists.txt:45 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pWZXNB"
+      binary: "/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pWZXNB"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fPIC"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pWZXNB'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_8ddbd/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_8ddbd.dir/build.make CMakeFiles/cmTC_8ddbd.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pWZXNB'
+        Building C object CMakeFiles/cmTC_8ddbd.dir/src.c.o
+        /soft/libraries/mpi/openmpi/4.1.1/bin/mpicc -DCMAKE_HAVE_LIBC_PTHREAD  -fPIC  -o CMakeFiles/cmTC_8ddbd.dir/src.c.o -c /home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pWZXNB/src.c
+        Linking C executable cmTC_8ddbd
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8ddbd.dir/link.txt --verbose=1
+        /soft/libraries/mpi/openmpi/4.1.1/bin/mpicc -fPIC  -rdynamic CMakeFiles/cmTC_8ddbd.dir/src.c.o -o cmTC_8ddbd 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec-V100/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pWZXNB'
+        
+      exitCode: 0
+...

@@ -1,0 +1,1 @@
+/soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx -DNO_INFORM -O3 -DNDEBUG CMakeFiles/mpi.dir/miniWeather_mpi.cpp.o CMakeFiles/mpi.dir/cmake_device_link.o -o mpi   -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/libcufft.so -lcudadevrt -lcudart_static -lrt -ldl 

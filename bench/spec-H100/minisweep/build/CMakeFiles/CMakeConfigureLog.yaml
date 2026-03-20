@@ -1,0 +1,922 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      The system is: Linux - 6.4.0-150600.23.78-default - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/cc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is GNU, found in:
+        /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/3.28.3/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /usr/bin/c++ 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is GNU, found in:
+        /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/3.28.3/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5sMKzm"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5sMKzm"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5sMKzm'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5a5bf/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_5a5bf.dir/build.make CMakeFiles/cmTC_5a5bf.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5sMKzm'
+        Building C object CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o
+        /usr/bin/cc   -v -o CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        OFFLOAD_TARGET_NAMES=hsa:nvptx-none
+        Target: x86_64-suse-linux
+        Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,ada,go --enable-offload-targets=hsa,nvptx-none, --without-cuda-driver --enable-checking=release --disable-werror --with-gxx-include-dir=/usr/include/c++/7 --enable-ssp --disable-libssp --disable-libvtv --disable-libcc1 --disable-plugin --with-bugurl=https://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --with-slibdir=/lib64 --with-system-zlib --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --with-gcc-major-version-only --enable-linker-build-id --enable-linux-futex --enable-gnu-indirect-function --program-suffix=-7 --without-system-libunwind --enable-multilib --with-arch-32=x86-64 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux
+        Thread model: posix
+        gcc version 7.5.0 (SUSE Linux) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+         /usr/lib64/gcc/x86_64-suse-linux/7/cc1 -quiet -v /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccgmNxIr.s
+        GNU C11 (SUSE Linux) version 7.5.0 (x86_64-suse-linux)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.2, MPFR version 4.0.2-p6, MPC version 1.1.0, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /soft/compilers/cuda/cuda-12.3.0/include
+         /usr/lib64/gcc/x86_64-suse-linux/7/include
+         /usr/local/include
+         /usr/lib64/gcc/x86_64-suse-linux/7/include-fixed
+         /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include
+         /usr/include
+        End of search list.
+        GNU C11 (SUSE Linux) version 7.5.0 (x86_64-suse-linux)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.2, MPFR version 4.0.2-p6, MPC version 1.1.0, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: d3ef37571acf05c62c4fd9d7c05b5a99
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+         /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/as -v --64 -o CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o /tmp/ccgmNxIr.s
+        GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils; SUSE Linux Enterprise 15) 2.45.0.20251103-150100757
+        COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/
+        LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+        Linking C executable cmTC_5a5bf
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a5bf.dir/link.txt --verbose=1
+        /usr/bin/cc  -v -rdynamic CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o -o cmTC_5a5bf 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/cc
+        COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper
+        OFFLOAD_TARGET_NAMES=hsa:nvptx-none
+        Target: x86_64-suse-linux
+        Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,ada,go --enable-offload-targets=hsa,nvptx-none, --without-cuda-driver --enable-checking=release --disable-werror --with-gxx-include-dir=/usr/include/c++/7 --enable-ssp --disable-libssp --disable-libvtv --disable-libcc1 --disable-plugin --with-bugurl=https://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --with-slibdir=/lib64 --with-system-zlib --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --with-gcc-major-version-only --enable-linker-build-id --enable-linux-futex --enable-gnu-indirect-function --program-suffix=-7 --without-system-libunwind --enable-multilib --with-arch-32=x86-64 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux
+        Thread model: posix
+        gcc version 7.5.0 (SUSE Linux) 
+        COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/
+        LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5a5bf' '-mtune=generic' '-march=x86-64'
+         /usr/lib64/gcc/x86_64-suse-linux/7/collect2 -plugin /usr/lib64/gcc/x86_64-suse-linux/7/liblto_plugin.so -plugin-opt=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8bE82L.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_5a5bf /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/7 -L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/7/../../.. CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib64/gcc/x86_64-suse-linux/7/crtend.o /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5a5bf' '-mtune=generic' '-march=x86-64'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5sMKzm'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/soft/compilers/cuda/cuda-12.3.0/include]
+          add: [/usr/lib64/gcc/x86_64-suse-linux/7/include]
+          add: [/usr/local/include]
+          add: [/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed]
+          add: [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/soft/compilers/cuda/cuda-12.3.0/include] ==> [/soft/compilers/cuda/cuda-12.3.0/include]
+        collapse include dir [/usr/lib64/gcc/x86_64-suse-linux/7/include] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed]
+        collapse include dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include] ==> [/usr/x86_64-suse-linux/include]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/soft/compilers/cuda/cuda-12.3.0/include;/usr/lib64/gcc/x86_64-suse-linux/7/include;/usr/local/include;/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed;/usr/x86_64-suse-linux/include;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5sMKzm']
+        ignore line: []
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5a5bf/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_5a5bf.dir/build.make CMakeFiles/cmTC_5a5bf.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5sMKzm']
+        ignore line: [Building C object CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/usr/bin/cc   -v -o CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [OFFLOAD_TARGET_NAMES=hsa:nvptx-none]
+        ignore line: [Target: x86_64-suse-linux]
+        ignore line: [Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c c++ objc fortran obj-c++ ada go --enable-offload-targets=hsa nvptx-none  --without-cuda-driver --enable-checking=release --disable-werror --with-gxx-include-dir=/usr/include/c++/7 --enable-ssp --disable-libssp --disable-libvtv --disable-libcc1 --disable-plugin --with-bugurl=https://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --with-slibdir=/lib64 --with-system-zlib --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --with-gcc-major-version-only --enable-linker-build-id --enable-linux-futex --enable-gnu-indirect-function --program-suffix=-7 --without-system-libunwind --enable-multilib --with-arch-32=x86-64 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [gcc version 7.5.0 (SUSE Linux) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/cc1 -quiet -v /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccgmNxIr.s]
+        ignore line: [GNU C11 (SUSE Linux) version 7.5.0 (x86_64-suse-linux)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.2  MPFR version 4.0.2-p6  MPC version 1.1.0  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /soft/compilers/cuda/cuda-12.3.0/include]
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/include-fixed]
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C11 (SUSE Linux) version 7.5.0 (x86_64-suse-linux)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.2  MPFR version 4.0.2-p6  MPC version 1.1.0  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: d3ef37571acf05c62c4fd9d7c05b5a99]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/as -v --64 -o CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o /tmp/ccgmNxIr.s]
+        ignore line: [GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils]
+        ignore line: [ SUSE Linux Enterprise 15) 2.45.0.20251103-150100757]
+        ignore line: [COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+        ignore line: [Linking C executable cmTC_5a5bf]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5a5bf.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/cc  -v -rdynamic CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o -o cmTC_5a5bf ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/cc]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=hsa:nvptx-none]
+        ignore line: [Target: x86_64-suse-linux]
+        ignore line: [Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c c++ objc fortran obj-c++ ada go --enable-offload-targets=hsa nvptx-none  --without-cuda-driver --enable-checking=release --disable-werror --with-gxx-include-dir=/usr/include/c++/7 --enable-ssp --disable-libssp --disable-libvtv --disable-libcc1 --disable-plugin --with-bugurl=https://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --with-slibdir=/lib64 --with-system-zlib --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --with-gcc-major-version-only --enable-linker-build-id --enable-linux-futex --enable-gnu-indirect-function --program-suffix=-7 --without-system-libunwind --enable-multilib --with-arch-32=x86-64 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [gcc version 7.5.0 (SUSE Linux) ]
+        ignore line: [COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_5a5bf' '-mtune=generic' '-march=x86-64']
+        link line: [ /usr/lib64/gcc/x86_64-suse-linux/7/collect2 -plugin /usr/lib64/gcc/x86_64-suse-linux/7/liblto_plugin.so -plugin-opt=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc8bE82L.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_5a5bf /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/7 -L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/7/../../.. CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib64/gcc/x86_64-suse-linux/7/crtend.o /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc8bE82L.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-export-dynamic] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_5a5bf] ==> ignore
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/../../..] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../..]
+          arg [CMakeFiles/cmTC_5a5bf.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [-lc] ==> lib [c]
+          arg [-lgcc] ==> lib [gcc]
+          arg [--as-needed] ==> ignore
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [--no-as-needed] ==> ignore
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7] ==> [/usr/lib64/gcc/x86_64-suse-linux/7]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64] ==> [/usr/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/lib64] ==> [/soft/compilers/cuda/cuda-12.3.0/lib64]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib] ==> [/usr/x86_64-suse-linux/lib]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../..] ==> [/usr/lib64]
+        implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/usr/lib64/gcc/x86_64-suse-linux/7;/usr/lib64;/lib64;/soft/compilers/cuda/cuda-12.3.0/lib64;/usr/x86_64-suse-linux/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-7ZQlT8"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-7ZQlT8"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-7ZQlT8'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7aa9f/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_7aa9f.dir/build.make CMakeFiles/cmTC_7aa9f.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-7ZQlT8'
+        Building CXX object CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o
+        /usr/bin/c++   -v -o CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        OFFLOAD_TARGET_NAMES=hsa:nvptx-none
+        Target: x86_64-suse-linux
+        Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,ada,go --enable-offload-targets=hsa,nvptx-none, --without-cuda-driver --enable-checking=release --disable-werror --with-gxx-include-dir=/usr/include/c++/7 --enable-ssp --disable-libssp --disable-libvtv --disable-libcc1 --disable-plugin --with-bugurl=https://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --with-slibdir=/lib64 --with-system-zlib --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --with-gcc-major-version-only --enable-linker-build-id --enable-linux-futex --enable-gnu-indirect-function --program-suffix=-7 --without-system-libunwind --enable-multilib --with-arch-32=x86-64 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux
+        Thread model: posix
+        gcc version 7.5.0 (SUSE Linux) 
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         /usr/lib64/gcc/x86_64-suse-linux/7/cc1plus -quiet -v -D_GNU_SOURCE /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/cc7oSpST.s
+        GNU C++14 (SUSE Linux) version 7.5.0 (x86_64-suse-linux)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.2, MPFR version 4.0.2-p6, MPC version 1.1.0, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /usr/include/c++/7
+         /usr/include/c++/7/x86_64-suse-linux
+         /usr/include/c++/7/backward
+         /usr/lib64/gcc/x86_64-suse-linux/7/include
+         /usr/local/include
+         /usr/lib64/gcc/x86_64-suse-linux/7/include-fixed
+         /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include
+         /usr/include
+        End of search list.
+        GNU C++14 (SUSE Linux) version 7.5.0 (x86_64-suse-linux)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.2, MPFR version 4.0.2-p6, MPC version 1.1.0, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: 8aa3e93f5ed22c5f5cae2475b2e54dc9
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/as -v --64 -o CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc7oSpST.s
+        GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils; SUSE Linux Enterprise 15) 2.45.0.20251103-150100757
+        COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/
+        LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+        Linking CXX executable cmTC_7aa9f
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7aa9f.dir/link.txt --verbose=1
+        /usr/bin/c++  -v -rdynamic CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_7aa9f 
+        Using built-in specs.
+        COLLECT_GCC=/usr/bin/c++
+        COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper
+        OFFLOAD_TARGET_NAMES=hsa:nvptx-none
+        Target: x86_64-suse-linux
+        Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c,c++,objc,fortran,obj-c++,ada,go --enable-offload-targets=hsa,nvptx-none, --without-cuda-driver --enable-checking=release --disable-werror --with-gxx-include-dir=/usr/include/c++/7 --enable-ssp --disable-libssp --disable-libvtv --disable-libcc1 --disable-plugin --with-bugurl=https://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --with-slibdir=/lib64 --with-system-zlib --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --with-gcc-major-version-only --enable-linker-build-id --enable-linux-futex --enable-gnu-indirect-function --program-suffix=-7 --without-system-libunwind --enable-multilib --with-arch-32=x86-64 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux
+        Thread model: posix
+        gcc version 7.5.0 (SUSE Linux) 
+        COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/
+        LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7aa9f' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+         /usr/lib64/gcc/x86_64-suse-linux/7/collect2 -plugin /usr/lib64/gcc/x86_64-suse-linux/7/liblto_plugin.so -plugin-opt=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc33F8N7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_7aa9f /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/7 -L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/7/../../.. CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib64/gcc/x86_64-suse-linux/7/crtend.o /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7aa9f' '-shared-libgcc' '-mtune=generic' '-march=x86-64'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-7ZQlT8'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/usr/include/c++/7]
+          add: [/usr/include/c++/7/x86_64-suse-linux]
+          add: [/usr/include/c++/7/backward]
+          add: [/usr/lib64/gcc/x86_64-suse-linux/7/include]
+          add: [/usr/local/include]
+          add: [/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed]
+          add: [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/usr/include/c++/7] ==> [/usr/include/c++/7]
+        collapse include dir [/usr/include/c++/7/x86_64-suse-linux] ==> [/usr/include/c++/7/x86_64-suse-linux]
+        collapse include dir [/usr/include/c++/7/backward] ==> [/usr/include/c++/7/backward]
+        collapse include dir [/usr/lib64/gcc/x86_64-suse-linux/7/include] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed]
+        collapse include dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include] ==> [/usr/x86_64-suse-linux/include]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/usr/include/c++/7;/usr/include/c++/7/x86_64-suse-linux;/usr/include/c++/7/backward;/usr/lib64/gcc/x86_64-suse-linux/7/include;/usr/local/include;/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed;/usr/x86_64-suse-linux/include;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-7ZQlT8']
+        ignore line: []
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7aa9f/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_7aa9f.dir/build.make CMakeFiles/cmTC_7aa9f.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-7ZQlT8']
+        ignore line: [Building CXX object CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/usr/bin/c++   -v -o CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [OFFLOAD_TARGET_NAMES=hsa:nvptx-none]
+        ignore line: [Target: x86_64-suse-linux]
+        ignore line: [Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c c++ objc fortran obj-c++ ada go --enable-offload-targets=hsa nvptx-none  --without-cuda-driver --enable-checking=release --disable-werror --with-gxx-include-dir=/usr/include/c++/7 --enable-ssp --disable-libssp --disable-libvtv --disable-libcc1 --disable-plugin --with-bugurl=https://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --with-slibdir=/lib64 --with-system-zlib --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --with-gcc-major-version-only --enable-linker-build-id --enable-linux-futex --enable-gnu-indirect-function --program-suffix=-7 --without-system-libunwind --enable-multilib --with-arch-32=x86-64 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [gcc version 7.5.0 (SUSE Linux) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/cc1plus -quiet -v -D_GNU_SOURCE /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpbase CMakeCXXCompilerABI.cpp -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o -version -o /tmp/cc7oSpST.s]
+        ignore line: [GNU C++14 (SUSE Linux) version 7.5.0 (x86_64-suse-linux)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.2  MPFR version 4.0.2-p6  MPC version 1.1.0  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /usr/include/c++/7]
+        ignore line: [ /usr/include/c++/7/x86_64-suse-linux]
+        ignore line: [ /usr/include/c++/7/backward]
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/include-fixed]
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++14 (SUSE Linux) version 7.5.0 (x86_64-suse-linux)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.2  MPFR version 4.0.2-p6  MPC version 1.1.0  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: 8aa3e93f5ed22c5f5cae2475b2e54dc9]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [ /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/as -v --64 -o CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o /tmp/cc7oSpST.s]
+        ignore line: [GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils]
+        ignore line: [ SUSE Linux Enterprise 15) 2.45.0.20251103-150100757]
+        ignore line: [COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o' '-c' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        ignore line: [Linking CXX executable cmTC_7aa9f]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7aa9f.dir/link.txt --verbose=1]
+        ignore line: [/usr/bin/c++  -v -rdynamic CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_7aa9f ]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/usr/bin/c++]
+        ignore line: [COLLECT_LTO_WRAPPER=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=hsa:nvptx-none]
+        ignore line: [Target: x86_64-suse-linux]
+        ignore line: [Configured with: ../configure --prefix=/usr --infodir=/usr/share/info --mandir=/usr/share/man --libdir=/usr/lib64 --libexecdir=/usr/lib64 --enable-languages=c c++ objc fortran obj-c++ ada go --enable-offload-targets=hsa nvptx-none  --without-cuda-driver --enable-checking=release --disable-werror --with-gxx-include-dir=/usr/include/c++/7 --enable-ssp --disable-libssp --disable-libvtv --disable-libcc1 --disable-plugin --with-bugurl=https://bugs.opensuse.org/ --with-pkgversion='SUSE Linux' --with-slibdir=/lib64 --with-system-zlib --enable-libstdcxx-allocator=new --disable-libstdcxx-pch --enable-version-specific-runtime-libs --with-gcc-major-version-only --enable-linker-build-id --enable-linux-futex --enable-gnu-indirect-function --program-suffix=-7 --without-system-libunwind --enable-multilib --with-arch-32=x86-64 --with-tune=generic --build=x86_64-suse-linux --host=x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [gcc version 7.5.0 (SUSE Linux) ]
+        ignore line: [COMPILER_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/bin/]
+        ignore line: [LIBRARY_PATH=/usr/lib64/gcc/x86_64-suse-linux/7/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib/:/usr/lib64/gcc/x86_64-suse-linux/7/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-rdynamic' '-o' 'cmTC_7aa9f' '-shared-libgcc' '-mtune=generic' '-march=x86-64']
+        link line: [ /usr/lib64/gcc/x86_64-suse-linux/7/collect2 -plugin /usr/lib64/gcc/x86_64-suse-linux/7/liblto_plugin.so -plugin-opt=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper -plugin-opt=-fresolution=/tmp/cc33F8N7.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --build-id --eh-frame-hdr -m elf_x86_64 -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_7aa9f /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o -L/usr/lib64/gcc/x86_64-suse-linux/7 -L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib -L/usr/lib64/gcc/x86_64-suse-linux/7/../../.. CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib64/gcc/x86_64-suse-linux/7/crtend.o /usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/usr/lib64/gcc/x86_64-suse-linux/7/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/cc33F8N7.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--build-id] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-export-dynamic] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_7aa9f] ==> ignore
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/../../..] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../..]
+          arg [CMakeFiles/cmTC_7aa9f.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7] ==> [/usr/lib64/gcc/x86_64-suse-linux/7]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../lib64] ==> [/usr/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/lib64] ==> [/soft/compilers/cuda/cuda-12.3.0/lib64]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/lib] ==> [/usr/x86_64-suse-linux/lib]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/../../..] ==> [/usr/lib64]
+        implicit libs: [stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/usr/lib64/gcc/x86_64-suse-linux/7;/usr/lib64;/lib64;/soft/compilers/cuda/cuda-12.3.0/lib64;/usr/x86_64-suse-linux/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-zWwhic"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-zWwhic"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-zWwhic'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_9b574/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_9b574.dir/build.make CMakeFiles/cmTC_9b574.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-zWwhic'
+        Building C object CMakeFiles/cmTC_9b574.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_9b574.dir/test_mpi.c.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-zWwhic/test_mpi.c
+        Linking C executable cmTC_9b574
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_9b574.dir/link.txt --verbose=1
+        /usr/bin/cc -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_9b574.dir/test_mpi.c.o -o cmTC_9b574  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-zWwhic'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5Eakl7"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5Eakl7"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5Eakl7'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3f560/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_3f560.dir/build.make CMakeFiles/cmTC_3f560.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5Eakl7'
+        Building CXX object CMakeFiles/cmTC_3f560.dir/test_mpi.cpp.o
+        /usr/bin/c++  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_3f560.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5Eakl7/test_mpi.cpp
+        Linking CXX executable cmTC_3f560
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3f560.dir/link.txt --verbose=1
+        /usr/bin/c++ -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_3f560.dir/test_mpi.cpp.o -o cmTC_3f560  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-5Eakl7'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-tJPyEE"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-tJPyEE"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-tJPyEE'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_75df7/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_75df7.dir/build.make CMakeFiles/cmTC_75df7.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-tJPyEE'
+        Building CXX object CMakeFiles/cmTC_75df7.dir/test_mpi.cpp.o
+        /usr/bin/c++  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_75df7.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-tJPyEE/test_mpi.cpp
+        Linking CXX executable cmTC_75df7
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_75df7.dir/link.txt --verbose=1
+        /usr/bin/c++ -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_75df7.dir/test_mpi.cpp.o -o cmTC_75df7  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-tJPyEE'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindCUDA.cmake:1071 (find_package)"
+      - "CMakeLists.txt:45 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-HkQBw2"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-HkQBw2"
+    cmakeVariables:
+      CMAKE_C_FLAGS: "-fPIC"
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-HkQBw2'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_bde04/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_bde04.dir/build.make CMakeFiles/cmTC_bde04.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-HkQBw2'
+        Building C object CMakeFiles/cmTC_bde04.dir/src.c.o
+        /usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD  -fPIC  -o CMakeFiles/cmTC_bde04.dir/src.c.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-HkQBw2/src.c
+        Linking C executable cmTC_bde04
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_bde04.dir/link.txt --verbose=1
+        /usr/bin/cc -fPIC  -rdynamic CMakeFiles/cmTC_bde04.dir/src.c.o -o cmTC_bde04 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-HkQBw2'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-3f3ZoW"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-3f3ZoW"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-3f3ZoW'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_76a76/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_76a76.dir/build.make CMakeFiles/cmTC_76a76.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-3f3ZoW'
+        Building C object CMakeFiles/cmTC_76a76.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_76a76.dir/test_mpi.c.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-3f3ZoW/test_mpi.c
+        Linking C executable cmTC_76a76
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_76a76.dir/link.txt --verbose=1
+        /usr/bin/cc -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_76a76.dir/test_mpi.c.o -o cmTC_76a76  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-3f3ZoW'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-uT8vU8"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-uT8vU8"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-uT8vU8'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c4bac/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c4bac.dir/build.make CMakeFiles/cmTC_c4bac.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-uT8vU8'
+        Building CXX object CMakeFiles/cmTC_c4bac.dir/test_mpi.cpp.o
+        /usr/bin/c++  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_c4bac.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-uT8vU8/test_mpi.cpp
+        Linking CXX executable cmTC_c4bac
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c4bac.dir/link.txt --verbose=1
+        /usr/bin/c++ -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_c4bac.dir/test_mpi.cpp.o -o cmTC_c4bac  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-uT8vU8'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9uMVAM"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9uMVAM"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9uMVAM'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e0ed9/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_e0ed9.dir/build.make CMakeFiles/cmTC_e0ed9.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9uMVAM'
+        Building CXX object CMakeFiles/cmTC_e0ed9.dir/test_mpi.cpp.o
+        /usr/bin/c++  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_e0ed9.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9uMVAM/test_mpi.cpp
+        Linking CXX executable cmTC_e0ed9
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e0ed9.dir/link.txt --verbose=1
+        /usr/bin/c++ -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_e0ed9.dir/test_mpi.cpp.o -o cmTC_e0ed9  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9uMVAM'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9I8DV3"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9I8DV3"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9I8DV3'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_80450/fast
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9I8DV3'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_80450.dir/build.make CMakeFiles/cmTC_80450.dir/build
+        gmake[2]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9I8DV3'
+        Building C object CMakeFiles/cmTC_80450.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_80450.dir/test_mpi.c.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9I8DV3/test_mpi.c
+        Linking C executable cmTC_80450
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_80450.dir/link.txt --verbose=1
+        /usr/bin/cc -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_80450.dir/test_mpi.c.o -o cmTC_80450  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[2]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9I8DV3'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-9I8DV3'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-KSacTr"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-KSacTr"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-KSacTr'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_97324/fast
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-KSacTr'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_97324.dir/build.make CMakeFiles/cmTC_97324.dir/build
+        gmake[2]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-KSacTr'
+        Building CXX object CMakeFiles/cmTC_97324.dir/test_mpi.cpp.o
+        /usr/bin/c++  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_97324.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-KSacTr/test_mpi.cpp
+        Linking CXX executable cmTC_97324
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97324.dir/link.txt --verbose=1
+        /usr/bin/c++ -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_97324.dir/test_mpi.cpp.o -o cmTC_97324  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[2]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-KSacTr'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-KSacTr'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-nFOKfQ"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-nFOKfQ"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-nFOKfQ'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_40849/fast
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-nFOKfQ'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_40849.dir/build.make CMakeFiles/cmTC_40849.dir/build
+        gmake[2]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-nFOKfQ'
+        Building CXX object CMakeFiles/cmTC_40849.dir/test_mpi.cpp.o
+        /usr/bin/c++  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_40849.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-nFOKfQ/test_mpi.cpp
+        Linking CXX executable cmTC_40849
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_40849.dir/link.txt --verbose=1
+        /usr/bin/c++ -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_40849.dir/test_mpi.cpp.o -o cmTC_40849  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[2]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-nFOKfQ'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-nFOKfQ'
+        
+      exitCode: 0
+...
+
+---
+events:
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for C in mode normal"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-T8NPEo"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-T8NPEo"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_C_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-T8NPEo'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_27e4c/fast
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-T8NPEo'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_27e4c.dir/build.make CMakeFiles/cmTC_27e4c.dir/build
+        gmake[2]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-T8NPEo'
+        Building C object CMakeFiles/cmTC_27e4c.dir/test_mpi.c.o
+        /usr/bin/cc  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_27e4c.dir/test_mpi.c.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-T8NPEo/test_mpi.c
+        Linking C executable cmTC_27e4c
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_27e4c.dir/link.txt --verbose=1
+        /usr/bin/cc -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_27e4c.dir/test_mpi.c.o -o cmTC_27e4c  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[2]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-T8NPEo'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-T8NPEo'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1322 (_MPI_try_staged_settings)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1645 (_MPI_check_lang_works)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode normal"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pwOcte"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pwOcte"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_normal"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pwOcte'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_7f5fe/fast
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pwOcte'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_7f5fe.dir/build.make CMakeFiles/cmTC_7f5fe.dir/build
+        gmake[2]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pwOcte'
+        Building CXX object CMakeFiles/cmTC_7f5fe.dir/test_mpi.cpp.o
+        /usr/bin/c++  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_7f5fe.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pwOcte/test_mpi.cpp
+        Linking CXX executable cmTC_7f5fe
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_7f5fe.dir/link.txt --verbose=1
+        /usr/bin/c++ -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_7f5fe.dir/test_mpi.cpp.o -o cmTC_7f5fe  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[2]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pwOcte'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-pwOcte'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1278 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindMPI.cmake:1672 (_MPI_try_staged_settings)"
+      - "CMakeLists.txt:40 (find_package)"
+    description: "The MPI test test_mpi for CXX in mode MPICXX"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-4QJb3a"
+      binary: "/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-4QJb3a"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+    buildResult:
+      variable: "MPI_RESULT_CXX_test_mpi_MPICXX"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-4QJb3a'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_8691e/fast
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-4QJb3a'
+        /usr/bin/gmake  -f CMakeFiles/cmTC_8691e.dir/build.make CMakeFiles/cmTC_8691e.dir/build
+        gmake[2]: Entering directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-4QJb3a'
+        Building CXX object CMakeFiles/cmTC_8691e.dir/test_mpi.cpp.o
+        /usr/bin/c++  -isystem /soft/libraries/mpi/openmpi/4.1.1/include -pthread -o CMakeFiles/cmTC_8691e.dir/test_mpi.cpp.o -c /home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-4QJb3a/test_mpi.cpp
+        Linking CXX executable cmTC_8691e
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8691e.dir/link.txt --verbose=1
+        /usr/bin/c++ -rdynamic -Wl,-rpath -Wl,/soft/libraries/mpi/openmpi/4.1.1/lib -Wl,--enable-new-dtags -pthread CMakeFiles/cmTC_8691e.dir/test_mpi.cpp.o -o cmTC_8691e  -Wl,-rpath,/soft/libraries/mpi/openmpi/4.1.1/lib /soft/libraries/mpi/openmpi/4.1.1/lib/libmpi.so 
+        gmake[2]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-4QJb3a'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/minisweep/build/CMakeFiles/CMakeScratch/TryCompile-4QJb3a'
+        
+      exitCode: 0
+...

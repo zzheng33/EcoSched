@@ -1,0 +1,1197 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineSystem.cmake:233 (message)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      The system is: Linux - 6.4.0-150600.23.78-default - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+      Compiler: /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicxx 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.out"
+      
+      The CXX compiler identification is NVHPC, found in:
+        /home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdCXX/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compiler ABI info"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-AcYBMa"
+      binary: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-AcYBMa"
+    cmakeVariables:
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-g -O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-AcYBMa'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c28ab/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_c28ab.dir/build.make CMakeFiles/cmTC_c28ab.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-AcYBMa'
+        Building CXX object CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicxx   -v -MD -MT CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1
+        Export PGI=/soft/compilers/nvhpc
+        Create file CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o.d
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/cpp1 --llalign -D__GNUC__=7 -D__GNUC_MINOR__=5 -D__GNUC_PATCHLEVEL__=0 -D__unix -D__unix__ -Dunix -Dlinux -D__linux -D__linux__ -D__NO_MATH_INLINES -D__LP64__ -D__x86_64 -D__x86_64__ -D__LONG_MAX__=9223372036854775807L '-D__SIZE_TYPE__=unsigned long int' '-D__PTRDIFF_TYPE__=long int' -D__amd64 -D__amd64__ -D__k8 -D__k8__ -D__MMX__ -D__SSE_MATH__ -D__MMX_WITH_SSE__ -D__SSE__ -D__SSE2__ -D__SSE2_MATH__ -D__SSE3__ -D__SSSE3__ -D__SSE4_1__ -D__SSE4_2__ -D__ABM__ -D__ADX__ -D__AES__ -D__AMX_BF16__ -D__AMX_INT8__ -D__AMX_TILE__ -D__AVX__ -D__AVX2__ -D__AVX512BF16__ -D__AVX512BITALG__ -D__AVX512BW__ -D__AVX512CD__ -D__AVX512DQ__ -D__AVX512F__ -D__AVX512FP16__ -D__AVX512IFMA__ -D__AVX512VBMI__ -D__AVX512VBMI2__ -D__AVX512VL__ -D__AVX512VNNI__ -D__AVX512VPOPCNTDQ__ -D__AVXVNNI__ -D__BMI__ -D__BMI2__ -D__CLDEMOTE__ -D__CLFLUSHOPT__ -D__CLWB__ -D__CX16__ -D__ENQCMD__ -D__F16C__ -D__FMA__ -D__FSGSBASE__ -D__FXSR__ -D__GFNI__ -D__HLE__ -D__LZCNT__ -D__MOVBE__ -D__MOVDIR64B__ -D__MOVDIRI__ -D__PCLMUL__ -D__PCONFIG__ -D__PKU__ -D__POPCNT__ -D__PRFCHW__ -D__PTWRITE__ -D__RDPID__ -D__RDRND__ -D__RDSEED__ -D__RTM__ -D__LAHF_SAHF__ -D__SERIALIZE__ -D__SGX__ -D__SHA__ -D__SHSTK__ -D__TSXLDTRK__ -D__UINTR__ -D__VAES__ -D__VPCLMULQDQ__ -D__WAITPKG__ -D__WBNOINVD__ -D__XSAVE__ -D__XSAVEC__ -D__XSAVEOPT__ -D__XSAVES__ -D__PGI -D__NVCOMPILER -D_GNU_SOURCE -D_PGCG_SOURCE -I- -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include --sys_include /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include --sys_include /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include-stdexec --sys_include /usr/include/c++/7 --sys_include /usr/include/c++/7/x86_64-suse-linux --sys_include /usr/include/c++/7/backward --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/include --sys_include /usr/local/include --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/include-fixed --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include --sys_include /usr/include -D__PGLLVM__ -D__NVCOMPILER_LLVM__ -D__extension__= -D_REENTRANT --preinclude _cplus_preinclude.h --preinclude_macros _cplus_macros.h --gnu_version=70500 -D__pgnu_vsn=70500 --no_fixed_bp --dependencies_target_to_stdout CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o --dependencies_to_file CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o.d -q -o /tmp/nvc++zmRylCGtB5GP.il /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/cpp2 /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -opt 1 -x 119 0xa10000 -x 122 0x40 -x 123 0x1000 -x 127 4 -x 127 17 -x 19 0x400000 -x 28 0x40000 -x 120 0x10000000 -x 70 0x8000 -x 122 1 -x 125 0x20000 -quad -x 59 4 -tp sapphirerapids -x 120 0x1000 -astype 0 -x 121 1 -fn /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -il /tmp/nvc++zmRylCGtB5GP.il -x 117 0x200 -x 123 0x80000000 -x 123 4 -x 2 0x400 -x 209 0x10 -x 119 0x20 -def __pgnu_vsn=70500 -x 70 0x40000000 -x 183 4 -x 121 0x800 -x 6 0x20000 -x 249 160 -x 120 0x200000 -x 70 0x40000000 -x 8 0x40000000 -x 164 0x800000 -x 71 0x2000 -x 71 0x4000 -x 34 0x40000000 -x 120 0x1000000 -x 73 0x04 -x 68 0x1 -x 39 4 -x 56 0x10 -x 26 0x10 -x 26 1 -x 56 0x4000 -x 197 0 -x 175 0 -x 203 0 -x 204 0 -y 163 0xc0000000 -x 189 0x10 -y 189 0x4000000 -x 60 512 -gnuvsn 70500 -x 69 0x200 -x 123 0x400 -cmdline '+nvc++ /tmp/nvc++zmRylCGtB5GP.il -v -MD -MT CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -c -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent/include -pthread' -asm /tmp/nvc++PmRy7PdvnAlj.ll
+        NVC++/x86-64 Linux 24.1-0: compilation successful
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/share/llvm/bin/llc /tmp/nvc++PmRy7PdvnAlj.ll -march=x86-64 -mcpu=native -mattr=+mmx -mattr=+sse -mattr=+sse2 -mattr=+sse3 -mattr=+ssse3 -mattr=+sse4.1 -mattr=+sse4.2 -mattr=+avx -mattr=+avx2 -mattr=+avx512f -mattr=+avx512cd -mattr=+avx512vl -mattr=+avx512bw -mattr=+avx512dq -mattr=+avx512ifma -mattr=+avx512vbmi -mattr=+avx512vbmi2 -mattr=+avx512bitalg -mattr=+avx512vpopcntdq -mattr=+avx512vnni -mattr=+f16c -mattr=+fma -mattr=+xsave -mattr=+xsaveopt -mattr=+xsavec -mattr=+xsaves -mattr=+popcnt -mattr=+sha -mattr=+aes -mattr=+pclmul -mattr=+clflushopt -mattr=+fsgsbase -mattr=+rdrnd -mattr=+bmi -mattr=+bmi2 -mattr=+lzcnt -mattr=+fxsr -mattr=+rtm -mattr=+pku -mattr=+gfni -mattr=+vaes -mattr=+vpclmulqdq -mattr=+movdiri -mattr=+movdir64b -mattr=+adx -mattr=+amx-bf16 -mattr=+amx-int8 -mattr=+amx-tile -mattr=+avx512bf16 -mattr=+avx512fp16 -mattr=+avxvnni -mattr=+cldemote -mattr=+clwb -mattr=+cx16 -mattr=+enqcmd -mattr=+movbe -mattr=+pconfig -mattr=+prfchw -mattr=+ptwrite -mattr=+rdpid -mattr=+rdseed -mattr=+sahf -mattr=+serialize -mattr=+sgx -mattr=+shstk -mattr=+tsxldtrk -mattr=+uintr -mattr=+waitpkg -mattr=+wbnoinvd -O1 -opaque-pointers -non-global-value-max-name-size=4294967295 -x86-cmov-converter=0 -dwarf-directory=false -override-aa-for-tbaa=true --align-all-functions=6 -filetype=obj --frame-pointer=none -o CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o
+        Unlinking /tmp/nvc++zmRylCGtB5GP.il
+        Unlinking /tmp/nvc++HmRyJ9danFkm.s
+        Unlinking /tmp/nvc++PmRy7PdvnAlj.ll
+        Unlinking /tmp/nvc++XmRyt5a2JudI.llvm
+        Linking CXX executable cmTC_c28ab
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c28ab.dir/link.txt --verbose=1
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicxx  -v CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_c28ab 
+        Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1
+        Export PGI=/soft/compilers/nvhpc
+        
+        /usr/bin/ld /usr/lib64/crt1.o /usr/lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -T /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -L/usr/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/ CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib --enable-new-dtags -lmpi -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -o cmTC_c28ab -L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64 -latomic -lnvhpcatm -lstdc++ -lnvomp -ldl --as-needed -lnvhpcatm -latomic --no-as-needed -lpthread -lnvcpumath -lnsnvc -lnvc -lgcc -lc -lgcc_s -lm /usr/lib64/gcc/x86_64-suse-linux/7//crtend.o /usr/lib64/crtn.o
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-AcYBMa'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit include dir info: rv=start
+        warn: unable to parse implicit include dirs!
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Parsed CXX implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-AcYBMa']
+        ignore line: []
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_c28ab/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_c28ab.dir/build.make CMakeFiles/cmTC_c28ab.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-AcYBMa']
+        ignore line: [Building CXX object CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicxx   -v -MD -MT CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1]
+        ignore line: [Export PGI=/soft/compilers/nvhpc]
+        ignore line: [Create file CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o.d]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/cpp1 --llalign -D__GNUC__=7 -D__GNUC_MINOR__=5 -D__GNUC_PATCHLEVEL__=0 -D__unix -D__unix__ -Dunix -Dlinux -D__linux -D__linux__ -D__NO_MATH_INLINES -D__LP64__ -D__x86_64 -D__x86_64__ -D__LONG_MAX__=9223372036854775807L '-D__SIZE_TYPE__=unsigned long int' '-D__PTRDIFF_TYPE__=long int' -D__amd64 -D__amd64__ -D__k8 -D__k8__ -D__MMX__ -D__SSE_MATH__ -D__MMX_WITH_SSE__ -D__SSE__ -D__SSE2__ -D__SSE2_MATH__ -D__SSE3__ -D__SSSE3__ -D__SSE4_1__ -D__SSE4_2__ -D__ABM__ -D__ADX__ -D__AES__ -D__AMX_BF16__ -D__AMX_INT8__ -D__AMX_TILE__ -D__AVX__ -D__AVX2__ -D__AVX512BF16__ -D__AVX512BITALG__ -D__AVX512BW__ -D__AVX512CD__ -D__AVX512DQ__ -D__AVX512F__ -D__AVX512FP16__ -D__AVX512IFMA__ -D__AVX512VBMI__ -D__AVX512VBMI2__ -D__AVX512VL__ -D__AVX512VNNI__ -D__AVX512VPOPCNTDQ__ -D__AVXVNNI__ -D__BMI__ -D__BMI2__ -D__CLDEMOTE__ -D__CLFLUSHOPT__ -D__CLWB__ -D__CX16__ -D__ENQCMD__ -D__F16C__ -D__FMA__ -D__FSGSBASE__ -D__FXSR__ -D__GFNI__ -D__HLE__ -D__LZCNT__ -D__MOVBE__ -D__MOVDIR64B__ -D__MOVDIRI__ -D__PCLMUL__ -D__PCONFIG__ -D__PKU__ -D__POPCNT__ -D__PRFCHW__ -D__PTWRITE__ -D__RDPID__ -D__RDRND__ -D__RDSEED__ -D__RTM__ -D__LAHF_SAHF__ -D__SERIALIZE__ -D__SGX__ -D__SHA__ -D__SHSTK__ -D__TSXLDTRK__ -D__UINTR__ -D__VAES__ -D__VPCLMULQDQ__ -D__WAITPKG__ -D__WBNOINVD__ -D__XSAVE__ -D__XSAVEC__ -D__XSAVEOPT__ -D__XSAVES__ -D__PGI -D__NVCOMPILER -D_GNU_SOURCE -D_PGCG_SOURCE -I- -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include --sys_include /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include --sys_include /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include-stdexec --sys_include /usr/include/c++/7 --sys_include /usr/include/c++/7/x86_64-suse-linux --sys_include /usr/include/c++/7/backward --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/include --sys_include /usr/local/include --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/include-fixed --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include --sys_include /usr/include -D__PGLLVM__ -D__NVCOMPILER_LLVM__ -D__extension__= -D_REENTRANT --preinclude _cplus_preinclude.h --preinclude_macros _cplus_macros.h --gnu_version=70500 -D__pgnu_vsn=70500 --no_fixed_bp --dependencies_target_to_stdout CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o --dependencies_to_file CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o.d -q -o /tmp/nvc++zmRylCGtB5GP.il /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/cpp2 /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -opt 1 -x 119 0xa10000 -x 122 0x40 -x 123 0x1000 -x 127 4 -x 127 17 -x 19 0x400000 -x 28 0x40000 -x 120 0x10000000 -x 70 0x8000 -x 122 1 -x 125 0x20000 -quad -x 59 4 -tp sapphirerapids -x 120 0x1000 -astype 0 -x 121 1 -fn /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp -il /tmp/nvc++zmRylCGtB5GP.il -x 117 0x200 -x 123 0x80000000 -x 123 4 -x 2 0x400 -x 209 0x10 -x 119 0x20 -def __pgnu_vsn=70500 -x 70 0x40000000 -x 183 4 -x 121 0x800 -x 6 0x20000 -x 249 160 -x 120 0x200000 -x 70 0x40000000 -x 8 0x40000000 -x 164 0x800000 -x 71 0x2000 -x 71 0x4000 -x 34 0x40000000 -x 120 0x1000000 -x 73 0x04 -x 68 0x1 -x 39 4 -x 56 0x10 -x 26 0x10 -x 26 1 -x 56 0x4000 -x 197 0 -x 175 0 -x 203 0 -x 204 0 -y 163 0xc0000000 -x 189 0x10 -y 189 0x4000000 -x 60 512 -gnuvsn 70500 -x 69 0x200 -x 123 0x400 -cmdline '+nvc++ /tmp/nvc++zmRylCGtB5GP.il -v -MD -MT CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -MF CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o.d -o CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -c -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent/include -pthread' -asm /tmp/nvc++PmRy7PdvnAlj.ll]
+        ignore line: [NVC++/x86-64 Linux 24.1-0: compilation successful]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/share/llvm/bin/llc /tmp/nvc++PmRy7PdvnAlj.ll -march=x86-64 -mcpu=native -mattr=+mmx -mattr=+sse -mattr=+sse2 -mattr=+sse3 -mattr=+ssse3 -mattr=+sse4.1 -mattr=+sse4.2 -mattr=+avx -mattr=+avx2 -mattr=+avx512f -mattr=+avx512cd -mattr=+avx512vl -mattr=+avx512bw -mattr=+avx512dq -mattr=+avx512ifma -mattr=+avx512vbmi -mattr=+avx512vbmi2 -mattr=+avx512bitalg -mattr=+avx512vpopcntdq -mattr=+avx512vnni -mattr=+f16c -mattr=+fma -mattr=+xsave -mattr=+xsaveopt -mattr=+xsavec -mattr=+xsaves -mattr=+popcnt -mattr=+sha -mattr=+aes -mattr=+pclmul -mattr=+clflushopt -mattr=+fsgsbase -mattr=+rdrnd -mattr=+bmi -mattr=+bmi2 -mattr=+lzcnt -mattr=+fxsr -mattr=+rtm -mattr=+pku -mattr=+gfni -mattr=+vaes -mattr=+vpclmulqdq -mattr=+movdiri -mattr=+movdir64b -mattr=+adx -mattr=+amx-bf16 -mattr=+amx-int8 -mattr=+amx-tile -mattr=+avx512bf16 -mattr=+avx512fp16 -mattr=+avxvnni -mattr=+cldemote -mattr=+clwb -mattr=+cx16 -mattr=+enqcmd -mattr=+movbe -mattr=+pconfig -mattr=+prfchw -mattr=+ptwrite -mattr=+rdpid -mattr=+rdseed -mattr=+sahf -mattr=+serialize -mattr=+sgx -mattr=+shstk -mattr=+tsxldtrk -mattr=+uintr -mattr=+waitpkg -mattr=+wbnoinvd -O1 -opaque-pointers -non-global-value-max-name-size=4294967295 -x86-cmov-converter=0 -dwarf-directory=false -override-aa-for-tbaa=true --align-all-functions=6 -filetype=obj --frame-pointer=none -o CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o]
+        ignore line: [Unlinking /tmp/nvc++zmRylCGtB5GP.il]
+        ignore line: [Unlinking /tmp/nvc++HmRyJ9danFkm.s]
+        ignore line: [Unlinking /tmp/nvc++PmRy7PdvnAlj.ll]
+        ignore line: [Unlinking /tmp/nvc++XmRyt5a2JudI.llvm]
+        ignore line: [Linking CXX executable cmTC_c28ab]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c28ab.dir/link.txt --verbose=1]
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicxx  -v CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -o cmTC_c28ab ]
+        ignore line: [Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1]
+        ignore line: [Export PGI=/soft/compilers/nvhpc]
+        ignore line: []
+        link line: [/usr/bin/ld /usr/lib64/crt1.o /usr/lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -T /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -L/usr/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/ CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib --enable-new-dtags -lmpi -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -o cmTC_c28ab -L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64 -latomic -lnvhpcatm -lstdc++ -lnvomp -ldl --as-needed -lnvhpcatm -latomic --no-as-needed -lpthread -lnvcpumath -lnsnvc -lnvc -lgcc -lc -lgcc_s -lm /usr/lib64/gcc/x86_64-suse-linux/7//crtend.o /usr/lib64/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [/usr/lib64/crt1.o] ==> obj [/usr/lib64/crt1.o]
+          arg [/usr/lib64/crti.o] ==> obj [/usr/lib64/crti.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o]
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-T] ==> ignore
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld] ==> ignore
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib]
+          arg [-L/usr/lib64] ==> dir [/usr/lib64]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/]
+          arg [CMakeFiles/cmTC_c28ab.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> ignore
+          arg [--enable-new-dtags] ==> ignore
+          arg [-lmpi] ==> lib [mpi]
+          arg [-rpath] ==> ignore
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_c28ab] ==> ignore
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64]
+          arg [-latomic] ==> lib [atomic]
+          arg [-lnvhpcatm] ==> lib [nvhpcatm]
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lnvomp] ==> lib [nvomp]
+          arg [-ldl] ==> lib [dl]
+          arg [--as-needed] ==> ignore
+          arg [-lnvhpcatm] ==> lib [nvhpcatm]
+          arg [-latomic] ==> lib [atomic]
+          arg [--no-as-needed] ==> ignore
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lnvcpumath] ==> lib [nvcpumath]
+          arg [-lnsnvc] ==> lib [nsnvc]
+          arg [-lnvc] ==> lib [nvc]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lm] ==> lib [m]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o]
+          arg [/usr/lib64/crtn.o] ==> obj [/usr/lib64/crtn.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/lib64] ==> [/soft/compilers/cuda/cuda-12.3.0/lib64]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib]
+        collapse library dir [/usr/lib64] ==> [/usr/lib64]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/] ==> [/usr/lib64/gcc/x86_64-suse-linux/7]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64] ==> [/usr/lib64]
+        implicit libs: [mpi;atomic;nvhpcatm;stdc++;nvomp;dl;nvhpcatm;atomic;pthread;nvcpumath;nsnvc;nvc;gcc;c;gcc_s;m]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib;/soft/compilers/cuda/cuda-12.3.0/lib64;/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib;/usr/lib64;/usr/lib64/gcc/x86_64-suse-linux/7]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:1131 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCUDACompiler.cmake:75 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
+      - "CMakeLists.txt:5 (enable_language)"
+    message: |
+      Checking whether the CUDA compiler is NVIDIA using "" matched "nvcc: NVIDIA \\(R\\) Cuda compiler driver":
+      nvcc: NVIDIA (R) Cuda compiler driver
+      Copyright (c) 2005-2023 NVIDIA Corporation
+      Built on Fri_Sep__8_19:17:24_PDT_2023
+      Cuda compilation tools, release 12.3, V12.3.52
+      Build cuda_12.3.r12.3/compiler.33281558_0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:53 (__determine_compiler_id_test)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCUDACompiler.cmake:135 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:5 (enable_language)"
+    message: |
+      Compiling the CUDA compiler identification source file "CMakeCUDACompilerId.cu" succeeded.
+      Compiler: /soft/compilers/cuda/cuda-12.3.0/bin/nvcc 
+      Build flags: 
+      Id flags: --keep;--keep-dir;tmp -v
+      
+      The output was:
+      0
+      #$ _NVVM_BRANCH_=nvvm
+      #$ _SPACE_= 
+      #$ _CUDART_=cudart
+      #$ _HERE_=/soft/compilers/cuda/cuda-12.3.0/bin
+      #$ _THERE_=/soft/compilers/cuda/cuda-12.3.0/bin
+      #$ _TARGET_SIZE_=
+      #$ _TARGET_DIR_=
+      #$ _TARGET_DIR_=targets/x86_64-linux
+      #$ TOP=/soft/compilers/cuda/cuda-12.3.0/bin/..
+      #$ NVVMIR_LIBRARY_DIR=/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/libdevice
+      #$ LD_LIBRARY_PATH=/soft/compilers/cuda/cuda-12.3.0/bin/../lib:/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/lib:/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/lib:/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/lib64:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/lib:/soft/compilers/nvhpc/Linux_x86_64/24.1/cuda/extras/CUPTI/lib64:/soft/compilers/nvhpc/Linux_x86_64/24.1/cuda/lib64:/soft/libraries/mpi/openmpi/4.1.1/lib:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64:/soft/compilers/cuda/cuda-12.3.0/lib64
+      #$ PATH=/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/cuda/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin
+      #$ INCLUDES="-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"  
+      #$ LIBRARIES=  "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"
+      #$ CUDAFE_FLAGS=
+      #$ PTXAS_FLAGS=
+      #$ rm tmp/a_dlink.reg.c
+      #$ gcc -D__CUDA_ARCH_LIST__=520 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" 
+      #$ cudafe++ --c++17 --gnu_version=120200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" 
+      #$ gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" 
+      #$ cicc --c++17 --gnu_version=120200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed   -arch compute_52 -m64 --no-version-ident -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"
+      #$ ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" 
+      #$ fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" 
+      #$ gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"   -m64 "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" 
+      #$ nvlink -m64 --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"    "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin" --host-ccbin "gcc"
+      #$ fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" 
+      #$ gcc -D__CUDA_ARCH_LIST__=520 -c -x c++ -DFATBINFILE="\\"tmp/a_dlink.fatbin.c\\"" -DREGISTERLINKBINARYFILE="\\"tmp/a_dlink.reg.c\\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -m64 "/soft/compilers/cuda/cuda-12.3.0/bin/crt/link.stub" -o "tmp/a_dlink.o" 
+      #$ g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" 
+      
+      
+      Compilation of the CUDA compiler identification source "CMakeCUDACompilerId.cu" produced "a.out"
+      
+      The CUDA compiler identification is NVIDIA, found in:
+        /home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdCUDA/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/Internal/CMakeNVCCParseImplicitInfo.cmake:128 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCUDACompiler.cmake:246 (cmake_nvcc_parse_implicit_info)"
+      - "CMakeLists.txt:5 (enable_language)"
+    message: |
+      Parsed CUDA nvcc implicit link information:
+        found 'PATH=' string: [/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/cuda/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin]
+        found 'LIBRARIES=' string: ["-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"]
+        found 'INCLUDES=' string: ["-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"  ]
+        considering line: [#$ rm tmp/a_dlink.reg.c]
+        considering line: [gcc -D__CUDA_ARCH_LIST__=520 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+        considering line: [cudafe++ --c++17 --gnu_version=120200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+        considering line: [gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" ]
+        considering line: [cicc --c++17 --gnu_version=120200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed   -arch compute_52 -m64 --no-version-ident -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"]
+        considering line: [ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" ]
+        considering line: [fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" ]
+        considering line: [gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"   -m64 "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" ]
+        considering line: [nvlink -m64 --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"    "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin" --host-ccbin "gcc"]
+          ignoring nvlink line
+        considering line: [fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" ]
+        considering line: [gcc -D__CUDA_ARCH_LIST__=520 -c -x c++ -DFATBINFILE="\\"tmp/a_dlink.fatbin.c\\"" -DREGISTERLINKBINARYFILE="\\"tmp/a_dlink.reg.c\\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -m64 "/soft/compilers/cuda/cuda-12.3.0/bin/crt/link.stub" -o "tmp/a_dlink.o" ]
+        considering line: [g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+          extracted link line: [g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+        considering line: []
+        extracted link launcher name: [g++]
+        found link launcher absolute path: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++]
+      
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        link line: [cuda-fake-ld g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+          arg [cuda-fake-ld] ==> ignore
+          arg [g++] ==> ignore
+          arg [-D__CUDA_ARCH_LIST__=520] ==> ignore
+          arg [-m64] ==> ignore
+          arg [-Wl,--start-group] ==> ignore
+          arg [tmp/a_dlink.o] ==> ignore
+          arg [tmp/CMakeCUDACompilerId.o] ==> ignore
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs] ==> dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib] ==> dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib]
+          arg [-lcudadevrt] ==> lib [cudadevrt]
+          arg [-lcudart_static] ==> lib [cudart_static]
+          arg [-lrt] ==> lib [rt]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-ldl] ==> lib [dl]
+          arg [-Wl,--end-group] ==> ignore
+          arg [-o] ==> ignore
+          arg [a.out] ==> ignore
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs] ==> [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib] ==> [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib]
+        implicit libs: [cudadevrt;cudart_static;rt;pthread;dl]
+        implicit objs: []
+        implicit dirs: [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs;/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/Internal/CMakeNVCCParseImplicitInfo.cmake:146 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCUDACompiler.cmake:246 (cmake_nvcc_parse_implicit_info)"
+      - "CMakeLists.txt:5 (enable_language)"
+    message: |
+      Parsed CUDA nvcc include information:
+        found 'PATH=' string: [/soft/compilers/cuda/cuda-12.3.0/bin/../nvvm/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin:/soft/compilers/nvhpc/Linux_x86_64/24.1/cuda/bin:/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/cuda/cuda-12.3.0/bin:/home/ac.zzheng/.local/bin:/usr/local/bin:/usr/bin:/bin:/home/ac.zzheng/.local/bin:/home/ac.zzheng/bin]
+        found 'LIBRARIES=' string: ["-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"]
+        found 'INCLUDES=' string: ["-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"  ]
+        considering line: [#$ rm tmp/a_dlink.reg.c]
+        considering line: [gcc -D__CUDA_ARCH_LIST__=520 -E -x c++ -D__CUDACC__ -D__NVCC__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+        considering line: [cudafe++ --c++17 --gnu_version=120200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed  --m64 --parse_templates --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.cpp" --stub_file_name "CMakeCUDACompilerId.cudafe1.stub.c" --gen_module_id_file --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" "tmp/CMakeCUDACompilerId.cpp4.ii" ]
+        considering line: [gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -E -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS -D__CUDACC__ -D__NVCC__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -include "cuda_runtime.h" -m64 "CMakeCUDACompilerId.cu" -o "tmp/CMakeCUDACompilerId.cpp1.ii" ]
+        considering line: [cicc --c++17 --gnu_version=120200 --display_error_number --orig_src_file_name "CMakeCUDACompilerId.cu" --orig_src_path_name "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdCUDA/CMakeCUDACompilerId.cu" --allow_managed   -arch compute_52 -m64 --no-version-ident -ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 --include_file_name "CMakeCUDACompilerId.fatbin.c" -tused --module_id_file_name "tmp/CMakeCUDACompilerId.module_id" --gen_c_file_name "tmp/CMakeCUDACompilerId.cudafe1.c" --stub_file_name "tmp/CMakeCUDACompilerId.cudafe1.stub.c" --gen_device_file_name "tmp/CMakeCUDACompilerId.cudafe1.gpu"  "tmp/CMakeCUDACompilerId.cpp1.ii" -o "tmp/CMakeCUDACompilerId.ptx"]
+        considering line: [ptxas -arch=sm_52 -m64  "tmp/CMakeCUDACompilerId.ptx"  -o "tmp/CMakeCUDACompilerId.sm_52.cubin" ]
+        considering line: [fatbinary --create="tmp/CMakeCUDACompilerId.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " "--image3=kind=elf,sm=52,file=tmp/CMakeCUDACompilerId.sm_52.cubin" "--image3=kind=ptx,sm=52,file=tmp/CMakeCUDACompilerId.ptx" --embedded-fatbin="tmp/CMakeCUDACompilerId.fatbin.c" ]
+        considering line: [gcc -D__CUDA_ARCH__=520 -D__CUDA_ARCH_LIST__=520 -c -x c++  -DCUDA_DOUBLE_MATH_FUNCTIONS "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"   -m64 "tmp/CMakeCUDACompilerId.cudafe1.cpp" -o "tmp/CMakeCUDACompilerId.o" ]
+        considering line: [nvlink -m64 --arch=sm_52 --register-link-binaries="tmp/a_dlink.reg.c"    "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib" -cpu-arch=X86_64 "tmp/CMakeCUDACompilerId.o"  -lcudadevrt  -o "tmp/a_dlink.sm_52.cubin" --host-ccbin "gcc"]
+          ignoring nvlink line
+        considering line: [fatbinary --create="tmp/a_dlink.fatbin" -64 --cicc-cmdline="-ftz=0 -prec_div=1 -prec_sqrt=1 -fmad=1 " -link "--image3=kind=elf,sm=52,file=tmp/a_dlink.sm_52.cubin" --embedded-fatbin="tmp/a_dlink.fatbin.c" ]
+        considering line: [gcc -D__CUDA_ARCH_LIST__=520 -c -x c++ -DFATBINFILE="\\"tmp/a_dlink.fatbin.c\\"" -DREGISTERLINKBINARYFILE="\\"tmp/a_dlink.reg.c\\"" -I. -D__NV_EXTRA_INITIALIZATION= -D__NV_EXTRA_FINALIZATION= -D__CUDA_INCLUDE_COMPILER_INTERNAL_HEADERS__  "-I/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include"    -D__CUDACC_VER_MAJOR__=12 -D__CUDACC_VER_MINOR__=3 -D__CUDACC_VER_BUILD__=52 -D__CUDA_API_VER_MAJOR__=12 -D__CUDA_API_VER_MINOR__=3 -D__NVCC_DIAG_PRAGMA_SUPPORT__=1 -m64 "/soft/compilers/cuda/cuda-12.3.0/bin/crt/link.stub" -o "tmp/a_dlink.o" ]
+        considering line: [g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+          extracted link line: [g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+        considering line: []
+        extracted link launcher name: [g++]
+        found link launcher absolute path: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++]
+      
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        link line: [cuda-fake-ld g++ -D__CUDA_ARCH_LIST__=520 -m64 -Wl,--start-group "tmp/a_dlink.o" "tmp/CMakeCUDACompilerId.o"   "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs" "-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib"  -lcudadevrt  -lcudart_static  -lrt -lpthread  -ldl  -Wl,--end-group -o "a.out" ]
+          arg [cuda-fake-ld] ==> ignore
+          arg [g++] ==> ignore
+          arg [-D__CUDA_ARCH_LIST__=520] ==> ignore
+          arg [-m64] ==> ignore
+          arg [-Wl,--start-group] ==> ignore
+          arg [tmp/a_dlink.o] ==> ignore
+          arg [tmp/CMakeCUDACompilerId.o] ==> ignore
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs] ==> dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib] ==> dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib]
+          arg [-lcudadevrt] ==> lib [cudadevrt]
+          arg [-lcudart_static] ==> lib [cudart_static]
+          arg [-lrt] ==> lib [rt]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-ldl] ==> lib [dl]
+          arg [-Wl,--end-group] ==> ignore
+          arg [-o] ==> ignore
+          arg [a.out] ==> ignore
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib/stubs] ==> [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/lib] ==> [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib]
+        implicit libs: [cudadevrt;cudart_static;rt;pthread;dl]
+        implicit objs: []
+        implicit dirs: [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs;/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCUDACompiler.cmake:19 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (enable_language)"
+    checks:
+      - "Detecting CUDA compiler ABI info"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-O8HrYQ"
+      binary: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-O8HrYQ"
+    cmakeVariables:
+      CMAKE_CUDA_FLAGS: ""
+      CMAKE_CUDA_FLAGS_DEBUG: "-g"
+      CMAKE_CUDA_RUNTIME_LIBRARY: "Static"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CUDA_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-O8HrYQ'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e6312/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_e6312.dir/build.make CMakeFiles/cmTC_e6312.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-O8HrYQ'
+        Building CUDA object CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o
+        /soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o
+        Using built-in specs.
+        COLLECT_GCC=gcc
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c,c++,fortran,lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 12.2.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=520 -D __CUDA_ARCH_LIST__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.cu -dumpbase-ext .cu
+        ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include
+         /usr/local/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed
+         /usr/include
+        End of search list.
+        COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.'
+        Using built-in specs.
+        COLLECT_GCC=gcc
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c,c++,fortran,lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 12.2.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH_LIST__=520 -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.cu -dumpbase-ext .cu
+        ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include
+         /usr/local/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed
+         /usr/include
+        End of search list.
+        COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.'
+        Using built-in specs.
+        COLLECT_GCC=gcc
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c,c++,fortran,lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 12.2.0 (GCC) 
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6312.dir/'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=520 -D __CUDA_ARCH_LIST__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS /tmp/tmpxft_00018b10_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpdir CMakeFiles/cmTC_e6312.dir/ -dumpbase CMakeCUDACompilerABI.cu.cpp -dumpbase-ext .cpp -m64 -mtune=generic -march=x86-64 -version -o /tmp/cc7Q9pxF.s
+        GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"
+        #include "..." search starts here:
+        #include <...> search starts here:
+         /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include
+         /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include
+         /usr/local/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed
+         /usr/include
+        End of search list.
+        GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)
+        	compiled by GNU C version 7.5.0, GMP version 6.1.0, MPFR version 3.1.4, MPC version 1.0.3, isl version isl-0.18-GMP
+        
+        GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+        Compiler executable checksum: e236158c8a2002ae12fe327bd6fa1801
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6312.dir/'
+         as -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include --64 -o CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o /tmp/cc7Q9pxF.s
+        GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils; SUSE Linux Enterprise 15) 2.45.0.20251103-150100757
+        COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.'
+        Linking CUDA executable cmTC_e6312
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6312.dir/link.txt --verbose=1
+        /soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o -o cmTC_e6312  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"
+        Using built-in specs.
+        COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++
+        COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper
+        OFFLOAD_TARGET_NAMES=nvptx-none
+        Target: x86_64-pc-linux-gnu
+        Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c,c++,fortran,lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux
+        Thread model: posix
+        Supported LTO compression algorithms: zlib zstd
+        gcc version 12.2.0 (GCC) 
+        COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/
+        LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e6312' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e6312.'
+         /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPZ1g3P.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_e6312 /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o
+        COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e6312' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e6312.'
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-O8HrYQ'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCUDACompiler.cmake:19 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (enable_language)"
+    message: |
+      Parsed CUDA implicit include dir info: rv=done
+        found start of include info
+        found start of implicit include info
+          add: [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include]
+          add: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd]
+          add: [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include]
+          add: [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include]
+          add: [/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+          add: [/usr/local/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+          add: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+          add: [/usr/include]
+        end of search list found
+        collapse include dir [/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include] ==> [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include]
+        collapse include dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd]
+        collapse include dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include]
+        collapse include dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include]
+        collapse include dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/backward]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+        collapse include dir [/usr/local/include] ==> [/usr/local/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+        collapse include dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+        collapse include dir [/usr/include] ==> [/usr/include]
+        implicit include dirs: [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include;/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include;/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/x86_64-pc-linux-gnu;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include/c++/12.2.0/backward;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include;/usr/local/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/include;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed;/usr/include]
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCUDACompiler.cmake:19 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:5 (enable_language)"
+    message: |
+      Parsed CUDA implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-O8HrYQ']
+        ignore line: []
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_e6312/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_e6312.dir/build.make CMakeFiles/cmTC_e6312.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-O8HrYQ']
+        ignore line: [Building CUDA object CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o]
+        ignore line: [/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler   -Xcompiler=-v -MD -MT CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o -MF CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o.d -x cu -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=gcc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c c++ fortran lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 12.2.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=520 -D __CUDA_ARCH_LIST__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.cu -dumpbase-ext .cu]
+        ignore line: [ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_00018b10_00000000-7_CMakeCUDACompilerABI.cpp1.']
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=gcc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c c++ fortran lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 12.2.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -E -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH_LIST__=520 -D __CUDACC__ -D __NVCC__ -D __CUDACC_VER_MAJOR__=12 -D __CUDACC_VER_MINOR__=3 -D __CUDACC_VER_BUILD__=52 -D __CUDA_API_VER_MAJOR__=12 -D __CUDA_API_VER_MINOR__=3 -D __NVCC_DIAG_PRAGMA_SUPPORT__=1 -include cuda_runtime.h /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCUDACompilerABI.cu -o /tmp/tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.ii -m64 -mtune=generic -march=x86-64 -dumpdir /tmp/ -dumpbase tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.cu -dumpbase-ext .cu]
+        ignore line: [ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH_LIST__=520' '-E' '-D' '__CUDACC__' '-D' '__NVCC__' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-D' '__CUDACC_VER_MAJOR__=12' '-D' '__CUDACC_VER_MINOR__=3' '-D' '__CUDACC_VER_BUILD__=52' '-D' '__CUDA_API_VER_MAJOR__=12' '-D' '__CUDA_API_VER_MINOR__=3' '-D' '__NVCC_DIAG_PRAGMA_SUPPORT__=1' '-include' 'cuda_runtime.h' '-m64' '-o' '/tmp/tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.ii' '-mtune=generic' '-march=x86-64' '-dumpdir' '/tmp/tmpxft_00018b10_00000000-5_CMakeCUDACompilerABI.cpp4.']
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=gcc]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c c++ fortran lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 12.2.0 (GCC) ]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6312.dir/']
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/cc1plus -quiet -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include -D_GNU_SOURCE -D __CUDA_ARCH__=520 -D __CUDA_ARCH_LIST__=520 -D CUDA_DOUBLE_MATH_FUNCTIONS /tmp/tmpxft_00018b10_00000000-6_CMakeCUDACompilerABI.cudafe1.cpp -quiet -dumpdir CMakeFiles/cmTC_e6312.dir/ -dumpbase CMakeCUDACompilerABI.cu.cpp -dumpbase-ext .cpp -m64 -mtune=generic -march=x86-64 -version -o /tmp/cc7Q9pxF.s]
+        ignore line: [GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [ignoring nonexistent directory "/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../x86_64-pc-linux-gnu/include"]
+        ignore line: [#include "..." search starts here:]
+        ignore line: [#include <...> search starts here:]
+        ignore line: [ /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include]
+        ignore line: [ /soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/x86_64-pc-linux-gnu]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../include/c++/12.2.0/backward]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include]
+        ignore line: [ /usr/local/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/include]
+        ignore line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed]
+        ignore line: [ /usr/include]
+        ignore line: [End of search list.]
+        ignore line: [GNU C++17 (GCC) version 12.2.0 (x86_64-pc-linux-gnu)]
+        ignore line: [	compiled by GNU C version 7.5.0  GMP version 6.1.0  MPFR version 3.1.4  MPC version 1.0.3  isl version isl-0.18-GMP]
+        ignore line: []
+        ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+        ignore line: [Compiler executable checksum: e236158c8a2002ae12fe327bd6fa1801]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6312.dir/']
+        ignore line: [ as -v -I /soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include --64 -o CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o /tmp/cc7Q9pxF.s]
+        ignore line: [GNU assembler version 2.45.0 (x86_64-suse-linux) using BFD version (GNU Binutils]
+        ignore line: [ SUSE Linux Enterprise 15) 2.45.0.20251103-150100757]
+        ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-D' '__CUDA_ARCH__=520' '-D' '__CUDA_ARCH_LIST__=520' '-c' '-D' 'CUDA_DOUBLE_MATH_FUNCTIONS' '-v' '-I' '/soft/compilers/cuda/cuda-12.3.0/bin/../targets/x86_64-linux/include' '-m64' '-o' 'CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o' '-mtune=generic' '-march=x86-64' '-dumpdir' 'CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.']
+        ignore line: [Linking CUDA executable cmTC_e6312]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e6312.dir/link.txt --verbose=1]
+        ignore line: [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++  -v CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o -o cmTC_e6312  -lcudadevrt -lcudart_static -lrt -lpthread -ldl  -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"]
+        ignore line: [Using built-in specs.]
+        ignore line: [COLLECT_GCC=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++]
+        ignore line: [COLLECT_LTO_WRAPPER=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper]
+        ignore line: [OFFLOAD_TARGET_NAMES=nvptx-none]
+        ignore line: [Target: x86_64-pc-linux-gnu]
+        ignore line: [Configured with: ../gcc/configure --enable-offload-targets=nvptx-none --with-cuda-driver-include=/soft/compilers/cuda/cuda-11.0.2/include --with-cuda-driver-lib=/soft/compilers/cuda/cuda-11.0.2/lib64 --disable-bootstrap --disable-multilib --enable-languages=c c++ fortran lto --prefix=/soft/compilers/gcc/12.2.0/x86_64-suse-linux]
+        ignore line: [Thread model: posix]
+        ignore line: [Supported LTO compression algorithms: zlib zstd]
+        ignore line: [gcc version 12.2.0 (GCC) ]
+        ignore line: [COMPILER_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/]
+        ignore line: [LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64/:/lib/../lib64/:/usr/lib/../lib64/:/soft/compilers/cuda/cuda-12.3.0/lib64/:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../:/lib/:/usr/lib/]
+        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_e6312' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs' '-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib' '-shared-libgcc' '-mtune=generic' '-march=x86-64' '-dumpdir' 'cmTC_e6312.']
+        link line: [ /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2 -plugin /soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so -plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccPZ1g3P.res -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lgcc --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTC_e6312 /usr/lib/../lib64/crt1.o /usr/lib/../lib64/crti.o /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs -L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64 -L/lib/../lib64 -L/usr/lib/../lib64 -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../.. CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o -lcudadevrt -lcudart_static -lrt -lpthread -ldl -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o /usr/lib/../lib64/crtn.o]
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/collect2] ==> ignore
+          arg [-plugin] ==> ignore
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/liblto_plugin.so] ==> ignore
+          arg [-plugin-opt=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/libexec/gcc/x86_64-pc-linux-gnu/12.2.0/lto-wrapper] ==> ignore
+          arg [-plugin-opt=-fresolution=/tmp/ccPZ1g3P.res] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lc] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+          arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_e6312] ==> ignore
+          arg [/usr/lib/../lib64/crt1.o] ==> obj [/usr/lib/../lib64/crt1.o]
+          arg [/usr/lib/../lib64/crti.o] ==> obj [/usr/lib/../lib64/crti.o]
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs] ==> dir [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib] ==> dir [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64]
+          arg [-L/lib/../lib64] ==> dir [/lib/../lib64]
+          arg [-L/usr/lib/../lib64] ==> dir [/usr/lib/../lib64]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
+          arg [-L/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..]
+          arg [CMakeFiles/cmTC_e6312.dir/CMakeCUDACompilerABI.cu.o] ==> ignore
+          arg [-lcudadevrt] ==> lib [cudadevrt]
+          arg [-lcudart_static] ==> lib [cudart_static]
+          arg [-lrt] ==> lib [rt]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-ldl] ==> lib [dl]
+          arg [-lstdc++] ==> lib [stdc++]
+          arg [-lm] ==> lib [m]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lgcc] ==> lib [gcc]
+          arg [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o] ==> obj [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o]
+          arg [/usr/lib/../lib64/crtn.o] ==> obj [/usr/lib/../lib64/crtn.o]
+        collapse obj [/usr/lib/../lib64/crt1.o] ==> [/usr/lib64/crt1.o]
+        collapse obj [/usr/lib/../lib64/crti.o] ==> [/usr/lib64/crti.o]
+        collapse obj [/usr/lib/../lib64/crtn.o] ==> [/usr/lib64/crtn.o]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs] ==> [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib] ==> [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../../../lib64] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64]
+        collapse library dir [/lib/../lib64] ==> [/lib64]
+        collapse library dir [/usr/lib/../lib64] ==> [/usr/lib64]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/lib64] ==> [/soft/compilers/cuda/cuda-12.3.0/lib64]
+        collapse library dir [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/../../..] ==> [/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib]
+        implicit libs: [cudadevrt;cudart_static;rt;pthread;dl;stdc++;m;gcc_s;gcc;c;gcc_s;gcc]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtbegin.o;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs;/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib/gcc/x86_64-pc-linux-gnu/12.2.0;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64;/lib64;/usr/lib64;/soft/compilers/cuda/cuda-12.3.0/lib64;/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib]
+        implicit fwks: []
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "YAKL/CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+      
+      The C compiler identification is NVHPC, found in:
+        /home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdC/a.out
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineFortranCompiler.cmake:186 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "YAKL/CMakeLists.txt:3 (project)"
+    message: |
+      Compiling the Fortran compiler identification source file "CMakeFortranCompilerId.F" succeeded.
+      Compiler: /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvfortran 
+      Build flags: 
+      Id flags: -v 
+      
+      The output was:
+      0
+      Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1
+      Export PGI=/soft/compilers/nvhpc
+      
+      /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/fort1 CMakeFortranCompilerId.F -opt 1 -nostatic -x 19 0x400000 -quad -x 59 4 -x 15 2 -x 49 0x400004 -x 51 0x20 -x 57 0x4c -x 58 0x10000 -x 124 0x1000 -tp sapphirerapids -x 57 0xfb0000 -x 58 0x78031040 -x 47 0x08 -x 48 4608 -x 49 0x100 -stdinc /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include-stdexec:/usr/lib64/gcc/x86_64-suse-linux/7/include:/usr/local/include:/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include:/usr/include -cmdline '+nvfortran CMakeFortranCompilerId.F -v' -def __unix -def __unix__ -def unix -def linux -def __linux -def __linux__ -def __NO_MATH_INLINES -def __LP64__ -def __x86_64 -def __x86_64__ -def __LONG_MAX__=9223372036854775807L -def '__SIZE_TYPE__=unsigned long int' -def '__PTRDIFF_TYPE__=long int' -def __amd64 -def __amd64__ -def __k8 -def __k8__ -def __MMX__ -def __SSE_MATH__ -def __MMX_WITH_SSE__ -def __SSE__ -def __SSE2__ -def __SSE2_MATH__ -def __SSE3__ -def __SSSE3__ -def __SSE4_1__ -def __SSE4_2__ -def __ABM__ -def __ADX__ -def __AES__ -def __AMX_BF16__ -def __AMX_INT8__ -def __AMX_TILE__ -def __AVX__ -def __AVX2__ -def __AVX512BF16__ -def __AVX512BITALG__ -def __AVX512BW__ -def __AVX512CD__ -def __AVX512DQ__ -def __AVX512F__ -def __AVX512FP16__ -def __AVX512IFMA__ -def __AVX512VBMI__ -def __AVX512VBMI2__ -def __AVX512VL__ -def __AVX512VNNI__ -def __AVX512VPOPCNTDQ__ -def __AVXVNNI__ -def __BMI__ -def __BMI2__ -def __CLDEMOTE__ -def __CLFLUSHOPT__ -def __CLWB__ -def __CX16__ -def __ENQCMD__ -def __F16C__ -def __FMA__ -def __FSGSBASE__ -def __FXSR__ -def __GFNI__ -def __HLE__ -def __LZCNT__ -def __MOVBE__ -def __MOVDIR64B__ -def __MOVDIRI__ -def __PCLMUL__ -def __PCONFIG__ -def __PKU__ -def __POPCNT__ -def __PRFCHW__ -def __PTWRITE__ -def __RDPID__ -def __RDRND__ -def __RDSEED__ -def __RTM__ -def __LAHF_SAHF__ -def __SERIALIZE__ -def __SGX__ -def __SHA__ -def __SHSTK__ -def __TSXLDTRK__ -def __UINTR__ -def __VAES__ -def __VPCLMULQDQ__ -def __WAITPKG__ -def __WBNOINVD__ -def __XSAVE__ -def __XSAVEC__ -def __XSAVEOPT__ -def __XSAVES__ -def __PGLLVM__ -def __NVCOMPILER_LLVM__ -def __extension__= -preprocess -nofreeform -vect 48 -x 54 1 -x 68 0x1 -x 70 0x40000000 -x 70 0x40000000 -x 68 0x1 -x 124 1 -x 195 0x8000 -y 163 0xc0000000 -x 189 0x10 -stbfile /tmp/nvfortran6zTyUbEgTh1f.stb -modexport /tmp/nvfortrankzTyEpoFvSf_.cmod -modindex /tmp/nvfortranAzTyolaMUJVo.cmdx -cci /tmp/nvfortranQzTy_XFDzxWC.cci -output /tmp/nvfortranAzTyoWrwesAT.ilm
+        0 inform,   0 warnings,   0 severes, 0 fatal for cmakefortrancompilerid
+      NVFORTRAN/x86-64 Linux 24.1-0: compilation successful
+      
+      /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/fort2 /tmp/nvfortranAzTyoWrwesAT.ilm -fn CMakeFortranCompilerId.F -opt 1 -x 51 0x20 -x 119 0xa10000 -x 122 0x40 -x 123 0x1000 -x 127 4 -x 127 17 -x 19 0x400000 -x 28 0x40000 -x 120 0x10000000 -x 70 0x8000 -x 122 1 -x 125 0x20000 -quad -x 59 4 -tp sapphirerapids -x 120 0x1000 -x 124 0x1400 -y 15 2 -x 57 0x3b0000 -x 58 0x48000000 -x 49 0x100 -astype 0 -x 121 1 -x 183 4 -x 121 0x800 -x 68 0x1 -x 8 0x40000000 -x 70 0x40000000 -x 56 0x10 -x 54 0x10 -x 249 160 -x 68 0x20 -x 70 0x40000000 -x 8 0x40000000 -x 164 0x800000 -x 71 0x2000 -x 71 0x4000 -x 34 0x40000000 -x 120 0x1000000 -x 73 0x04 -x 68 0x1 -x 39 4 -x 56 0x10 -x 26 0x10 -x 26 1 -x 56 0x4000 -x 124 1 -x 197 0 -x 175 0 -x 203 0 -x 204 0 -y 163 0xc0000000 -x 189 0x10 -y 189 0x4000000 -x 60 512 -cci /tmp/nvfortranQzTy_XFDzxWC.cci -cmdline '+nvfortran CMakeFortranCompilerId.F -v' -stbfile /tmp/nvfortran6zTyUbEgTh1f.stb -asm /tmp/nvfortran6zTyUmoaE2fN.ll
+        0 inform,   0 warnings,   0 severes, 0 fatal for cmakefortrancompilerid
+      NVFORTRAN/x86-64 Linux 24.1-0: compilation successful
+      
+      /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/share/llvm/bin/llc /tmp/nvfortran6zTyUmoaE2fN.ll -march=x86-64 -mcpu=native -mattr=+mmx -mattr=+sse -mattr=+sse2 -mattr=+sse3 -mattr=+ssse3 -mattr=+sse4.1 -mattr=+sse4.2 -mattr=+avx -mattr=+avx2 -mattr=+avx512f -mattr=+avx512cd -mattr=+avx512vl -mattr=+avx512bw -mattr=+avx512dq -mattr=+avx512ifma -mattr=+avx512vbmi -mattr=+avx512vbmi2 -mattr=+avx512bitalg -mattr=+avx512vpopcntdq -mattr=+avx512vnni -mattr=+f16c -mattr=+fma -mattr=+xsave -mattr=+xsaveopt -mattr=+xsavec -mattr=+xsaves -mattr=+popcnt -mattr=+sha -mattr=+aes -mattr=+pclmul -mattr=+clflushopt -mattr=+fsgsbase -mattr=+rdrnd -mattr=+bmi -mattr=+bmi2 -mattr=+lzcnt -mattr=+fxsr -mattr=+rtm -mattr=+pku -mattr=+gfni -mattr=+vaes -mattr=+vpclmulqdq -mattr=+movdiri -mattr=+movdir64b -mattr=+adx -mattr=+amx-bf16 -mattr=+amx-int8 -mattr=+amx-tile -mattr=+avx512bf16 -mattr=+avx512fp16 -mattr=+avxvnni -mattr=+cldemote -mattr=+clwb -mattr=+cx16 -mattr=+enqcmd -mattr=+movbe -mattr=+pconfig -mattr=+prfchw -mattr=+ptwrite -mattr=+rdpid -mattr=+rdseed -mattr=+sahf -mattr=+serialize -mattr=+sgx -mattr=+shstk -mattr=+tsxldtrk -mattr=+uintr -mattr=+waitpkg -mattr=+wbnoinvd -O1 -opaque-pointers -non-global-value-max-name-size=4294967295 -x86-cmov-converter=0 -dwarf-directory=false -override-aa-for-tbaa=true --align-all-functions=6 -filetype=obj --frame-pointer=none -o /tmp/nvfortrankzTyEY-g3cqx.o
+      
+      /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/append -noerror /tmp/nvfortrankzTyEY-g3cqx.o -name .IPDINFO /tmp/nvfortrankzTyEpoFvSf_.cmod -name .IPEINFO /tmp/nvfortranAzTyolaMUJVo.cmdx
+      
+      /usr/bin/ld /usr/lib64/crt1.o /usr/lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/f90main.o --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -T /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -L/usr/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/ /tmp/nvfortrankzTyEY-g3cqx.o -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64 -lnvf -lnvomp -ldl --as-needed -lnvhpcatm -latomic --no-as-needed -lpthread -lnvcpumath -lnsnvc -lnvc -lrt -lpthread -lgcc -lc -lgcc_s -lm /usr/lib64/gcc/x86_64-suse-linux/7//crtend.o /usr/lib64/crtn.o
+      Unlinking /tmp/nvfortranAzTyoWrwesAT.ilm
+      Unlinking /tmp/nvfortranQzTy_XFDzxWC.cci
+      Unlinking /tmp/nvfortran6zTyUbEgTh1f.stb
+      Unlinking /tmp/nvfortrankzTyEpoFvSf_.cmod
+      Unlinking /tmp/nvfortranAzTyolaMUJVo.cmdx
+      Unlinking /tmp/nvfortranQzTy_KblL_RB.s
+      Unlinking /tmp/nvfortran6zTyUmoaE2fN.ll
+      Unlinking /tmp/nvfortrankzTyEY-g3cqx.o
+      Unlinking /tmp/nvfortranAzTyog_RKhvm.llvm
+      
+      
+      Compilation of the Fortran compiler identification source "CMakeFortranCompilerId.F" produced "a.out"
+      
+      The Fortran compiler identification is NVHPC, found in:
+        /home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/3.28.3/CompilerIdFortran/a.out
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "YAKL/CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-vX3VAQ"
+      binary: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-vX3VAQ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-vX3VAQ'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5de30/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_5de30.dir/build.make CMakeFiles/cmTC_5de30.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-vX3VAQ'
+        Building C object CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicc   -v -MD -MT CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1
+        Export PGI=/soft/compilers/nvhpc
+        Create file CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o.d
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/cpp1 --llalign -D__GNUC__=7 -D__GNUC_MINOR__=5 -D__GNUC_PATCHLEVEL__=0 -D__unix -D__unix__ -Dunix -Dlinux -D__linux -D__linux__ -D__NO_MATH_INLINES -D__LP64__ -D__x86_64 -D__x86_64__ -D__LONG_MAX__=9223372036854775807L '-D__SIZE_TYPE__=unsigned long int' '-D__PTRDIFF_TYPE__=long int' -D__amd64 -D__amd64__ -D__k8 -D__k8__ -D__MMX__ -D__SSE_MATH__ -D__MMX_WITH_SSE__ -D__SSE__ -D__SSE2__ -D__SSE2_MATH__ -D__SSE3__ -D__SSSE3__ -D__SSE4_1__ -D__SSE4_2__ -D__ABM__ -D__ADX__ -D__AES__ -D__AMX_BF16__ -D__AMX_INT8__ -D__AMX_TILE__ -D__AVX__ -D__AVX2__ -D__AVX512BF16__ -D__AVX512BITALG__ -D__AVX512BW__ -D__AVX512CD__ -D__AVX512DQ__ -D__AVX512F__ -D__AVX512FP16__ -D__AVX512IFMA__ -D__AVX512VBMI__ -D__AVX512VBMI2__ -D__AVX512VL__ -D__AVX512VNNI__ -D__AVX512VPOPCNTDQ__ -D__AVXVNNI__ -D__BMI__ -D__BMI2__ -D__CLDEMOTE__ -D__CLFLUSHOPT__ -D__CLWB__ -D__CX16__ -D__ENQCMD__ -D__F16C__ -D__FMA__ -D__FSGSBASE__ -D__FXSR__ -D__GFNI__ -D__HLE__ -D__LZCNT__ -D__MOVBE__ -D__MOVDIR64B__ -D__MOVDIRI__ -D__PCLMUL__ -D__PCONFIG__ -D__PKU__ -D__POPCNT__ -D__PRFCHW__ -D__PTWRITE__ -D__RDPID__ -D__RDRND__ -D__RDSEED__ -D__RTM__ -D__LAHF_SAHF__ -D__SERIALIZE__ -D__SGX__ -D__SHA__ -D__SHSTK__ -D__TSXLDTRK__ -D__UINTR__ -D__VAES__ -D__VPCLMULQDQ__ -D__WAITPKG__ -D__WBNOINVD__ -D__XSAVE__ -D__XSAVEC__ -D__XSAVEOPT__ -D__XSAVES__ -D__PGI -D__NVCOMPILER -D_PGCG_SOURCE --c -I- -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include --sys_include /soft/compilers/cuda/cuda-12.3.0/include --sys_include /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include --sys_include /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include-stdexec --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/include --sys_include /usr/local/include --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/include-fixed --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include --sys_include /usr/include -D__PGLLVM__ -D__NVCOMPILER_LLVM__ -D__extension__= -D_REENTRANT --preinclude _cplus_preinclude.h --preinclude_macros _cplus_macros.h --gnu_version=70500 -D__pgnu_vsn=70500 --no_fixed_bp --dependencies_target_to_stdout CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o --dependencies_to_file CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o.d -q -o /tmp/nvcQ_Ty_gzPfwiY.il /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/cpp2 /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -opt 1 -x 119 0xa10000 -x 122 0x40 -x 123 0x1000 -x 127 4 -x 127 17 -x 19 0x400000 -x 28 0x40000 -x 120 0x10000000 -x 70 0x8000 -x 122 1 -x 125 0x20000 -quad -x 59 4 -tp sapphirerapids -x 120 0x1000 -astype 0 -x 121 1 -fn /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -il /tmp/nvcQ_Ty_gzPfwiY.il -x 123 0x80000000 -x 123 4 -x 2 0x400 -x 209 0x10 -x 119 0x20 -def __pgnu_vsn=70500 -x 70 0x40000000 -x 183 4 -x 121 0x800 -x 6 0x20000 -x 122 0x400000 -y 125 0x100000 -x 249 160 -x 120 0x200000 -x 70 0x40000000 -x 8 0x40000000 -x 164 0x800000 -x 71 0x2000 -x 71 0x4000 -x 34 0x40000000 -x 120 0x1000000 -x 73 0x04 -x 68 0x1 -x 39 4 -x 56 0x10 -x 26 0x10 -x 26 1 -x 56 0x4000 -x 197 0 -x 175 0 -x 203 0 -x 204 0 -y 163 0xc0000000 -x 189 0x10 -y 189 0x4000000 -x 60 512 -gnuvsn 70500 -x 69 0x200 -x 123 0x400 -cmdline '+nvc /tmp/nvcQ_Ty_gzPfwiY.il -v -MD -MT CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -c -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent/include -pthread' -asm /tmp/nvck_TyE0XI8bw2.ll
+        NVC++/x86-64 Linux 24.1-0: compilation successful
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/share/llvm/bin/llc /tmp/nvck_TyE0XI8bw2.ll -march=x86-64 -mcpu=native -mattr=+mmx -mattr=+sse -mattr=+sse2 -mattr=+sse3 -mattr=+ssse3 -mattr=+sse4.1 -mattr=+sse4.2 -mattr=+avx -mattr=+avx2 -mattr=+avx512f -mattr=+avx512cd -mattr=+avx512vl -mattr=+avx512bw -mattr=+avx512dq -mattr=+avx512ifma -mattr=+avx512vbmi -mattr=+avx512vbmi2 -mattr=+avx512bitalg -mattr=+avx512vpopcntdq -mattr=+avx512vnni -mattr=+f16c -mattr=+fma -mattr=+xsave -mattr=+xsaveopt -mattr=+xsavec -mattr=+xsaves -mattr=+popcnt -mattr=+sha -mattr=+aes -mattr=+pclmul -mattr=+clflushopt -mattr=+fsgsbase -mattr=+rdrnd -mattr=+bmi -mattr=+bmi2 -mattr=+lzcnt -mattr=+fxsr -mattr=+rtm -mattr=+pku -mattr=+gfni -mattr=+vaes -mattr=+vpclmulqdq -mattr=+movdiri -mattr=+movdir64b -mattr=+adx -mattr=+amx-bf16 -mattr=+amx-int8 -mattr=+amx-tile -mattr=+avx512bf16 -mattr=+avx512fp16 -mattr=+avxvnni -mattr=+cldemote -mattr=+clwb -mattr=+cx16 -mattr=+enqcmd -mattr=+movbe -mattr=+pconfig -mattr=+prfchw -mattr=+ptwrite -mattr=+rdpid -mattr=+rdseed -mattr=+sahf -mattr=+serialize -mattr=+sgx -mattr=+shstk -mattr=+tsxldtrk -mattr=+uintr -mattr=+waitpkg -mattr=+wbnoinvd -O1 -opaque-pointers -non-global-value-max-name-size=4294967295 -x86-cmov-converter=0 -dwarf-directory=false -override-aa-for-tbaa=true --align-all-functions=6 -filetype=obj --frame-pointer=none -o CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o
+        Unlinking /tmp/nvcQ_Ty_gzPfwiY.il
+        Unlinking /tmp/nvc6_TyU_HrKGM5.s
+        Unlinking /tmp/nvck_TyE0XI8bw2.ll
+        Unlinking /tmp/nvcA_TyoyaMBCcS.llvm
+        Linking C executable cmTC_5de30
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5de30.dir/link.txt --verbose=1
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicc  -v CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -o cmTC_5de30 
+        Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1
+        Export PGI=/soft/compilers/nvhpc
+        
+        /usr/bin/ld /usr/lib64/crt1.o /usr/lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -T /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -L/usr/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/ CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib --enable-new-dtags -lmpi -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -o cmTC_5de30 -L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64 -lnvomp -ldl --as-needed -lnvhpcatm -latomic --no-as-needed -lpthread -lnvcpumath -lnsnvc -lnvc -lgcc -lc -lgcc_s -lm /usr/lib64/gcc/x86_64-suse-linux/7//crtend.o /usr/lib64/crtn.o
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-vX3VAQ'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "YAKL/CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit include dir info: rv=start
+        warn: unable to parse implicit include dirs!
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "YAKL/CMakeLists.txt:3 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-vX3VAQ']
+        ignore line: []
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_5de30/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_5de30.dir/build.make CMakeFiles/cmTC_5de30.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-vX3VAQ']
+        ignore line: [Building C object CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o]
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicc   -v -MD -MT CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: [Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1]
+        ignore line: [Export PGI=/soft/compilers/nvhpc]
+        ignore line: [Create file CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o.d]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/cpp1 --llalign -D__GNUC__=7 -D__GNUC_MINOR__=5 -D__GNUC_PATCHLEVEL__=0 -D__unix -D__unix__ -Dunix -Dlinux -D__linux -D__linux__ -D__NO_MATH_INLINES -D__LP64__ -D__x86_64 -D__x86_64__ -D__LONG_MAX__=9223372036854775807L '-D__SIZE_TYPE__=unsigned long int' '-D__PTRDIFF_TYPE__=long int' -D__amd64 -D__amd64__ -D__k8 -D__k8__ -D__MMX__ -D__SSE_MATH__ -D__MMX_WITH_SSE__ -D__SSE__ -D__SSE2__ -D__SSE2_MATH__ -D__SSE3__ -D__SSSE3__ -D__SSE4_1__ -D__SSE4_2__ -D__ABM__ -D__ADX__ -D__AES__ -D__AMX_BF16__ -D__AMX_INT8__ -D__AMX_TILE__ -D__AVX__ -D__AVX2__ -D__AVX512BF16__ -D__AVX512BITALG__ -D__AVX512BW__ -D__AVX512CD__ -D__AVX512DQ__ -D__AVX512F__ -D__AVX512FP16__ -D__AVX512IFMA__ -D__AVX512VBMI__ -D__AVX512VBMI2__ -D__AVX512VL__ -D__AVX512VNNI__ -D__AVX512VPOPCNTDQ__ -D__AVXVNNI__ -D__BMI__ -D__BMI2__ -D__CLDEMOTE__ -D__CLFLUSHOPT__ -D__CLWB__ -D__CX16__ -D__ENQCMD__ -D__F16C__ -D__FMA__ -D__FSGSBASE__ -D__FXSR__ -D__GFNI__ -D__HLE__ -D__LZCNT__ -D__MOVBE__ -D__MOVDIR64B__ -D__MOVDIRI__ -D__PCLMUL__ -D__PCONFIG__ -D__PKU__ -D__POPCNT__ -D__PRFCHW__ -D__PTWRITE__ -D__RDPID__ -D__RDRND__ -D__RDSEED__ -D__RTM__ -D__LAHF_SAHF__ -D__SERIALIZE__ -D__SGX__ -D__SHA__ -D__SHSTK__ -D__TSXLDTRK__ -D__UINTR__ -D__VAES__ -D__VPCLMULQDQ__ -D__WAITPKG__ -D__WBNOINVD__ -D__XSAVE__ -D__XSAVEC__ -D__XSAVEOPT__ -D__XSAVES__ -D__PGI -D__NVCOMPILER -D_PGCG_SOURCE --c -I- -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/extras/qd/include/qd -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nvshmem/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/nccl/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/math_libs/include --sys_include /soft/compilers/cuda/cuda-12.3.0/include --sys_include /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include --sys_include /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include-stdexec --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/include --sys_include /usr/local/include --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/include-fixed --sys_include /usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include --sys_include /usr/include -D__PGLLVM__ -D__NVCOMPILER_LLVM__ -D__extension__= -D_REENTRANT --preinclude _cplus_preinclude.h --preinclude_macros _cplus_macros.h --gnu_version=70500 -D__pgnu_vsn=70500 --no_fixed_bp --dependencies_target_to_stdout CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o --dependencies_to_file CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o.d -q -o /tmp/nvcQ_Ty_gzPfwiY.il /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/cpp2 /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -opt 1 -x 119 0xa10000 -x 122 0x40 -x 123 0x1000 -x 127 4 -x 127 17 -x 19 0x400000 -x 28 0x40000 -x 120 0x10000000 -x 70 0x8000 -x 122 1 -x 125 0x20000 -quad -x 59 4 -tp sapphirerapids -x 120 0x1000 -astype 0 -x 121 1 -fn /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeCCompilerABI.c -il /tmp/nvcQ_Ty_gzPfwiY.il -x 123 0x80000000 -x 123 4 -x 2 0x400 -x 209 0x10 -x 119 0x20 -def __pgnu_vsn=70500 -x 70 0x40000000 -x 183 4 -x 121 0x800 -x 6 0x20000 -x 122 0x400000 -y 125 0x100000 -x 249 160 -x 120 0x200000 -x 70 0x40000000 -x 8 0x40000000 -x 164 0x800000 -x 71 0x2000 -x 71 0x4000 -x 34 0x40000000 -x 120 0x1000000 -x 73 0x04 -x 68 0x1 -x 39 4 -x 56 0x10 -x 26 0x10 -x 26 1 -x 56 0x4000 -x 197 0 -x 175 0 -x 203 0 -x 204 0 -y 163 0xc0000000 -x 189 0x10 -y 189 0x4000000 -x 60 512 -gnuvsn 70500 -x 69 0x200 -x 123 0x400 -cmdline '+nvc /tmp/nvcQ_Ty_gzPfwiY.il -v -MD -MT CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -MF CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o.d -o CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -c -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/hwloc/hwloc201/hwloc/include -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent -I/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/include/openmpi/opal/mca/event/libevent2022/libevent/include -pthread' -asm /tmp/nvck_TyE0XI8bw2.ll]
+        ignore line: [NVC++/x86-64 Linux 24.1-0: compilation successful]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/share/llvm/bin/llc /tmp/nvck_TyE0XI8bw2.ll -march=x86-64 -mcpu=native -mattr=+mmx -mattr=+sse -mattr=+sse2 -mattr=+sse3 -mattr=+ssse3 -mattr=+sse4.1 -mattr=+sse4.2 -mattr=+avx -mattr=+avx2 -mattr=+avx512f -mattr=+avx512cd -mattr=+avx512vl -mattr=+avx512bw -mattr=+avx512dq -mattr=+avx512ifma -mattr=+avx512vbmi -mattr=+avx512vbmi2 -mattr=+avx512bitalg -mattr=+avx512vpopcntdq -mattr=+avx512vnni -mattr=+f16c -mattr=+fma -mattr=+xsave -mattr=+xsaveopt -mattr=+xsavec -mattr=+xsaves -mattr=+popcnt -mattr=+sha -mattr=+aes -mattr=+pclmul -mattr=+clflushopt -mattr=+fsgsbase -mattr=+rdrnd -mattr=+bmi -mattr=+bmi2 -mattr=+lzcnt -mattr=+fxsr -mattr=+rtm -mattr=+pku -mattr=+gfni -mattr=+vaes -mattr=+vpclmulqdq -mattr=+movdiri -mattr=+movdir64b -mattr=+adx -mattr=+amx-bf16 -mattr=+amx-int8 -mattr=+amx-tile -mattr=+avx512bf16 -mattr=+avx512fp16 -mattr=+avxvnni -mattr=+cldemote -mattr=+clwb -mattr=+cx16 -mattr=+enqcmd -mattr=+movbe -mattr=+pconfig -mattr=+prfchw -mattr=+ptwrite -mattr=+rdpid -mattr=+rdseed -mattr=+sahf -mattr=+serialize -mattr=+sgx -mattr=+shstk -mattr=+tsxldtrk -mattr=+uintr -mattr=+waitpkg -mattr=+wbnoinvd -O1 -opaque-pointers -non-global-value-max-name-size=4294967295 -x86-cmov-converter=0 -dwarf-directory=false -override-aa-for-tbaa=true --align-all-functions=6 -filetype=obj --frame-pointer=none -o CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o]
+        ignore line: [Unlinking /tmp/nvcQ_Ty_gzPfwiY.il]
+        ignore line: [Unlinking /tmp/nvc6_TyU_HrKGM5.s]
+        ignore line: [Unlinking /tmp/nvck_TyE0XI8bw2.ll]
+        ignore line: [Unlinking /tmp/nvcA_TyoyaMBCcS.llvm]
+        ignore line: [Linking C executable cmTC_5de30]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5de30.dir/link.txt --verbose=1]
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicc  -v CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -o cmTC_5de30 ]
+        ignore line: [Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1]
+        ignore line: [Export PGI=/soft/compilers/nvhpc]
+        ignore line: []
+        link line: [/usr/bin/ld /usr/lib64/crt1.o /usr/lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -T /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib -L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -L/usr/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/ CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib --enable-new-dtags -lmpi -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -o cmTC_5de30 -L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64 -lnvomp -ldl --as-needed -lnvhpcatm -latomic --no-as-needed -lpthread -lnvcpumath -lnsnvc -lnvc -lgcc -lc -lgcc_s -lm /usr/lib64/gcc/x86_64-suse-linux/7//crtend.o /usr/lib64/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [/usr/lib64/crt1.o] ==> obj [/usr/lib64/crt1.o]
+          arg [/usr/lib64/crti.o] ==> obj [/usr/lib64/crti.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o]
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-T] ==> ignore
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld] ==> ignore
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib]
+          arg [-L/usr/lib64] ==> dir [/usr/lib64]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/]
+          arg [CMakeFiles/cmTC_5de30.dir/CMakeCCompilerABI.c.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> ignore
+          arg [--enable-new-dtags] ==> ignore
+          arg [-lmpi] ==> lib [mpi]
+          arg [-rpath] ==> ignore
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_5de30] ==> ignore
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64]
+          arg [-lnvomp] ==> lib [nvomp]
+          arg [-ldl] ==> lib [dl]
+          arg [--as-needed] ==> ignore
+          arg [-lnvhpcatm] ==> lib [nvhpcatm]
+          arg [-latomic] ==> lib [atomic]
+          arg [--no-as-needed] ==> ignore
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lnvcpumath] ==> lib [nvcpumath]
+          arg [-lnsnvc] ==> lib [nsnvc]
+          arg [-lnvc] ==> lib [nvc]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lm] ==> lib [m]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o]
+          arg [/usr/lib64/crtn.o] ==> obj [/usr/lib64/crtn.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/lib64] ==> [/soft/compilers/cuda/cuda-12.3.0/lib64]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib]
+        collapse library dir [/usr/lib64] ==> [/usr/lib64]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/] ==> [/usr/lib64/gcc/x86_64-suse-linux/7]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64] ==> [/usr/lib64]
+        implicit libs: [mpi;nvomp;dl;nvhpcatm;atomic;pthread;nvcpumath;nsnvc;nvc;gcc;c;gcc_s;m]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ompi/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/nccl_rdma_sharp_plugin/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/sharp/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucc/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/ucx/mt/lib;/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/12.3/hpcx/hpcx-2.17.1/hcoll/lib;/soft/compilers/cuda/cuda-12.3.0/lib64;/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib;/usr/lib64;/usr/lib64/gcc/x86_64-suse-linux/7]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:57 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestFortranCompiler.cmake:20 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "YAKL/CMakeLists.txt:3 (project)"
+    checks:
+      - "Detecting Fortran compiler ABI info"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-UxBJz6"
+      binary: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-UxBJz6"
+    cmakeVariables:
+      CMAKE_Fortran_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_Fortran_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-UxBJz6'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3a50b/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_3a50b.dir/build.make CMakeFiles/cmTC_3a50b.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-UxBJz6'
+        Building Fortran object CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvfortran   -v -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -o CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o
+        Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1
+        Export PGI=/soft/compilers/nvhpc
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/fort1 /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -opt 1 -nostatic -x 19 0x400000 -quad -x 59 4 -x 15 2 -x 49 0x400004 -x 51 0x20 -x 57 0x4c -x 58 0x10000 -x 124 0x1000 -tp sapphirerapids -x 57 0xfb0000 -x 58 0x78031040 -x 47 0x08 -x 48 4608 -x 49 0x100 -stdinc /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include-stdexec:/usr/lib64/gcc/x86_64-suse-linux/7/include:/usr/local/include:/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include:/usr/include -cmdline '+nvfortran /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -v -c -o CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o' -def __unix -def __unix__ -def unix -def linux -def __linux -def __linux__ -def __NO_MATH_INLINES -def __LP64__ -def __x86_64 -def __x86_64__ -def __LONG_MAX__=9223372036854775807L -def '__SIZE_TYPE__=unsigned long int' -def '__PTRDIFF_TYPE__=long int' -def __amd64 -def __amd64__ -def __k8 -def __k8__ -def __MMX__ -def __SSE_MATH__ -def __MMX_WITH_SSE__ -def __SSE__ -def __SSE2__ -def __SSE2_MATH__ -def __SSE3__ -def __SSSE3__ -def __SSE4_1__ -def __SSE4_2__ -def __ABM__ -def __ADX__ -def __AES__ -def __AMX_BF16__ -def __AMX_INT8__ -def __AMX_TILE__ -def __AVX__ -def __AVX2__ -def __AVX512BF16__ -def __AVX512BITALG__ -def __AVX512BW__ -def __AVX512CD__ -def __AVX512DQ__ -def __AVX512F__ -def __AVX512FP16__ -def __AVX512IFMA__ -def __AVX512VBMI__ -def __AVX512VBMI2__ -def __AVX512VL__ -def __AVX512VNNI__ -def __AVX512VPOPCNTDQ__ -def __AVXVNNI__ -def __BMI__ -def __BMI2__ -def __CLDEMOTE__ -def __CLFLUSHOPT__ -def __CLWB__ -def __CX16__ -def __ENQCMD__ -def __F16C__ -def __FMA__ -def __FSGSBASE__ -def __FXSR__ -def __GFNI__ -def __HLE__ -def __LZCNT__ -def __MOVBE__ -def __MOVDIR64B__ -def __MOVDIRI__ -def __PCLMUL__ -def __PCONFIG__ -def __PKU__ -def __POPCNT__ -def __PRFCHW__ -def __PTWRITE__ -def __RDPID__ -def __RDRND__ -def __RDSEED__ -def __RTM__ -def __LAHF_SAHF__ -def __SERIALIZE__ -def __SGX__ -def __SHA__ -def __SHSTK__ -def __TSXLDTRK__ -def __UINTR__ -def __VAES__ -def __VPCLMULQDQ__ -def __WAITPKG__ -def __WBNOINVD__ -def __XSAVE__ -def __XSAVEC__ -def __XSAVEOPT__ -def __XSAVES__ -def __PGLLVM__ -def __NVCOMPILER_LLVM__ -def __extension__= -preprocess -freeform -vect 48 -x 54 1 -x 68 0x1 -x 70 0x40000000 -x 70 0x40000000 -x 68 0x1 -x 124 1 -x 195 0x8000 -y 163 0xc0000000 -x 189 0x10 -stbfile /tmp/nvfortranROUybs-vbCM2.stb -modexport /tmp/nvfortrandOUyjIzh4n3S.cmod -modindex /tmp/nvfortranBOUyrZfqlYkW.cmdx -cci /tmp/nvfortrantOUy56FCLAex.cci -output /tmp/nvfortran7OUyXuvqAuKP.ilm
+          0 inform,   0 warnings,   0 severes, 0 fatal for cmakefortrancompilerabi
+        NVFORTRAN/x86-64 Linux 24.1-0: compilation successful
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/fort2 /tmp/nvfortran7OUyXuvqAuKP.ilm -fn /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -opt 1 -x 51 0x20 -x 119 0xa10000 -x 122 0x40 -x 123 0x1000 -x 127 4 -x 127 17 -x 19 0x400000 -x 28 0x40000 -x 120 0x10000000 -x 70 0x8000 -x 122 1 -x 125 0x20000 -quad -x 59 4 -tp sapphirerapids -x 120 0x1000 -x 124 0x1400 -y 15 2 -x 57 0x3b0000 -x 58 0x48000000 -x 49 0x100 -astype 0 -x 121 1 -x 183 4 -x 121 0x800 -x 68 0x1 -x 8 0x40000000 -x 70 0x40000000 -x 56 0x10 -x 54 0x10 -x 249 160 -x 68 0x20 -x 70 0x40000000 -x 8 0x40000000 -x 164 0x800000 -x 71 0x2000 -x 71 0x4000 -x 34 0x40000000 -x 120 0x1000000 -x 73 0x04 -x 68 0x1 -x 39 4 -x 56 0x10 -x 26 0x10 -x 26 1 -x 56 0x4000 -x 124 1 -x 197 0 -x 175 0 -x 203 0 -x 204 0 -y 163 0xc0000000 -x 189 0x10 -y 189 0x4000000 -x 60 512 -cci /tmp/nvfortrantOUy56FCLAex.cci -cmdline '+nvfortran /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -v -c -o CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o' -stbfile /tmp/nvfortranROUybs-vbCM2.stb -asm /tmp/nvfortranlOUyH4vI7q67.ll
+          0 inform,   0 warnings,   0 severes, 0 fatal for cmakefortrancompilerabi
+        NVFORTRAN/x86-64 Linux 24.1-0: compilation successful
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/share/llvm/bin/llc /tmp/nvfortranlOUyH4vI7q67.ll -march=x86-64 -mcpu=native -mattr=+mmx -mattr=+sse -mattr=+sse2 -mattr=+sse3 -mattr=+ssse3 -mattr=+sse4.1 -mattr=+sse4.2 -mattr=+avx -mattr=+avx2 -mattr=+avx512f -mattr=+avx512cd -mattr=+avx512vl -mattr=+avx512bw -mattr=+avx512dq -mattr=+avx512ifma -mattr=+avx512vbmi -mattr=+avx512vbmi2 -mattr=+avx512bitalg -mattr=+avx512vpopcntdq -mattr=+avx512vnni -mattr=+f16c -mattr=+fma -mattr=+xsave -mattr=+xsaveopt -mattr=+xsavec -mattr=+xsaves -mattr=+popcnt -mattr=+sha -mattr=+aes -mattr=+pclmul -mattr=+clflushopt -mattr=+fsgsbase -mattr=+rdrnd -mattr=+bmi -mattr=+bmi2 -mattr=+lzcnt -mattr=+fxsr -mattr=+rtm -mattr=+pku -mattr=+gfni -mattr=+vaes -mattr=+vpclmulqdq -mattr=+movdiri -mattr=+movdir64b -mattr=+adx -mattr=+amx-bf16 -mattr=+amx-int8 -mattr=+amx-tile -mattr=+avx512bf16 -mattr=+avx512fp16 -mattr=+avxvnni -mattr=+cldemote -mattr=+clwb -mattr=+cx16 -mattr=+enqcmd -mattr=+movbe -mattr=+pconfig -mattr=+prfchw -mattr=+ptwrite -mattr=+rdpid -mattr=+rdseed -mattr=+sahf -mattr=+serialize -mattr=+sgx -mattr=+shstk -mattr=+tsxldtrk -mattr=+uintr -mattr=+waitpkg -mattr=+wbnoinvd -O1 -opaque-pointers -non-global-value-max-name-size=4294967295 -x86-cmov-converter=0 -dwarf-directory=false -override-aa-for-tbaa=true --align-all-functions=6 -filetype=obj --frame-pointer=none -o CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o
+        
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/append -noerror CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o -name .IPDINFO /tmp/nvfortrandOUyjIzh4n3S.cmod -name .IPEINFO /tmp/nvfortranBOUyrZfqlYkW.cmdx
+        Unlinking /tmp/nvfortran7OUyXuvqAuKP.ilm
+        Unlinking /tmp/nvfortrantOUy56FCLAex.cci
+        Unlinking /tmp/nvfortranROUybs-vbCM2.stb
+        Unlinking /tmp/nvfortrandOUyjIzh4n3S.cmod
+        Unlinking /tmp/nvfortranBOUyrZfqlYkW.cmdx
+        Unlinking /tmp/nvfortranZOUyznuklrNH.s
+        Unlinking /tmp/nvfortranlOUyH4vI7q67.ll
+        Unlinking /tmp/nvfortranJOUyP8KM_lvP.llvm
+        Linking Fortran executable cmTC_3a50b
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3a50b.dir/link.txt --verbose=1
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvfortran  -v CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o -o cmTC_3a50b 
+        Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1
+        Export PGI=/soft/compilers/nvhpc
+        
+        /usr/bin/ld /usr/lib64/crt1.o /usr/lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/f90main.o --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -T /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -L/usr/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/ CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -o cmTC_3a50b -L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64 -lnvf -lnvomp -ldl --as-needed -lnvhpcatm -latomic --no-as-needed -lpthread -lnvcpumath -lnsnvc -lnvc -lrt -lpthread -lgcc -lc -lgcc_s -lm /usr/lib64/gcc/x86_64-suse-linux/7//crtend.o /usr/lib64/crtn.o
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-UxBJz6'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:127 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestFortranCompiler.cmake:20 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "YAKL/CMakeLists.txt:3 (project)"
+    message: |
+      Parsed Fortran implicit include dir info: rv=start
+        warn: unable to parse implicit include dirs!
+      
+      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeDetermineCompilerABI.cmake:159 (message)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeTestFortranCompiler.cmake:20 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "YAKL/CMakeLists.txt:3 (project)"
+    message: |
+      Parsed Fortran implicit link information:
+        link line regex: [^( *|.*[/\\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        ignore line: [Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-UxBJz6']
+        ignore line: []
+        ignore line: [Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_3a50b/fast]
+        ignore line: [/usr/bin/gmake  -f CMakeFiles/cmTC_3a50b.dir/build.make CMakeFiles/cmTC_3a50b.dir/build]
+        ignore line: [gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-UxBJz6']
+        ignore line: [Building Fortran object CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o]
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvfortran   -v -c /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -o CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o]
+        ignore line: [Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1]
+        ignore line: [Export PGI=/soft/compilers/nvhpc]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/fort1 /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -opt 1 -nostatic -x 19 0x400000 -quad -x 59 4 -x 15 2 -x 49 0x400004 -x 51 0x20 -x 57 0x4c -x 58 0x10000 -x 124 0x1000 -tp sapphirerapids -x 57 0xfb0000 -x 58 0x78031040 -x 47 0x08 -x 48 4608 -x 49 0x100 -stdinc /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include:/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/include-stdexec:/usr/lib64/gcc/x86_64-suse-linux/7/include:/usr/local/include:/usr/lib64/gcc/x86_64-suse-linux/7/include-fixed:/usr/lib64/gcc/x86_64-suse-linux/7/../../../../x86_64-suse-linux/include:/usr/include -cmdline '+nvfortran /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -v -c -o CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o' -def __unix -def __unix__ -def unix -def linux -def __linux -def __linux__ -def __NO_MATH_INLINES -def __LP64__ -def __x86_64 -def __x86_64__ -def __LONG_MAX__=9223372036854775807L -def '__SIZE_TYPE__=unsigned long int' -def '__PTRDIFF_TYPE__=long int' -def __amd64 -def __amd64__ -def __k8 -def __k8__ -def __MMX__ -def __SSE_MATH__ -def __MMX_WITH_SSE__ -def __SSE__ -def __SSE2__ -def __SSE2_MATH__ -def __SSE3__ -def __SSSE3__ -def __SSE4_1__ -def __SSE4_2__ -def __ABM__ -def __ADX__ -def __AES__ -def __AMX_BF16__ -def __AMX_INT8__ -def __AMX_TILE__ -def __AVX__ -def __AVX2__ -def __AVX512BF16__ -def __AVX512BITALG__ -def __AVX512BW__ -def __AVX512CD__ -def __AVX512DQ__ -def __AVX512F__ -def __AVX512FP16__ -def __AVX512IFMA__ -def __AVX512VBMI__ -def __AVX512VBMI2__ -def __AVX512VL__ -def __AVX512VNNI__ -def __AVX512VPOPCNTDQ__ -def __AVXVNNI__ -def __BMI__ -def __BMI2__ -def __CLDEMOTE__ -def __CLFLUSHOPT__ -def __CLWB__ -def __CX16__ -def __ENQCMD__ -def __F16C__ -def __FMA__ -def __FSGSBASE__ -def __FXSR__ -def __GFNI__ -def __HLE__ -def __LZCNT__ -def __MOVBE__ -def __MOVDIR64B__ -def __MOVDIRI__ -def __PCLMUL__ -def __PCONFIG__ -def __PKU__ -def __POPCNT__ -def __PRFCHW__ -def __PTWRITE__ -def __RDPID__ -def __RDRND__ -def __RDSEED__ -def __RTM__ -def __LAHF_SAHF__ -def __SERIALIZE__ -def __SGX__ -def __SHA__ -def __SHSTK__ -def __TSXLDTRK__ -def __UINTR__ -def __VAES__ -def __VPCLMULQDQ__ -def __WAITPKG__ -def __WBNOINVD__ -def __XSAVE__ -def __XSAVEC__ -def __XSAVEOPT__ -def __XSAVES__ -def __PGLLVM__ -def __NVCOMPILER_LLVM__ -def __extension__= -preprocess -freeform -vect 48 -x 54 1 -x 68 0x1 -x 70 0x40000000 -x 70 0x40000000 -x 68 0x1 -x 124 1 -x 195 0x8000 -y 163 0xc0000000 -x 189 0x10 -stbfile /tmp/nvfortranROUybs-vbCM2.stb -modexport /tmp/nvfortrandOUyjIzh4n3S.cmod -modindex /tmp/nvfortranBOUyrZfqlYkW.cmdx -cci /tmp/nvfortrantOUy56FCLAex.cci -output /tmp/nvfortran7OUyXuvqAuKP.ilm]
+        ignore line: [  0 inform    0 warnings    0 severes  0 fatal for cmakefortrancompilerabi]
+        ignore line: [NVFORTRAN/x86-64 Linux 24.1-0: compilation successful]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/fort2 /tmp/nvfortran7OUyXuvqAuKP.ilm -fn /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -opt 1 -x 51 0x20 -x 119 0xa10000 -x 122 0x40 -x 123 0x1000 -x 127 4 -x 127 17 -x 19 0x400000 -x 28 0x40000 -x 120 0x10000000 -x 70 0x8000 -x 122 1 -x 125 0x20000 -quad -x 59 4 -tp sapphirerapids -x 120 0x1000 -x 124 0x1400 -y 15 2 -x 57 0x3b0000 -x 58 0x48000000 -x 49 0x100 -astype 0 -x 121 1 -x 183 4 -x 121 0x800 -x 68 0x1 -x 8 0x40000000 -x 70 0x40000000 -x 56 0x10 -x 54 0x10 -x 249 160 -x 68 0x20 -x 70 0x40000000 -x 8 0x40000000 -x 164 0x800000 -x 71 0x2000 -x 71 0x4000 -x 34 0x40000000 -x 120 0x1000000 -x 73 0x04 -x 68 0x1 -x 39 4 -x 56 0x10 -x 26 0x10 -x 26 1 -x 56 0x4000 -x 124 1 -x 197 0 -x 175 0 -x 203 0 -x 204 0 -y 163 0xc0000000 -x 189 0x10 -y 189 0x4000000 -x 60 512 -cci /tmp/nvfortrantOUy56FCLAex.cci -cmdline '+nvfortran /soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CMakeFortranCompilerABI.F90 -v -c -o CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o' -stbfile /tmp/nvfortranROUybs-vbCM2.stb -asm /tmp/nvfortranlOUyH4vI7q67.ll]
+        ignore line: [  0 inform    0 warnings    0 severes  0 fatal for cmakefortrancompilerabi]
+        ignore line: [NVFORTRAN/x86-64 Linux 24.1-0: compilation successful]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/share/llvm/bin/llc /tmp/nvfortranlOUyH4vI7q67.ll -march=x86-64 -mcpu=native -mattr=+mmx -mattr=+sse -mattr=+sse2 -mattr=+sse3 -mattr=+ssse3 -mattr=+sse4.1 -mattr=+sse4.2 -mattr=+avx -mattr=+avx2 -mattr=+avx512f -mattr=+avx512cd -mattr=+avx512vl -mattr=+avx512bw -mattr=+avx512dq -mattr=+avx512ifma -mattr=+avx512vbmi -mattr=+avx512vbmi2 -mattr=+avx512bitalg -mattr=+avx512vpopcntdq -mattr=+avx512vnni -mattr=+f16c -mattr=+fma -mattr=+xsave -mattr=+xsaveopt -mattr=+xsavec -mattr=+xsaves -mattr=+popcnt -mattr=+sha -mattr=+aes -mattr=+pclmul -mattr=+clflushopt -mattr=+fsgsbase -mattr=+rdrnd -mattr=+bmi -mattr=+bmi2 -mattr=+lzcnt -mattr=+fxsr -mattr=+rtm -mattr=+pku -mattr=+gfni -mattr=+vaes -mattr=+vpclmulqdq -mattr=+movdiri -mattr=+movdir64b -mattr=+adx -mattr=+amx-bf16 -mattr=+amx-int8 -mattr=+amx-tile -mattr=+avx512bf16 -mattr=+avx512fp16 -mattr=+avxvnni -mattr=+cldemote -mattr=+clwb -mattr=+cx16 -mattr=+enqcmd -mattr=+movbe -mattr=+pconfig -mattr=+prfchw -mattr=+ptwrite -mattr=+rdpid -mattr=+rdseed -mattr=+sahf -mattr=+serialize -mattr=+sgx -mattr=+shstk -mattr=+tsxldtrk -mattr=+uintr -mattr=+waitpkg -mattr=+wbnoinvd -O1 -opaque-pointers -non-global-value-max-name-size=4294967295 -x86-cmov-converter=0 -dwarf-directory=false -override-aa-for-tbaa=true --align-all-functions=6 -filetype=obj --frame-pointer=none -o CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o]
+        ignore line: []
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/tools/append -noerror CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o -name .IPDINFO /tmp/nvfortrandOUyjIzh4n3S.cmod -name .IPEINFO /tmp/nvfortranBOUyrZfqlYkW.cmdx]
+        ignore line: [Unlinking /tmp/nvfortran7OUyXuvqAuKP.ilm]
+        ignore line: [Unlinking /tmp/nvfortrantOUy56FCLAex.cci]
+        ignore line: [Unlinking /tmp/nvfortranROUybs-vbCM2.stb]
+        ignore line: [Unlinking /tmp/nvfortrandOUyjIzh4n3S.cmod]
+        ignore line: [Unlinking /tmp/nvfortranBOUyrZfqlYkW.cmdx]
+        ignore line: [Unlinking /tmp/nvfortranZOUyznuklrNH.s]
+        ignore line: [Unlinking /tmp/nvfortranlOUyH4vI7q67.ll]
+        ignore line: [Unlinking /tmp/nvfortranJOUyP8KM_lvP.llvm]
+        ignore line: [Linking Fortran executable cmTC_3a50b]
+        ignore line: [/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3a50b.dir/link.txt --verbose=1]
+        ignore line: [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvfortran  -v CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o -o cmTC_3a50b ]
+        ignore line: [Export NVCOMPILER=/soft/compilers/nvhpc/Linux_x86_64/24.1]
+        ignore line: [Export PGI=/soft/compilers/nvhpc]
+        ignore line: []
+        link line: [/usr/bin/ld /usr/lib64/crt1.o /usr/lib64/crti.o /usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/f90main.o --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -T /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld -L/soft/compilers/cuda/cuda-12.3.0/lib64 -L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -L/usr/lib64 -L/usr/lib64/gcc/x86_64-suse-linux/7/ CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o -rpath /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib -o cmTC_3a50b -L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64 -lnvf -lnvomp -ldl --as-needed -lnvhpcatm -latomic --no-as-needed -lpthread -lnvcpumath -lnsnvc -lnvc -lrt -lpthread -lgcc -lc -lgcc_s -lm /usr/lib64/gcc/x86_64-suse-linux/7//crtend.o /usr/lib64/crtn.o]
+          arg [/usr/bin/ld] ==> ignore
+          arg [/usr/lib64/crt1.o] ==> obj [/usr/lib64/crt1.o]
+          arg [/usr/lib64/crti.o] ==> obj [/usr/lib64/crti.o]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o]
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/f90main.o] ==> obj [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/f90main.o]
+          arg [--eh-frame-hdr] ==> ignore
+          arg [-m] ==> ignore
+          arg [elf_x86_64] ==> ignore
+          arg [-dynamic-linker] ==> ignore
+          arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+          arg [-T] ==> ignore
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/nvhpc.ld] ==> ignore
+          arg [-L/soft/compilers/cuda/cuda-12.3.0/lib64] ==> dir [/soft/compilers/cuda/cuda-12.3.0/lib64]
+          arg [-L/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib]
+          arg [-L/usr/lib64] ==> dir [/usr/lib64]
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7/] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7/]
+          arg [CMakeFiles/cmTC_3a50b.dir/CMakeFortranCompilerABI.F90.o] ==> ignore
+          arg [-rpath] ==> ignore
+          arg [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> ignore
+          arg [-o] ==> ignore
+          arg [cmTC_3a50b] ==> ignore
+          arg [-L/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64] ==> dir [/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64]
+          arg [-lnvf] ==> lib [nvf]
+          arg [-lnvomp] ==> lib [nvomp]
+          arg [-ldl] ==> lib [dl]
+          arg [--as-needed] ==> ignore
+          arg [-lnvhpcatm] ==> lib [nvhpcatm]
+          arg [-latomic] ==> lib [atomic]
+          arg [--no-as-needed] ==> ignore
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lnvcpumath] ==> lib [nvcpumath]
+          arg [-lnsnvc] ==> lib [nsnvc]
+          arg [-lnvc] ==> lib [nvc]
+          arg [-lrt] ==> lib [rt]
+          arg [-lpthread] ==> lib [pthread]
+          arg [-lgcc] ==> lib [gcc]
+          arg [-lc] ==> lib [c]
+          arg [-lgcc_s] ==> lib [gcc_s]
+          arg [-lm] ==> lib [m]
+          arg [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o] ==> obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o]
+          arg [/usr/lib64/crtn.o] ==> obj [/usr/lib64/crtn.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtbegin.o] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o]
+        collapse obj [/usr/lib64/gcc/x86_64-suse-linux/7//crtend.o] ==> [/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o]
+        collapse library dir [/soft/compilers/cuda/cuda-12.3.0/lib64] ==> [/soft/compilers/cuda/cuda-12.3.0/lib64]
+        collapse library dir [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib] ==> [/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib]
+        collapse library dir [/usr/lib64] ==> [/usr/lib64]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7/] ==> [/usr/lib64/gcc/x86_64-suse-linux/7]
+        collapse library dir [/usr/lib64/gcc/x86_64-suse-linux/7//../../../../lib64] ==> [/usr/lib64]
+        implicit libs: [nvf;nvomp;dl;nvhpcatm;atomic;pthread;nvcpumath;nsnvc;nvc;rt;pthread;gcc;c;gcc_s;m]
+        implicit objs: [/usr/lib64/crt1.o;/usr/lib64/crti.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtbegin.o;/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/f90main.o;/usr/lib64/gcc/x86_64-suse-linux/7/crtend.o;/usr/lib64/crtn.o]
+        implicit dirs: [/soft/compilers/cuda/cuda-12.3.0/lib64;/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib;/usr/lib64;/usr/lib64/gcc/x86_64-suse-linux/7]
+        implicit fwks: []
+      
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/CheckCSourceCompiles.cmake:52 (cmake_check_source_compiles)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindThreads.cmake:97 (CHECK_C_SOURCE_COMPILES)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindThreads.cmake:163 (_threads_check_libc)"
+      - "/soft/buildtools/cmake/3.28.3/share/cmake-3.28/Modules/FindCUDAToolkit.cmake:1152 (find_package)"
+      - "YAKL/CMakeLists.txt:102 (find_package)"
+    checks:
+      - "Performing Test CMAKE_HAVE_LIBC_PTHREAD"
+    directories:
+      source: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-knNjIQ"
+      binary: "/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-knNjIQ"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_HAVE_LIBC_PTHREAD"
+      cached: true
+      stdout: |
+        Change Dir: '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-knNjIQ'
+        
+        Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2f26c/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_2f26c.dir/build.make CMakeFiles/cmTC_2f26c.dir/build
+        gmake[1]: Entering directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-knNjIQ'
+        Building C object CMakeFiles/cmTC_2f26c.dir/src.c.o
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicc -DCMAKE_HAVE_LIBC_PTHREAD   -MD -MT CMakeFiles/cmTC_2f26c.dir/src.c.o -MF CMakeFiles/cmTC_2f26c.dir/src.c.o.d -o CMakeFiles/cmTC_2f26c.dir/src.c.o -c /home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-knNjIQ/src.c
+        Linking C executable cmTC_2f26c
+        /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2f26c.dir/link.txt --verbose=1
+        /soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicc CMakeFiles/cmTC_2f26c.dir/src.c.o -o cmTC_2f26c 
+        gmake[1]: Leaving directory '/home/ac.zzheng/benchmark/spec/miniWeather/cpp/build/CMakeFiles/CMakeScratch/TryCompile-knNjIQ'
+        
+      exitCode: 0
+...

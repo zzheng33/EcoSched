@@ -1,0 +1,1 @@
+/soft/compilers/nvhpc/Linux_x86_64/24.1/comm_libs/mpi/bin/mpicxx -DNO_INFORM -fast -O3 -DNDEBUG -cuda CMakeFiles/parallelfor.dir/miniWeather_mpi_parallelfor.cpp.o -o parallelfor  /soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/libcufft.so 

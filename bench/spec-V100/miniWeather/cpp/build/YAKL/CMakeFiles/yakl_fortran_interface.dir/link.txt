@@ -1,0 +1,3 @@
+/usr/bin/ar qc libyakl_fortran_interface.a CMakeFiles/yakl_fortran_interface.dir/src/YAKL_fortran_interfaces.cpp.o CMakeFiles/yakl_fortran_interface.dir/src/YAKL_gator_mod.F90.o
+/usr/bin/ar q libyakl_fortran_interface.a CMakeFiles/yakl_fortran_interface.dir/cmake_device_link.o
+/usr/bin/ranlib libyakl_fortran_interface.a

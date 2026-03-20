@@ -1,0 +1,1 @@
+/soft/libraries/mpi/openmpi/4.1.1/bin/mpicxx -O3 -DNDEBUG -rdynamic CMakeFiles/sweep.dir/src/4_driver/sweep_generated_sweep.cu.o -o sweep  -Wl,-Bstatic -lcudart_static -Wl,-Bdynamic -ldl -Wl,-Bstatic -lrt libsweeper.a -lcudart_static -Wl,-Bdynamic -ldl -Wl,-Bstatic -lrt -Wl,-Bdynamic 

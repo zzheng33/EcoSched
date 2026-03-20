@@ -1,0 +1,1 @@
+-I"/home/ac.zzheng/benchmark/spec-V100/miniWeather/cpp/YAKL/src" -I"/home/ac.zzheng/benchmark/spec-V100/miniWeather/cpp/YAKL/external" -I"/home/ac.zzheng/benchmark/spec-V100/miniWeather/cpp/YAKL/src/extensions" -I"/home/ac.zzheng/benchmark/spec-V100/miniWeather/cpp/build/YAKL" -isystem "/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/include"

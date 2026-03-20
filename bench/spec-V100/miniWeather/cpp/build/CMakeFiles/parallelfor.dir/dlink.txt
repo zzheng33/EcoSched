@@ -1,0 +1,1 @@
+/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler -I/soft/libraries/mpi/openmpi/4.1.1/include -O3 -DNDEBUG -Xcompiler=-fPIC -Wno-deprecated-gpu-targets -shared -dlink --options-file CMakeFiles/parallelfor.dir/deviceObjects1.rsp -o CMakeFiles/parallelfor.dir/cmake_device_link.o --options-file CMakeFiles/parallelfor.dir/deviceLinkLibs.rsp
