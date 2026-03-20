@@ -63,6 +63,7 @@ from config import (
     ML_SCRIPT,
     ML_WORKDIR,
     ML_BATCH_SIZE,
+    ML_BATCH_SIZE_OVERRIDE,
     ML_EPOCHS,
     ML_LR,
 )
@@ -314,7 +315,7 @@ def build_ml_dl_command(app: str, gpu_ids: List[int], numa_node: int):
         str(ML_SCRIPT),
         "--model", app,
         "--num-gpus", str(gpu_count),
-        "--batch-size", str(ML_BATCH_SIZE),
+        "--batch-size", str(ML_BATCH_SIZE_OVERRIDE.get(SYSTEM, {}).get(app, ML_BATCH_SIZE)),
         "--epochs", str(ML_EPOCHS),
         "--lr", str(ML_LR),
     ]

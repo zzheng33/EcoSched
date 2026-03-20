@@ -72,7 +72,12 @@ ML_DL_APPS = {'resnet50', 'resnet101', 'resnet152', 'vgg16', 'vgg19'}
 ML_PYTHON = HOME / "env/ml/bin/python3"
 ML_SCRIPT = HOME / "power/ML/dl.py"
 ML_WORKDIR = HOME / "power/ML"
+ML_MIN_PER_GPU_CAP = 200
+ML_MAX_PER_GPU_CAP = 700
 ML_BATCH_SIZE = 2048
+ML_BATCH_SIZE_OVERRIDE = {
+    'V100': {'resnet50': 512, 'resnet101': 512, 'resnet152': 512, 'vgg19': 512},
+}
 ML_EPOCHS = 3
 ML_LR = 0.001
 

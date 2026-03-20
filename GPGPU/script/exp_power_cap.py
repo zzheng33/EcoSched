@@ -5,11 +5,18 @@ import signal
 import argparse
 import csv
 import re
+import sys
+
+# Add coSched to path so we can import shared config
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'coSched'))
+from config import (
+    ML_MIN_PER_GPU_CAP, ML_MAX_PER_GPU_CAP,
+    ML_BATCH_SIZE, ML_BATCH_SIZE_OVERRIDE,
+    ML_EPOCHS, ML_LR, SYSTEM,
+)
 
 num_gpu = 4
-system = "V100"
-# system = "A100"
-# system = "H100"
+system = SYSTEM
 
 # System-dependent benchmark paths
 SYSTEM_CONFIG = {
@@ -79,16 +86,6 @@ GPU_ct = [1,2,3,4]
 # GPU_ct = [3]
 gpu_caps = [2800]
 
-ML_MIN_PER_GPU_CAP = 200
-ML_MAX_PER_GPU_CAP = 700
-ML_BATCH_SIZE = 2048
-ML_BATCH_SIZE_OVERRIDE = {
-    'resnet101': 512,
-    'resnet152': 512,
-    'vgg19': 512,
-}
-ML_EPOCHS = 3
-ML_LR = 0.001
 
 
 def _upsert_runtime_row(runtime_csv_path, power_cap, gpu_count, runtime_seconds):
@@ -350,7 +347,7 @@ def run_ml_experiment(model_name=None):
                     ml_script,
                     "--model", model,
                     "--num-gpus", str(g_cnt),
-                    "--batch-size", str(ML_BATCH_SIZE_OVERRIDE.get(model, ML_BATCH_SIZE)),
+                    "--batch-size", str(ML_BATCH_SIZE_OVERRIDE.get(system, {}).get(model, ML_BATCH_SIZE)),
                     "--epochs", str(ML_EPOCHS),
                     "--lr", str(ML_LR),
                 ]
