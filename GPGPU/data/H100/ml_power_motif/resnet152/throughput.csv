@@ -1,5 +1,5 @@
 total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
-2800,1,700,resnet152,2485.20,ok
-2800,2,700,resnet152,3493.06,ok
-2800,3,700,resnet152,3443.91,ok
-2800,4,700,resnet152,3312.43,ok
+2800,1,700,resnet152,2616.46,ok
+2800,2,700,resnet152,4355.65,ok
+2800,3,700,resnet152,5396.40,ok
+2800,4,700,resnet152,5379.77,ok

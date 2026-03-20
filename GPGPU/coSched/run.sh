@@ -10,16 +10,18 @@ cd "$SCRIPT_DIR"
 
 $PYTHON run_cosched_sequential.py --policy sequential --sequential-gpu-strategy best
 
-
-# $PYTHON solve_energy_optimal_cpsat.py --time-limit 1200
-
-
-# $PYTHON run_solver_schedule.py
+$PYTHON run_cosched_sequential.py --policy sequential --sequential-gpu-strategy max
 
 
-# $PYTHON run_cosched_marble.py
+$PYTHON solve_energy_optimal_cpsat.py --time-limit 1200
 
 
-# $PYTHON ecoPack.py --policy cmab
+$PYTHON run_solver_schedule.py
+
+
+$PYTHON run_cosched_marble.py
+
+
+$PYTHON ecoPack.py --policy cmab
 
 

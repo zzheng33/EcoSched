@@ -78,12 +78,13 @@ cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simple
 
 
 
-# ml_models = ["resnet50","vgg16"]"vgg19""resnet50","vgg16"
-ml_models = ["resnet101","resnet152"]
+
+ml_models = ["resnet101","resnet152", "vgg19","vgg16","resnet50"]
+ml_models = ["resnet152"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-# GPU_ct = [3]
+# GPU_ct = [2]
 gpu_caps = [2800]
 
 
