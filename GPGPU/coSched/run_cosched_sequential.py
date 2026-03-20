@@ -7,17 +7,6 @@ Policies:
   - best-fit:   Pick the job whose GPU count best fills remaining GPUs
   - sequential: Run apps one by one (baseline, no co-scheduling)
 
-NUMA topology (2-socket):
-  NUMA 0: GPUs 0, 1   (tenant 1)
-  NUMA 1: GPUs 2, 3   (tenant 2)
-
-Scheduling rules:
-  - At most 2 apps run concurrently (tenant 1 on NUMA 0, tenant 2 on NUMA 1)
-  - Tenant 1 binds CPU/memory to NUMA 0, prefers GPUs 0,1
-  - Tenant 2 binds CPU/memory to NUMA 1, prefers GPUs 2,3
-  - If an app needs 3 GPUs, it takes both from its own NUMA side + 1 from
-    the other side (only allowed when running alone)
-  - If an app needs 4 GPUs, it runs alone using all GPUs
 
 Usage:
     python3 run_cosched.py --policy best-fit           # best-fit (default)
@@ -109,6 +98,43 @@ def parse_max_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[s
     """Read perf_metrics.txt and return the maximum available GPU count per app."""
     available = parse_available_gpu_counts(metrics_path, selected_jobs)
     return {job: max(counts) for job, counts in available.items()}
+
+
+def parse_best_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, int]:
+    """Read perf_metrics.txt and return the GPU count with lowest runtime per app."""
+    import re
+
+    section_re = re.compile(r"^===== .*?/([^/ ]+) =====$")
+    current_job = None
+    rows: Dict[str, Dict[int, float]] = {}
+
+    for raw_line in metrics_path.read_text().splitlines():
+        line = raw_line.strip()
+        if not line:
+            continue
+        match = section_re.match(line)
+        if match:
+            current_job = match.group(1)
+            rows.setdefault(current_job, {})
+            continue
+        if current_job is None or line.startswith("cap=") or line.startswith("gpu_count"):
+            continue
+        parts = line.split()
+        if len(parts) < 3:
+            continue
+        gpu_count = int(parts[0])
+        runtime_s = float(parts[1])
+        rows[current_job][gpu_count] = runtime_s
+
+    missing = [job for job in selected_jobs if job not in rows]
+    if missing:
+        raise ValueError("Missing jobs in perf metrics file: {}".format(missing))
+
+    best = {}
+    for job in selected_jobs:
+        gpu_runtimes = rows[job]
+        best[job] = min(gpu_runtimes, key=gpu_runtimes.get)
+    return best
 
 
 def resolve_requested_gpu_count(requested: int, available_counts: List[int]) -> int:
@@ -649,7 +675,11 @@ def _results_log_path(args: argparse.Namespace) -> Path:
         safe_policy = policy.replace("-", "_")
         name = f"run_cosched_both_{safe_policy}.txt"
     elif args.policy == "sequential":
-        name = "run_cosched_sequential.txt"
+        strategy = getattr(args, "sequential_gpu_strategy", "max")
+        if strategy == "best":
+            name = "run_cosched_sequential_bestGPU.txt"
+        else:
+            name = "run_cosched_sequential.txt"
     else:
         safe_policy = args.policy.replace("-", "_")
         prefix = "run_cosched_dryrun" if args.dry_run else "run_cosched"
@@ -687,6 +717,12 @@ def main():
     parser.add_argument(
         "--perf-metrics-file", type=Path, default=PERF_METRICS_FILE,
         help="perf_metrics.txt used to derive max-GPU sequential counts. Default: {}".format(PERF_METRICS_FILE))
+    parser.add_argument(
+        "--sequential-gpu-strategy", type=str, default="max",
+        choices=["max", "best"],
+        help="How to choose GPU count for sequential runs: "
+             "'max' uses the maximum available GPU count, "
+             "'best' uses the GPU count with lowest runtime (default: max)")
 
     args = parser.parse_args()
     log_path = _results_log_path(args)
@@ -701,7 +737,12 @@ def main():
             print(f"Results log: {log_path}")
 
             available_gpu_counts = parse_available_gpu_counts(args.perf_metrics_file, args.jobs)
-            sequential_gpu_counts = parse_max_gpu_counts(args.perf_metrics_file, args.jobs)
+            if args.sequential_gpu_strategy == "best":
+                sequential_gpu_counts = parse_best_gpu_counts(args.perf_metrics_file, args.jobs)
+                print(f"Sequential GPU strategy: best (lowest runtime per app)")
+            else:
+                sequential_gpu_counts = parse_max_gpu_counts(args.perf_metrics_file, args.jobs)
+                print(f"Sequential GPU strategy: max (maximum GPU count per app)")
 
             # Only compute co-schedule GPU counts when needed
             cosched_gpu_counts = {}
