@@ -8,7 +8,7 @@ PYTHON="$HOME/venv_sched/bin/python"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
-# $PYTHON solve_energy_optimal_cpsat.py --time-limit 600
+# $PYTHON solve_energy_optimal_cpsat.py --time-limit 1200
 
 
 # $PYTHON run_solver_schedule.py

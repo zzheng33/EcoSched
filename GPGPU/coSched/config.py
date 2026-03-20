@@ -14,7 +14,7 @@ IDLE_POWER_PER_GPU = {"V100": 43.0, "A100": 53.0, "H100": 70.0}
 SPEC_BENCHMARK_ROOT = {
     "V100": HOME / "benchmark/spec-V100",
     "A100": HOME / "benchmark/spec-A100",
-    "H100": HOME / "benchmark/spec",
+    "H100": HOME / "benchmark/spec-H100",
 }
 CUDA_BUILD_DIR = {
     "V100": "build-sm70",
@@ -88,7 +88,7 @@ PREDICTED_GPU_COUNTS = {
     'cloverleaf':  4,
     'tealeaf':     4,
     'miniweather': 1,
-    'hpgmg':       2,
+    'hpgmg':       1,
     'bert':        4,
     'gpt2':        3,
     'resnet50':    3,
@@ -102,3 +102,7 @@ DEFAULT_JOB_QUEUE = [
     'simpleMultiGPU', 'simpleP2P', 'streamOrderedAllocationP2P',
     "resnet101", "resnet152", "vgg19", "vgg16",
 ]
+
+# DEFAULT_JOB_QUEUE = [
+#     'hpgmg'
+# ]

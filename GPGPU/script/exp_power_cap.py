@@ -63,7 +63,7 @@ ecp_benchmarks = ["gpt2","bert"]
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 
-# spec_benchmarks = ['hpgmg']
+spec_benchmarks = ['hpgmg']
 
 cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simpleCUBLASXT',
                    'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU','simpleMultiGPU','simpleP2P',
@@ -76,7 +76,7 @@ ml_models = ["resnet101","resnet152"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-# GPU_ct = [4]
+# GPU_ct = [3]
 gpu_caps = [2800]
 
 ML_MIN_PER_GPU_CAP = 200
@@ -86,9 +86,6 @@ ML_BATCH_SIZE_OVERRIDE = {
     'resnet101': 512,
     'resnet152': 512,
     'vgg19': 512,
-}
-ML_DATASET_FRACTION_OVERRIDE = {
-    'V100': {'resnet101': 0.5, 'resnet152': 0.5},
 }
 ML_EPOCHS = 3
 ML_LR = 0.001
@@ -348,7 +345,6 @@ def run_ml_experiment(model_name=None):
 
                 # _set_power_cap(cpu_cap, per_gpu_cap_int)
 
-                dataset_frac = ML_DATASET_FRACTION_OVERRIDE.get(system, {}).get(model, 1.0)
                 cmd = [
                     ml_python,
                     ml_script,
@@ -357,7 +353,6 @@ def run_ml_experiment(model_name=None):
                     "--batch-size", str(ML_BATCH_SIZE_OVERRIDE.get(model, ML_BATCH_SIZE)),
                     "--epochs", str(ML_EPOCHS),
                     "--lr", str(ML_LR),
-                    "--dataset-fraction", str(dataset_frac),
                 ]
 
                 print(

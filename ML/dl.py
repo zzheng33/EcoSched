@@ -243,7 +243,7 @@ def test(model, device, test_loader, criterion):
     return test_loss, accuracy
 
 
-def prepare_data(batch_size=64, dataset_fraction=1.0):
+def prepare_data(batch_size=64, dataset_fraction=1.0, model_name=""):
     """
     Prepare MNIST dataset for training
 
@@ -262,6 +262,12 @@ def prepare_data(batch_size=64, dataset_fraction=1.0):
 
     train_dataset = datasets.MNIST('./data', train=True, download=True, transform=transform)
     test_dataset = datasets.MNIST('./data', train=False, transform=transform)
+
+    # Auto-detect V100: halve dataset for resnet101/resnet152
+    if dataset_fraction >= 1.0 and torch.cuda.is_available():
+        gpu_name = torch.cuda.get_device_name(0).upper()
+        if "V100" in gpu_name and model_name in ("resnet101", "resnet152"):
+            dataset_fraction = 0.5
 
     if dataset_fraction < 1.0:
         n = int(len(train_dataset) * dataset_fraction)
@@ -331,7 +337,7 @@ def main():
 
     # Prepare data
     print("Preparing data...")
-    train_loader, test_loader = prepare_data(BATCH_SIZE, args.dataset_fraction)
+    train_loader, test_loader = prepare_data(BATCH_SIZE, args.dataset_fraction, model_name=args.model)
 
     # Create model
     print("\nCreating model...")

@@ -1,0 +1,5 @@
+total_gpu_cap,gpu_count,per_gpu_cap,model,throughput_images_per_sec,status
+2800,1,700,vgg16,11348.76,ok
+2800,2,700,vgg16,10560.07,ok
+2800,3,700,vgg16,10918.12,ok
+2800,4,700,vgg16,10801.53,ok
