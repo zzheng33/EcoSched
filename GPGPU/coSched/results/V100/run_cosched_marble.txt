@@ -1,0 +1,95 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/run_cosched_marble.txt
+Marble policy: pick the smallest GPU count within 5.00% of the minimum profiled runtime, then FCFS co-schedule.
+Metrics source: /home/ac.zzheng/power/GPGPU/data/V100/perf_metrics.txt
+Selected Marble GPU counts:
+  pot3d           -> 4 GPUs (runtime=38.59s)
+  minisweep       -> 1 GPUs (runtime=25.64s)
+  lbm             -> 4 GPUs (runtime=21.73s)
+  cloverleaf      -> 4 GPUs (runtime=37.17s)
+  tealeaf         -> 4 GPUs (runtime=37.62s)
+  miniweather     -> 4 GPUs (runtime=111.37s)
+  bert            -> 4 GPUs (runtime=34.06s)
+  gpt2            -> 4 GPUs (runtime=20.85s)
+  resnet50        -> 1 GPUs (runtime=19.66s)
+  hpgmg           -> 1 GPUs (runtime=19.26s)
+  conjugateGradientMultiDeviceCG -> 4 GPUs (runtime=25.39s)
+  MonteCarloMultiGPU -> 1 GPUs (runtime=31.07s)
+  simpleMultiGPU  -> 4 GPUs (runtime=57.00s)
+  simpleP2P       -> 2 GPUs (runtime=68.42s)
+  streamOrderedAllocationP2P -> 2 GPUs (runtime=32.18s)
+  resnet101       -> 4 GPUs (runtime=59.93s)
+  resnet152       -> 4 GPUs (runtime=83.25s)
+  vgg19           -> 4 GPUs (runtime=25.71s)
+  vgg16           -> 3 GPUs (runtime=24.35s)
+
+Co-scheduling 19 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=    3.01s | END   pot3d           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=3.00s | FAILED(rc=127)
+  t=    3.01s | START minisweep       | 1 GPUs [0] | NUMA 0
+  t=    3.01s | START resnet50        | 1 GPUs [2] | NUMA 1
+  t=    6.01s | END   minisweep       | freed 1 GPUs [0] | NUMA 0 | runtime=3.01s | FAILED(rc=127)
+  t=    6.02s | START hpgmg           | 1 GPUs [0] | NUMA 0
+  t=    7.02s | END   hpgmg           | freed 1 GPUs [0] | NUMA 0 | runtime=1.00s | FAILED(rc=127)
+  t=    7.02s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=    8.02s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=1.00s | FAILED(rc=1)
+  t=    8.02s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=    9.02s | END   resnet50        | freed 1 GPUs [2] | NUMA 1 | runtime=6.01s | FAILED(rc=1)
+  t=    9.02s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1
+  t=   39.06s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=30.03s | OK
+  t=   76.10s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=68.08s | FAILED(rc=1)
+  t=   76.10s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   79.11s | END   lbm             | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=3.00s | FAILED(rc=127)
+  t=   79.11s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   81.11s | END   cloverleaf      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=2.00s | FAILED(rc=127)
+  t=   81.11s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   83.11s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=2.00s | FAILED(rc=127)
+  t=   83.11s | START miniweather     | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   85.12s | END   miniweather     | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=2.00s | FAILED(rc=127)
+  t=   85.12s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  121.16s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=36.04s | OK
+  t=  121.16s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  141.18s | END   gpt2            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=20.02s | OK
+  t=  141.18s | START conjugateGradientMultiDeviceCG | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  143.19s | END   conjugateGradientMultiDeviceCG | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=2.00s | FAILED(rc=1)
+  t=  143.19s | START simpleMultiGPU  | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  145.19s | END   simpleMultiGPU  | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=2.00s | FAILED(rc=1)
+  t=  145.19s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  237.30s | END   resnet101       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=92.11s | OK
+  t=  237.30s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  365.45s | END   resnet152       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=128.15s | OK
+  t=  365.45s | START vgg19           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  391.48s | END   vgg19           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=26.03s | OK
+  t=  391.48s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  415.51s | END   vgg16           | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=24.03s | OK
+
+================================================================================
+Co-schedule summary:
+App              #GPUs      GPU IDs  NUMA  Runtime (s)
+------------------------------------------------------
+pot3d                4 [0, 1, 2, 3]     0         3.00
+minisweep            1          [0]     0         3.01
+hpgmg                1          [0]     0         1.00
+MonteCarloMultiGPU      1          [0]     0         1.00
+resnet50             1          [2]     1         6.01
+streamOrderedAllocationP2P      2       [2, 3]     1        30.03
+simpleP2P            2       [0, 1]     0        68.08
+lbm                  4 [0, 1, 2, 3]     0         3.00
+cloverleaf           4 [0, 1, 2, 3]     0         2.00
+tealeaf              4 [0, 1, 2, 3]     0         2.00
+miniweather          4 [0, 1, 2, 3]     0         2.00
+bert                 4 [0, 1, 2, 3]     0        36.04
+gpt2                 4 [0, 1, 2, 3]     0        20.02
+conjugateGradientMultiDeviceCG      4 [0, 1, 2, 3]     0         2.00
+simpleMultiGPU       4 [0, 1, 2, 3]     0         2.00
+resnet101            4 [0, 1, 2, 3]     0        92.11
+resnet152            4 [0, 1, 2, 3]     0       128.15
+vgg19                4 [0, 1, 2, 3]     0        26.03
+vgg16                3    [0, 1, 2]     0        24.03
+------------------------------------------------------
+
+Total makespan: 415.51s
+
+Power monitoring: 1243 samples over 415.5s
+Total GPU energy: 311672.84 J (311.67 kJ)

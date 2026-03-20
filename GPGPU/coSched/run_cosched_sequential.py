@@ -31,6 +31,7 @@ import argparse
 import os
 import subprocess
 import sys
+import tempfile
 import threading
 import time
 from dataclasses import dataclass
@@ -268,7 +269,8 @@ def build_spec_command(app: str, gpu_ids: List[int], numa_node: int):
     )
     cmd = ["bash", "-lc", shell_cmd]
     env = os.environ.copy()
-    return cmd, env, None
+    cwd = tempfile.mkdtemp(prefix=f"spec_{app}_")
+    return cmd, env, cwd
 
 
 def build_torchrun_command(app: str, gpu_ids: List[int], numa_node: int):
@@ -288,7 +290,8 @@ def build_torchrun_command(app: str, gpu_ids: List[int], numa_node: int):
     )
     cmd = ["bash", "-lc", shell_cmd]
     env = os.environ.copy()
-    return cmd, env, None
+    cwd = tempfile.mkdtemp(prefix=f"torchrun_{app}_")
+    return cmd, env, cwd
 
 
 def build_ml_dl_command(app: str, gpu_ids: List[int], numa_node: int):
@@ -328,7 +331,8 @@ def build_cuda_command(app: str, gpu_ids: List[int], numa_node: int):
     )
     cmd = ["bash", "-lc", shell_cmd]
     env = os.environ.copy()
-    return cmd, env, None
+    cwd = tempfile.mkdtemp(prefix=f"cuda_{app}_")
+    return cmd, env, cwd
 
 
 def build_command(app: str, gpu_ids: List[int], numa_node: int):

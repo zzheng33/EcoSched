@@ -26,7 +26,7 @@ gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 ===== SPEC/minisweep =====
 cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-1	25.64	65.44	0.00	1335.00	0.00
+1	25.64	65.44	0.01	1335.00	0.00
 4	65.30	87.64	0.31	6120.00	0.00
 3	88.57	88.96	0.25	4590.00	0.00
 2	121.61	92.21	0.17	3060.00	0.00
