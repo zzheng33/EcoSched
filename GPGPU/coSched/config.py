@@ -10,6 +10,18 @@ SYSTEM = "V100"
 
 IDLE_POWER_PER_GPU = {"V100": 43.0, "A100": 53.0, "H100": 70.0}
 
+# System-specific benchmark roots
+SPEC_BENCHMARK_ROOT = {
+    "V100": HOME / "benchmark/spec-V100",
+    "A100": HOME / "benchmark/spec-A100",
+    "H100": HOME / "benchmark/spec",
+}
+CUDA_BUILD_DIR = {
+    "V100": "build-sm70",
+    "A100": "build-sm80",
+    "H100": "build-sm90",
+}
+
 RESULTS_DIR = HOME / f"power/GPGPU/coSched/results/{SYSTEM}"
 PERF_METRICS_FILE = HOME / f"power/GPGPU/data/{SYSTEM}/perf_metrics.txt"
 SCRIPT_DIR = HOME / "power/GPGPU/script"

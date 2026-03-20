@@ -40,12 +40,15 @@ from typing import Dict, List, Optional, Tuple
 
 from config import (
     HOME,
+    SYSTEM,
     RESULTS_DIR,
     PERF_METRICS_FILE,
     SCRIPT_DIR,
     SPEC_SCRIPT_DIR,
     ECP_SCRIPT_DIR,
     CUDA_SCRIPT_DIR,
+    SPEC_BENCHMARK_ROOT,
+    CUDA_BUILD_DIR,
     TOTAL_GPUS,
     NUMA0_GPUS,
     NUMA1_GPUS,
@@ -264,6 +267,7 @@ def build_spec_command(app: str, gpu_ids: List[int], numa_node: int):
     shell_cmd = (
         SPEC_ENV_SETUP
         + f"export CUDA_VISIBLE_DEVICES={gpu_csv}; "
+        + f"export SPEC_BENCHMARK_ROOT={SPEC_BENCHMARK_ROOT.get(SYSTEM, HOME / 'benchmark/spec')}; "
         + f"numactl --cpunodebind={numa_node} --membind={numa_node} "
         + f"bash {script_path} {gpu_count}"
     )
@@ -322,10 +326,12 @@ def build_cuda_command(app: str, gpu_ids: List[int], numa_node: int):
     gpu_count = len(gpu_ids)
     gpu_csv = ",".join(str(g) for g in gpu_ids)
     script_path = CUDA_SCRIPT_DIR / f"{app}.sh"
+    build_root = SCRIPT_DIR / "run_benchmark" / CUDA_BUILD_DIR.get(SYSTEM, "build-sm90")
 
     shell_cmd = (
         SPEC_ENV_SETUP
         + f"export CUDA_VISIBLE_DEVICES={gpu_csv}; "
+        + f"export BENCHMARK_BUILD_ROOT={build_root}; "
         + f"numactl --cpunodebind={numa_node} --membind={numa_node} "
         + f"bash {script_path} {gpu_count}"
     )
