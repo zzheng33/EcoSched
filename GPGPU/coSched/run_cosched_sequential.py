@@ -41,7 +41,6 @@ from config import (
     TOTAL_GPUS,
     NUMA0_GPUS,
     NUMA1_GPUS,
-    PREDICTED_GPU_COUNTS,
     DEFAULT_JOB_QUEUE,
     SPEC_ENV_SETUP,
     SPEC_APPS,
