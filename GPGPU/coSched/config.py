@@ -100,12 +100,12 @@ PREDICTED_GPU_COUNTS = {
     'resnet50':    3,
 }
 
-# 'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU'
+# 'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU' 'hpgmg' 'simpleMultiGPU'
 DEFAULT_JOB_QUEUE = [
     'pot3d', 'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
-    'miniweather', 'bert', 'gpt2', 'resnet50', 'hpgmg',
+    'miniweather', 'bert', 'gpt2', 'resnet50',
     'conjugateGradientMultiDeviceCG', 'MonteCarloMultiGPU',
-    'simpleMultiGPU', 'simpleP2P', 'streamOrderedAllocationP2P',
+    'simpleP2P', 'streamOrderedAllocationP2P',
     "resnet101", "resnet152", "vgg19", "vgg16",
 ]
 
