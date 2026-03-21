@@ -5,18 +5,21 @@ import signal
 import argparse
 import csv
 import re
-import sys
 
-# Add coSched to path so we can import shared config
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'coSched'))
-from config import (
-    ML_MIN_PER_GPU_CAP, ML_MAX_PER_GPU_CAP,
-    ML_BATCH_SIZE, ML_BATCH_SIZE_OVERRIDE,
-    ML_EPOCHS, ML_LR, SYSTEM,
-)
+# ML training configuration
+ML_MIN_PER_GPU_CAP = 200
+ML_MAX_PER_GPU_CAP = 700
+ML_BATCH_SIZE = 2048
+ML_BATCH_SIZE_OVERRIDE = {
+    'V100': {'resnet50': 512, 'resnet101': 512, 'resnet152': 512, 'vgg19': 512,'vgg16': 512},
+    'H100': {'resnet50': 2048, 'resnet101': 2048, 'resnet152': 1024, 'vgg19': 2048, 'vgg16': 2048},
+}
+
+ML_EPOCHS = 3
+ML_LR = 0.001
 
 num_gpu = 4
-system = SYSTEM
+system = "V100"
 
 # System-dependent benchmark paths
 SYSTEM_CONFIG = {
@@ -80,11 +83,11 @@ cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simple
 
 
 ml_models = ["resnet101","resnet152", "vgg19","vgg16","resnet50"]
-ml_models = ["resnet152"]
+ml_models = ["resnet50"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-GPU_ct = [1]
+# GPU_ct = [1]
 gpu_caps = [2800]
 
 
