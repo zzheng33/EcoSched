@@ -4,9 +4,9 @@ from pathlib import Path
 
 HOME = Path.home()
 
-# SYSTEM = "V100"
+SYSTEM = "V100"
 # SYSTEM = "A100"
-SYSTEM = "H100"
+# SYSTEM = "H100"
 
 IDLE_POWER_PER_GPU = {"V100": 43.0, "A100": 53.0, "H100": 70.0}
 
