@@ -1,0 +1,59 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/low/run_cosched_marble.txt
+Marble policy: pick the smallest GPU count within 5.00% of the minimum profiled runtime, then FCFS co-schedule.
+Metrics source: /home/ac.zzheng/power/GPGPU/data/V100/perf_metrics.txt
+Selected Marble GPU counts:
+  cloverleaf      -> 4 GPUs (runtime=37.17s)
+  lbm             -> 4 GPUs (runtime=21.73s)
+  minisweep       -> 4 GPUs (runtime=65.30s)
+  pot3d           -> 4 GPUs (runtime=38.59s)
+  tealeaf         -> 4 GPUs (runtime=37.62s)
+  bert            -> 4 GPUs (runtime=34.06s)
+  gpt2            -> 4 GPUs (runtime=20.85s)
+  resnet50        -> 4 GPUs (runtime=37.74s)
+  resnet101       -> 4 GPUs (runtime=58.97s)
+  resnet152       -> 4 GPUs (runtime=80.89s)
+
+Co-scheduling 10 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   39.05s | END   cloverleaf      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=39.04s | OK
+  t=   39.05s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   61.07s | END   lbm             | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=22.02s | OK
+  t=   61.07s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  127.15s | END   minisweep       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=66.08s | OK
+  t=  127.15s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  187.22s | END   pot3d           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=60.07s | OK
+  t=  187.22s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  226.27s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=39.04s | FAILED(rc=1)
+  t=  226.27s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  262.31s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=36.04s | OK
+  t=  262.31s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  282.33s | END   gpt2            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=20.02s | OK
+  t=  282.34s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  321.38s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=39.04s | OK
+  t=  321.38s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  380.45s | END   resnet101       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=59.07s | OK
+  t=  380.45s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  461.55s | END   resnet152       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=81.09s | OK
+
+================================================================================
+Co-schedule summary:
+App              #GPUs      GPU IDs  NUMA  Runtime (s)
+------------------------------------------------------
+cloverleaf           4 [0, 1, 2, 3]     0        39.04
+lbm                  4 [0, 1, 2, 3]     0        22.02
+minisweep            4 [0, 1, 2, 3]     0        66.08
+pot3d                4 [0, 1, 2, 3]     0        60.07
+tealeaf              4 [0, 1, 2, 3]     0        39.04
+bert                 4 [0, 1, 2, 3]     0        36.04
+gpt2                 4 [0, 1, 2, 3]     0        20.02
+resnet50             4 [0, 1, 2, 3]     0        39.04
+resnet101            4 [0, 1, 2, 3]     0        59.07
+resnet152            4 [0, 1, 2, 3]     0        81.09
+------------------------------------------------------
+
+Total makespan: 461.55s
+
+Power monitoring: 1378 samples over 461.2s
+Total GPU energy: 307645.26 J (307.65 kJ)

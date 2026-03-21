@@ -145,7 +145,7 @@ WORKLOAD_PRESETS = {
             "bert",                          # best_gpu=4
             "gpt2",                          # best_gpu=4
             "resnet50",                      # best_gpu=4
-            "simpleMultiGPU",                # best_gpu=4
+            "resnet50",                # best_gpu=4
         ],
         "med_opp": [
             "cloverleaf",                    # best_gpu=4

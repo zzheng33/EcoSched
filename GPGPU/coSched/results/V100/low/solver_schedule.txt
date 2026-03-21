@@ -1,0 +1,37 @@
+Solver schedule output: /home/ac.zzheng/power/GPGPU/coSched/results/V100/low/solver_schedule.txt
+Exact offline energy-optimal schedule
+================================================================================================
+Idle power per GPU: 43.00 W
+Slowdown tolerance vs max-GPU baseline: 0.20
+Makespan: 435.72 s
+Active energy: 342907.90 J (342.91 kJ)
+Idle energy: 1016.95 J (1.02 kJ)
+Total energy: 343924.85 J (343.92 kJ)
+Objective value: 343924.85 J
+Best bound: 343924.85 J
+Solver wall time: 0.02 s
+
+#       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
+------------------------------------------------------------------------------------------------
+1        0.00    37.17 cloverleaf         4    (2,2)    37.17     174.46     697.84     25938.71
+2       37.17    58.90 lbm                4    (2,2)    21.73     236.28     945.12     20537.46
+3       58.90   124.20 minisweep          4    (2,2)    65.30      87.64     350.56     22891.57
+4      124.20   162.79 pot3d              4    (2,2)    38.59     194.62     778.48     30041.54
+5      162.79   200.41 tealeaf            4    (2,2)    37.62     175.00     700.00     26334.00
+6      200.41   234.47 bert               4    (2,2)    34.06     214.06     856.24     29163.53
+7      234.47   258.12 gpt2               3    (1,2)    23.65     224.71     674.13     15943.17
+8      258.12   295.86 resnet50           4    (2,2)    37.74     228.45     913.80     34486.81
+9      295.86   354.83 resnet101          4    (2,2)    58.97     252.34    1009.36     59521.96
+10     354.83   435.72 resnet152          4    (2,2)    80.89     241.22     964.88     78049.14
+
+Execution order:
+  1. t=0.00s start cloverleaf on 4 GPU(s) at placement (2, 2)
+  2. t=37.17s start lbm on 4 GPU(s) at placement (2, 2)
+  3. t=58.90s start minisweep on 4 GPU(s) at placement (2, 2)
+  4. t=124.20s start pot3d on 4 GPU(s) at placement (2, 2)
+  5. t=162.79s start tealeaf on 4 GPU(s) at placement (2, 2)
+  6. t=200.41s start bert on 4 GPU(s) at placement (2, 2)
+  7. t=234.47s start gpt2 on 3 GPU(s) at placement (1, 2)
+  8. t=258.12s start resnet50 on 4 GPU(s) at placement (2, 2)
+  9. t=295.86s start resnet101 on 4 GPU(s) at placement (2, 2)
+  10. t=354.83s start resnet152 on 4 GPU(s) at placement (2, 2)

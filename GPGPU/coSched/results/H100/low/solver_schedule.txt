@@ -1,0 +1,35 @@
+Solver schedule output: /home/ac.zzheng/power/GPGPU/coSched/results/H100/low/solver_schedule.txt
+Exact offline energy-optimal schedule
+================================================================================================
+Idle power per GPU: 70.00 W
+Slowdown tolerance vs max-GPU baseline: 0.20
+Makespan: 300.04 s
+Active energy: 242518.58 J (242.52 kJ)
+Idle energy: 24469.20 J (24.47 kJ)
+Total energy: 266987.78 J (266.99 kJ)
+Objective value: 266987.78 J
+Best bound: 244915.38 J
+Solver wall time: 120.14 s
+
+#       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
+------------------------------------------------------------------------------------------------
+1        0.00    19.37 cloverleaf         3    (1,2)    19.37     426.96    1280.88     24810.65
+2       19.37    41.35 lbm                3    (2,1)    21.98     295.44     886.32     19481.31
+3       41.35    84.96 minisweep          4    (2,2)    43.61     141.45     565.80     24674.54
+4       84.96   194.30 pot3d              2    (0,2)   109.34     201.76     403.52     44120.88
+5      194.30   210.51 tealeaf            4    (2,2)    16.21     411.55    1646.20     26684.90
+6      210.51   234.85 bert               3    (1,2)    24.34     385.80    1157.40     28171.12
+7      234.85   256.22 resnet50           3    (1,2)    21.37     408.64    1225.92     26197.91
+8      256.22   286.27 resnet101          3    (1,2)    30.05     387.42    1162.26     34925.91
+9      286.27   300.04 conjugateGradientMultiDeviceCG    3    (1,2)    13.77     325.62     976.86     13451.36
+
+Execution order:
+  1. t=0.00s start cloverleaf on 3 GPU(s) at placement (1, 2)
+  2. t=19.37s start lbm on 3 GPU(s) at placement (2, 1)
+  3. t=41.35s start minisweep on 4 GPU(s) at placement (2, 2)
+  4. t=84.96s start pot3d on 2 GPU(s) at placement (0, 2)
+  5. t=194.30s start tealeaf on 4 GPU(s) at placement (2, 2)
+  6. t=210.51s start bert on 3 GPU(s) at placement (1, 2)
+  7. t=234.85s start resnet50 on 3 GPU(s) at placement (1, 2)
+  8. t=256.22s start resnet101 on 3 GPU(s) at placement (1, 2)
+  9. t=286.27s start conjugateGradientMultiDeviceCG on 3 GPU(s) at placement (1, 2)
