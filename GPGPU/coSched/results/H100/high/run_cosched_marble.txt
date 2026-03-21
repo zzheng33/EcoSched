@@ -1,0 +1,55 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/H100/high/run_cosched_marble.txt
+Marble policy: pick the smallest GPU count within 5.00% of the minimum profiled runtime, then FCFS co-schedule.
+Metrics source: /home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt
+Selected Marble GPU counts:
+  hpgmg           -> 1 GPUs (runtime=8.64s)
+  miniweather     -> 1 GPUs (runtime=57.01s)
+  gpt2            -> 2 GPUs (runtime=18.02s)
+  pot3d           -> 3 GPUs (runtime=104.33s)
+  vgg16           -> 1 GPUs (runtime=13.45s)
+  vgg19           -> 1 GPUs (runtime=14.32s)
+  MonteCarloMultiGPU -> 1 GPUs (runtime=15.04s)
+  simpleP2P       -> 2 GPUs (runtime=26.38s)
+  streamOrderedAllocationP2P -> 2 GPUs (runtime=17.44s)
+
+Co-scheduling 9 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START hpgmg           | 1 GPUs [0] | NUMA 0
+  t=    0.00s | START miniweather     | 1 GPUs [2] | NUMA 1
+  t=   10.02s | END   hpgmg           | freed 1 GPUs [0] | NUMA 0 | runtime=10.01s | OK
+  t=   10.02s | START gpt2            | 2 GPUs [0, 1] | NUMA 0
+  t=   28.04s | END   gpt2            | freed 2 GPUs [0, 1] | NUMA 0 | runtime=18.02s | OK
+  t=   28.04s | START pot3d           | 3 GPUs [0, 1, 3] | NUMA 0
+  t=   60.07s | END   miniweather     | freed 1 GPUs [2] | NUMA 1 | runtime=60.06s | OK
+  t=   60.07s | START vgg16           | 1 GPUs [2] | NUMA 1
+  t=   75.09s | END   vgg16           | freed 1 GPUs [2] | NUMA 1 | runtime=15.02s | OK
+  t=   75.09s | START vgg19           | 1 GPUs [2] | NUMA 1
+  t=   88.10s | END   vgg19           | freed 1 GPUs [2] | NUMA 1 | runtime=13.01s | OK
+  t=   88.10s | START MonteCarloMultiGPU | 1 GPUs [2] | NUMA 1
+  t=  104.12s | END   MonteCarloMultiGPU | freed 1 GPUs [2] | NUMA 1 | runtime=16.02s | OK
+  t=  137.16s | END   pot3d           | freed 3 GPUs [0, 1, 3] | NUMA 0 | runtime=109.12s | OK
+  t=  137.16s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  137.16s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1
+  t=  159.18s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=22.02s | OK
+  t=  164.19s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=27.03s | FAILED(rc=1)
+
+================================================================================
+Co-schedule summary:
+App              #GPUs      GPU IDs  NUMA  Runtime (s)
+------------------------------------------------------
+hpgmg                1          [0]     0        10.01
+gpt2                 2       [0, 1]     0        18.02
+miniweather          1          [2]     1        60.06
+vgg16                1          [2]     1        15.02
+vgg19                1          [2]     1        13.01
+MonteCarloMultiGPU      1          [2]     1        16.02
+pot3d                3    [0, 1, 3]     0       109.12
+streamOrderedAllocationP2P      2       [2, 3]     1        22.02
+simpleP2P            2       [0, 1]     0        27.03
+------------------------------------------------------
+
+Total makespan: 164.19s
+
+Power monitoring: 337 samples over 164.0s
+Total GPU energy: 122543.91 J (122.54 kJ)

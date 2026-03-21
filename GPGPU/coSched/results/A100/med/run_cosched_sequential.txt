@@ -1,0 +1,60 @@
+Results log: /home/cc/power/GPGPU/coSched/results/A100/med/run_cosched_sequential.txt
+Sequential GPU strategy: max (maximum available GPU count)
+Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):
+  cloverleaf      -> 4 GPUs
+  lbm             -> 4 GPUs
+  pot3d           -> 4 GPUs
+  bert            -> 4 GPUs
+  resnet50        -> 4 GPUs
+  MonteCarloMultiGPU -> 4 GPUs
+  resnet101       -> 4 GPUs
+  vgg16           -> 4 GPUs
+  MonteCarloMultiGPU -> 4 GPUs
+  simpleP2P       -> 2 GPUs
+
+Sequential execution: 10 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   21.49s | END   cloverleaf      | runtime=21.49s | OK
+  t=   21.49s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   49.74s | END   lbm             | runtime=28.25s | OK
+  t=   49.74s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   80.57s | END   pot3d           | runtime=30.83s | OK
+  t=   80.57s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  112.79s | END   bert            | runtime=32.21s | FAILED(rc=127)
+  ERROR: bert failed, check ./log.txt for details
+  t=  112.79s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  141.69s | END   resnet50        | runtime=28.91s | OK
+  t=  141.69s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  169.46s | END   MonteCarloMultiGPU | runtime=27.77s | OK
+  t=  169.46s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  209.71s | END   resnet101       | runtime=40.25s | OK
+  t=  209.71s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  234.26s | END   vgg16           | runtime=24.54s | OK
+  t=  234.26s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  261.92s | END   MonteCarloMultiGPU | runtime=27.67s | OK
+  t=  261.92s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  274.88s | END   simpleP2P       | runtime=12.95s | FAILED(rc=1)
+  ERROR: simpleP2P failed, check ./log.txt for details
+
+================================================================================
+Sequential summary:
+App              #GPUs      GPU IDs  Runtime (s)
+----------------------------------------------------
+cloverleaf           4 [0, 1, 2, 3]        21.49
+lbm                  4 [0, 1, 2, 3]        28.25
+pot3d                4 [0, 1, 2, 3]        30.83
+bert                 4 [0, 1, 2, 3]        32.21
+resnet50             4 [0, 1, 2, 3]        28.91
+MonteCarloMultiGPU      4 [0, 1, 2, 3]        27.77
+resnet101            4 [0, 1, 2, 3]        40.25
+vgg16                4 [0, 1, 2, 3]        24.54
+MonteCarloMultiGPU      4 [0, 1, 2, 3]        27.67
+simpleP2P            2       [0, 1]        12.95
+----------------------------------------------------
+
+Total makespan: 274.88s
+
+Power monitoring: 780 samples over 274.7s
+Total GPU energy: 225952.43 J (225.95 kJ)

@@ -1,0 +1,58 @@
+Results log: /home/cc/power/GPGPU/coSched/results/A100/high/solver_execution_run.txt
+Planned solver decisions:
+================================================================================
+  1. t=0.00s | vgg19           | 1 GPUs | placement (1, 0) | planned_end=22.88s
+  2. t=0.00s | pot3d           | 3 GPUs | placement (1, 2) | planned_end=37.91s
+  3. t=22.88s | vgg16           | 1 GPUs | placement (1, 0) | planned_end=45.78s
+  4. t=22.88s | vgg16           | 1 GPUs | placement (1, 0) | planned_end=45.78s
+  5. t=37.91s | MonteCarloMultiGPU | 1 GPUs | placement (1, 0) | planned_end=64.00s
+  6. t=45.78s | resnet101       | 2 GPUs | placement (0, 2) | planned_end=119.59s
+  7. t=89.48s | resnet152       | 2 GPUs | placement (2, 0) | planned_end=188.92s
+  8. t=119.59s | simpleP2P       | 2 GPUs | placement (0, 2) | planned_end=132.70s
+  9. t=132.70s | conjugateGradientMultiDeviceCG | 2 GPUs | placement (0, 2) | planned_end=164.74s
+  10. t=164.74s | streamOrderedAllocationP2P | 2 GPUs | placement (0, 2) | planned_end=188.34s
+
+Solver-driven execution: 10 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START vgg19           | 1 GPUs [0] | NUMA 0 | planned=0.00s | delay=+0.00s
+  t=    0.00s | START pot3d           | 3 GPUs [2, 3, 1] | NUMA 1 | planned=0.00s | delay=+0.00s
+  t=   23.03s | END   vgg19           | freed 1 GPUs [0] | NUMA 0 | runtime=23.03s | OK
+  t=   23.03s | START vgg16           | 1 GPUs [0] | NUMA 0 | planned=22.88s | delay=+0.15s
+  t=   38.04s | END   pot3d           | freed 3 GPUs [2, 3, 1] | NUMA 1 | runtime=38.04s | OK
+  t=   38.04s | START vgg16           | 1 GPUs [1] | NUMA 0 | planned=22.88s | delay=+15.16s
+  t=   46.05s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=23.03s | OK
+  t=   46.05s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0 | planned=37.91s | delay=+8.14s
+  t=   61.07s | END   vgg16           | freed 1 GPUs [1] | NUMA 0 | runtime=23.03s | OK
+  t=   61.07s | START resnet101       | 2 GPUs [2, 3] | NUMA 1 | planned=45.78s | delay=+15.29s
+  t=   73.08s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=27.03s | OK
+  t=   90.10s | START resnet152       | 2 GPUs [0, 1] | NUMA 0 | planned=89.48s | delay=+0.62s
+  t=  121.14s | END   resnet101       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=60.06s | OK
+  t=  121.14s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1 | planned=119.59s | delay=+1.55s
+  t=  135.15s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=14.01s | FAILED(rc=1)
+  t=  135.15s | START conjugateGradientMultiDeviceCG | 2 GPUs [2, 3] | NUMA 1 | planned=132.70s | delay=+2.45s
+  t=  167.19s | END   conjugateGradientMultiDeviceCG | freed 2 GPUs [2, 3] | NUMA 1 | runtime=32.03s | OK
+  t=  167.19s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1 | planned=164.74s | delay=+2.45s
+  t=  173.20s | END   resnet152       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=83.09s | OK
+  t=  188.21s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=21.02s | OK
+
+================================================================================
+Solver-driven summary:
+App              #GPUs      GPU IDs  NUMA  Planned (s)  Runtime (s)
+--------------------------------------------------------------------------
+vgg19                1          [0]     0         0.00        23.03
+pot3d                3    [2, 3, 1]     1         0.00        38.04
+vgg16                1          [0]     0        22.88        23.03
+vgg16                1          [1]     0        22.88        23.03
+MonteCarloMultiGPU      1          [0]     0        37.91        27.03
+resnet101            2       [2, 3]     1        45.78        60.06
+simpleP2P            2       [2, 3]     1       119.59        14.01
+conjugateGradientMultiDeviceCG      2       [2, 3]     1       132.70        32.03
+resnet152            2       [0, 1]     0        89.48        83.09
+streamOrderedAllocationP2P      2       [2, 3]     1       164.74        21.02
+--------------------------------------------------------------------------
+
+Total makespan: 188.21s
+
+Power monitoring: 523 samples over 187.9s
+Total GPU energy: 142949.29 J (142.95 kJ)

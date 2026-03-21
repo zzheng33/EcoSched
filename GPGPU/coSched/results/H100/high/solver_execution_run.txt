@@ -1,0 +1,54 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/H100/high/solver_execution_run.txt
+Planned solver decisions:
+================================================================================
+  1. t=0.00s | vgg16           | 1 GPUs | placement (1, 0) | planned_end=13.45s
+  2. t=0.00s | vgg19           | 1 GPUs | placement (1, 0) | planned_end=14.32s
+  3. t=13.45s | pot3d           | 2 GPUs | placement (0, 2) | planned_end=122.79s
+  4. t=14.32s | hpgmg           | 1 GPUs | placement (1, 0) | planned_end=22.96s
+  5. t=22.96s | MonteCarloMultiGPU | 1 GPUs | placement (1, 0) | planned_end=38.00s
+  6. t=38.00s | simpleP2P       | 2 GPUs | placement (2, 0) | planned_end=64.38s
+  7. t=64.38s | miniweather     | 1 GPUs | placement (1, 0) | planned_end=121.39s
+  8. t=121.39s | gpt2            | 2 GPUs | placement (2, 0) | planned_end=139.41s
+  9. t=122.79s | streamOrderedAllocationP2P | 2 GPUs | placement (0, 2) | planned_end=140.23s
+
+Solver-driven execution: 9 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START vgg16           | 1 GPUs [0] | NUMA 0 | planned=0.00s | delay=+0.00s
+  t=    0.00s | START vgg19           | 1 GPUs [1] | NUMA 0 | planned=0.00s | delay=+0.00s
+  t=   15.02s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=15.02s | OK
+  t=   15.02s | END   vgg19           | freed 1 GPUs [1] | NUMA 0 | runtime=15.02s | OK
+  t=   15.02s | START pot3d           | 2 GPUs [2, 3] | NUMA 1 | planned=13.45s | delay=+1.57s
+  t=   15.02s | START hpgmg           | 1 GPUs [0] | NUMA 0 | planned=14.32s | delay=+0.70s
+  t=   26.03s | END   hpgmg           | freed 1 GPUs [0] | NUMA 0 | runtime=11.01s | OK
+  t=   26.04s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0 | planned=22.96s | delay=+3.08s
+  t=   42.05s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=16.02s | OK
+  t=   42.05s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0 | planned=38.00s | delay=+4.05s
+  t=   70.08s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=28.03s | FAILED(rc=1)
+  t=   70.08s | START miniweather     | 1 GPUs [0] | NUMA 0 | planned=64.38s | delay=+5.70s
+  t=  123.14s | END   pot3d           | freed 2 GPUs [2, 3] | NUMA 1 | runtime=108.12s | OK
+  t=  123.14s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1 | planned=122.79s | delay=+0.35s
+  t=  130.15s | END   miniweather     | freed 1 GPUs [0] | NUMA 0 | runtime=60.06s | OK
+  t=  130.15s | START gpt2            | 2 GPUs [0, 1] | NUMA 0 | planned=121.39s | delay=+8.76s
+  t=  148.17s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=25.03s | OK
+  t=  150.17s | END   gpt2            | freed 2 GPUs [0, 1] | NUMA 0 | runtime=20.02s | OK
+
+================================================================================
+Solver-driven summary:
+App              #GPUs      GPU IDs  NUMA  Planned (s)  Runtime (s)
+--------------------------------------------------------------------------
+vgg16                1          [0]     0         0.00        15.02
+vgg19                1          [1]     0         0.00        15.02
+hpgmg                1          [0]     0        14.32        11.01
+MonteCarloMultiGPU      1          [0]     0        22.96        16.02
+simpleP2P            2       [0, 1]     0        38.00        28.03
+pot3d                2       [2, 3]     1        13.45       108.12
+miniweather          1          [0]     0        64.38        60.06
+streamOrderedAllocationP2P      2       [2, 3]     1       122.79        25.03
+gpt2                 2       [0, 1]     0       121.39        20.02
+--------------------------------------------------------------------------
+
+Total makespan: 150.17s
+
+Power monitoring: 312 samples over 149.9s
+Total GPU energy: 113961.95 J (113.96 kJ)

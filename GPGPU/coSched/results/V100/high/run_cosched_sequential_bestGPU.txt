@@ -1,0 +1,46 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/high/run_cosched_sequential_bestGPU.txt
+Sequential GPU strategy: best (lowest runtime per app)
+Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):
+  MonteCarloMultiGPU -> 1 GPUs
+  vgg16           -> 3 GPUs
+  MonteCarloMultiGPU -> 1 GPUs
+  simpleP2P       -> 2 GPUs
+  streamOrderedAllocationP2P -> 2 GPUs
+  pot3d           -> 4 GPUs
+  gpt2            -> 4 GPUs
+
+Sequential execution: 7 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=   30.28s | END   MonteCarloMultiGPU | runtime=30.27s | OK
+  t=   30.28s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=   55.24s | END   vgg16           | runtime=24.97s | OK
+  t=   55.24s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=   85.58s | END   MonteCarloMultiGPU | runtime=30.34s | OK
+  t=   85.58s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  154.71s | END   simpleP2P       | runtime=69.13s | FAILED(rc=1)
+  t=  154.72s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  187.09s | END   streamOrderedAllocationP2P | runtime=32.37s | OK
+  t=  187.09s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  247.09s | END   pot3d           | runtime=60.01s | OK
+  t=  247.09s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  269.70s | END   gpt2            | runtime=22.60s | OK
+
+================================================================================
+Sequential summary:
+App              #GPUs      GPU IDs  Runtime (s)
+----------------------------------------------------
+MonteCarloMultiGPU      1          [0]        30.27
+vgg16                3    [0, 1, 2]        24.97
+MonteCarloMultiGPU      1          [0]        30.34
+simpleP2P            2       [0, 1]        69.13
+streamOrderedAllocationP2P      2       [0, 1]        32.37
+pot3d                4 [0, 1, 2, 3]        60.01
+gpt2                 4 [0, 1, 2, 3]        22.60
+----------------------------------------------------
+
+Total makespan: 269.70s
+
+Power monitoring: 807 samples over 269.6s
+Total GPU energy: 108370.57 J (108.37 kJ)

@@ -119,14 +119,14 @@ WORKLOAD_PRESETS = {
             "pot3d",                         # best_gpu=4
             "bert",                          # best_gpu=4
             "resnet50",                      # best_gpu=4
-            "hpgmg",                         # best_gpu=1
+            "MonteCarloMultiGPU",                         # best_gpu=1
             "vgg16",                         # best_gpu=3
             "MonteCarloMultiGPU",            # best_gpu=1
             "simpleP2P",                     # best_gpu=2
             "streamOrderedAllocationP2P",    # best_gpu=2
         ],
         "high_opp": [
-            "hpgmg",                         # best_gpu=1
+            "MonteCarloMultiGPU",                         # best_gpu=1
             "vgg16",                         # best_gpu=3
             "MonteCarloMultiGPU",            # best_gpu=1
             "simpleP2P",                     # best_gpu=2

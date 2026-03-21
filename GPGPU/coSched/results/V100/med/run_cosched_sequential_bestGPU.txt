@@ -1,0 +1,54 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/med/run_cosched_sequential_bestGPU.txt
+Sequential GPU strategy: best (lowest runtime per app)
+Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):
+  cloverleaf      -> 4 GPUs
+  pot3d           -> 4 GPUs
+  bert            -> 4 GPUs
+  resnet50        -> 4 GPUs
+  MonteCarloMultiGPU -> 1 GPUs
+  vgg16           -> 3 GPUs
+  MonteCarloMultiGPU -> 1 GPUs
+  simpleP2P       -> 2 GPUs
+  streamOrderedAllocationP2P -> 2 GPUs
+
+Sequential execution: 9 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   37.37s | END   cloverleaf      | runtime=37.37s | OK
+  t=   37.37s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   97.55s | END   pot3d           | runtime=60.18s | OK
+  t=   97.55s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  135.02s | END   bert            | runtime=37.47s | OK
+  t=  135.02s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  173.31s | END   resnet50        | runtime=38.29s | OK
+  t=  173.31s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=  204.26s | END   MonteCarloMultiGPU | runtime=30.94s | OK
+  t=  204.26s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  229.60s | END   vgg16           | runtime=25.34s | OK
+  t=  229.60s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=  259.96s | END   MonteCarloMultiGPU | runtime=30.36s | OK
+  t=  259.96s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  329.32s | END   simpleP2P       | runtime=69.36s | FAILED(rc=1)
+  t=  329.32s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  361.69s | END   streamOrderedAllocationP2P | runtime=32.37s | OK
+
+================================================================================
+Sequential summary:
+App              #GPUs      GPU IDs  Runtime (s)
+----------------------------------------------------
+cloverleaf           4 [0, 1, 2, 3]        37.37
+pot3d                4 [0, 1, 2, 3]        60.18
+bert                 4 [0, 1, 2, 3]        37.47
+resnet50             4 [0, 1, 2, 3]        38.29
+MonteCarloMultiGPU      1          [0]        30.94
+vgg16                3    [0, 1, 2]        25.34
+MonteCarloMultiGPU      1          [0]        30.36
+simpleP2P            2       [0, 1]        69.36
+streamOrderedAllocationP2P      2       [0, 1]        32.37
+----------------------------------------------------
+
+Total makespan: 361.69s
+
+Power monitoring: 1083 samples over 361.5s
+Total GPU energy: 179108.12 J (179.11 kJ)

@@ -1,0 +1,59 @@
+Results log: /home/cc/power/GPGPU/coSched/results/A100/high/run_cosched_sequential_bestGPU.txt
+Sequential GPU strategy: best (lowest runtime per app)
+Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):
+  vgg16           -> 1 GPUs
+  pot3d           -> 4 GPUs
+  resnet101       -> 2 GPUs
+  resnet152       -> 2 GPUs
+  vgg16           -> 1 GPUs
+  vgg19           -> 1 GPUs
+  MonteCarloMultiGPU -> 1 GPUs
+  conjugateGradientMultiDeviceCG -> 2 GPUs
+  simpleP2P       -> 2 GPUs
+  streamOrderedAllocationP2P -> 2 GPUs
+
+Sequential execution: 10 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START vgg16           | 1 GPUs [0] | NUMA 0
+  t=   22.07s | END   vgg16           | runtime=22.07s | OK
+  t=   22.08s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   53.20s | END   pot3d           | runtime=31.13s | OK
+  t=   53.20s | START resnet101       | 2 GPUs [0, 1] | NUMA 0
+  t=  113.07s | END   resnet101       | runtime=59.86s | OK
+  t=  113.07s | START resnet152       | 2 GPUs [0, 1] | NUMA 0
+  t=  196.20s | END   resnet152       | runtime=83.13s | OK
+  t=  196.20s | START vgg16           | 1 GPUs [0] | NUMA 0
+  t=  218.26s | END   vgg16           | runtime=22.06s | OK
+  t=  218.26s | START vgg19           | 1 GPUs [0] | NUMA 0
+  t=  241.84s | END   vgg19           | runtime=23.58s | OK
+  t=  241.84s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=  268.56s | END   MonteCarloMultiGPU | runtime=26.72s | OK
+  t=  268.56s | START conjugateGradientMultiDeviceCG | 2 GPUs [0, 1] | NUMA 0
+  t=  300.31s | END   conjugateGradientMultiDeviceCG | runtime=31.75s | OK
+  t=  300.32s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  313.30s | END   simpleP2P       | runtime=12.98s | FAILED(rc=1)
+  ERROR: simpleP2P failed, check ./log.txt for details
+  t=  313.30s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  333.81s | END   streamOrderedAllocationP2P | runtime=20.51s | OK
+
+================================================================================
+Sequential summary:
+App              #GPUs      GPU IDs  Runtime (s)
+----------------------------------------------------
+vgg16                1          [0]        22.07
+pot3d                4 [0, 1, 2, 3]        31.13
+resnet101            2       [0, 1]        59.86
+resnet152            2       [0, 1]        83.13
+vgg16                1          [0]        22.06
+vgg19                1          [0]        23.58
+MonteCarloMultiGPU      1          [0]        26.72
+conjugateGradientMultiDeviceCG      2       [0, 1]        31.75
+simpleP2P            2       [0, 1]        12.98
+streamOrderedAllocationP2P      2       [0, 1]        20.51
+----------------------------------------------------
+
+Total makespan: 333.81s
+
+Power monitoring: 947 samples over 333.6s
+Total GPU energy: 179546.72 J (179.55 kJ)

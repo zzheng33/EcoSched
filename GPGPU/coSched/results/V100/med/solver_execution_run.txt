@@ -1,0 +1,54 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/med/solver_execution_run.txt
+Planned solver decisions:
+================================================================================
+  1. t=0.00s | resnet50        | 4 GPUs | placement (2, 2) | planned_end=37.74s
+  2. t=37.74s | bert            | 4 GPUs | placement (2, 2) | planned_end=71.80s
+  3. t=71.80s | MonteCarloMultiGPU | 4 GPUs | placement (2, 2) | planned_end=103.79s
+  4. t=71.80s | MonteCarloMultiGPU | 4 GPUs | placement (2, 2) | planned_end=103.79s
+  5. t=103.79s | vgg16           | 2 GPUs | placement (0, 2) | planned_end=132.11s
+  6. t=103.79s | simpleP2P       | 2 GPUs | placement (2, 0) | planned_end=172.21s
+  7. t=132.11s | streamOrderedAllocationP2P | 2 GPUs | placement (0, 2) | planned_end=164.29s
+  8. t=172.21s | cloverleaf      | 4 GPUs | placement (2, 2) | planned_end=209.38s
+  9. t=209.38s | pot3d           | 4 GPUs | placement (2, 2) | planned_end=247.97s
+
+Solver-driven execution: 9 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=0.00s | delay=+0.00s
+  t=   39.05s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=39.04s | OK
+  t=   39.05s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=37.74s | delay=+1.31s
+  t=   74.09s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=35.04s | OK
+  t=   74.09s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=71.80s | delay=+2.29s
+  t=  105.13s | END   MonteCarloMultiGPU | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=31.04s | OK
+  t=  105.13s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=71.80s | delay=+33.33s
+  t=  136.16s | END   MonteCarloMultiGPU | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=31.04s | OK
+  t=  136.17s | START vgg16           | 2 GPUs [2, 3] | NUMA 1 | planned=103.79s | delay=+32.38s
+  t=  136.17s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0 | planned=103.79s | delay=+32.38s
+  t=  166.20s | END   vgg16           | freed 2 GPUs [2, 3] | NUMA 1 | runtime=30.03s | OK
+  t=  166.20s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1 | planned=132.11s | delay=+34.09s
+  t=  199.24s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=33.04s | OK
+  t=  206.25s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
+  t=  206.25s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=172.21s | delay=+34.04s
+  t=  244.29s | END   cloverleaf      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=38.04s | OK
+  t=  244.30s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=209.38s | delay=+34.92s
+  t=  304.36s | END   pot3d           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=60.07s | OK
+
+================================================================================
+Solver-driven summary:
+App              #GPUs      GPU IDs  NUMA  Planned (s)  Runtime (s)
+--------------------------------------------------------------------------
+resnet50             4 [0, 1, 2, 3]     0         0.00        39.04
+bert                 4 [0, 1, 2, 3]     0        37.74        35.04
+MonteCarloMultiGPU      4 [0, 1, 2, 3]     0        71.80        31.04
+MonteCarloMultiGPU      4 [0, 1, 2, 3]     0        71.80        31.04
+vgg16                2       [2, 3]     1       103.79        30.03
+streamOrderedAllocationP2P      2       [2, 3]     1       132.11        33.04
+simpleP2P            2       [0, 1]     0       103.79        70.08
+cloverleaf           4 [0, 1, 2, 3]     0       172.21        38.04
+pot3d                4 [0, 1, 2, 3]     0       209.38        60.07
+--------------------------------------------------------------------------
+
+Total makespan: 304.37s
+
+Power monitoring: 910 samples over 304.0s
+Total GPU energy: 207907.39 J (207.91 kJ)

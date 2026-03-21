@@ -1,0 +1,58 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/H100/med/run_cosched_sequential.txt
+Sequential GPU strategy: max (maximum GPU count per app)
+Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):
+  cloverleaf      -> 4 GPUs
+  lbm             -> 4 GPUs
+  pot3d           -> 4 GPUs
+  bert            -> 4 GPUs
+  resnet50        -> 4 GPUs
+  hpgmg           -> 3 GPUs
+  gpt2            -> 4 GPUs
+  vgg16           -> 4 GPUs
+  MonteCarloMultiGPU -> 4 GPUs
+  simpleP2P       -> 2 GPUs
+
+Sequential execution: 10 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   16.97s | END   cloverleaf      | runtime=16.97s | OK
+  t=   16.97s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   36.34s | END   lbm             | runtime=19.38s | OK
+  t=   36.34s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  146.02s | END   pot3d           | runtime=109.68s | OK
+  t=  146.02s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  172.95s | END   bert            | runtime=26.93s | OK
+  t=  172.95s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  195.23s | END   resnet50        | runtime=22.28s | OK
+  t=  195.23s | START hpgmg           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  221.40s | END   hpgmg           | runtime=26.16s | OK
+  t=  221.40s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  243.60s | END   gpt2            | runtime=22.20s | OK
+  t=  243.60s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  261.41s | END   vgg16           | runtime=17.81s | OK
+  t=  261.41s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  279.13s | END   MonteCarloMultiGPU | runtime=17.72s | OK
+  t=  279.13s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  305.91s | END   simpleP2P       | runtime=26.78s | FAILED(rc=1)
+
+================================================================================
+Sequential summary:
+App              #GPUs      GPU IDs  Runtime (s)
+----------------------------------------------------
+cloverleaf           4 [0, 1, 2, 3]        16.97
+lbm                  4 [0, 1, 2, 3]        19.38
+pot3d                4 [0, 1, 2, 3]       109.68
+bert                 4 [0, 1, 2, 3]        26.93
+resnet50             4 [0, 1, 2, 3]        22.28
+hpgmg                3    [0, 1, 2]        26.16
+gpt2                 4 [0, 1, 2, 3]        22.20
+vgg16                4 [0, 1, 2, 3]        17.81
+MonteCarloMultiGPU      4 [0, 1, 2, 3]        17.72
+simpleP2P            2       [0, 1]        26.78
+----------------------------------------------------
+
+Total makespan: 305.91s
+
+Power monitoring: 611 samples over 305.9s
+Total GPU energy: 224143.56 J (224.14 kJ)
