@@ -23,64 +23,64 @@ Sequential execution: 17 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   59.85s | END   pot3d           | runtime=59.85s | OK
-  t=   59.85s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  124.07s | END   minisweep       | runtime=64.21s | OK
-  t=  124.07s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  145.71s | END   lbm             | runtime=21.64s | OK
-  t=  145.71s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  182.99s | END   cloverleaf      | runtime=37.28s | OK
-  t=  182.99s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  221.34s | END   tealeaf         | runtime=38.35s | FAILED(rc=1)
-  t=  221.34s | START miniweather     | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  331.89s | END   miniweather     | runtime=110.55s | OK
-  t=  331.89s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  367.49s | END   bert            | runtime=35.60s | OK
-  t=  367.49s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  386.89s | END   gpt2            | runtime=19.40s | OK
-  t=  386.89s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  425.73s | END   resnet50        | runtime=38.84s | OK
-  t=  425.73s | START conjugateGradientMultiDeviceCG | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  451.39s | END   conjugateGradientMultiDeviceCG | runtime=25.65s | OK
-  t=  451.39s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  482.33s | END   MonteCarloMultiGPU | runtime=30.95s | OK
-  t=  482.33s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  551.43s | END   simpleP2P       | runtime=69.09s | FAILED(rc=1)
-  t=  551.43s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
-  t=  583.74s | END   streamOrderedAllocationP2P | runtime=32.32s | OK
-  t=  583.74s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  642.53s | END   resnet101       | runtime=58.79s | OK
-  t=  642.53s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  722.53s | END   resnet152       | runtime=79.99s | OK
-  t=  722.53s | START vgg19           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  748.02s | END   vgg19           | runtime=25.49s | OK
-  t=  748.02s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  771.84s | END   vgg16           | runtime=23.82s | OK
+  t=   59.57s | END   pot3d           | runtime=59.57s | OK
+  t=   59.57s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  123.49s | END   minisweep       | runtime=63.92s | OK
+  t=  123.49s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  145.22s | END   lbm             | runtime=21.73s | OK
+  t=  145.22s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  182.49s | END   cloverleaf      | runtime=37.27s | OK
+  t=  182.49s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  220.61s | END   tealeaf         | runtime=38.12s | FAILED(rc=1)
+  t=  220.61s | START miniweather     | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  332.29s | END   miniweather     | runtime=111.68s | OK
+  t=  332.29s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  368.02s | END   bert            | runtime=35.73s | OK
+  t=  368.02s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  387.43s | END   gpt2            | runtime=19.41s | OK
+  t=  387.43s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  426.41s | END   resnet50        | runtime=38.98s | OK
+  t=  426.41s | START conjugateGradientMultiDeviceCG | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  451.84s | END   conjugateGradientMultiDeviceCG | runtime=25.43s | OK
+  t=  451.84s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  482.79s | END   MonteCarloMultiGPU | runtime=30.95s | OK
+  t=  482.79s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  551.87s | END   simpleP2P       | runtime=69.08s | FAILED(rc=1)
+  t=  551.87s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  583.73s | END   streamOrderedAllocationP2P | runtime=31.85s | OK
+  t=  583.73s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  643.03s | END   resnet101       | runtime=59.30s | OK
+  t=  643.03s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  722.88s | END   resnet152       | runtime=79.85s | OK
+  t=  722.88s | START vgg19           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  748.45s | END   vgg19           | runtime=25.57s | OK
+  t=  748.45s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  772.44s | END   vgg16           | runtime=24.00s | OK
 
 ================================================================================
 Sequential summary:
 App              #GPUs      GPU IDs  Runtime (s)
 ----------------------------------------------------
-pot3d                4 [0, 1, 2, 3]        59.85
-minisweep            4 [0, 1, 2, 3]        64.21
-lbm                  4 [0, 1, 2, 3]        21.64
-cloverleaf           4 [0, 1, 2, 3]        37.28
-tealeaf              4 [0, 1, 2, 3]        38.35
-miniweather          4 [0, 1, 2, 3]       110.55
-bert                 4 [0, 1, 2, 3]        35.60
-gpt2                 4 [0, 1, 2, 3]        19.40
-resnet50             4 [0, 1, 2, 3]        38.84
-conjugateGradientMultiDeviceCG      4 [0, 1, 2, 3]        25.65
+pot3d                4 [0, 1, 2, 3]        59.57
+minisweep            4 [0, 1, 2, 3]        63.92
+lbm                  4 [0, 1, 2, 3]        21.73
+cloverleaf           4 [0, 1, 2, 3]        37.27
+tealeaf              4 [0, 1, 2, 3]        38.12
+miniweather          4 [0, 1, 2, 3]       111.68
+bert                 4 [0, 1, 2, 3]        35.73
+gpt2                 4 [0, 1, 2, 3]        19.41
+resnet50             4 [0, 1, 2, 3]        38.98
+conjugateGradientMultiDeviceCG      4 [0, 1, 2, 3]        25.43
 MonteCarloMultiGPU      4 [0, 1, 2, 3]        30.95
-simpleP2P            2       [0, 1]        69.09
-streamOrderedAllocationP2P      2       [0, 1]        32.32
-resnet101            4 [0, 1, 2, 3]        58.79
-resnet152            4 [0, 1, 2, 3]        79.99
-vgg19                4 [0, 1, 2, 3]        25.49
-vgg16                4 [0, 1, 2, 3]        23.82
+simpleP2P            2       [0, 1]        69.08
+streamOrderedAllocationP2P      2       [0, 1]        31.85
+resnet101            4 [0, 1, 2, 3]        59.30
+resnet152            4 [0, 1, 2, 3]        79.85
+vgg19                4 [0, 1, 2, 3]        25.57
+vgg16                4 [0, 1, 2, 3]        24.00
 ----------------------------------------------------
 
-Total makespan: 771.84s
+Total makespan: 772.44s
 
-Power monitoring: 2308 samples over 771.7s
-Total GPU energy: 470598.34 J (470.60 kJ)
+Power monitoring: 2306 samples over 772.2s
+Total GPU energy: 478624.87 J (478.62 kJ)
