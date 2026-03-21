@@ -131,7 +131,7 @@ WORKLOAD_PRESETS = {
             "MonteCarloMultiGPU",            # best_gpu=1
             "simpleP2P",                     # best_gpu=2
             "streamOrderedAllocationP2P",    # best_gpu=2
-            "miniweather",                   # best_gpu=4 (weak scaling, included as a long job)
+            "pot3d",                   # best_gpu=4 (weak scaling, included as a long job)
             "gpt2",                          # best_gpu=4 (included for contrast)
         ],
     },
@@ -161,7 +161,7 @@ WORKLOAD_PRESETS = {
         ],
         "high_opp": [
             "hpgmg",                         # best_gpu=1
-            "miniweather",                   # best_gpu=4 (near-flat; 1 is very close)
+            "pot3d",                   # best_gpu=4 (near-flat; 1 is very close)
             "resnet101",                     # best_gpu=2
             "resnet152",                     # best_gpu=2
             "vgg16",                         # best_gpu=1
@@ -200,7 +200,7 @@ WORKLOAD_PRESETS = {
             "hpgmg",                         # best_gpu=1
             "miniweather",                   # best_gpu=1
             "gpt2",                          # best_gpu=3
-            "resnet152",                     # best_gpu=4 (near-tie with 3)
+            "pot3d",                     # best_gpu=4 (near-tie with 3)
             "vgg16",                         # best_gpu=1
             "vgg19",                         # best_gpu=1
             "MonteCarloMultiGPU",            # best_gpu=1
