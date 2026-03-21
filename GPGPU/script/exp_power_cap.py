@@ -84,7 +84,7 @@ ml_models = ["resnet152"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-# GPU_ct = [2]
+GPU_ct = [1]
 gpu_caps = [2800]
 
 
