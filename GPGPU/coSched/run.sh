@@ -26,6 +26,6 @@ $PYTHON run_cosched_marble.py
 $PYTHON ecoPack.py --policy cmab
 
 
-$PYTHON ecoPack.py --policy heuristic
+# $PYTHON ecoPack.py --policy heuristic
 
 

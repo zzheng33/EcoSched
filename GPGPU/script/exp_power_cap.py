@@ -73,7 +73,7 @@ ecp_benchmarks = ["gpt2","bert"]
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 
-spec_benchmarks = ['hpgmg']
+spec_benchmarks = ['minisweep']
 
 cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simpleCUBLASXT',
                    'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU','simpleMultiGPU','simpleP2P',
@@ -87,7 +87,7 @@ ml_models = ["resnet101","resnet152"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-# GPU_ct = [1]
+GPU_ct = [1]
 gpu_caps = [2800]
 
 

@@ -4,7 +4,7 @@
 # Usage: ./run_minisweep.sh [MPI_RANKS]
 # Example: ./run_minisweep.sh 4
 
-cd ${SPEC_BENCHMARK_ROOT:-$HOME/benchmark/spec}/minisweep/build
+cd ${SPEC_BENCHMARK_ROOT:-$HOME/benchmark/spec-V100}/minisweep/build
 
 # Configure parameters
 NCELL_X=128
@@ -16,7 +16,7 @@ NBLOCK_Z=128
 NITERATIONS=10
 
 # MPI configuration
-MPI_RANKS=${1:-4}  # Default to 4 GPUs if not specified
+MPI_RANKS=${1:-2}  # Default to 1 GPU if not specified
 
 # Automatically calculate NPROC_X and NPROC_Y based on MPI_RANKS
 # Uses square decomposition when possible, otherwise linear

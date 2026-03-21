@@ -1,0 +1,51 @@
+Solver schedule output: /home/cc/power/GPGPU/coSched/results/solver_schedule.txt
+Exact offline energy-optimal schedule
+================================================================================================
+Idle power per GPU: 70.00 W
+Slowdown tolerance vs max-GPU baseline: 0.20
+Makespan: 376.36 s
+Active energy: 312349.98 J (312.35 kJ)
+Idle energy: 880.60 J (0.88 kJ)
+Total energy: 313230.58 J (313.23 kJ)
+Objective value: 313230.58 J
+Best bound: 294981.05 J
+Solver wall time: 1200.20 s
+
+#       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
+------------------------------------------------------------------------------------------------
+1        0.00    32.83 bert               4    (2,2)    32.83     239.11     956.44     31399.93
+2       32.83    56.43 streamOrderedAllocationP2P    2    (0,2)    23.60      91.68     183.36      4327.30
+3       32.83    64.87 conjugateGradientMultiDeviceCG    2    (2,0)    32.04     217.92     435.84     13964.31
+4       56.43   155.87 resnet152          2    (0,2)    99.44     228.71     457.42     45485.84
+5       64.87    77.98 simpleP2P          2    (2,0)    13.11     138.60     277.20      3634.09
+6       77.98   151.79 resnet101          2    (2,0)    73.81     256.43     512.86     37854.20
+7      151.79   174.69 vgg16              1    (1,0)    22.90     214.50     214.50      4912.05
+8      155.87   173.83 gpt2               3    (1,2)    17.96     237.59     712.77     12801.35
+9      173.83   199.92 MonteCarloMultiGPU    1    (0,1)    26.09     284.69     284.69      7427.56
+10     174.69   212.60 pot3d              3    (2,1)    37.91     232.15     696.45     26402.42
+11     199.92   225.35 miniweather        1    (0,1)    25.43     298.77     298.77      7597.72
+12     212.62   245.99 resnet50           3    (2,1)    33.37     256.21     768.63     25649.18
+13     225.35   248.23 vgg19              1    (0,1)    22.88     251.46     251.46      5753.40
+14     248.23   276.69 lbm                4    (2,2)    28.46     177.38     709.52     20192.94
+15     276.69   298.29 tealeaf            4    (2,2)    21.60     244.67     978.68     21139.49
+16     298.29   354.64 minisweep          4    (2,2)    56.35     100.42     401.68     22634.67
+17     354.64   376.36 cloverleaf         4    (2,2)    21.72     243.71     974.84     21173.52
+
+Execution order:
+  1. t=0.00s start bert on 4 GPU(s) at placement (2, 2)
+  2. t=32.83s start streamOrderedAllocationP2P on 2 GPU(s) at placement (0, 2)
+  3. t=32.83s start conjugateGradientMultiDeviceCG on 2 GPU(s) at placement (2, 0)
+  4. t=56.43s start resnet152 on 2 GPU(s) at placement (0, 2)
+  5. t=64.87s start simpleP2P on 2 GPU(s) at placement (2, 0)
+  6. t=77.98s start resnet101 on 2 GPU(s) at placement (2, 0)
+  7. t=151.79s start vgg16 on 1 GPU(s) at placement (1, 0)
+  8. t=155.87s start gpt2 on 3 GPU(s) at placement (1, 2)
+  9. t=173.83s start MonteCarloMultiGPU on 1 GPU(s) at placement (0, 1)
+  10. t=174.69s start pot3d on 3 GPU(s) at placement (2, 1)
+  11. t=199.92s start miniweather on 1 GPU(s) at placement (0, 1)
+  12. t=212.62s start resnet50 on 3 GPU(s) at placement (2, 1)
+  13. t=225.35s start vgg19 on 1 GPU(s) at placement (0, 1)
+  14. t=248.23s start lbm on 4 GPU(s) at placement (2, 2)
+  15. t=276.69s start tealeaf on 4 GPU(s) at placement (2, 2)
+  16. t=298.29s start minisweep on 4 GPU(s) at placement (2, 2)
+  17. t=354.64s start cloverleaf on 4 GPU(s) at placement (2, 2)
