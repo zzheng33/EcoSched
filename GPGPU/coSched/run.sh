@@ -10,6 +10,7 @@ cd "$SCRIPT_DIR"
 
 $PYTHON run_cosched_sequential.py --policy sequential --sequential-gpu-strategy best
 
+
 $PYTHON run_cosched_sequential.py --policy sequential --sequential-gpu-strategy max
 
 
@@ -23,5 +24,8 @@ $PYTHON run_cosched_marble.py
 
 
 $PYTHON ecoPack.py --policy cmab
+
+
+$PYTHON ecoPack.py --policy heuristic
 
 
