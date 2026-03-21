@@ -110,5 +110,5 @@ DEFAULT_JOB_QUEUE = [
 ]
 
 # DEFAULT_JOB_QUEUE = [
-#     'resnet101'
+#     'gpt2'
 # ]
