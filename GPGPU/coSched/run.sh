@@ -1,8 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-# System: V100, A100, or H100
-# Make sure config.py has SYSTEM = "V100" before running.
+# Usage: bash run.sh <V100|A100|H100>
+export SYSTEM="${1:?Usage: run.sh <V100|A100|H100>}"
 
 PYTHON="$HOME/venv_sched/bin/python"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
