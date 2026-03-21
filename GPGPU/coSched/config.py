@@ -81,29 +81,13 @@ ML_BATCH_SIZE_OVERRIDE = {
 ML_EPOCHS = 3
 ML_LR = 0.001
 
-# ---------------------------------------------------------------------------
-# Co-scheduling mode only (not sequential): deprecated
-# Predicted optimal GPU counts from the notebook's EDP model
-# (dram_sum proxy, w=0.0, alpha=1.30)
-# ---------------------------------------------------------------------------
-PREDICTED_GPU_COUNTS = {
-    'pot3d':       1,
-    'minisweep':   4,
-    'lbm':         4,
-    'cloverleaf':  4,
-    'tealeaf':     4,
-    'miniweather': 1,
-    'hpgmg':       1,
-    'bert':        4,
-    'gpt2':        3,
-    'resnet50':    3,
-}
+
 
 # 'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU' 'hpgmg' 'simpleMultiGPU'
 DEFAULT_JOB_QUEUE = [
-    'pot3d', 'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
+    'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
     'miniweather', 'bert', 'gpt2', 'resnet50',
-    'conjugateGradientMultiDeviceCG', 'MonteCarloMultiGPU',
+    'conjugateGradientMultiDeviceCG', 'pot3d','MonteCarloMultiGPU',
     'simpleP2P', 'streamOrderedAllocationP2P',
     "resnet101", "resnet152", "vgg19", "vgg16",
 ]
@@ -111,3 +95,117 @@ DEFAULT_JOB_QUEUE = [
 # DEFAULT_JOB_QUEUE = [
 #     'gpt2'
 # ]
+
+# ---------------------------------------------------------------------------
+# Workload presets for controlled mixed-workload studies.
+# Inline comments show the best standalone GPU count from perf_metrics.txt.
+# ---------------------------------------------------------------------------
+WORKLOAD_PRESETS = {
+    "V100": {
+        "low_opp": [
+            "cloverleaf",                    # best_gpu=4
+            "lbm",                           # best_gpu=4
+            "minisweep",                     # best_gpu=4
+            "pot3d",                         # best_gpu=4
+            "tealeaf",                       # best_gpu=4
+            "bert",                          # best_gpu=4
+            "gpt2",                          # best_gpu=4
+            "resnet50",                      # best_gpu=4
+            "resnet101",                     # best_gpu=4
+            "resnet152",                     # best_gpu=4
+        ],
+        "med_opp": [
+            "cloverleaf",                    # best_gpu=4
+            "pot3d",                         # best_gpu=4
+            "bert",                          # best_gpu=4
+            "resnet50",                      # best_gpu=4
+            "hpgmg",                         # best_gpu=1
+            "vgg16",                         # best_gpu=3
+            "MonteCarloMultiGPU",            # best_gpu=1
+            "simpleP2P",                     # best_gpu=2
+            "streamOrderedAllocationP2P",    # best_gpu=2
+        ],
+        "high_opp": [
+            "hpgmg",                         # best_gpu=1
+            "vgg16",                         # best_gpu=3
+            "MonteCarloMultiGPU",            # best_gpu=1
+            "simpleP2P",                     # best_gpu=2
+            "streamOrderedAllocationP2P",    # best_gpu=2
+            "miniweather",                   # best_gpu=4 (weak scaling, included as a long job)
+            "gpt2",                          # best_gpu=4 (included for contrast)
+        ],
+    },
+    "A100": {
+        "low_opp": [
+            "cloverleaf",                    # best_gpu=4
+            "lbm",                           # best_gpu=4
+            "minisweep",                     # best_gpu=4
+            "pot3d",                         # best_gpu=4
+            "tealeaf",                       # best_gpu=4
+            "bert",                          # best_gpu=4
+            "gpt2",                          # best_gpu=4
+            "resnet50",                      # best_gpu=4
+            "simpleMultiGPU",                # best_gpu=4
+        ],
+        "med_opp": [
+            "cloverleaf",                    # best_gpu=4
+            "lbm",                           # best_gpu=4
+            "pot3d",                         # best_gpu=4
+            "bert",                          # best_gpu=4
+            "resnet50",                      # best_gpu=4
+            "hpgmg",                         # best_gpu=1
+            "resnet101",                     # best_gpu=2
+            "vgg16",                         # best_gpu=1
+            "MonteCarloMultiGPU",            # best_gpu=1
+            "simpleP2P",                     # best_gpu=2
+        ],
+        "high_opp": [
+            "hpgmg",                         # best_gpu=1
+            "miniweather",                   # best_gpu=4 (near-flat; 1 is very close)
+            "resnet101",                     # best_gpu=2
+            "resnet152",                     # best_gpu=2
+            "vgg16",                         # best_gpu=1
+            "vgg19",                         # best_gpu=1
+            "MonteCarloMultiGPU",            # best_gpu=1
+            "conjugateGradientMultiDeviceCG",# best_gpu=2
+            "simpleP2P",                     # best_gpu=2
+            "streamOrderedAllocationP2P",    # best_gpu=2
+        ],
+    },
+    "H100": {
+        "low_opp": [
+            "cloverleaf",                    # best_gpu=4
+            "lbm",                           # best_gpu=4
+            "minisweep",                     # best_gpu=4
+            "pot3d",                         # best_gpu=4
+            "tealeaf",                       # best_gpu=4
+            "bert",                          # best_gpu=4
+            "resnet50",                      # best_gpu=4
+            "resnet101",                     # best_gpu=4
+            "conjugateGradientMultiDeviceCG",# best_gpu=4
+        ],
+        "med_opp": [
+            "cloverleaf",                    # best_gpu=4
+            "lbm",                           # best_gpu=4
+            "pot3d",                         # best_gpu=4
+            "bert",                          # best_gpu=4
+            "resnet50",                      # best_gpu=4
+            "hpgmg",                         # best_gpu=1
+            "gpt2",                          # best_gpu=3
+            "vgg16",                         # best_gpu=1
+            "MonteCarloMultiGPU",            # best_gpu=1
+            "simpleP2P",                     # best_gpu=2
+        ],
+        "high_opp": [
+            "hpgmg",                         # best_gpu=1
+            "miniweather",                   # best_gpu=1
+            "gpt2",                          # best_gpu=3
+            "resnet152",                     # best_gpu=4 (near-tie with 3)
+            "vgg16",                         # best_gpu=1
+            "vgg19",                         # best_gpu=1
+            "MonteCarloMultiGPU",            # best_gpu=1
+            "simpleP2P",                     # best_gpu=2
+            "streamOrderedAllocationP2P",    # best_gpu=2
+        ],
+    },
+}
