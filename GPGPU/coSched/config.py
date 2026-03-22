@@ -111,28 +111,32 @@ WORKLOAD_PRESETS = {
             "bert",                          # best_gpu=4
             "gpt2",                          # best_gpu=4
             "resnet50",                      # best_gpu=4
-            "resnet101",                     # best_gpu=4
-            "resnet152",                     # best_gpu=4
+            "simpleP2P",                     # best_gpu=2
+            "streamOrderedAllocationP2P",    # best_gpu=2
         ],
         "med_opp": [
             "cloverleaf",                    # best_gpu=4
             "pot3d",                         # best_gpu=4
             "bert",                          # best_gpu=4
             "resnet50",                      # best_gpu=4
-            "MonteCarloMultiGPU",                         # best_gpu=1
+            "resnet152",                     # best_gpu=4
+            "MonteCarloMultiGPU",            # best_gpu=1
             "vgg16",                         # best_gpu=3
             "MonteCarloMultiGPU",            # best_gpu=1
             "simpleP2P",                     # best_gpu=2
             "streamOrderedAllocationP2P",    # best_gpu=2
         ],
         "high_opp": [
-            "MonteCarloMultiGPU",                         # best_gpu=1
+            "MonteCarloMultiGPU",            # best_gpu=1
             "vgg16",                         # best_gpu=3
             "MonteCarloMultiGPU",            # best_gpu=1
             "simpleP2P",                     # best_gpu=2
             "streamOrderedAllocationP2P",    # best_gpu=2
-            "pot3d",                   # best_gpu=4 (weak scaling, included as a long job)
-            "gpt2",                          # best_gpu=4 (included for contrast)
+            "simpleP2P",                     # best_gpu=2
+            "vgg16",                         # best_gpu=3
+            "simpleP2P",                     # best_gpu=2
+            "vgg16",                         # best_gpu=3
+            "streamOrderedAllocationP2P",    # best_gpu=2
         ],
     },
     "A100": {
@@ -145,7 +149,9 @@ WORKLOAD_PRESETS = {
             "bert",                          # best_gpu=4
             "gpt2",                          # best_gpu=4
             "resnet50",                      # best_gpu=4
-            "resnet50",                # best_gpu=4
+            "streamOrderedAllocationP2P",    # best_gpu=2
+            "conjugateGradientMultiDeviceCG",# best_gpu=2
+            
         ],
         "med_opp": [
             "cloverleaf",                    # best_gpu=4
@@ -160,8 +166,8 @@ WORKLOAD_PRESETS = {
             "simpleP2P",                     # best_gpu=2
         ],
         "high_opp": [
-            "hpgmg",                         # best_gpu=1
-            "pot3d",                   # best_gpu=4 (near-flat; 1 is very close)
+            "resnet152",                     # best_gpu=2
+            "simpleP2P",                     # best_gpu=2
             "resnet101",                     # best_gpu=2
             "resnet152",                     # best_gpu=2
             "vgg16",                         # best_gpu=1
@@ -182,7 +188,8 @@ WORKLOAD_PRESETS = {
             "bert",                          # best_gpu=4
             "resnet50",                      # best_gpu=4
             "resnet101",                     # best_gpu=4
-            "conjugateGradientMultiDeviceCG",# best_gpu=4
+            "miniweather",                   # best_gpu=1
+            "gpt2",                          # best_gpu=3
         ],
         "med_opp": [
             "cloverleaf",                    # best_gpu=4
@@ -200,12 +207,13 @@ WORKLOAD_PRESETS = {
             "hpgmg",                         # best_gpu=1
             "miniweather",                   # best_gpu=1
             "gpt2",                          # best_gpu=3
-            "pot3d",                     # best_gpu=4 (near-tie with 3)
+            "streamOrderedAllocationP2P",    # best_gpu=2 
             "vgg16",                         # best_gpu=1
             "vgg19",                         # best_gpu=1
             "MonteCarloMultiGPU",            # best_gpu=1
             "simpleP2P",                     # best_gpu=2
             "streamOrderedAllocationP2P",    # best_gpu=2
+            "gpt2",                          # best_gpu=3
         ],
     },
 }
