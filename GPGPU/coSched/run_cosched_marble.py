@@ -23,6 +23,8 @@ from config import (
 from run_cosched_sequential import (
     TeeStream,
     allocate_gpus_numa,
+    base_app_name,
+    normalize_job_queue,
     run_cosched,
 )
 
@@ -53,10 +55,11 @@ def parse_runtime_rows(metrics_path: Path, selected_jobs: Sequence[str]) -> Dict
         runtime_s = float(parts[1])
         raw_rows[current_job][gpu_count] = runtime_s
 
-    missing = [job for job in selected_jobs if job not in raw_rows]
+    base_jobs = sorted({base_app_name(job) for job in selected_jobs})
+    missing = [job for job in base_jobs if job not in raw_rows]
     if missing:
         raise ValueError("Missing jobs in metrics file: {}".format(missing))
-    return {job: raw_rows[job] for job in selected_jobs}
+    return {job: raw_rows[base_app_name(job)] for job in selected_jobs}
 
 
 def select_marble_gpu_counts(
@@ -195,8 +198,9 @@ def main() -> None:
         help="Directory for fixed run logs. Default: {}".format(RESULTS_DIR),
     )
     args = parser.parse_args()
+    jobs = normalize_job_queue(args.jobs)
 
-    runtime_rows = parse_runtime_rows(args.metrics_file, args.jobs)
+    runtime_rows = parse_runtime_rows(args.metrics_file, jobs)
     marble_modes = select_marble_gpu_counts(runtime_rows, args.perf_tol)
     gpu_counts = {app: gpu_count for app, (gpu_count, _) in marble_modes.items()}
 
@@ -212,15 +216,15 @@ def main() -> None:
             print("Marble policy: pick the smallest GPU count within {:.2%} of the minimum profiled runtime, then FCFS co-schedule.".format(args.perf_tol))
             print("Metrics source: {}".format(args.metrics_file))
             print("Selected Marble GPU counts:")
-            for app in args.jobs:
+            for app in jobs:
                 gpu_count, runtime_s = marble_modes[app]
                 print("  {:<15} -> {} GPUs (runtime={:.2f}s)".format(app, gpu_count, runtime_s))
             print()
             if args.dry_run:
-                run_marble_dry(args.jobs, marble_modes, args.max_concurrent)
+                run_marble_dry(jobs, marble_modes, args.max_concurrent)
             else:
                 run_cosched(
-                    job_queue=list(args.jobs),
+                    job_queue=list(jobs),
                     gpu_counts=gpu_counts,
                     max_concurrent=args.max_concurrent,
                     dry_run=False,

@@ -3,7 +3,7 @@ Online policy parameters:
   policy            = cmab
   score_metric      = energy
   slowdown_tol      = 0.20
-  idle_power        = 70.00 W
+  idle_power        = 53.00 W
   mean_busy_power   = 201.48 W
   idle_weight       = 0.3474
   blocking_weight   = 0.0000

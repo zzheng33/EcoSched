@@ -53,7 +53,7 @@ MonteCarloMultiGPU      1          [0]     0        27.03
 simpleP2P            2       [2, 3]     1        14.01
 ------------------------------------------------------
 
-Total makespan: 220.25s
+Total makespan: 225.25s
 
 Power monitoring: 615 samples over 220.2s
 Total GPU energy: 170680.16 J (170.68 kJ)

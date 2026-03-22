@@ -1,0 +1,18 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/H100/run_cosched_dryrun_best_fit.txt
+Sequential GPU strategy: max (maximum GPU count per app)
+Job queue and GPU assignments:
+  gpt2#1          -> 3 GPUs
+  gpt2#2          -> 3 GPUs
+
+Co-scheduling 2 apps on 4 GPUs (max 2 concurrent, policy=best-fit)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+
+[DRY RUN] Simulating schedule order:
+
+  t=    0.00s | START gpt2#1          | 3 GPUs [0, 1, 2] | NUMA 0 | ends ~t=14.80s
+  t=   14.80s | END   gpt2#1          | freed 3 GPUs [0, 1, 2] | NUMA 0
+  t=   14.80s | START gpt2#2          | 3 GPUs [0, 1, 2] | NUMA 0 | ends ~t=29.60s
+  t=   29.60s | END   gpt2#2          | freed 3 GPUs [0, 1, 2] | NUMA 0
+
+Estimated makespan: ~29.60s

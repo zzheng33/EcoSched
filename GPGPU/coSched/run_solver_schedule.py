@@ -29,6 +29,7 @@ from run_cosched_sequential import (
     NUMA1_GPUS,
     PowerMonitor,
     TOTAL_GPUS,
+    base_app_name,
     build_command,
 )
 
@@ -78,7 +79,7 @@ TABLE_ROW_RE = re.compile(
     r"^\s*(\d+)\s+"
     r"([0-9]+(?:\.[0-9]+)?)\s+"
     r"([0-9]+(?:\.[0-9]+)?)\s+"
-    r"([A-Za-z0-9_.-]+)\s+"
+    r"([A-Za-z0-9_.#-]+)\s+"
     r"(\d+)\s+"
     r"\((\d),(\d)\)\s+"
     r"([0-9]+(?:\.[0-9]+)?)"
@@ -209,7 +210,7 @@ def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
                     break
 
                 plan, gpu_ids, numa_node = selected
-                cmd, env, cwd = build_command(plan.app, gpu_ids, numa_node)
+                cmd, env, cwd = build_command(base_app_name(plan.app), gpu_ids, numa_node)
                 devnull = _devnull()
 
                 elapsed = time.time() - wall_start

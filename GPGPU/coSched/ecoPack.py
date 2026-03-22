@@ -40,7 +40,9 @@ from config import (
 from run_cosched_sequential import (
     PowerMonitor,
     allocate_gpus_numa,
+    base_app_name,
     build_command,
+    normalize_job_queue,
     pick_numa_for_tenant,
 )
 
@@ -218,13 +220,14 @@ def parse_metrics(metrics_path: Path, selected_jobs: Sequence[str]) -> Dict[str,
             fp_sum,
         )
 
-    missing = [job for job in selected_jobs if job not in raw_rows]
+    base_jobs = sorted({base_app_name(job) for job in selected_jobs})
+    missing = [job for job in base_jobs if job not in raw_rows]
     if missing:
         raise ValueError("Missing jobs in metrics file: {}".format(missing))
 
     parsed = {}
     for job in selected_jobs:
-        rows = raw_rows[job]
+        rows = raw_rows[base_app_name(job)]
         predictor_name, predictor_values = _predictor_name_and_value(rows)
         norm_runtime_by_gpu = _predicted_norm_runtime(predictor_values)
         predicted_energy = {
@@ -488,6 +491,12 @@ def materialize_action(
     return None if best is None else best[2]
 
 
+
+
+def _matches_anchor(job_id: str, anchor_app: Optional[str]) -> bool:
+    return bool(anchor_app) and (job_id == anchor_app or base_app_name(job_id) == anchor_app)
+
+
 def pick_best_action(
     pending: Sequence[str],
     running: Sequence[RunningJob],
@@ -504,8 +513,8 @@ def pick_best_action(
     free_gpus = TOTAL_GPUS - len(gpus_in_use)
     free_slots = DEFAULT_MAX_CONCURRENT - len(running)
     actions = enumerate_actions(pending, candidate_modes, free_gpus, free_slots)
-    if anchor_app and not anchor_started and anchor_app in pending:
-        actions = [action for action in actions if any(mode.app == anchor_app for mode in action)]
+    if anchor_app and not anchor_started and any(_matches_anchor(job, anchor_app) for job in pending):
+        actions = [action for action in actions if any(_matches_anchor(mode.app, anchor_app) for mode in action)]
 
     best_item = None
     for action in actions:
@@ -680,7 +689,7 @@ def run_dry(
                 running.append(SimJob(spec.mode.app, spec.mode, spec.gpu_ids, spec.numa_node, end_time))
                 gpus_in_use.update(spec.gpu_ids)
                 pending.remove(spec.mode.app)
-                if anchor_app and spec.mode.app == anchor_app:
+                if _matches_anchor(spec.mode.app, anchor_app):
                     anchor_started = True
                 message = (
                     "  t={:8.2f}s | START {:<15} | {} GPUs {} | NUMA {} | score={:.4f} | "
@@ -793,7 +802,7 @@ def run_online(
                 if not launches:
                     break
                 for spec in launches:
-                    cmd, env, cwd = build_command(spec.mode.app, spec.gpu_ids, spec.numa_node)
+                    cmd, env, cwd = build_command(base_app_name(spec.mode.app), spec.gpu_ids, spec.numa_node)
                     devnull = _devnull()
                     elapsed = time.time() - wall_start
                     message = (
@@ -837,7 +846,7 @@ def run_online(
                     )
                     gpus_in_use.update(spec.gpu_ids)
                     pending.remove(spec.mode.app)
-                    if anchor_app and spec.mode.app == anchor_app:
+                    if _matches_anchor(spec.mode.app, anchor_app):
                         anchor_started = True
                 if policy == "cmab":
                     pending_interval = _make_cmab_interval(
@@ -1013,8 +1022,9 @@ def main():
         help="Directory for timestamped run logs. Default: {}".format(DEFAULT_RESULTS_DIR),
     )
     args = parser.parse_args()
+    jobs = normalize_job_queue(args.jobs)
 
-    parsed = parse_metrics(args.metrics_file, args.jobs)
+    parsed = parse_metrics(args.metrics_file, jobs)
     candidate_modes = select_online_modes(parsed, args.slowdown_tol)
 
     busy_power = mean_busy_power(parsed)
@@ -1051,7 +1061,7 @@ def main():
                 print("  cmab_theta_init   = ({:.4f}, {:.4f})".format(theta0, theta1))
             print("  anchor_app        = {}".format(args.anchor_app if args.anchor_app else "None"))
             print("  candidate modes:")
-            for app in args.jobs:
+            for app in jobs:
                 desc = [
                     "{}GPU(rt={:.2f}, pred={}={:.4f}, nrt={:.2f}, ne={:.2f}, nedp={:.2f})".format(
                         mode.gpu_count,
@@ -1069,7 +1079,7 @@ def main():
 
             if args.dry_run:
                 run_dry(
-                    args.jobs,
+                    jobs,
                     candidate_modes,
                     args.score_metric,
                     idle_weight,
@@ -1082,7 +1092,7 @@ def main():
                 )
             else:
                 run_online(
-                    args.jobs,
+                    jobs,
                     candidate_modes,
                     args.score_metric,
                     idle_weight,

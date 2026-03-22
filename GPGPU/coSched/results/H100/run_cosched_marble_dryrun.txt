@@ -1,0 +1,19 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/H100/run_cosched_marble_dryrun.txt
+Marble policy: pick the smallest GPU count within 5.00% of the minimum profiled runtime, then FCFS co-schedule.
+Metrics source: /home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt
+Selected Marble GPU counts:
+  gpt2#1          -> 2 GPUs (runtime=18.02s)
+  gpt2#2          -> 2 GPUs (runtime=18.02s)
+
+Marble dry-run: 2 apps on 4 GPUs (max 2 concurrent, fcfs queue)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+
+[DRY RUN] Simulating Marble schedule order:
+
+  t=    0.00s | START gpt2#1          | 2 GPUs [0, 1] | NUMA 0 | ends ~t=18.02s
+  t=    0.00s | START gpt2#2          | 2 GPUs [2, 3] | NUMA 1 | ends ~t=18.02s
+  t=   18.02s | END   gpt2#1          | freed 2 GPUs [0, 1] | NUMA 0
+  t=   18.02s | END   gpt2#2          | freed 2 GPUs [2, 3] | NUMA 1
+
+Estimated makespan: ~18.02s

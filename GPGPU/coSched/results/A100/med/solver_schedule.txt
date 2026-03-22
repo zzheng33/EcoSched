@@ -3,35 +3,35 @@ Exact offline energy-optimal schedule
 ================================================================================================
 Idle power per GPU: 70.00 W
 Slowdown tolerance vs max-GPU baseline: 0.20
-Makespan: 223.93 s
-Active energy: 186790.19 J (186.79 kJ)
-Idle energy: 2191.00 J (2.19 kJ)
-Total energy: 188981.19 J (188.98 kJ)
-Objective value: 188981.19 J
-Best bound: 188981.19 J
-Solver wall time: 23.66 s
+Makespan: 219.02 s
+Active energy: 184022.24 J (184.02 kJ)
+Idle energy: 3625.30 J (3.63 kJ)
+Total energy: 187647.54 J (187.65 kJ)
+Objective value: 187647.54 J
+Best bound: 187647.54 J
+Solver wall time: 18.29 s
 
 #       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
 ------------------------------------------------------------------------------------------------
-1        0.00    73.81 resnet101          2    (2,0)    73.81     256.43     512.86     37854.20
-2       25.48    50.96 vgg16              2    (0,2)    25.48     123.92     247.84      6314.96
-3       25.48    50.96 vgg16              2    (0,2)    25.48     123.92     247.84      6314.96
-4       50.96    64.07 simpleP2P          2    (0,2)    13.11     138.60     277.20      3634.09
-5       73.81    99.90 MonteCarloMultiGPU    1    (1,0)    26.09     284.69     284.69      7427.56
-6       73.81   111.72 pot3d              3    (1,2)    37.91     232.15     696.45     26402.42
-7      111.72   144.55 bert               4    (2,2)    32.83     239.11     956.44     31399.93
-8      144.55   173.75 resnet50           4    (2,2)    29.20     223.25     893.00     26075.60
-9      173.75   202.21 lbm                4    (2,2)    28.46     177.38     709.52     20192.94
-10     202.21   223.93 cloverleaf         4    (2,2)    21.72     243.71     974.84     21173.52
+1        0.00    21.72 cloverleaf         4    (2,2)    21.72     243.71     974.84     21173.52
+2       21.72    54.55 bert               4    (2,2)    32.83     239.11     956.44     31399.93
+3       54.55    86.15 pot3d              4    (2,2)    31.60     219.29     877.16     27718.26
+4       86.15   112.24 MonteCarloMultiGPU    1    (1,0)    26.09     284.69     284.69      7427.56
+5       86.15   159.96 resnet101          2    (0,2)    73.81     256.43     512.86     37854.20
+6      112.24   135.14 vgg16              1    (1,0)    22.90     214.50     214.50      4912.05
+7      135.14   148.25 simpleP2P          2    (2,0)    13.11     138.60     277.20      3634.09
+8      135.14   148.25 simpleP2P          2    (2,0)    13.11     138.60     277.20      3634.09
+9      161.36   190.56 resnet50           4    (2,2)    29.20     223.25     893.00     26075.60
+10     190.56   219.02 lbm                4    (2,2)    28.46     177.38     709.52     20192.94
 
 Execution order:
-  1. t=0.00s start resnet101 on 2 GPU(s) at placement (2, 0)
-  2. t=25.48s start vgg16 on 2 GPU(s) at placement (0, 2)
-  3. t=25.48s start vgg16 on 2 GPU(s) at placement (0, 2)
-  4. t=50.96s start simpleP2P on 2 GPU(s) at placement (0, 2)
-  5. t=73.81s start MonteCarloMultiGPU on 1 GPU(s) at placement (1, 0)
-  6. t=73.81s start pot3d on 3 GPU(s) at placement (1, 2)
-  7. t=111.72s start bert on 4 GPU(s) at placement (2, 2)
-  8. t=144.55s start resnet50 on 4 GPU(s) at placement (2, 2)
-  9. t=173.75s start lbm on 4 GPU(s) at placement (2, 2)
-  10. t=202.21s start cloverleaf on 4 GPU(s) at placement (2, 2)
+  1. t=0.00s start cloverleaf on 4 GPU(s) at placement (2, 2)
+  2. t=21.72s start bert on 4 GPU(s) at placement (2, 2)
+  3. t=54.55s start pot3d on 4 GPU(s) at placement (2, 2)
+  4. t=86.15s start MonteCarloMultiGPU on 1 GPU(s) at placement (1, 0)
+  5. t=86.15s start resnet101 on 2 GPU(s) at placement (0, 2)
+  6. t=112.24s start vgg16 on 1 GPU(s) at placement (1, 0)
+  7. t=135.14s start simpleP2P on 2 GPU(s) at placement (2, 0)
+  8. t=135.14s start simpleP2P on 2 GPU(s) at placement (2, 0)
+  9. t=161.36s start resnet50 on 4 GPU(s) at placement (2, 2)
+  10. t=190.56s start lbm on 4 GPU(s) at placement (2, 2)

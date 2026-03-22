@@ -23,9 +23,10 @@ import sys
 import tempfile
 import threading
 import time
+from collections import Counter, defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional, Sequence, Tuple
 
 from config import (
     HOME,
@@ -57,10 +58,49 @@ from config import (
 )
 
 
+def split_job_instance(job_id: str) -> Tuple[str, Optional[int]]:
+    if "#" in job_id:
+        base, suffix = job_id.rsplit("#", 1)
+        if base and suffix.isdigit():
+            return base, int(suffix)
+    return job_id, None
+
+
+def base_app_name(job_id: str) -> str:
+    return split_job_instance(job_id)[0]
+
+
+def normalize_job_queue(job_queue: Sequence[str]) -> List[str]:
+    totals = Counter(base_app_name(job) for job in job_queue)
+    used_indices = defaultdict(set)
+    normalized = []
+
+    for raw_job in job_queue:
+        base, explicit_idx = split_job_instance(raw_job)
+        if explicit_idx is not None:
+            if explicit_idx in used_indices[base]:
+                raise ValueError(f"Duplicate explicit job id '{raw_job}' in job queue")
+            used_indices[base].add(explicit_idx)
+            normalized.append(f"{base}#{explicit_idx}")
+            continue
+
+        if totals[base] == 1 and not used_indices[base]:
+            normalized.append(base)
+            continue
+
+        next_idx = 1
+        while next_idx in used_indices[base]:
+            next_idx += 1
+        used_indices[base].add(next_idx)
+        normalized.append(f"{base}#{next_idx}")
+
+    if len(set(normalized)) != len(normalized):
+        raise ValueError(f"Normalized job queue still contains duplicate ids: {normalized}")
+    return normalized
 
 
 def parse_available_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, List[int]]:
-    """Read perf_metrics.txt and return the available GPU counts per app."""
+    """Read perf_metrics.txt and return the available GPU counts per job instance."""
     import re
 
     section_re = re.compile(r"^===== .*?/([^/ ]+) =====$")
@@ -86,11 +126,12 @@ def parse_available_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> 
         runtime_s = float(parts[1])
         rows[current_job][gpu_count] = runtime_s
 
-    missing = [job for job in selected_jobs if job not in rows]
+    base_jobs = sorted({base_app_name(job) for job in selected_jobs})
+    missing = [job for job in base_jobs if job not in rows]
     if missing:
         raise ValueError("Missing jobs in perf metrics file: {}".format(missing))
 
-    return {job: sorted(rows[job]) for job in selected_jobs}
+    return {job: sorted(rows[base_app_name(job)]) for job in selected_jobs}
 
 
 def parse_max_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, int]:
@@ -100,7 +141,7 @@ def parse_max_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[s
 
 
 def parse_best_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[str, int]:
-    """Read perf_metrics.txt and return the GPU count with lowest runtime per app."""
+    """Read perf_metrics.txt and return the GPU count with lowest runtime per job instance."""
     import re
 
     section_re = re.compile(r"^===== .*?/([^/ ]+) =====$")
@@ -125,13 +166,14 @@ def parse_best_gpu_counts(metrics_path: Path, selected_jobs: List[str]) -> Dict[
         runtime_s = float(parts[1])
         rows[current_job][gpu_count] = runtime_s
 
-    missing = [job for job in selected_jobs if job not in rows]
+    base_jobs = sorted({base_app_name(job) for job in selected_jobs})
+    missing = [job for job in base_jobs if job not in rows]
     if missing:
         raise ValueError("Missing jobs in perf metrics file: {}".format(missing))
 
     best = {}
     for job in selected_jobs:
-        gpu_runtimes = rows[job]
+        gpu_runtimes = rows[base_app_name(job)]
         best[job] = min(gpu_runtimes, key=gpu_runtimes.get)
     return best
 
@@ -409,7 +451,7 @@ def run_sequential(
         numa = 0  # always use NUMA 0 when running alone
         gpu_ids = allocate_gpus_numa(needed, numa, set())
 
-        cmd, env, cwd = build_command(app, gpu_ids, numa)
+        cmd, env, cwd = build_command(base_app_name(app), gpu_ids, numa)
 
         elapsed = time.time() - wall_start
         print(f"  t={elapsed:8.2f}s | START {app:<15} | "
@@ -541,7 +583,7 @@ def run_cosched(
                 needed = gpu_counts[app]
                 gpu_ids = allocate_gpus_numa(needed, numa, sim_gpus_in_use)
                 if gpu_ids is not None:
-                    rt = est_runtime.get(app, 30.0)
+                    rt = est_runtime.get(base_app_name(app), 30.0)
                     end = sim_time + rt
                     sim_running.append((app, needed, gpu_ids, numa, end))
                     sim_gpus_in_use.update(gpu_ids)
@@ -596,7 +638,7 @@ def run_cosched(
                 break  # shouldn't happen since _best_fit_pick checked
 
             # Launch the app
-            cmd, env, cwd = build_command(app, gpu_ids, numa)
+            cmd, env, cwd = build_command(base_app_name(app), gpu_ids, numa)
             devnull = _devnull()
 
             elapsed = time.time() - wall_start
@@ -724,6 +766,7 @@ def main():
              "'best' uses the GPU count with lowest runtime (default: max)")
 
     args = parser.parse_args()
+    jobs = normalize_job_queue(args.jobs)
     log_path = _results_log_path(args)
     original_stdout = sys.stdout
     original_stderr = sys.stderr
@@ -735,20 +778,22 @@ def main():
         try:
             print(f"Results log: {log_path}")
 
-            available_gpu_counts = parse_available_gpu_counts(args.perf_metrics_file, args.jobs)
+            available_gpu_counts = parse_available_gpu_counts(args.perf_metrics_file, jobs)
             if args.sequential_gpu_strategy == "best":
-                sequential_gpu_counts = parse_best_gpu_counts(args.perf_metrics_file, args.jobs)
+                sequential_gpu_counts = parse_best_gpu_counts(args.perf_metrics_file, jobs)
                 print(f"Sequential GPU strategy: best (lowest runtime per app)")
             else:
-                sequential_gpu_counts = parse_max_gpu_counts(args.perf_metrics_file, args.jobs)
+                sequential_gpu_counts = parse_max_gpu_counts(args.perf_metrics_file, jobs)
                 print(f"Sequential GPU strategy: max (maximum GPU count per app)")
 
             # Only compute co-schedule GPU counts when needed
             cosched_gpu_counts = {}
             needs_cosched = args.both or args.policy != "sequential"
+            default_cosched_requests = parse_best_gpu_counts(args.perf_metrics_file, jobs)
+            predicted_gpu_counts = globals().get("PREDICTED_GPU_COUNTS", {})
             if needs_cosched:
-                for app in args.jobs:
-                    requested = PREDICTED_GPU_COUNTS[app]
+                for app in jobs:
+                    requested = predicted_gpu_counts.get(base_app_name(app), default_cosched_requests[app])
                     resolved = resolve_requested_gpu_count(requested, available_gpu_counts[app])
                     cosched_gpu_counts[app] = resolved
                     if resolved != requested:
@@ -762,17 +807,21 @@ def main():
                 for item in args.gpu_override:
                     app, count = item.split(":")
                     count = int(count)
-                    resolved = resolve_requested_gpu_count(count, available_gpu_counts[app])
-                    cosched_gpu_counts[app] = resolved
-                    sequential_gpu_counts[app] = max(available_gpu_counts[app])
-                    if resolved != count:
-                        print(
-                            f"INFO: override for {app} requested {count} GPUs, "
-                            f"but perf_metrics.txt only has rows {available_gpu_counts[app]}; using {resolved} GPUs instead."
-                        )
+                    targets = [job for job in jobs if job == app or base_app_name(job) == app]
+                    if not targets:
+                        raise ValueError(f"Unknown override target '{app}'")
+                    for target in targets:
+                        resolved = resolve_requested_gpu_count(count, available_gpu_counts[target])
+                        cosched_gpu_counts[target] = resolved
+                        sequential_gpu_counts[target] = max(available_gpu_counts[target])
+                        if resolved != count:
+                            print(
+                                f"INFO: override for {target} requested {count} GPUs, "
+                                f"but perf_metrics.txt only has rows {available_gpu_counts[target]}; using {resolved} GPUs instead."
+                            )
 
             # Validate
-            for app in args.jobs:
+            for app in jobs:
                 if app not in sequential_gpu_counts:
                     print(f"ERROR: No sequential GPU count defined for '{app}'", file=sys.stderr)
                     sys.exit(1)
@@ -792,20 +841,20 @@ def main():
             if args.both:
                 print("Job queue and GPU assignments:")
                 print("  Sequential baseline (max available GPUs from perf_metrics.txt):")
-                for app in args.jobs:
+                for app in jobs:
                     print(f"    {app:<15} -> {sequential_gpu_counts[app]} GPUs")
                 print("  Co-schedule policy counts:")
-                for app in args.jobs:
+                for app in jobs:
                     print(f"    {app:<15} -> {cosched_gpu_counts[app]} GPUs")
                 print()
             elif args.policy == "sequential":
                 print("Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):")
-                for app in args.jobs:
+                for app in jobs:
                     print(f"  {app:<15} -> {sequential_gpu_counts[app]} GPUs")
                 print()
             else:
                 print("Job queue and GPU assignments:")
-                for app in args.jobs:
+                for app in jobs:
                     print(f"  {app:<15} -> {cosched_gpu_counts[app]} GPUs")
                 print()
 
@@ -814,7 +863,7 @@ def main():
                 print("  PHASE 1: SEQUENTIAL")
                 print("=" * 80)
                 run_sequential(
-                    job_queue=args.jobs,
+                    job_queue=jobs,
                     gpu_counts=sequential_gpu_counts,
                 )
                 print("\n\n")
@@ -823,7 +872,7 @@ def main():
                 print(f"  PHASE 2: CO-SCHEDULED ({policy.upper()})")
                 print("=" * 80)
                 run_cosched(
-                    job_queue=args.jobs,
+                    job_queue=jobs,
                     gpu_counts=cosched_gpu_counts,
                     max_concurrent=args.max_concurrent,
                     dry_run=False,
@@ -831,12 +880,12 @@ def main():
                 )
             elif args.policy == "sequential":
                 run_sequential(
-                    job_queue=args.jobs,
+                    job_queue=jobs,
                     gpu_counts=sequential_gpu_counts,
                 )
             else:
                 run_cosched(
-                    job_queue=args.jobs,
+                    job_queue=jobs,
                     gpu_counts=cosched_gpu_counts,
                     max_concurrent=args.max_concurrent,
                     dry_run=args.dry_run,

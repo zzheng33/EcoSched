@@ -52,7 +52,7 @@ conjugateGradientMultiDeviceCG      2       [2, 3]     1       210.52        32.
 resnet50             4 [0, 1, 2, 3]     0       242.56        29.03
 --------------------------------------------------------------------------
 
-Total makespan: 276.40s
+Total makespan: 273.40s
 
-Power monitoring: 773 samples over 276.3s
+Power monitoring: 773 samples over 273.3s
 Total GPU energy: 182221.93 J (182.22 kJ)

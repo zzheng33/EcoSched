@@ -39,6 +39,7 @@ except ImportError:
 TIME_SCALE = 100
 POWER_SCALE = 100
 from config import DEFAULT_JOB_QUEUE as DEFAULT_JOBS, IDLE_POWER_PER_GPU, PERF_METRICS_FILE, SYSTEM
+from run_cosched_sequential import base_app_name, normalize_job_queue
 
 DEFAULT_IDLE_POWER = IDLE_POWER_PER_GPU.get(SYSTEM, 70.0)
 DEFAULT_THREADS = 8
@@ -145,11 +146,18 @@ def parse_metrics(metrics_path: Path, selected_jobs: Sequence[str]) -> Dict[str,
             active_energy_j=runtime_s * total_power_w,
         )
 
-    missing = [job for job in selected_jobs if job not in rows]
+    base_jobs = sorted({base_app_name(job) for job in selected_jobs})
+    missing = [job for job in base_jobs if job not in rows]
     if missing:
         raise ValueError("Missing jobs in metrics file: {}".format(missing))
 
-    return {job: rows[job] for job in selected_jobs}
+    return {
+        job: {
+            gpu_count: row._replace(job=job)
+            for gpu_count, row in rows[base_app_name(job)].items()
+        }
+        for job in selected_jobs
+    }
 
 
 def build_configs(
@@ -405,6 +413,7 @@ def main():
         help="Schedule output text file. Default: {}".format(DEFAULT_SCHEDULE_OUTPUT),
     )
     args = parser.parse_args()
+    jobs = normalize_job_queue(args.jobs)
 
     output_file = args.output_file
     output_file.parent.mkdir(parents=True, exist_ok=True)
@@ -418,7 +427,7 @@ def main():
             print("Solver schedule output: {}".format(output_file))
             result = solve_schedule(
                 metrics_path=args.metrics_file,
-                jobs=args.jobs,
+                jobs=jobs,
                 idle_power_w=args.idle_power,
                 threads=args.threads,
                 time_limit_s=args.time_limit,
