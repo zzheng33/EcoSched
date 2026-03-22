@@ -122,6 +122,11 @@ DEFAULT_JOB_QUEUE = [
     "resnet101", "resnet152", "vgg19", "vgg16",
 ]
 
+DEFAULT_JOB_QUEUE = [
+    "vgg16" 
+]
+
+
 # ---------------------------------------------------------------------------
 # Workload presets for controlled mixed-workload studies.
 # Inline comments show the best standalone GPU count from perf_metrics.txt.

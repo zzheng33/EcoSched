@@ -98,27 +98,27 @@ run_one_preset() {
     echo "JOBS        : $jobs"
     echo "================================================================================"
 
-    # "$PYTHON" ecoPack.py \
-    #     --policy cmab \
-    #     --idle-power "$idle_power" \
+    "$PYTHON" ecoPack.py \
+        --policy cmab \
+        --idle-power "$idle_power" \
+        --results-dir "$results_dir" \
+        --jobs $jobs
+
+    # "$PYTHON" run_cosched_marble.py \
     #     --results-dir "$results_dir" \
     #     --jobs $jobs
 
-    "$PYTHON" run_cosched_marble.py \
-        --results-dir "$results_dir" \
-        --jobs $jobs
+    # "$PYTHON" run_cosched_sequential.py \
+    #     --policy sequential \
+    #     --sequential-gpu-strategy best \
+    #     --results-dir "$results_dir" \
+    #     --jobs $jobs
 
-    "$PYTHON" run_cosched_sequential.py \
-        --policy sequential \
-        --sequential-gpu-strategy best \
-        --results-dir "$results_dir" \
-        --jobs $jobs
-
-    "$PYTHON" run_cosched_sequential.py \
-        --policy sequential \
-        --sequential-gpu-strategy max \
-        --results-dir "$results_dir" \
-        --jobs $jobs
+    # "$PYTHON" run_cosched_sequential.py \
+    #     --policy sequential \
+    #     --sequential-gpu-strategy max \
+    #     --results-dir "$results_dir" \
+    #     --jobs $jobs
 
     # "$PYTHON" solve_energy_optimal_cpsat.py \
     #     --idle-power "$idle_power" \

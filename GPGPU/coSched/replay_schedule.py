@@ -166,6 +166,96 @@ def print_schedule(entries: Sequence[ScheduleEntry]):
     print()
 
 
+# ── Co-run pair analysis ─────────────────────────────────────────────────────
+
+# Matches START and END lines with timestamps
+EVENT_RE = re.compile(
+    r"t=\s*([0-9.]+)s\s*\|\s*(START|END)\s+(\S+)"
+    r"\s*\|\s*(?:freed\s+)?(\d+)\s+GPUs?\s+\[([0-9,\s]+)\]"
+    r"\s*\|\s*NUMA\s+(\d+)"
+)
+RUNTIME_RE = re.compile(r"runtime=([0-9.]+)s")
+
+
+def analyze_corun_pairs(log_path: Path):
+    """Extract co-running pairs and their runtimes from an EcoPack log."""
+    # Parse all events
+    events = []
+    for line in log_path.read_text().splitlines():
+        m = EVENT_RE.search(line)
+        if not m:
+            continue
+        t = float(m.group(1))
+        event_type = m.group(2)
+        app = m.group(3)
+        gpu_count = int(m.group(4))
+        gpu_ids = [int(g.strip()) for g in m.group(5).split(",")]
+        numa = int(m.group(6))
+        runtime = None
+        if event_type == "END":
+            rm = RUNTIME_RE.search(line)
+            if rm:
+                runtime = float(rm.group(1))
+        events.append({
+            "t": t, "type": event_type, "app": app,
+            "gpu_count": gpu_count, "gpu_ids": gpu_ids,
+            "numa": numa, "runtime": runtime,
+        })
+
+    # Simulate to find overlapping pairs
+    active = {}  # app -> {start_t, gpu_ids, numa}
+    pairs = []   # list of (app, co_runner_or_None, gpu_ids, numa, runtime)
+
+    for ev in events:
+        if ev["type"] == "START":
+            active[ev["app"]] = {
+                "start_t": ev["t"], "gpu_ids": ev["gpu_ids"], "numa": ev["numa"],
+            }
+        elif ev["type"] == "END":
+            app = ev["app"]
+            info = active.pop(app, None)
+            if info is None:
+                continue
+            # Who else was running during this app's lifetime?
+            co_runners = [a for a in active if a != app]
+            pairs.append({
+                "app": app,
+                "gpu_count": ev["gpu_count"],
+                "gpu_ids": info["gpu_ids"],
+                "numa": info["numa"],
+                "runtime": ev["runtime"],
+                "co_runners": co_runners,
+            })
+
+    return pairs
+
+
+def print_corun_analysis(pairs):
+    """Print co-run pair analysis."""
+    print("Co-run pair analysis:")
+    print("=" * 80)
+    print("{:<30s} {:>6} {:>10} {:>10}  {:<30s}".format(
+        "App", "#GPUs", "NUMA", "Runtime", "Co-runner(s)"))
+    print("-" * 90)
+    for p in pairs:
+        co = ", ".join(p["co_runners"]) if p["co_runners"] else "(alone)"
+        print("{:<30s} {:>6} {:>10} {:>10.2f}  {:<30s}".format(
+            p["app"], p["gpu_count"], p["numa"],
+            p["runtime"] if p["runtime"] else 0, co))
+    print()
+
+
+def build_pair_entries(app_a: str, gpus_a: List[int], numa_a: int,
+                       app_b: str, gpus_b: List[int], numa_b: int) -> List[ScheduleEntry]:
+    """Build a 2-entry schedule for a co-run pair test."""
+    return [
+        ScheduleEntry(order=0, app=app_a, gpu_count=len(gpus_a),
+                      gpu_ids=gpus_a, numa_node=numa_a),
+        ScheduleEntry(order=1, app=app_b, gpu_count=len(gpus_b),
+                      gpu_ids=gpus_b, numa_node=numa_b),
+    ]
+
+
 def run_replay(entries: Sequence[ScheduleEntry], poll_interval: float = 1.0,
                results_dir=None, max_concurrent: int = 2):
     """Execute the schedule event-driven: launch next job when GPUs are free."""
@@ -287,6 +377,12 @@ def main():
                         help="Save parsed schedule to this JSON file")
     parser.add_argument("--dry-run", action="store_true",
                         help="Parse and print schedule without executing")
+    parser.add_argument("--analyze", action="store_true",
+                        help="Analyze co-run pairs from log and exit")
+    parser.add_argument("--pair", type=str, nargs=2, metavar=("APP_A", "APP_B"),
+                        help="Run a specific co-run pair test (uses GPU assignments from log)")
+    parser.add_argument("--solo", type=str, metavar="APP",
+                        help="Run a single app alone (uses GPU/NUMA assignment from log)")
     parser.add_argument("--repeats", type=int, default=1,
                         help="Number of repeat runs (default: 1)")
     parser.add_argument("--poll-interval", type=float, default=1.0,
@@ -298,6 +394,14 @@ def main():
                         help="Disable logging application stdout/stderr")
     args = parser.parse_args()
 
+    # --analyze: show co-run pairs and exit
+    if args.analyze:
+        if not args.log:
+            parser.error("--analyze requires --log")
+        pairs = analyze_corun_pairs(args.log)
+        print_corun_analysis(pairs)
+        return
+
     # Parse or load schedule
     if args.log:
         entries = parse_ecopack_log(args.log)
@@ -305,6 +409,33 @@ def main():
     else:
         entries = load_schedule_json(args.schedule)
         print(f"Loaded {len(entries)} jobs from {args.schedule}\n")
+
+    # --solo or --pair: build a subset schedule from the parsed entries
+    entry_map = {e.app: e for e in entries}
+
+    if args.solo:
+        if args.solo not in entry_map:
+            parser.error(f"App '{args.solo}' not found in schedule. "
+                         f"Available: {list(entry_map.keys())}")
+        e = entry_map[args.solo]
+        entries = [ScheduleEntry(order=0, app=e.app, gpu_count=e.gpu_count,
+                                 gpu_ids=e.gpu_ids, numa_node=e.numa_node)]
+        print(f"Solo run: {args.solo}\n")
+
+    elif args.pair:
+        app_a_name, app_b_name = args.pair
+        if app_a_name not in entry_map:
+            parser.error(f"App '{app_a_name}' not found in schedule. "
+                         f"Available: {list(entry_map.keys())}")
+        if app_b_name not in entry_map:
+            parser.error(f"App '{app_b_name}' not found in schedule. "
+                         f"Available: {list(entry_map.keys())}")
+        ea, eb = entry_map[app_a_name], entry_map[app_b_name]
+        entries = build_pair_entries(
+            ea.app, ea.gpu_ids, ea.numa_node,
+            eb.app, eb.gpu_ids, eb.numa_node,
+        )
+        print(f"Co-run pair test: {app_a_name} vs {app_b_name}\n")
 
     # Optionally save
     if args.save_schedule:
@@ -320,9 +451,16 @@ def main():
     results_dir.mkdir(parents=True, exist_ok=True)
     app_log_dir = None if (args.no_app_log or not APP_LOG_ENABLED) else results_dir
 
+    if args.solo:
+        pair_tag = f"solo_{args.solo}"
+    elif args.pair:
+        pair_tag = f"pair_{args.pair[0]}_vs_{args.pair[1]}"
+    else:
+        pair_tag = "replay"
+
     for run_idx in range(args.repeats):
         run_label = f"run{run_idx + 1}" if args.repeats > 1 else "run"
-        log_path = results_dir / f"replay_{run_label}.txt"
+        log_path = results_dir / f"{pair_tag}_{run_label}.txt"
 
         original_stdout = sys.stdout
         original_stderr = sys.stderr
@@ -333,7 +471,7 @@ def main():
             try:
                 if args.repeats > 1:
                     print(f"\n{'#' * 80}")
-                    print(f"# Replay run {run_idx + 1} / {args.repeats}")
+                    print(f"# {pair_tag} {run_idx + 1} / {args.repeats}")
                     print(f"{'#' * 80}\n")
                 print(f"Results log: {log_path}")
                 run_replay(entries, args.poll_interval, results_dir=app_log_dir)
@@ -344,7 +482,7 @@ def main():
         print(f"\nRun {run_idx + 1} saved to {log_path}")
 
     if args.repeats > 1:
-        print(f"\nAll {args.repeats} runs complete. Logs in {results_dir}/replay_run*.txt")
+        print(f"\nAll {args.repeats} runs complete. Logs in {results_dir}/{pair_tag}_run*.txt")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,7 @@
+Results log: results/H100/mix/pair_simpleP2P_vs_pot3d_run.txt
+Replay execution: 2 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START simpleP2P                      | 2 GPUs [2, 3] | NUMA 1
+  t=    0.00s | START pot3d                          | 2 GPUs [0, 1] | NUMA 0
+  t=   30.03s | END   simpleP2P                      | freed 2 GPUs [2, 3] | NUMA 1 | runtime=30.03s | FAILED(rc=1)

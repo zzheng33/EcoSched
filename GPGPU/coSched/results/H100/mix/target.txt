@@ -1,6 +1,15 @@
 MonteCarloMultiGPU  16.02, 15.12
 conjugate           15.02, 13.55
 simpleP2P           30.03, 27.09
-tealeaf             18.02, 16.24
-vgg16               15.02, 13.36
+tealeaf             17.02, 16.24
+vgg16               19.02, 13.36
 vgg19               14.02, 12.94
+
+
+Slow App	GPUs	Co-running with	GPUs	Time overlap
+simpleP2P	[2,3] NUMA1	pot3d	[0,1] NUMA0	t=0–30s
+MonteCarloMultiGPU	[2] NUMA1	pot3d	[0,1] NUMA0	t=53–69s
+vgg16	[2] NUMA1	gpt2	[0,1,3] NUMA0	t=128–141s
+vgg19	[2] NUMA1	cloverleaf	[0,1,3] NUMA0	t=145–159s
+tealeaf	[0,1,2,3]	ran alone	—	t=181–199s
+conjugate	[0,1,2,3]	ran alone	—	t=377–392s
