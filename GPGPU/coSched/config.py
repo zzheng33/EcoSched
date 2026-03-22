@@ -3,13 +3,13 @@
 Two axes of configuration:
   SYSTEM  – GPU type (V100, A100, H100).  Controls idle power, benchmark
             paths, CUDA arch, ML batch sizes, and workload presets.
-  SERVER  – Physical machine (vh, a100).  Controls environment setup
+  SERVER  – Physical machine (jlse, cc).  Controls environment setup
             (module loading), Python interpreter paths, and any other
             machine-specific knobs.
 
 Set both via environment variables before running any script:
-    export SYSTEM=H100  SERVER=vh   # V100/H100 server
-    export SYSTEM=A100  SERVER=a100 # A100 server
+    export SYSTEM=H100  SERVER=jlse  # V100/H100 server (JLSE)
+    export SYSTEM=A100  SERVER=cc    # A100 server (CC)
 """
 
 import os
@@ -51,11 +51,11 @@ NUMA1_GPUS = [2, 3]
 # ---------------------------------------------------------------------------
 # Axis 2: SERVER – physical machine
 # ---------------------------------------------------------------------------
-SERVER = os.environ.get("SERVER", "vh")
+SERVER = os.environ.get("SERVER", "jlse")
 
 # Environment setup for SPEC/CUDA benchmarks (MPI + CUDA modules)
-# The V100/H100 server ("vh") needs module loading; the A100 server does not.
-_SPEC_ENV_SETUP_VH = (
+# The JLSE server needs module loading; the CC server does not.
+_SPEC_ENV_SETUP_JLSE = (
     "source /etc/profile >/dev/null 2>&1 || true; "
     "source /etc/profile.d/modules.sh >/dev/null 2>&1 || true; "
     "module use /soft/modulefiles; "
@@ -68,9 +68,9 @@ _SPEC_ENV_SETUP_VH = (
     "export PCM_NO_MSR=1; "
     "export PCM_KEEP_NMI_WATCHDOG=1; "
 )
-_SPEC_ENV_SETUP_A100 = ""
+_SPEC_ENV_SETUP_CC = ""
 
-SPEC_ENV_SETUP = _SPEC_ENV_SETUP_VH if SERVER == "vh" else _SPEC_ENV_SETUP_A100
+SPEC_ENV_SETUP = _SPEC_ENV_SETUP_JLSE if SERVER == "jlse" else _SPEC_ENV_SETUP_CC
 
 # ---------------------------------------------------------------------------
 # App categories — controls which command builder is used
@@ -92,8 +92,8 @@ TORCHRUN_APPS = {'bert', 'gpt2'}
 ML_DL_APPS = {'resnet50', 'resnet101', 'resnet152', 'vgg16', 'vgg19'}
 
 # Python interpreter for ML training
-# vh server uses a dedicated venv; A100 server uses system python3
-ML_PYTHON = HOME / "env/ml/bin/python3" if SERVER == "vh" else Path("python3")
+# JLSE server uses a dedicated venv; CC server uses system python3
+ML_PYTHON = HOME / "env/ml/bin/python3" if SERVER == "jlse" else Path("python3")
 ML_SCRIPT = HOME / "power/ML/dl.py"
 ML_WORKDIR = HOME / "power/ML"
 ML_MIN_PER_GPU_CAP = 200
@@ -107,7 +107,7 @@ ML_EPOCHS = 3
 ML_LR = 0.001
 
 # ML venv activation path (used by torchrun command builder)
-ML_VENV_ACTIVATE = HOME / "env/ml/bin/activate" if SERVER == "vh" else None
+ML_VENV_ACTIVATE = HOME / "env/ml/bin/activate" if SERVER == "jlse" else None
 
 
 # 'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU' 'hpgmg' 'simpleMultiGPU'

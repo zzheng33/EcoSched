@@ -2,24 +2,24 @@
 set -euo pipefail
 
 # Usage:
-#   bash run_sensitivity.sh <V100|A100|H100> <vh|a100> [all|low|med|high]
+#   bash run_sensitivity.sh <V100|A100|H100> <jlse|cc> [all|low|med|high]
 #
 # SYSTEM  – GPU type (V100, A100, H100)
-# SERVER  – Physical machine (vh = V100/H100 server, a100 = A100 server)
+# SERVER  – Physical machine (jlse = V100/H100 server, cc = A100 server)
 #
 # Examples:
-#   bash run_sensitivity.sh H100 vh all
-#   bash run_sensitivity.sh A100 a100 low
+#   bash run_sensitivity.sh H100 jlse all
+#   bash run_sensitivity.sh A100 cc low
 
-SYSTEM_ARG="${1:?Usage: run_sensitivity.sh <V100|A100|H100> <vh|a100> [all|low|med|high]}"
-SERVER_ARG="${2:?Usage: run_sensitivity.sh <V100|A100|H100> <vh|a100> [all|low|med|high]}"
+SYSTEM_ARG="${1:?Usage: run_sensitivity.sh <V100|A100|H100> <jlse|cc> [all|low|med|high]}"
+SERVER_ARG="${2:?Usage: run_sensitivity.sh <V100|A100|H100> <jlse|cc> [all|low|med|high]}"
 PRESET_ARG="${3:-all}"
 
 export SYSTEM="$SYSTEM_ARG"
 export SERVER="$SERVER_ARG"
 
-# Python interpreter: vh server uses a scheduling venv, a100 uses system python3
-if [ "$SERVER_ARG" = "vh" ]; then
+# Python interpreter: jlse server uses a scheduling venv, cc uses system python3
+if [ "$SERVER_ARG" = "jlse" ]; then
     PYTHON="$HOME/venv_sched/bin/python"
 else
     PYTHON="python3"
