@@ -4,56 +4,56 @@ Metrics source: /home/ac.zzheng/power/GPGPU/data/H100/perf_metrics.txt
 Selected Marble GPU counts:
   hpgmg           -> 1 GPUs (runtime=8.64s)
   miniweather     -> 1 GPUs (runtime=57.01s)
-  gpt2            -> 2 GPUs (runtime=18.02s)
+  gpt2#1          -> 2 GPUs (runtime=18.02s)
   resnet50        -> 3 GPUs (runtime=21.37s)
   vgg16           -> 1 GPUs (runtime=13.45s)
   vgg19           -> 1 GPUs (runtime=14.32s)
   MonteCarloMultiGPU -> 1 GPUs (runtime=15.04s)
   simpleP2P       -> 2 GPUs (runtime=26.38s)
   streamOrderedAllocationP2P -> 2 GPUs (runtime=17.44s)
-  gpt2            -> 2 GPUs (runtime=18.02s)
+  gpt2#2          -> 2 GPUs (runtime=18.02s)
 
 Co-scheduling 10 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START hpgmg           | 1 GPUs [0] | NUMA 0
   t=    0.00s | START miniweather     | 1 GPUs [2] | NUMA 1
-  t=   10.01s | END   hpgmg           | freed 1 GPUs [0] | NUMA 0 | runtime=10.01s | OK
-  t=   10.01s | START gpt2            | 2 GPUs [0, 1] | NUMA 0
-  t=   28.03s | END   gpt2            | freed 2 GPUs [0, 1] | NUMA 0 | runtime=18.02s | OK
-  t=   28.03s | START resnet50        | 3 GPUs [0, 1, 3] | NUMA 0
-  t=   52.06s | END   resnet50        | freed 3 GPUs [0, 1, 3] | NUMA 0 | runtime=24.02s | OK
-  t=   52.06s | START vgg16           | 1 GPUs [0] | NUMA 0
-  t=   60.07s | END   miniweather     | freed 1 GPUs [2] | NUMA 1 | runtime=60.07s | OK
+  t=   11.02s | END   hpgmg           | freed 1 GPUs [0] | NUMA 0 | runtime=11.01s | OK
+  t=   11.02s | START gpt2#1          | 2 GPUs [0, 1] | NUMA 0
+  t=   31.04s | END   gpt2#1          | freed 2 GPUs [0, 1] | NUMA 0 | runtime=20.02s | OK
+  t=   31.04s | START resnet50        | 3 GPUs [0, 1, 3] | NUMA 0
+  t=   54.06s | END   resnet50        | freed 3 GPUs [0, 1, 3] | NUMA 0 | runtime=23.02s | OK
+  t=   54.06s | START vgg16           | 1 GPUs [0] | NUMA 0
+  t=   60.07s | END   miniweather     | freed 1 GPUs [2] | NUMA 1 | runtime=60.06s | OK
   t=   60.07s | START vgg19           | 1 GPUs [2] | NUMA 1
-  t=   65.08s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=13.02s | OK
-  t=   65.08s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=   67.08s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=13.01s | OK
+  t=   67.08s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
   t=   73.09s | END   vgg19           | freed 1 GPUs [2] | NUMA 1 | runtime=13.02s | OK
   t=   73.09s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1
-  t=   81.10s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=16.02s | OK
-  t=   81.10s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=   83.10s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=16.02s | OK
+  t=   83.10s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
   t=  101.12s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=28.03s | FAILED(rc=1)
-  t=  101.12s | START gpt2            | 2 GPUs [2, 3] | NUMA 1
-  t=  103.13s | END   streamOrderedAllocationP2P | freed 2 GPUs [0, 1] | NUMA 0 | runtime=22.03s | OK
-  t=  121.15s | END   gpt2            | freed 2 GPUs [2, 3] | NUMA 1 | runtime=20.02s | OK
+  t=  101.12s | START gpt2#2          | 2 GPUs [2, 3] | NUMA 1
+  t=  105.13s | END   streamOrderedAllocationP2P | freed 2 GPUs [0, 1] | NUMA 0 | runtime=22.03s | OK
+  t=  121.14s | END   gpt2#2          | freed 2 GPUs [2, 3] | NUMA 1 | runtime=20.02s | OK
 
 ================================================================================
 Co-schedule summary:
 App              #GPUs      GPU IDs  NUMA  Runtime (s)
 ------------------------------------------------------
-hpgmg                1          [0]     0        10.01
-gpt2                 2       [0, 1]     0        18.02
-resnet50             3    [0, 1, 3]     0        24.02
-miniweather          1          [2]     1        60.07
-vgg16                1          [0]     0        13.02
+hpgmg                1          [0]     0        11.01
+gpt2#1               2       [0, 1]     0        20.02
+resnet50             3    [0, 1, 3]     0        23.02
+miniweather          1          [2]     1        60.06
+vgg16                1          [0]     0        13.01
 vgg19                1          [2]     1        13.02
 MonteCarloMultiGPU      1          [0]     0        16.02
 simpleP2P            2       [2, 3]     1        28.03
 streamOrderedAllocationP2P      2       [0, 1]     0        22.03
-gpt2                 2       [2, 3]     1        20.02
+gpt2#2               2       [2, 3]     1        20.02
 ------------------------------------------------------
 
-Total makespan: 125.15s
+Total makespan: 121.14s
 
-Power monitoring: 238 samples over 121.0s
-Total GPU energy: 101938.67 J (101.94 kJ)
+Power monitoring: 237 samples over 121.1s
+Total GPU energy: 103997.05 J (104.00 kJ)

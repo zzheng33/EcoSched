@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Dict, Sequence, Tuple
 
 from config import (
+    APP_LOG_ENABLED,
     DEFAULT_JOB_QUEUE,
     NUMA0_GPUS,
     NUMA1_GPUS,
@@ -197,6 +198,11 @@ def main() -> None:
         default=RESULTS_DIR,
         help="Directory for fixed run logs. Default: {}".format(RESULTS_DIR),
     )
+    parser.add_argument(
+        "--no-app-log",
+        action="store_true",
+        help="Disable logging application stdout/stderr to log.txt",
+    )
     args = parser.parse_args()
     jobs = normalize_job_queue(args.jobs)
 
@@ -229,6 +235,7 @@ def main() -> None:
                     max_concurrent=args.max_concurrent,
                     dry_run=False,
                     policy="fcfs",
+                    results_dir=None if (args.no_app_log or not APP_LOG_ENABLED) else args.results_dir,
                 )
         finally:
             sys.stdout = original_stdout

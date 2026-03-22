@@ -110,6 +110,8 @@ ML_LR = 0.001
 # ML venv activation path (used by torchrun command builder)
 ML_VENV_ACTIVATE = HOME / "env/ml/bin/activate" if SERVER == "jlse" else None
 
+# Log application stdout/stderr to results_dir/log.txt
+APP_LOG_ENABLED = False
 
 # 'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU' 'hpgmg' 'simpleMultiGPU'
 DEFAULT_JOB_QUEUE = [

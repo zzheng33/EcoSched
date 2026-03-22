@@ -33,7 +33,7 @@ from run_cosched_sequential import (
     build_command,
 )
 
-from config import SYSTEM
+from config import APP_LOG_ENABLED, SYSTEM
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results" / SYSTEM
@@ -52,12 +52,12 @@ class PlannedJob(NamedTuple):
 
 class RunningJob(object):
     def __init__(self, plan: PlannedJob, gpu_ids: List[int], numa_node: int,
-                 process: subprocess.Popen, devnull, actual_start_time: float):
+                 process: subprocess.Popen, log_file, actual_start_time: float):
         self.plan = plan
         self.gpu_ids = gpu_ids
         self.numa_node = numa_node
         self.process = process
-        self.devnull = devnull
+        self.log_file = log_file
         self.actual_start_time = actual_start_time
 
 
@@ -159,7 +159,12 @@ def allocate_gpu_ids_for_placement(
     return gpu_ids, numa_node
 
 
-def _devnull():
+def _open_app_log(results_dir=None):
+    """Open a log file for application stdout/stderr."""
+    if results_dir is not None:
+        from pathlib import Path
+        Path(results_dir).mkdir(parents=True, exist_ok=True)
+        return open(Path(results_dir) / "log.txt", "a")
     return open(os.devnull, "w")
 
 
@@ -174,7 +179,7 @@ def dry_run(plans: Sequence[PlannedJob]):
         )
 
 
-def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
+def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float, results_dir=None):
     pending = list(plans)
     running = []
     completed = []
@@ -211,7 +216,7 @@ def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
 
                 plan, gpu_ids, numa_node = selected
                 cmd, env, cwd = build_command(base_app_name(plan.app), gpu_ids, numa_node)
-                devnull = _devnull()
+                app_log = _open_app_log(results_dir)
 
                 elapsed = time.time() - wall_start
                 delay = elapsed - plan.start_s
@@ -232,10 +237,10 @@ def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
                     cmd,
                     env=env,
                     cwd=str(cwd) if cwd else None,
-                    stdout=devnull,
+                    stdout=app_log,
                     stderr=subprocess.STDOUT,
                 )
-                running.append(RunningJob(plan, gpu_ids, numa_node, proc, devnull, time.time()))
+                running.append(RunningJob(plan, gpu_ids, numa_node, proc, app_log, time.time()))
                 gpus_in_use.update(gpu_ids)
                 pending.remove(plan)
                 launched = True
@@ -251,7 +256,7 @@ def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
                     runtime = time.time() - job.actual_start_time
                     gpus_in_use -= set(job.gpu_ids)
                     running.remove(job)
-                    job.devnull.close()
+                    job.log_file.close()
 
                     status = "OK" if rc == 0 else "FAILED(rc={})".format(rc)
                     print(
@@ -289,7 +294,7 @@ def run_planned_schedule(plans: Sequence[PlannedJob], poll_interval: float):
             except Exception:
                 pass
             try:
-                job.devnull.close()
+                job.log_file.close()
             except Exception:
                 pass
         monitor.stop()
@@ -347,6 +352,11 @@ def main():
         default=DEFAULT_RESULTS_DIR,
         help="Directory for timestamped run logs. Default: {}".format(DEFAULT_RESULTS_DIR),
     )
+    parser.add_argument(
+        "--no-app-log",
+        action="store_true",
+        help="Disable logging application stdout/stderr to log.txt",
+    )
     args = parser.parse_args()
 
     plans = parse_solver_schedule(args.schedule_file)
@@ -369,7 +379,8 @@ def main():
                 dry_run(plans)
                 return
 
-            run_planned_schedule(plans, args.poll_interval)
+            app_log_dir = None if (args.no_app_log or not APP_LOG_ENABLED) else results_dir
+            run_planned_schedule(plans, args.poll_interval, results_dir=app_log_dir)
         finally:
             sys.stdout = original_stdout
             sys.stderr = original_stderr

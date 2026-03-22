@@ -1,0 +1,76 @@
+Results log: /home/cc/power/GPGPU/coSched/results/A100/high/EcoPack_cmab_run.txt
+Online policy parameters:
+  policy            = cmab
+  score_metric      = energy
+  slowdown_tol      = 0.20
+  idle_power        = 53.00 W
+  mean_busy_power   = 202.33 W
+  idle_weight       = 0.2620
+  blocking_weight   = 0.0000
+  ucb_alpha         = 0.5000
+  cmab_theta_init   = (-1.0000, -0.2620)
+  anchor_app        = pot3d
+  candidate modes:
+    resnet152#1     -> 2GPU(rt=99.44, pred=dram_sum=0.8100, nrt=1.16, ne=1.01, nedp=1.00), 3GPU(rt=100.33, pred=dram_sum=0.9400, nrt=1.00, ne=1.18, nedp=1.01), 4GPU(rt=106.76, pred=dram_sum=0.8400, nrt=1.12, ne=1.45, nedp=1.38)
+    simpleP2P#1     -> 2GPU(rt=13.11, pred=dram_sum=0.2900, nrt=1.00, ne=1.00, nedp=1.00)
+    resnet101       -> 2GPU(rt=73.81, pred=dram_sum=0.8900, nrt=1.00, ne=1.03, nedp=1.00)
+    resnet152#2     -> 2GPU(rt=99.44, pred=dram_sum=0.8100, nrt=1.16, ne=1.01, nedp=1.00), 3GPU(rt=100.33, pred=dram_sum=0.9400, nrt=1.00, ne=1.18, nedp=1.01), 4GPU(rt=106.76, pred=dram_sum=0.8400, nrt=1.12, ne=1.45, nedp=1.38)
+    vgg16           -> 2GPU(rt=25.48, pred=dram_sum=0.3800, nrt=1.00, ne=1.00, nedp=1.00)
+    vgg19           -> 1GPU(rt=22.88, pred=dram_sum=0.2200, nrt=1.14, ne=1.00, nedp=1.04), 2GPU(rt=25.28, pred=dram_sum=0.2500, nrt=1.00, ne=1.09, nedp=1.00), 3GPU(rt=25.48, pred=dram_sum=0.2100, nrt=1.19, ne=1.74, nedp=1.90)
+    MonteCarloMultiGPU -> 1GPU(rt=26.09, pred=sm_sum/gpu_count=1354.6200, nrt=1.01, ne=1.00, nedp=1.00), 2GPU(rt=27.71, pred=sm_sum/gpu_count=1361.7850, nrt=1.00, ne=1.97, nedp=1.96), 3GPU(rt=28.03, pred=sm_sum/gpu_count=1349.6433, nrt=1.01, ne=2.98, nedp=2.99), 4GPU(rt=28.04, pred=sm_sum/gpu_count=1366.8750, nrt=1.00, ne=3.93, nedp=3.89)
+    conjugateGradientMultiDeviceCG -> 2GPU(rt=32.04, pred=dram_sum=0.9200, nrt=1.00, ne=1.15, nedp=1.00), 3GPU(rt=34.48, pred=dram_sum=0.8400, nrt=1.10, ne=1.42, nedp=1.35), 4GPU(rt=33.49, pred=dram_sum=0.8400, nrt=1.10, ne=1.80, nedp=1.71)
+    simpleP2P#2     -> 2GPU(rt=13.11, pred=dram_sum=0.2900, nrt=1.00, ne=1.00, nedp=1.00)
+    streamOrderedAllocationP2P -> 2GPU(rt=23.60, pred=dram_sum=0.0100, nrt=1.00, ne=1.00, nedp=1.00)
+
+Online co-scheduling: 10 apps on 4 GPUs (metric=energy, policy=cmab)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================================
+  t=    0.00s | START simpleP2P#1     | 2 GPUs [0, 1] | NUMA 0 | score=0.0000 | regret=0.0000 idle=0.00 block=0.00 | cmab_ucb=0.0000 mu=-0.0000 bonus=0.0000
+  t=    0.00s | START simpleP2P#2     | 2 GPUs [2, 3] | NUMA 1 | score=0.0000 | regret=0.0000 idle=0.00 block=0.00 | cmab_ucb=0.0000 mu=-0.0000 bonus=0.0000
+    CMAB update | action=simpleP2P#1:2GPU+simpleP2P#2:2GPU | x=(0.0000, 0.0000) | realized_metric=0.5889 | reward=-0.5889 | theta=(-1.0000, -0.2620)
+  t=   14.02s | END   simpleP2P#1     | freed 2 GPUs [0, 1] | NUMA 0 | runtime=14.02s
+  t=   14.02s | END   simpleP2P#2     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=14.01s
+  t=   14.03s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0 | score=0.0000 | regret=0.0000 idle=0.00 block=0.00 | cmab_ucb=0.0000 mu=-0.0000 bonus=0.0000
+  t=   14.03s | START vgg16           | 2 GPUs [2, 3] | NUMA 1 | score=0.0000 | regret=0.0000 idle=0.00 block=0.00 | cmab_ucb=0.0000 mu=-0.0000 bonus=0.0000
+    CMAB update | action=streamOrderedAllocationP2P:2GPU+vgg16:2GPU | x=(0.0000, 0.0000) | realized_metric=0.5472 | reward=-0.5472 | theta=(-1.0000, -0.2620)
+  t=   36.05s | END   streamOrderedAllocationP2P | freed 2 GPUs [0, 1] | NUMA 0 | runtime=22.02s
+  t=   36.05s | START resnet152#1     | 2 GPUs [0, 1] | NUMA 0 | score=0.0118 | regret=0.0118 idle=0.00 block=0.00 | cmab_ucb=-0.0099 mu=-0.0118 bonus=0.0019
+    CMAB update | action=resnet152#1:2GPU | x=(0.0118, 0.0000) | realized_metric=0.3324 | reward=-0.3324 | theta=(-1.0004, -0.2620)
+  t=   38.05s | END   vgg16           | freed 2 GPUs [2, 3] | NUMA 1 | runtime=24.03s
+  t=   38.06s | START resnet152#2     | 2 GPUs [2, 3] | NUMA 1 | score=0.0118 | regret=0.0118 idle=0.00 block=0.00 | cmab_ucb=-0.0099 mu=-0.0118 bonus=0.0019
+    CMAB update | action=resnet152#2:2GPU | x=(0.0118, 0.0000) | realized_metric=1.2385 | reward=-1.2385 | theta=(-1.0018, -0.2620)
+  t=  136.16s | END   resnet152#2     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=98.10s
+  t=  136.16s | START MonteCarloMultiGPU | 1 GPUs [2] | NUMA 1 | score=0.0655 | regret=0.0000 idle=0.25 block=0.67 | cmab_ucb=-0.0260 mu=-0.0655 bonus=0.0395
+    CMAB update | action=MonteCarloMultiGPU:1GPU | x=(0.0000, 0.2500) | realized_metric=0.4973 | reward=-0.5628 | theta=(-1.0018, -0.2743)
+  t=  137.16s | END   resnet152#1     | freed 2 GPUs [0, 1] | NUMA 0 | runtime=101.11s
+  t=  137.16s | START vgg19           | 1 GPUs [0] | NUMA 0 | score=0.1310 | regret=0.0000 idle=0.50 block=0.00 | cmab_ucb=-0.0583 mu=-0.1372 bonus=0.0788
+    CMAB update | action=vgg19:1GPU | x=(0.0000, 0.5000) | realized_metric=0.6414 | reward=-0.7724 | theta=(-1.0018, -0.3051)
+  t=  161.19s | END   vgg19           | freed 1 GPUs [0] | NUMA 0 | runtime=24.03s
+  t=  161.19s | START resnet101       | 2 GPUs [0, 1] | NUMA 0 | score=0.0974 | regret=0.0319 idle=0.25 block=1.00 | cmab_ucb=-0.0690 mu=-0.1083 bonus=0.0393
+    CMAB update | action=resnet101:2GPU | x=(0.0319, 0.2500) | realized_metric=0.4000 | reward=-0.4654 | theta=(-1.0030, -0.3137)
+  t=  163.19s | END   MonteCarloMultiGPU | freed 1 GPUs [2] | NUMA 1 | runtime=27.03s
+  t=  163.19s | START conjugateGradientMultiDeviceCG | 2 GPUs [2, 3] | NUMA 1 | score=0.1532 | regret=0.1532 idle=0.00 block=0.00 | cmab_ucb=-0.1294 mu=-0.1536 bonus=0.0242
+    CMAB update | action=conjugateGradientMultiDeviceCG:2GPU | x=(0.1532, 0.0000) | realized_metric=1.0446 | reward=-1.0446 | theta=(-1.0166, -0.3137)
+  t=  196.23s | END   conjugateGradientMultiDeviceCG | freed 2 GPUs [2, 3] | NUMA 1 | runtime=33.03s
+  t=  238.27s | END   resnet101       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=77.08s
+
+================================================================================================
+Online co-schedule summary:
+App              #GPUs      GPU IDs  NUMA  Runtime (s)
+------------------------------------------------------------
+simpleP2P#1          2       [0, 1]     0        14.02
+simpleP2P#2          2       [2, 3]     1        14.01
+streamOrderedAllocationP2P      2       [0, 1]     0        22.02
+vgg16                2       [2, 3]     1        24.03
+resnet152#2          2       [2, 3]     1        98.10
+resnet152#1          2       [0, 1]     0       101.11
+vgg19                1          [0]     0        24.03
+MonteCarloMultiGPU      1          [2]     1        27.03
+conjugateGradientMultiDeviceCG      2       [2, 3]     1        33.03
+resnet101            2       [0, 1]     0        77.08
+------------------------------------------------------------
+
+Total makespan: 238.27s
+
+Power monitoring: 659 samples over 238.0s
+Total GPU energy: 185593.98 J (185.59 kJ)

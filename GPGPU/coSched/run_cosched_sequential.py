@@ -56,6 +56,7 @@ from config import (
     ML_EPOCHS,
     ML_LR,
     ML_VENV_ACTIVATE,
+    APP_LOG_ENABLED,
 )
 
 
@@ -281,6 +282,7 @@ class RunningJob:
     numa_node: int
     process: subprocess.Popen
     start_time: float
+    log_file: Optional[object] = None
 
 
 def allocate_gpus_numa(needed: int, tenant_numa: int, gpus_in_use: set) -> Optional[List[int]]:
@@ -426,7 +428,15 @@ def build_command(app: str, gpu_ids: List[int], numa_node: int):
         raise ValueError(f"Unknown app '{app}': not in SPEC_APPS, CUDA_APPS, TORCHRUN_APPS, or ML_DL_APPS")
 
 
-def _devnull():
+def _open_app_log(results_dir: Optional[Path] = None):
+    """Open a log file for application stdout/stderr.
+
+    If *results_dir* is given, appends to ``results_dir/log.txt``.
+    Otherwise discards output (``os.devnull``).
+    """
+    if results_dir is not None:
+        results_dir.mkdir(parents=True, exist_ok=True)
+        return open(results_dir / "log.txt", "a")
     return open(os.devnull, "w")
 
 
@@ -437,6 +447,7 @@ def _devnull():
 def run_sequential(
     job_queue: List[str],
     gpu_counts: Dict[str, int],
+    results_dir: Optional[Path] = None,
 ):
     """Run each app one by one (baseline, no co-scheduling)."""
     monitor = PowerMonitor()
@@ -461,15 +472,15 @@ def run_sequential(
               f"{needed} GPUs {gpu_ids} | NUMA {numa}")
 
         app_start = time.time()
-        devnull = _devnull()
+        app_log = _open_app_log(results_dir)
         proc = subprocess.Popen(
             cmd, env=env,
             cwd=str(cwd) if cwd else None,
-            stdout=devnull, stderr=subprocess.STDOUT,
+            stdout=app_log, stderr=subprocess.STDOUT,
         )
         rc = proc.wait()
         runtime = time.time() - app_start
-        devnull.close()
+        app_log.close()
 
         elapsed = time.time() - wall_start
         status = "OK" if rc == 0 else f"FAILED(rc={rc})"
@@ -532,6 +543,7 @@ def run_cosched(
     max_concurrent: int,
     dry_run: bool,
     policy: str = "best-fit",
+    results_dir: Optional[Path] = None,
 ):
     """Run co-scheduling on 4 GPUs with NUMA-aware placement.
 
@@ -642,7 +654,7 @@ def run_cosched(
 
             # Launch the app
             cmd, env, cwd = build_command(base_app_name(app), gpu_ids, numa)
-            devnull = _devnull()
+            app_log = _open_app_log(results_dir)
 
             elapsed = time.time() - wall_start
             print(f"  t={elapsed:8.2f}s | START {app:<15} | "
@@ -652,7 +664,7 @@ def run_cosched(
                 cmd,
                 env=env,
                 cwd=str(cwd) if cwd else None,
-                stdout=devnull,
+                stdout=app_log,
                 stderr=subprocess.STDOUT,
             )
 
@@ -662,6 +674,7 @@ def run_cosched(
                 numa_node=numa,
                 process=proc,
                 start_time=time.time(),
+                log_file=app_log,
             )
             running.append(job)
             gpus_in_use.update(gpu_ids)
@@ -679,6 +692,8 @@ def run_cosched(
                 elapsed = time.time() - wall_start
                 runtime = time.time() - job.start_time
                 gpus_in_use -= set(job.gpu_ids)
+                if job.log_file is not None:
+                    job.log_file.close()
                 running.remove(job)
 
                 status = "OK" if rc == 0 else f"FAILED(rc={rc})"
@@ -757,6 +772,9 @@ def main():
     parser.add_argument(
         "--results-dir", type=Path, default=RESULTS_DIR,
         help="Directory for fixed run logs. Default: {}".format(RESULTS_DIR))
+    parser.add_argument(
+        "--no-app-log", action="store_true",
+        help="Disable logging application stdout/stderr to log.txt")
 
     parser.add_argument(
         "--perf-metrics-file", type=Path, default=PERF_METRICS_FILE,
@@ -780,6 +798,7 @@ def main():
         sys.stderr = tee
         try:
             print(f"Results log: {log_path}")
+            app_log_dir = None if (args.no_app_log or not APP_LOG_ENABLED) else args.results_dir
 
             available_gpu_counts = parse_available_gpu_counts(args.perf_metrics_file, jobs)
             if args.sequential_gpu_strategy == "best":
@@ -868,6 +887,7 @@ def main():
                 run_sequential(
                     job_queue=jobs,
                     gpu_counts=sequential_gpu_counts,
+                    results_dir=app_log_dir,
                 )
                 print("\n\n")
                 policy = args.policy if args.policy != "sequential" else "best-fit"
@@ -880,11 +900,13 @@ def main():
                     max_concurrent=args.max_concurrent,
                     dry_run=False,
                     policy=policy,
+                    results_dir=app_log_dir,
                 )
             elif args.policy == "sequential":
                 run_sequential(
                     job_queue=jobs,
                     gpu_counts=sequential_gpu_counts,
+                    results_dir=app_log_dir,
                 )
             else:
                 run_cosched(
@@ -893,6 +915,7 @@ def main():
                     max_concurrent=args.max_concurrent,
                     dry_run=args.dry_run,
                     policy=args.policy,
+                    results_dir=app_log_dir,
                 )
         finally:
             sys.stdout = original_stdout

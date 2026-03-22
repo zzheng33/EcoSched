@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Dict, List, NamedTuple, Optional, Sequence, Tuple
 
 from config import (
+    APP_LOG_ENABLED,
     DEFAULT_JOB_QUEUE,
     IDLE_POWER_PER_GPU,
     NUMA0_GPUS,
@@ -103,14 +104,14 @@ class LaunchSpec(NamedTuple):
 
 
 class RunningJob(object):
-    def __init__(self, app, mode, gpu_ids, numa_node, process, start_time, devnull):
+    def __init__(self, app, mode, gpu_ids, numa_node, process, start_time, log_file):
         self.app = app
         self.mode = mode
         self.gpu_ids = gpu_ids
         self.numa_node = numa_node
         self.process = process
         self.start_time = start_time
-        self.devnull = devnull
+        self.log_file = log_file
 
 
 class SimJob(NamedTuple):
@@ -634,7 +635,12 @@ def _cmab_update_message(
     )
 
 
-def _devnull():
+def _open_app_log(results_dir=None):
+    """Open a log file for application stdout/stderr."""
+    if results_dir is not None:
+        from pathlib import Path
+        Path(results_dir).mkdir(parents=True, exist_ok=True)
+        return open(Path(results_dir) / "log.txt", "a")
     return open(os.devnull, "w")
 
 
@@ -762,6 +768,7 @@ def run_online(
     cmab_policy: Optional[LinUCBPolicy],
     idle_power: float,
     mean_busy_power_w: float,
+    results_dir=None,
 ):
     pending = list(job_queue)
     running = []
@@ -803,7 +810,7 @@ def run_online(
                     break
                 for spec in launches:
                     cmd, env, cwd = build_command(base_app_name(spec.mode.app), spec.gpu_ids, spec.numa_node)
-                    devnull = _devnull()
+                    app_log = _open_app_log(results_dir)
                     elapsed = time.time() - wall_start
                     message = (
                         "  t={:8.2f}s | START {:<15} | {} GPUs {} | NUMA {} | score={:.4f} | "
@@ -830,7 +837,7 @@ def run_online(
                         cmd,
                         env=env,
                         cwd=str(cwd) if cwd else None,
-                        stdout=devnull,
+                        stdout=app_log,
                         stderr=subprocess.STDOUT,
                     )
                     running.append(
@@ -841,7 +848,7 @@ def run_online(
                             numa_node=spec.numa_node,
                             process=proc,
                             start_time=time.time(),
-                            devnull=devnull,
+                            log_file=app_log,
                         )
                     )
                     gpus_in_use.update(spec.gpu_ids)
@@ -890,7 +897,7 @@ def run_online(
                 runtime = time.time() - job.start_time
                 gpus_in_use -= set(job.gpu_ids)
                 running.remove(job)
-                job.devnull.close()
+                job.log_file.close()
                 print(
                     "  t={:8.2f}s | END   {:<15} | freed {} GPUs {} | NUMA {} | runtime={:.2f}s".format(
                         elapsed,
@@ -916,7 +923,7 @@ def run_online(
             except Exception:
                 pass
             try:
-                job.devnull.close()
+                job.log_file.close()
             except Exception:
                 pass
         monitor.stop()
@@ -1021,6 +1028,11 @@ def main():
         default=DEFAULT_RESULTS_DIR,
         help="Directory for timestamped run logs. Default: {}".format(DEFAULT_RESULTS_DIR),
     )
+    parser.add_argument(
+        "--no-app-log",
+        action="store_true",
+        help="Disable logging application stdout/stderr to log.txt",
+    )
     args = parser.parse_args()
     jobs = normalize_job_queue(args.jobs)
 
@@ -1103,6 +1115,7 @@ def main():
                     cmab_policy,
                     args.idle_power,
                     busy_power,
+                    results_dir=None if (args.no_app_log or not APP_LOG_ENABLED) else args.results_dir,
                 )
         finally:
             sys.stdout = original_stdout

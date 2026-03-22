@@ -1,0 +1,59 @@
+Results log: /home/cc/power/GPGPU/coSched/results/A100/high/run_cosched_marble.txt
+Marble policy: pick the smallest GPU count within 5.00% of the minimum profiled runtime, then FCFS co-schedule.
+Metrics source: /home/cc/power/GPGPU/data/A100/perf_metrics.txt
+Selected Marble GPU counts:
+  resnet152#1     -> 2 GPUs (runtime=99.44s)
+  simpleP2P#1     -> 2 GPUs (runtime=13.11s)
+  resnet101       -> 2 GPUs (runtime=73.81s)
+  resnet152#2     -> 2 GPUs (runtime=99.44s)
+  vgg16           -> 1 GPUs (runtime=22.90s)
+  vgg19           -> 1 GPUs (runtime=22.88s)
+  MonteCarloMultiGPU -> 1 GPUs (runtime=26.09s)
+  conjugateGradientMultiDeviceCG -> 2 GPUs (runtime=32.04s)
+  simpleP2P#2     -> 2 GPUs (runtime=13.11s)
+  streamOrderedAllocationP2P -> 2 GPUs (runtime=23.60s)
+
+Co-scheduling 10 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START resnet152#1     | 2 GPUs [0, 1] | NUMA 0
+  t=    0.00s | START simpleP2P#1     | 2 GPUs [2, 3] | NUMA 1
+  t=   14.02s | END   simpleP2P#1     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=14.01s | FAILED(rc=1)
+  t=   14.02s | START resnet101       | 2 GPUs [2, 3] | NUMA 1
+  t=   89.10s | END   resnet101       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=75.08s | OK
+  t=   89.10s | START resnet152#2     | 2 GPUs [2, 3] | NUMA 1
+  t=   99.11s | END   resnet152#1     | freed 2 GPUs [0, 1] | NUMA 0 | runtime=99.11s | OK
+  t=   99.11s | START vgg16           | 1 GPUs [0] | NUMA 0
+  t=  122.14s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=23.02s | OK
+  t=  122.14s | START vgg19           | 1 GPUs [0] | NUMA 0
+  t=  145.16s | END   vgg19           | freed 1 GPUs [0] | NUMA 0 | runtime=23.02s | OK
+  t=  145.16s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=  172.19s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=27.03s | OK
+  t=  172.19s | START conjugateGradientMultiDeviceCG | 2 GPUs [0, 1] | NUMA 0
+  t=  189.21s | END   resnet152#2     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=100.11s | OK
+  t=  189.21s | START simpleP2P#2     | 2 GPUs [2, 3] | NUMA 1
+  t=  203.23s | END   simpleP2P#2     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=14.01s | FAILED(rc=1)
+  t=  203.23s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1
+  t=  205.23s | END   conjugateGradientMultiDeviceCG | freed 2 GPUs [0, 1] | NUMA 0 | runtime=33.04s | OK
+  t=  226.25s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=23.02s | OK
+
+================================================================================
+Co-schedule summary:
+App              #GPUs      GPU IDs  NUMA  Runtime (s)
+------------------------------------------------------
+simpleP2P#1          2       [2, 3]     1        14.01
+resnet101            2       [2, 3]     1        75.08
+resnet152#1          2       [0, 1]     0        99.11
+vgg16                1          [0]     0        23.02
+vgg19                1          [0]     0        23.02
+MonteCarloMultiGPU      1          [0]     0        27.03
+resnet152#2          2       [2, 3]     1       100.11
+simpleP2P#2          2       [2, 3]     1        14.01
+conjugateGradientMultiDeviceCG      2       [0, 1]     0        33.04
+streamOrderedAllocationP2P      2       [2, 3]     1        23.02
+------------------------------------------------------
+
+Total makespan: 226.25s
+
+Power monitoring: 625 samples over 226.1s
+Total GPU energy: 179148.94 J (179.15 kJ)
