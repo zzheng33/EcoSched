@@ -1,0 +1,9 @@
+# Co-scheduling solver
+ortools
+
+# ML training (dl.py, BERT, GPT2)
+torch
+torchvision
+numpy
+datasets
+transformers
