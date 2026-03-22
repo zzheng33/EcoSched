@@ -53,7 +53,7 @@ streamOrderedAllocationP2P      2       [0, 1]     0        22.03
 gpt2                 2       [2, 3]     1        20.02
 ------------------------------------------------------
 
-Total makespan: 121.15s
+Total makespan: 125.15s
 
 Power monitoring: 238 samples over 121.0s
 Total GPU energy: 101938.67 J (101.94 kJ)

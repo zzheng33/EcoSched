@@ -55,4 +55,4 @@ vgg19                1          [2]     1        90.33        14.02
 Total makespan: 122.31s
 
 Power monitoring: 239 samples over 122.1s
-Total GPU energy: 101940.46 J (101.94 kJ)
+Total GPU energy: 95940.46 J (95.94 kJ)
