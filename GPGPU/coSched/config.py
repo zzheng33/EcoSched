@@ -102,6 +102,7 @@ ML_BATCH_SIZE = 2048
 ML_BATCH_SIZE_OVERRIDE = {
     'V100': {'resnet50': 512, 'resnet101': 512, 'resnet152': 512, 'vgg19': 512, 'vgg16': 512},
     'H100': {'resnet50': 2048, 'resnet101': 2048, 'resnet152': 1024, 'vgg19': 2048, 'vgg16': 2048},
+    'A100': {'resnet50': 2048, 'resnet101': 512, 'resnet152': 512, 'vgg19': 2048, 'vgg16': 2048},
 }
 ML_EPOCHS = 3
 ML_LR = 0.001
