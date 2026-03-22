@@ -1,29 +1,15 @@
-"""Shared configuration for co-scheduling scripts.
-
-Two axes of configuration:
-  SYSTEM  – GPU type (V100, A100, H100).  Controls idle power, benchmark
-            paths, CUDA arch, ML batch sizes, and workload presets.
-  SERVER  – Physical machine (vh, a100).  Controls environment setup
-            (module loading), Python interpreter paths, and any other
-            machine-specific knobs.
-
-Set both via environment variables before running any script:
-    export SYSTEM=H100  SERVER=vh   # V100/H100 server
-    export SYSTEM=A100  SERVER=a100 # A100 server
-"""
+"""Shared configuration for co-scheduling scripts."""
 
 import os
 from pathlib import Path
 
 HOME = Path.home()
 
-# ---------------------------------------------------------------------------
-# Axis 1: SYSTEM – GPU architecture
-# ---------------------------------------------------------------------------
 SYSTEM = os.environ.get("SYSTEM", "H100")
 
 IDLE_POWER_PER_GPU = {"V100": 43.0, "A100": 53.0, "H100": 70.0}
 
+# System-specific benchmark roots
 SPEC_BENCHMARK_ROOT = {
     "V100": HOME / "benchmark/spec-V100",
     "A100": HOME / "benchmark/spec-A100",
@@ -48,14 +34,8 @@ TOTAL_GPUS = 4
 NUMA0_GPUS = [0, 1]
 NUMA1_GPUS = [2, 3]
 
-# ---------------------------------------------------------------------------
-# Axis 2: SERVER – physical machine
-# ---------------------------------------------------------------------------
-SERVER = os.environ.get("SERVER", "vh")
-
 # Environment setup for SPEC/CUDA benchmarks (MPI + CUDA modules)
-# The V100/H100 server ("vh") needs module loading; the A100 server does not.
-_SPEC_ENV_SETUP_VH = (
+SPEC_ENV_SETUP = (
     "source /etc/profile >/dev/null 2>&1 || true; "
     "source /etc/profile.d/modules.sh >/dev/null 2>&1 || true; "
     "module use /soft/modulefiles; "
@@ -68,9 +48,6 @@ _SPEC_ENV_SETUP_VH = (
     "export PCM_NO_MSR=1; "
     "export PCM_KEEP_NMI_WATCHDOG=1; "
 )
-_SPEC_ENV_SETUP_A100 = ""
-
-SPEC_ENV_SETUP = _SPEC_ENV_SETUP_VH if SERVER == "vh" else _SPEC_ENV_SETUP_A100
 
 # ---------------------------------------------------------------------------
 # App categories — controls which command builder is used
@@ -91,33 +68,33 @@ TORCHRUN_APPS = {'bert', 'gpt2'}
 
 ML_DL_APPS = {'resnet50', 'resnet101', 'resnet152', 'vgg16', 'vgg19'}
 
-# Python interpreter for ML training
-# vh server uses a dedicated venv; A100 server uses system python3
-ML_PYTHON = HOME / "env/ml/bin/python3" if SERVER == "vh" else Path("python3")
+ML_PYTHON = HOME / "env/ml/bin/python3"
 ML_SCRIPT = HOME / "power/ML/dl.py"
 ML_WORKDIR = HOME / "power/ML"
 ML_MIN_PER_GPU_CAP = 200
 ML_MAX_PER_GPU_CAP = 700
 ML_BATCH_SIZE = 2048
 ML_BATCH_SIZE_OVERRIDE = {
-    'V100': {'resnet50': 512, 'resnet101': 512, 'resnet152': 512, 'vgg19': 512, 'vgg16': 512},
+    'V100': {'resnet50': 512, 'resnet101': 512, 'resnet152': 512, 'vgg19': 512,'vgg16': 512},
     'H100': {'resnet50': 2048, 'resnet101': 2048, 'resnet152': 1024, 'vgg19': 2048, 'vgg16': 2048},
 }
 ML_EPOCHS = 3
 ML_LR = 0.001
 
-# ML venv activation path (used by torchrun command builder)
-ML_VENV_ACTIVATE = HOME / "env/ml/bin/activate" if SERVER == "vh" else None
 
 
 # 'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU' 'hpgmg' 'simpleMultiGPU'
 DEFAULT_JOB_QUEUE = [
     'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
     'miniweather', 'bert', 'gpt2', 'resnet50',
-    'conjugateGradientMultiDeviceCG', 'pot3d', 'MonteCarloMultiGPU',
+    'conjugateGradientMultiDeviceCG', 'pot3d','MonteCarloMultiGPU',
     'simpleP2P', 'streamOrderedAllocationP2P',
     "resnet101", "resnet152", "vgg19", "vgg16",
 ]
+
+# DEFAULT_JOB_QUEUE = [
+#     'gpt2'
+# ]
 
 # ---------------------------------------------------------------------------
 # Workload presets for controlled mixed-workload studies.
@@ -174,7 +151,7 @@ WORKLOAD_PRESETS = {
             "resnet50",                      # best_gpu=4
             "streamOrderedAllocationP2P",    # best_gpu=2
             "conjugateGradientMultiDeviceCG",# best_gpu=2
-
+            
         ],
         "med_opp": [
             "cloverleaf",                    # best_gpu=4
@@ -230,7 +207,7 @@ WORKLOAD_PRESETS = {
             "hpgmg",                         # best_gpu=1
             "miniweather",                   # best_gpu=1
             "gpt2",                          # best_gpu=3
-            "resnet50",                      # best_gpu=4
+            "resnet50",                      # best_gpu=4 
             "vgg16",                         # best_gpu=1
             "vgg19",                         # best_gpu=1
             "MonteCarloMultiGPU",            # best_gpu=1

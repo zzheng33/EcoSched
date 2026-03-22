@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Co-schedule benchmarks on 4 GPUs with NUMA-aware GPU mapping.
+Co-schedule benchmarks on 4 H100 GPUs with NUMA-aware GPU mapping.
 
 Policies:
   - fcfs:       First-Come-First-Served (queue order)
@@ -55,7 +55,6 @@ from config import (
     ML_BATCH_SIZE_OVERRIDE,
     ML_EPOCHS,
     ML_LR,
-    ML_VENV_ACTIVATE,
 )
 
 
@@ -352,16 +351,14 @@ def build_torchrun_command(app: str, gpu_ids: List[int], numa_node: int):
     gpu_csv = ",".join(str(g) for g in gpu_ids)
 
     # Wrap the torchrun call with numactl via a shell command
-    activate = f"source {ML_VENV_ACTIVATE}; " if ML_VENV_ACTIVATE else ""
-    deactivate = "deactivate" if ML_VENV_ACTIVATE else ""
     shell_cmd = (
         f"export CUDA_VISIBLE_DEVICES={gpu_csv}; "
         f"export TOKENIZERS_PARALLELISM=false; "
-        f"{activate}"
+        f"source {HOME}/env/ml/bin/activate; "
         f"cd {HOME}/benchmark/ECP/{app if app != 'bert' else 'bert-large'}; "
         f"numactl --cpunodebind={numa_node} --membind={numa_node} "
         f"torchrun --nproc_per_node={gpu_count} training.py; "
-        f"{deactivate}"
+        f"deactivate"
     )
     cmd = ["bash", "-lc", shell_cmd]
     env = os.environ.copy()
@@ -733,7 +730,7 @@ def _results_log_path(args: argparse.Namespace) -> Path:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Run co-scheduled benchmarks on 4 GPUs (NUMA-aware)")
+        description="Run co-scheduled benchmarks on 4 H100 GPUs (NUMA-aware)")
 
     parser.add_argument(
         "--jobs", nargs="+", default=DEFAULT_JOB_QUEUE,

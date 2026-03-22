@@ -2,29 +2,18 @@
 set -euo pipefail
 
 # Usage:
-#   bash run_sensitivity.sh <V100|A100|H100> <vh|a100> [all|low|med|high]
-#
-# SYSTEM  – GPU type (V100, A100, H100)
-# SERVER  – Physical machine (vh = V100/H100 server, a100 = A100 server)
+#   bash run_presets.sh <V100|A100|H100> [all|low|med|high]
 #
 # Examples:
-#   bash run_sensitivity.sh H100 vh all
-#   bash run_sensitivity.sh A100 a100 low
+#   bash run_presets.sh H100 all
+#   bash run_presets.sh V100 low
 
-SYSTEM_ARG="${1:?Usage: run_sensitivity.sh <V100|A100|H100> <vh|a100> [all|low|med|high]}"
-SERVER_ARG="${2:?Usage: run_sensitivity.sh <V100|A100|H100> <vh|a100> [all|low|med|high]}"
-PRESET_ARG="${3:-all}"
+SYSTEM_ARG="${1:?Usage: run_presets.sh <V100|A100|H100> [all|low|med|high]}"
+PRESET_ARG="${2:-all}"
 
 export SYSTEM="$SYSTEM_ARG"
-export SERVER="$SERVER_ARG"
 
-# Python interpreter: vh server uses a scheduling venv, a100 uses system python3
-if [ "$SERVER_ARG" = "vh" ]; then
-    PYTHON="$HOME/venv_sched/bin/python"
-else
-    PYTHON="python3"
-fi
-
+PYTHON="$HOME/venv_sched/bin/python"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 cd "$SCRIPT_DIR"
 
@@ -66,14 +55,6 @@ print(" ".join(jobs))
 PY
 }
 
-get_idle_power_for_system() {
-    local system_name="$1"
-    "$PYTHON" - <<PY
-from config import IDLE_POWER_PER_GPU
-print(IDLE_POWER_PER_GPU["${system_name}"])
-PY
-}
-
 run_one_preset() {
     local system_name="$1"
     local preset_key="$2"
@@ -82,27 +63,22 @@ run_one_preset() {
     local results_dir="$HOME/power/GPGPU/coSched/results/${system_name}/${preset_dir_name}"
     local solver_schedule_file="${results_dir}/solver_schedule.txt"
     local jobs
-    local idle_power
 
     jobs="$(get_jobs_for_preset "$system_name" "$preset_key")"
-    idle_power="$(get_idle_power_for_system "$system_name")"
     mkdir -p "$results_dir"
 
     echo
     echo "================================================================================"
     echo "SYSTEM      : $system_name"
-    echo "SERVER      : $SERVER_ARG"
     echo "PRESET      : $preset_key"
     echo "RESULTS DIR : $results_dir"
-    echo "IDLE POWER  : ${idle_power} W/GPU"
     echo "JOBS        : $jobs"
     echo "================================================================================"
 
-    "$PYTHON" ecoPack.py \
-        --policy cmab \
-        --idle-power "$idle_power" \
-        --results-dir "$results_dir" \
-        --jobs $jobs
+    # "$PYTHON" ecoPack.py \
+    #     --policy cmab \
+    #     --results-dir "$results_dir" \
+    #     --jobs $jobs
 
     "$PYTHON" run_cosched_sequential.py \
         --policy sequential \
@@ -116,19 +92,20 @@ run_one_preset() {
         --results-dir "$results_dir" \
         --jobs $jobs
 
-    "$PYTHON" solve_energy_optimal_cpsat.py \
-        --idle-power "$idle_power" \
-        --time-limit 20 \
-        --output-file "$solver_schedule_file" \
-        --jobs $jobs
+    # "$PYTHON" solve_energy_optimal_cpsat.py \
+    #     --time-limit 10 \
+    #     --output-file "$solver_schedule_file" \
+    #     --jobs $jobs
 
-    "$PYTHON" run_solver_schedule.py \
-        --schedule-file "$solver_schedule_file" \
-        --results-dir "$results_dir"
+    # "$PYTHON" run_solver_schedule.py \
+    #     --schedule-file "$solver_schedule_file" \
+    #     --results-dir "$results_dir"
 
     "$PYTHON" run_cosched_marble.py \
         --results-dir "$results_dir" \
         --jobs $jobs
+
+    
 }
 
 for idx in "${!PRESET_KEYS[@]}"; do
