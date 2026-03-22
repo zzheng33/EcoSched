@@ -8,8 +8,8 @@ Active energy: 220390.44 J (220.39 kJ)
 Idle energy: 4133.59 J (4.13 kJ)
 Total energy: 224524.03 J (224.52 kJ)
 Objective value: 224524.03 J
-Best bound: 222490.99 J
-Solver wall time: 120.17 s
+Best bound: 221744.51 J
+Solver wall time: 1.04 s
 
 #       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
 ------------------------------------------------------------------------------------------------

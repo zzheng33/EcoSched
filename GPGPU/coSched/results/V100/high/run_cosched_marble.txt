@@ -2,58 +2,58 @@ Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/high/run_cosched_m
 Marble policy: pick the smallest GPU count within 5.00% of the minimum profiled runtime, then FCFS co-schedule.
 Metrics source: /home/ac.zzheng/power/GPGPU/data/V100/perf_metrics.txt
 Selected Marble GPU counts:
+  vgg19           -> 4 GPUs (runtime=25.71s)
+  vgg16#1         -> 3 GPUs (runtime=24.35s)
   MonteCarloMultiGPU -> 1 GPUs (runtime=31.07s)
-  vgg16           -> 3 GPUs (runtime=24.35s)
-  MonteCarloMultiGPU -> 1 GPUs (runtime=31.07s)
-  simpleP2P       -> 2 GPUs (runtime=68.42s)
-  streamOrderedAllocationP2P -> 2 GPUs (runtime=32.18s)
-  simpleP2P       -> 2 GPUs (runtime=68.42s)
-  vgg16           -> 3 GPUs (runtime=24.35s)
-  simpleP2P       -> 2 GPUs (runtime=68.42s)
-  vgg16           -> 3 GPUs (runtime=24.35s)
-  streamOrderedAllocationP2P -> 2 GPUs (runtime=32.18s)
+  simpleP2P#1     -> 2 GPUs (runtime=68.42s)
+  streamOrderedAllocationP2P#1 -> 2 GPUs (runtime=32.18s)
+  simpleP2P#2     -> 2 GPUs (runtime=68.42s)
+  vgg16#2         -> 3 GPUs (runtime=24.35s)
+  simpleP2P#3     -> 2 GPUs (runtime=68.42s)
+  vgg16#3         -> 3 GPUs (runtime=24.35s)
+  streamOrderedAllocationP2P#2 -> 2 GPUs (runtime=32.18s)
 
 Co-scheduling 10 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
-  t=    0.00s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
-  t=    0.00s | START vgg16           | 3 GPUs [2, 3, 1] | NUMA 1
-  t=   27.03s | END   vgg16           | freed 3 GPUs [2, 3, 1] | NUMA 1 | runtime=27.03s | OK
-  t=   27.04s | START MonteCarloMultiGPU | 1 GPUs [2] | NUMA 1
-  t=   32.04s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=32.04s | OK
-  t=   32.04s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=   58.07s | END   MonteCarloMultiGPU | freed 1 GPUs [2] | NUMA 1 | runtime=31.04s | OK
-  t=   58.07s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1
-  t=   90.11s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=32.04s | OK
-  t=   90.11s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1
-  t=  102.12s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
-  t=  102.12s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  160.19s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=70.08s | FAILED(rc=1)
-  t=  160.19s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1
-  t=  172.20s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
-  t=  193.23s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=33.04s | OK
-  t=  193.23s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
-  t=  220.26s | END   vgg16           | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=27.03s | OK
-  t=  220.26s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
-  t=  245.29s | END   vgg16           | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=25.03s | OK
+  t=    0.00s | START vgg19           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   25.03s | END   vgg19           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=25.03s | OK
+  t=   25.03s | START vgg16#1         | 3 GPUs [0, 1, 2] | NUMA 0
+  t=   25.03s | START MonteCarloMultiGPU | 1 GPUs [3] | NUMA 1
+  t=   50.06s | END   vgg16#1         | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=25.03s | OK
+  t=   50.06s | START simpleP2P#1     | 2 GPUs [0, 1] | NUMA 0
+  t=   56.07s | END   MonteCarloMultiGPU | freed 1 GPUs [3] | NUMA 1 | runtime=31.04s | OK
+  t=   56.07s | START streamOrderedAllocationP2P#1 | 2 GPUs [2, 3] | NUMA 1
+  t=   89.11s | END   streamOrderedAllocationP2P#1 | freed 2 GPUs [2, 3] | NUMA 1 | runtime=33.04s | OK
+  t=   89.11s | START simpleP2P#2     | 2 GPUs [2, 3] | NUMA 1
+  t=  120.15s | END   simpleP2P#1     | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
+  t=  120.15s | START simpleP2P#3     | 2 GPUs [0, 1] | NUMA 0
+  t=  159.19s | END   simpleP2P#2     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=70.08s | FAILED(rc=1)
+  t=  159.19s | START streamOrderedAllocationP2P#2 | 2 GPUs [2, 3] | NUMA 1
+  t=  190.23s | END   simpleP2P#3     | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
+  t=  191.23s | END   streamOrderedAllocationP2P#2 | freed 2 GPUs [2, 3] | NUMA 1 | runtime=32.04s | OK
+  t=  191.23s | START vgg16#2         | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  217.26s | END   vgg16#2         | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=26.03s | OK
+  t=  217.26s | START vgg16#3         | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  242.29s | END   vgg16#3         | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=25.03s | OK
 
 ================================================================================
 Co-schedule summary:
 App              #GPUs      GPU IDs  NUMA  Runtime (s)
 ------------------------------------------------------
-vgg16                3    [2, 3, 1]     1        27.03
-MonteCarloMultiGPU      1          [0]     0        32.04
-MonteCarloMultiGPU      1          [2]     1        31.04
-streamOrderedAllocationP2P      2       [2, 3]     1        32.04
-simpleP2P            2       [0, 1]     0        70.08
-simpleP2P            2       [2, 3]     1        70.08
-simpleP2P            2       [0, 1]     0        70.08
-streamOrderedAllocationP2P      2       [2, 3]     1        33.04
-vgg16                3    [0, 1, 2]     0        27.03
-vgg16                3    [0, 1, 2]     0        25.03
+vgg19                4 [0, 1, 2, 3]     0        25.03
+vgg16#1              3    [0, 1, 2]     0        25.03
+MonteCarloMultiGPU      1          [3]     1        31.04
+streamOrderedAllocationP2P#1      2       [2, 3]     1        33.04
+simpleP2P#1          2       [0, 1]     0        70.08
+simpleP2P#2          2       [2, 3]     1        70.08
+simpleP2P#3          2       [0, 1]     0        70.08
+streamOrderedAllocationP2P#2      2       [2, 3]     1        32.04
+vgg16#2              3    [0, 1, 2]     0        26.03
+vgg16#3              3    [0, 1, 2]     0        25.03
 ------------------------------------------------------
 
-Total makespan: 245.29s
+Total makespan: 242.29s
 
-Power monitoring: 736 samples over 245.3s
-Total GPU energy: 101734.55 J (101.73 kJ)
+Power monitoring: 727 samples over 242.3s
+Total GPU energy: 101680.49 J (101.68 kJ)

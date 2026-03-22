@@ -98,15 +98,15 @@ run_one_preset() {
     echo "JOBS        : $jobs"
     echo "================================================================================"
 
-    "$PYTHON" ecoPack.py \
-        --policy cmab \
-        --idle-power "$idle_power" \
-        --results-dir "$results_dir" \
-        --jobs $jobs
+    # "$PYTHON" ecoPack.py \
+    #     --policy cmab \
+    #     --idle-power "$idle_power" \
+    #     --results-dir "$results_dir" \
+    #     --jobs $jobs
 
-    "$PYTHON" run_cosched_marble.py \
-        --results-dir "$results_dir" \
-        --jobs $jobs
+    # "$PYTHON" run_cosched_marble.py \
+    #     --results-dir "$results_dir" \
+    #     --jobs $jobs
 
     "$PYTHON" run_cosched_sequential.py \
         --policy sequential \
@@ -122,7 +122,7 @@ run_one_preset() {
 
     # "$PYTHON" solve_energy_optimal_cpsat.py \
     #     --idle-power "$idle_power" \
-    #     --time-limit 60 \
+    #     --time-limit 10 \
     #     --output-file "$solver_schedule_file" \
     #     --jobs $jobs
 

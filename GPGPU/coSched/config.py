@@ -153,7 +153,7 @@ WORKLOAD_PRESETS = {
             "streamOrderedAllocationP2P",    # best_gpu=2
         ],
         "high_opp": [
-            "MonteCarloMultiGPU",            # best_gpu=1
+            "vgg19",            # best_gpu=1
             "vgg16",                         # best_gpu=3
             "MonteCarloMultiGPU",            # best_gpu=1
             "simpleP2P",                     # best_gpu=2

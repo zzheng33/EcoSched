@@ -1,58 +1,58 @@
 Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/high/solver_execution_run.txt
 Planned solver decisions:
 ================================================================================
-  1. t=0.00s | vgg16           | 2 GPUs | placement (2, 0) | planned_end=28.32s
-  2. t=0.00s | vgg16           | 2 GPUs | placement (2, 0) | planned_end=28.32s
-  3. t=0.00s | vgg16           | 2 GPUs | placement (2, 0) | planned_end=28.32s
-  4. t=28.32s | MonteCarloMultiGPU | 4 GPUs | placement (2, 2) | planned_end=60.31s
-  5. t=28.32s | MonteCarloMultiGPU | 4 GPUs | placement (2, 2) | planned_end=60.31s
-  6. t=157.05s | simpleP2P       | 2 GPUs | placement (0, 2) | planned_end=225.47s
-  7. t=157.05s | simpleP2P       | 2 GPUs | placement (0, 2) | planned_end=225.47s
-  8. t=157.05s | simpleP2P       | 2 GPUs | placement (0, 2) | planned_end=225.47s
-  9. t=191.98s | streamOrderedAllocationP2P | 2 GPUs | placement (2, 0) | planned_end=224.16s
-  10. t=191.98s | streamOrderedAllocationP2P | 2 GPUs | placement (2, 0) | planned_end=224.16s
+  1. t=0.00s | simpleP2P#1     | 2 GPUs | placement (0, 2) | planned_end=68.42s
+  2. t=0.00s | simpleP2P#2     | 2 GPUs | placement (2, 0) | planned_end=68.42s
+  3. t=68.42s | vgg19           | 4 GPUs | placement (2, 2) | planned_end=94.13s
+  4. t=94.13s | vgg16#1         | 2 GPUs | placement (0, 2) | planned_end=122.45s
+  5. t=94.13s | streamOrderedAllocationP2P#2 | 2 GPUs | placement (2, 0) | planned_end=126.31s
+  6. t=122.45s | vgg16#2         | 2 GPUs | placement (0, 2) | planned_end=150.77s
+  7. t=126.31s | vgg16#3         | 2 GPUs | placement (2, 0) | planned_end=154.63s
+  8. t=150.77s | simpleP2P#3     | 2 GPUs | placement (0, 2) | planned_end=219.19s
+  9. t=154.63s | MonteCarloMultiGPU | 1 GPUs | placement (1, 0) | planned_end=185.70s
+  10. t=185.70s | streamOrderedAllocationP2P#1 | 2 GPUs | placement (2, 0) | planned_end=217.88s
 
 Solver-driven execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
-  t=    0.00s | START vgg16           | 2 GPUs [0, 1] | NUMA 0 | planned=0.00s | delay=+0.00s
-  t=   31.04s | END   vgg16           | freed 2 GPUs [0, 1] | NUMA 0 | runtime=31.04s | OK
-  t=   31.04s | START vgg16           | 2 GPUs [0, 1] | NUMA 0 | planned=0.00s | delay=+31.04s
-  t=   60.07s | END   vgg16           | freed 2 GPUs [0, 1] | NUMA 0 | runtime=29.03s | OK
-  t=   60.07s | START vgg16           | 2 GPUs [0, 1] | NUMA 0 | planned=0.00s | delay=+60.07s
-  t=   89.11s | END   vgg16           | freed 2 GPUs [0, 1] | NUMA 0 | runtime=29.03s | OK
-  t=   89.11s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=28.32s | delay=+60.79s
-  t=  121.15s | END   MonteCarloMultiGPU | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=32.04s | OK
-  t=  121.15s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=28.32s | delay=+92.83s
-  t=  153.19s | END   MonteCarloMultiGPU | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=32.04s | OK
-  t=  157.05s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1 | planned=157.05s | delay=+0.00s
-  t=  192.10s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0 | planned=191.98s | delay=+0.12s
-  t=  225.13s | END   streamOrderedAllocationP2P | freed 2 GPUs [0, 1] | NUMA 0 | runtime=33.04s | OK
-  t=  225.13s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0 | planned=191.98s | delay=+33.15s
-  t=  227.14s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=70.08s | FAILED(rc=1)
-  t=  227.14s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1 | planned=157.05s | delay=+70.09s
-  t=  258.17s | END   streamOrderedAllocationP2P | freed 2 GPUs [0, 1] | NUMA 0 | runtime=33.04s | OK
-  t=  297.22s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=70.08s | FAILED(rc=1)
-  t=  297.22s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1 | planned=157.05s | delay=+140.17s
-  t=  367.30s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=70.08s | FAILED(rc=1)
+  t=    0.00s | START simpleP2P#1     | 2 GPUs [2, 3] | NUMA 1 | planned=0.00s | delay=+0.00s
+  t=    0.00s | START simpleP2P#2     | 2 GPUs [0, 1] | NUMA 0 | planned=0.00s | delay=+0.00s
+  t=   70.08s | END   simpleP2P#1     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=70.08s | FAILED(rc=1)
+  t=   70.08s | END   simpleP2P#2     | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
+  t=   70.08s | START vgg19           | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=68.42s | delay=+1.66s
+  t=   96.12s | END   vgg19           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=26.03s | OK
+  t=   96.12s | START vgg16#1         | 2 GPUs [2, 3] | NUMA 1 | planned=94.13s | delay=+1.99s
+  t=   96.12s | START streamOrderedAllocationP2P#2 | 2 GPUs [0, 1] | NUMA 0 | planned=94.13s | delay=+1.99s
+  t=  126.15s | END   vgg16#1         | freed 2 GPUs [2, 3] | NUMA 1 | runtime=30.03s | OK
+  t=  126.15s | START vgg16#2         | 2 GPUs [2, 3] | NUMA 1 | planned=122.45s | delay=+3.70s
+  t=  128.16s | END   streamOrderedAllocationP2P#2 | freed 2 GPUs [0, 1] | NUMA 0 | runtime=32.04s | OK
+  t=  128.16s | START vgg16#3         | 2 GPUs [0, 1] | NUMA 0 | planned=126.31s | delay=+1.85s
+  t=  155.19s | END   vgg16#2         | freed 2 GPUs [2, 3] | NUMA 1 | runtime=29.03s | OK
+  t=  155.19s | START simpleP2P#3     | 2 GPUs [2, 3] | NUMA 1 | planned=150.77s | delay=+4.42s
+  t=  157.19s | END   vgg16#3         | freed 2 GPUs [0, 1] | NUMA 0 | runtime=29.03s | OK
+  t=  157.19s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0 | planned=154.63s | delay=+2.56s
+  t=  188.23s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=31.03s | OK
+  t=  188.23s | START streamOrderedAllocationP2P#1 | 2 GPUs [0, 1] | NUMA 0 | planned=185.70s | delay=+2.53s
+  t=  221.27s | END   streamOrderedAllocationP2P#1 | freed 2 GPUs [0, 1] | NUMA 0 | runtime=33.04s | OK
+  t=  225.27s | END   simpleP2P#3     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=70.08s | FAILED(rc=1)
 
 ================================================================================
 Solver-driven summary:
 App              #GPUs      GPU IDs  NUMA  Planned (s)  Runtime (s)
 --------------------------------------------------------------------------
-vgg16                2       [0, 1]     0         0.00        31.04
-vgg16                2       [0, 1]     0         0.00        29.03
-vgg16                2       [0, 1]     0         0.00        29.03
-MonteCarloMultiGPU      4 [0, 1, 2, 3]     0        28.32        32.04
-MonteCarloMultiGPU      4 [0, 1, 2, 3]     0        28.32        32.04
-streamOrderedAllocationP2P      2       [0, 1]     0       191.98        33.04
-simpleP2P            2       [2, 3]     1       157.05        70.08
-streamOrderedAllocationP2P      2       [0, 1]     0       191.98        33.04
-simpleP2P            2       [2, 3]     1       157.05        70.08
-simpleP2P            2       [2, 3]     1       157.05        70.08
+simpleP2P#1          2       [2, 3]     1         0.00        70.08
+simpleP2P#2          2       [0, 1]     0         0.00        70.08
+vgg19                4 [0, 1, 2, 3]     0        68.42        26.03
+vgg16#1              2       [2, 3]     1        94.13        30.03
+streamOrderedAllocationP2P#2      2       [0, 1]     0        94.13        32.04
+vgg16#2              2       [2, 3]     1       122.45        29.03
+vgg16#3              2       [0, 1]     0       126.31        29.03
+MonteCarloMultiGPU      1          [0]     0       154.63        31.03
+streamOrderedAllocationP2P#1      2       [0, 1]     0       185.70        33.04
+simpleP2P#3          2       [2, 3]     1       150.77        70.08
 --------------------------------------------------------------------------
 
-Total makespan: 367.30s
+Total makespan: 225.27s
 
-Power monitoring: 1099 samples over 367.1s
-Total GPU energy: 168606.15 J (168.61 kJ)
+Power monitoring: 674 samples over 225.1s
+Total GPU energy: 97767.48 J (97.77 kJ)

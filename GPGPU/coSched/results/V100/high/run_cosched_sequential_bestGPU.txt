@@ -1,58 +1,58 @@
 Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/high/run_cosched_sequential_bestGPU.txt
 Sequential GPU strategy: best (lowest runtime per app)
 Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):
+  vgg19           -> 4 GPUs
+  vgg16#1         -> 3 GPUs
   MonteCarloMultiGPU -> 1 GPUs
-  vgg16           -> 3 GPUs
-  MonteCarloMultiGPU -> 1 GPUs
-  simpleP2P       -> 2 GPUs
-  streamOrderedAllocationP2P -> 2 GPUs
-  simpleP2P       -> 2 GPUs
-  vgg16           -> 3 GPUs
-  simpleP2P       -> 2 GPUs
-  vgg16           -> 3 GPUs
-  streamOrderedAllocationP2P -> 2 GPUs
+  simpleP2P#1     -> 2 GPUs
+  streamOrderedAllocationP2P#1 -> 2 GPUs
+  simpleP2P#2     -> 2 GPUs
+  vgg16#2         -> 3 GPUs
+  simpleP2P#3     -> 2 GPUs
+  vgg16#3         -> 3 GPUs
+  streamOrderedAllocationP2P#2 -> 2 GPUs
 
 Sequential execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
-  t=    0.00s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
-  t=   31.23s | END   MonteCarloMultiGPU | runtime=31.23s | OK
-  t=   31.23s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
-  t=   56.94s | END   vgg16           | runtime=25.70s | OK
-  t=   56.94s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
-  t=   88.30s | END   MonteCarloMultiGPU | runtime=31.36s | OK
-  t=   88.30s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  157.42s | END   simpleP2P       | runtime=69.12s | FAILED(rc=1)
-  t=  157.42s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
-  t=  189.49s | END   streamOrderedAllocationP2P | runtime=32.07s | OK
-  t=  189.49s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  258.60s | END   simpleP2P       | runtime=69.11s | FAILED(rc=1)
-  t=  258.60s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
-  t=  284.72s | END   vgg16           | runtime=26.13s | OK
-  t=  284.72s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  353.85s | END   simpleP2P       | runtime=69.13s | FAILED(rc=1)
-  t=  353.85s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
-  t=  378.95s | END   vgg16           | runtime=25.10s | OK
-  t=  378.95s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
-  t=  411.17s | END   streamOrderedAllocationP2P | runtime=32.22s | OK
+  t=    0.00s | START vgg19           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   25.86s | END   vgg19           | runtime=25.86s | OK
+  t=   25.86s | START vgg16#1         | 3 GPUs [0, 1, 2] | NUMA 0
+  t=   50.16s | END   vgg16#1         | runtime=24.30s | OK
+  t=   50.16s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=   80.34s | END   MonteCarloMultiGPU | runtime=30.18s | OK
+  t=   80.34s | START simpleP2P#1     | 2 GPUs [0, 1] | NUMA 0
+  t=  149.44s | END   simpleP2P#1     | runtime=69.09s | FAILED(rc=1)
+  t=  149.44s | START streamOrderedAllocationP2P#1 | 2 GPUs [0, 1] | NUMA 0
+  t=  181.52s | END   streamOrderedAllocationP2P#1 | runtime=32.08s | OK
+  t=  181.52s | START simpleP2P#2     | 2 GPUs [0, 1] | NUMA 0
+  t=  250.62s | END   simpleP2P#2     | runtime=69.10s | FAILED(rc=1)
+  t=  250.62s | START vgg16#2         | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  275.86s | END   vgg16#2         | runtime=25.24s | OK
+  t=  275.86s | START simpleP2P#3     | 2 GPUs [0, 1] | NUMA 0
+  t=  344.99s | END   simpleP2P#3     | runtime=69.13s | FAILED(rc=1)
+  t=  344.99s | START vgg16#3         | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  370.13s | END   vgg16#3         | runtime=25.14s | OK
+  t=  370.13s | START streamOrderedAllocationP2P#2 | 2 GPUs [0, 1] | NUMA 0
+  t=  402.16s | END   streamOrderedAllocationP2P#2 | runtime=32.03s | OK
 
 ================================================================================
 Sequential summary:
 App              #GPUs      GPU IDs  Runtime (s)
 ----------------------------------------------------
-MonteCarloMultiGPU      1          [0]        31.23
-vgg16                3    [0, 1, 2]        25.70
-MonteCarloMultiGPU      1          [0]        31.36
-simpleP2P            2       [0, 1]        69.12
-streamOrderedAllocationP2P      2       [0, 1]        32.07
-simpleP2P            2       [0, 1]        69.11
-vgg16                3    [0, 1, 2]        26.13
-simpleP2P            2       [0, 1]        69.13
-vgg16                3    [0, 1, 2]        25.10
-streamOrderedAllocationP2P      2       [0, 1]        32.22
+vgg19                4 [0, 1, 2, 3]        25.86
+vgg16#1              3    [0, 1, 2]        24.30
+MonteCarloMultiGPU      1          [0]        30.18
+simpleP2P#1          2       [0, 1]        69.09
+streamOrderedAllocationP2P#1      2       [0, 1]        32.08
+simpleP2P#2          2       [0, 1]        69.10
+vgg16#2              3    [0, 1, 2]        25.24
+simpleP2P#3          2       [0, 1]        69.13
+vgg16#3              3    [0, 1, 2]        25.14
+streamOrderedAllocationP2P#2      2       [0, 1]        32.03
 ----------------------------------------------------
 
-Total makespan: 411.17s
+Total makespan: 402.16s
 
-Power monitoring: 1233 samples over 411.1s
-Total GPU energy: 132082.36 J (132.08 kJ)
+Power monitoring: 1206 samples over 402.1s
+Total GPU energy: 130747.26 J (130.75 kJ)
