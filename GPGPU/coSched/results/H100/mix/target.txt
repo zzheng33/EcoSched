@@ -1,9 +1,5 @@
-MonteCarloMultiGPU  16.02, 15.12
-conjugate           15.02, 13.55
-simpleP2P           30.03, 27.09
-tealeaf             17.02, 16.24
-vgg16               19.02, 13.36
-vgg19               14.02, 12.94
+
+
 
 
 Slow App	GPUs	Co-running with	GPUs	Time overlap

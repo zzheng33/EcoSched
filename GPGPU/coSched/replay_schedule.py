@@ -383,6 +383,10 @@ def main():
                         help="Run a specific co-run pair test (uses GPU assignments from log)")
     parser.add_argument("--solo", type=str, metavar="APP",
                         help="Run a single app alone (uses GPU/NUMA assignment from log)")
+    parser.add_argument("--gpus", type=str, default=None,
+                        help="Override GPU IDs for --solo, e.g. '0,1' or '0,1,2,3'")
+    parser.add_argument("--numa", type=int, default=None, choices=[0, 1],
+                        help="Override NUMA node for --solo (0 or 1)")
     parser.add_argument("--repeats", type=int, default=1,
                         help="Number of repeat runs (default: 1)")
     parser.add_argument("--poll-interval", type=float, default=1.0,
@@ -392,6 +396,8 @@ def main():
                             DEFAULT_RESULTS_DIR))
     parser.add_argument("--no-app-log", action="store_true",
                         help="Disable logging application stdout/stderr")
+    parser.add_argument("--no-log", action="store_true",
+                        help="Do not write result log files, print to stdout only")
     args = parser.parse_args()
 
     # --analyze: show co-run pairs and exit
@@ -418,8 +424,10 @@ def main():
             parser.error(f"App '{args.solo}' not found in schedule. "
                          f"Available: {list(entry_map.keys())}")
         e = entry_map[args.solo]
-        entries = [ScheduleEntry(order=0, app=e.app, gpu_count=e.gpu_count,
-                                 gpu_ids=e.gpu_ids, numa_node=e.numa_node)]
+        gpu_ids = [int(g) for g in args.gpus.split(",")] if args.gpus else e.gpu_ids
+        numa_node = args.numa if args.numa is not None else e.numa_node
+        entries = [ScheduleEntry(order=0, app=e.app, gpu_count=len(gpu_ids),
+                                 gpu_ids=gpu_ids, numa_node=numa_node)]
         print(f"Solo run: {args.solo}\n")
 
     elif args.pair:
@@ -460,28 +468,35 @@ def main():
 
     for run_idx in range(args.repeats):
         run_label = f"run{run_idx + 1}" if args.repeats > 1 else "run"
-        log_path = results_dir / f"{pair_tag}_{run_label}.txt"
 
-        original_stdout = sys.stdout
-        original_stderr = sys.stderr
+        if args.no_log:
+            if args.repeats > 1:
+                print(f"\n{'#' * 80}")
+                print(f"# {pair_tag} {run_idx + 1} / {args.repeats}")
+                print(f"{'#' * 80}\n")
+            run_replay(entries, args.poll_interval, results_dir=app_log_dir)
+        else:
+            log_path = results_dir / f"{pair_tag}_{run_label}.txt"
+            original_stdout = sys.stdout
+            original_stderr = sys.stderr
 
-        with log_path.open("w") as log_file:
-            sys.stdout = TeeStream(original_stdout, log_file)
-            sys.stderr = TeeStream(original_stderr, log_file)
-            try:
-                if args.repeats > 1:
-                    print(f"\n{'#' * 80}")
-                    print(f"# {pair_tag} {run_idx + 1} / {args.repeats}")
-                    print(f"{'#' * 80}\n")
-                print(f"Results log: {log_path}")
-                run_replay(entries, args.poll_interval, results_dir=app_log_dir)
-            finally:
-                sys.stdout = original_stdout
-                sys.stderr = original_stderr
+            with log_path.open("w") as log_file:
+                sys.stdout = TeeStream(original_stdout, log_file)
+                sys.stderr = TeeStream(original_stderr, log_file)
+                try:
+                    if args.repeats > 1:
+                        print(f"\n{'#' * 80}")
+                        print(f"# {pair_tag} {run_idx + 1} / {args.repeats}")
+                        print(f"{'#' * 80}\n")
+                    print(f"Results log: {log_path}")
+                    run_replay(entries, args.poll_interval, results_dir=app_log_dir)
+                finally:
+                    sys.stdout = original_stdout
+                    sys.stderr = original_stderr
 
-        print(f"\nRun {run_idx + 1} saved to {log_path}")
+            print(f"\nRun {run_idx + 1} saved to {log_path}")
 
-    if args.repeats > 1:
+    if args.repeats > 1 and not args.no_log:
         print(f"\nAll {args.repeats} runs complete. Logs in {results_dir}/{pair_tag}_run*.txt")
 
 

@@ -71,13 +71,13 @@ bert                 4 [0, 1, 2, 3]        27.72
 gpt2                 3    [0, 1, 2]        19.40
 resnet50             4 [0, 1, 2, 3]        23.03
 conjugateGradientMultiDeviceCG      4 [0, 1, 2, 3]        13.55
-MonteCarloMultiGPU      1          [0]        15.12
+MonteCarloMultiGPU      1          [0]        15.5
 simpleP2P            2       [0, 1]        27.09
 streamOrderedAllocationP2P      2       [0, 1]        22.15
 resnet101            4 [0, 1, 2, 3]        28.54
 resnet152            4 [0, 1, 2, 3]        44.06
-vgg19                1          [0]        12.94
-vgg16                1          [0]        13.36
+vgg19                1          [0]        15.01
+vgg16                1          [0]        14.02
 ----------------------------------------------------
 
 Total makespan: 510.95s

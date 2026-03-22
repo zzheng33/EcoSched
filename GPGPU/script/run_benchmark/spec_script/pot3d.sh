@@ -6,7 +6,7 @@
 
 MPI_RANKS=${1:-4}  # Default to 4 GPUs if not specified
 
-cd ${SPEC_BENCHMARK_ROOT:-$HOME/benchmark/spec}/POT3D/testsuite/validation/run
+cd ${SPEC_BENCHMARK_ROOT:-$HOME/benchmark/spec-H100}/POT3D/testsuite/validation/run
 
 # Copy the executable
 cp ../../../bin/pot3d .
