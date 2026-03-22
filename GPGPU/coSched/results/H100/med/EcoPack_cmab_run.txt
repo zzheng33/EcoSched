@@ -27,33 +27,33 @@ NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================================
   t=    0.00s | START hpgmg           | 2 GPUs [0, 1] | NUMA 0 | score=0.1228 | regret=0.1228 idle=0.00 block=0.00 | cmab_ucb=-0.1034 mu=-0.1228 bonus=0.0194
   t=    0.00s | START pot3d           | 2 GPUs [2, 3] | NUMA 1 | score=0.1228 | regret=0.1228 idle=0.00 block=0.00 | cmab_ucb=-0.1034 mu=-0.1228 bonus=0.0194
-    CMAB update | action=hpgmg:2GPU+pot3d:2GPU | x=(0.1228, 0.0000) | realized_metric=0.3838 | reward=-0.3838 | theta=(-1.0032, -0.1988)
+    CMAB update | action=hpgmg:2GPU+pot3d:2GPU | x=(0.1228, 0.0000) | realized_metric=0.3826 | reward=-0.3826 | theta=(-1.0032, -0.1988)
   t=   18.02s | END   hpgmg           | freed 2 GPUs [0, 1] | NUMA 0 | runtime=18.02s
   t=   18.02s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0 | score=0.0000 | regret=0.0000 idle=0.00 block=0.00 | cmab_ucb=0.0000 mu=-0.0000 bonus=0.0000
-    CMAB update | action=simpleP2P:2GPU | x=(0.0000, 0.0000) | realized_metric=0.4688 | reward=-0.4688 | theta=(-1.0032, -0.1988)
+    CMAB update | action=simpleP2P:2GPU | x=(0.0000, 0.0000) | realized_metric=0.4718 | reward=-0.4718 | theta=(-1.0032, -0.1988)
   t=   46.05s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=28.03s
-  t=   46.05s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0 | score=0.0497 | regret=0.0000 idle=0.25 block=0.83 | cmab_ucb=-0.0102 mu=-0.0497 bonus=0.0395
-    CMAB update | action=MonteCarloMultiGPU:1GPU | x=(0.0000, 0.2500) | realized_metric=0.5770 | reward=-0.6267 | theta=(-1.0032, -0.2132)
+  t=   46.06s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0 | score=0.0497 | regret=0.0000 idle=0.25 block=0.83 | cmab_ucb=-0.0102 mu=-0.0497 bonus=0.0395
+    CMAB update | action=MonteCarloMultiGPU:1GPU | x=(0.0000, 0.2500) | realized_metric=0.5867 | reward=-0.6364 | theta=(-1.0032, -0.2134)
   t=   62.07s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=16.02s
-  t=   62.07s | START vgg16           | 1 GPUs [0] | NUMA 0 | score=0.0497 | regret=0.0000 idle=0.25 block=1.00 | cmab_ucb=-0.0139 mu=-0.0533 bonus=0.0394
-    CMAB update | action=vgg16:1GPU | x=(0.0000, 0.2500) | realized_metric=0.4360 | reward=-0.4857 | theta=(-1.0032, -0.2239)
-  t=   77.09s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=15.02s
-  t=  111.12s | END   pot3d           | freed 2 GPUs [2, 3] | NUMA 1 | runtime=111.12s
+  t=   62.07s | START vgg16           | 1 GPUs [0] | NUMA 0 | score=0.0497 | regret=0.0000 idle=0.25 block=1.00 | cmab_ucb=-0.0139 mu=-0.0534 bonus=0.0394
+    CMAB update | action=vgg16:1GPU | x=(0.0000, 0.2500) | realized_metric=0.4422 | reward=-0.4919 | theta=(-1.0032, -0.2242)
+  t=   76.09s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=14.01s
+  t=  111.13s | END   pot3d           | freed 2 GPUs [2, 3] | NUMA 1 | runtime=111.12s
   t=  111.13s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0 | score=0.0000 | regret=0.0000 idle=0.00 block=0.00 | cmab_ucb=0.0000 mu=-0.0000 bonus=0.0000
-    CMAB update | action=lbm:4GPU | x=(0.0000, 0.0000) | realized_metric=0.5790 | reward=-0.5790 | theta=(-1.0032, -0.2239)
-  t=  132.15s | END   lbm             | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=21.02s
-  t=  132.15s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0 | score=0.0223 | regret=0.0223 idle=0.00 block=0.00 | cmab_ucb=-0.0188 mu=-0.0224 bonus=0.0035
-    CMAB update | action=bert:4GPU | x=(0.0223, 0.0000) | realized_metric=0.5333 | reward=-0.5333 | theta=(-1.0043, -0.2239)
-  t=  159.18s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=27.03s
-  t=  159.18s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.0784 | regret=0.0287 idle=0.25 block=1.00 | cmab_ucb=-0.0452 mu=-0.0848 bonus=0.0395
-    CMAB update | action=gpt2:3GPU | x=(0.0287, 0.2500) | realized_metric=0.3640 | reward=-0.4137 | theta=(-1.0053, -0.2319)
-  t=  179.20s | END   gpt2            | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=20.02s
-  t=  179.20s | START cloverleaf      | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.0894 | regret=0.0397 idle=0.25 block=1.00 | cmab_ucb=-0.0582 mu=-0.0979 bonus=0.0397
-    CMAB update | action=cloverleaf:3GPU | x=(0.0397, 0.2500) | realized_metric=0.7350 | reward=-0.7847 | theta=(-1.0080, -0.2487)
-  t=  199.22s | END   cloverleaf      | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=20.02s
-  t=  199.22s | START resnet50        | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.1415 | regret=0.0918 idle=0.25 block=0.00 | cmab_ucb=-0.1130 mu=-0.1547 bonus=0.0416
-    CMAB update | action=resnet50:3GPU | x=(0.0918, 0.2500) | realized_metric=0.5767 | reward=-0.6264 | theta=(-1.0122, -0.2601)
-  t=  226.26s | END   resnet50        | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=27.03s
+    CMAB update | action=lbm:4GPU | x=(0.0000, 0.0000) | realized_metric=0.5828 | reward=-0.5828 | theta=(-1.0032, -0.2242)
+  t=  131.15s | END   lbm             | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=20.02s
+  t=  131.15s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0 | score=0.0223 | regret=0.0223 idle=0.00 block=0.00 | cmab_ucb=-0.0188 mu=-0.0224 bonus=0.0035
+    CMAB update | action=bert:4GPU | x=(0.0223, 0.0000) | realized_metric=0.5397 | reward=-0.5397 | theta=(-1.0043, -0.2242)
+  t=  158.18s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=27.03s
+  t=  158.18s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.0784 | regret=0.0287 idle=0.25 block=1.00 | cmab_ucb=-0.0453 mu=-0.0848 bonus=0.0395
+    CMAB update | action=gpt2:3GPU | x=(0.0287, 0.2500) | realized_metric=0.3603 | reward=-0.4100 | theta=(-1.0053, -0.2322)
+  t=  178.20s | END   gpt2            | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=20.02s
+  t=  178.20s | START cloverleaf      | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.0894 | regret=0.0397 idle=0.25 block=1.00 | cmab_ucb=-0.0583 mu=-0.0979 bonus=0.0397
+    CMAB update | action=cloverleaf:3GPU | x=(0.0397, 0.2500) | realized_metric=0.7327 | reward=-0.7824 | theta=(-1.0079, -0.2489)
+  t=  198.23s | END   cloverleaf      | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=20.02s
+  t=  198.23s | START resnet50        | 3 GPUs [0, 1, 2] | NUMA 0 | score=0.1415 | regret=0.0918 idle=0.25 block=0.00 | cmab_ucb=-0.1131 mu=-0.1547 bonus=0.0416
+    CMAB update | action=resnet50:3GPU | x=(0.0918, 0.2500) | realized_metric=0.6490 | reward=-0.6987 | theta=(-1.0129, -0.2621)
+  t=  221.25s | END   resnet50        | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=23.02s
 
 ================================================================================================
 Online co-schedule summary:
@@ -62,16 +62,16 @@ App              #GPUs      GPU IDs  NUMA  Runtime (s)
 hpgmg                2       [0, 1]     0        18.02
 simpleP2P            2       [0, 1]     0        28.03
 MonteCarloMultiGPU      1          [0]     0        16.02
-vgg16                1          [0]     0        15.02
+vgg16                1          [0]     0        14.01
 pot3d                2       [2, 3]     1       111.12
-lbm                  4 [0, 1, 2, 3]     0        21.02
+lbm                  4 [0, 1, 2, 3]     0        20.02
 bert                 4 [0, 1, 2, 3]     0        27.03
 gpt2                 3    [0, 1, 2]     0        20.02
 cloverleaf           3    [0, 1, 2]     0        20.02
-resnet50             3    [0, 1, 2]     0        27.03
+resnet50             3    [0, 1, 2]     0        23.02
 ------------------------------------------------------------
 
-Total makespan: 226.26s
+Total makespan: 221.38s
 
-Power monitoring: 446 samples over 225.6s
-Total GPU energy: 168289.13 J (168.29 kJ)
+Power monitoring: 432 samples over 221.1s
+Total GPU energy: 166986.80 J (166.99 kJ)

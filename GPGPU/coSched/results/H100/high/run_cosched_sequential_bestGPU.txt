@@ -4,51 +4,55 @@ Job queue and GPU assignments (sequential uses max available GPUs from perf_metr
   hpgmg           -> 1 GPUs
   miniweather     -> 1 GPUs
   gpt2            -> 3 GPUs
-  pot3d           -> 4 GPUs
+  resnet50        -> 4 GPUs
   vgg16           -> 1 GPUs
   vgg19           -> 1 GPUs
   MonteCarloMultiGPU -> 1 GPUs
   simpleP2P       -> 2 GPUs
   streamOrderedAllocationP2P -> 2 GPUs
+  gpt2            -> 3 GPUs
 
-Sequential execution: 9 apps on 4 GPUs
+Sequential execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START hpgmg           | 1 GPUs [0] | NUMA 0
-  t=    8.40s | END   hpgmg           | runtime=8.40s | OK
-  t=    8.40s | START miniweather     | 1 GPUs [0] | NUMA 0
-  t=   67.14s | END   miniweather     | runtime=58.74s | OK
-  t=   67.14s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0
-  t=   86.79s | END   gpt2            | runtime=19.64s | OK
-  t=   86.79s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  197.07s | END   pot3d           | runtime=110.28s | OK
-  t=  197.07s | START vgg16           | 1 GPUs [0] | NUMA 0
-  t=  209.78s | END   vgg16           | runtime=12.71s | OK
-  t=  209.78s | START vgg19           | 1 GPUs [0] | NUMA 0
-  t=  222.32s | END   vgg19           | runtime=12.54s | OK
-  t=  222.32s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
-  t=  237.64s | END   MonteCarloMultiGPU | runtime=15.32s | OK
-  t=  237.64s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  264.74s | END   simpleP2P       | runtime=27.10s | FAILED(rc=1)
-  t=  264.74s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
-  t=  286.86s | END   streamOrderedAllocationP2P | runtime=22.12s | OK
+  t=    8.71s | END   hpgmg           | runtime=8.71s | OK
+  t=    8.71s | START miniweather     | 1 GPUs [0] | NUMA 0
+  t=   67.55s | END   miniweather     | runtime=58.84s | OK
+  t=   67.55s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0
+  t=   88.68s | END   gpt2            | runtime=21.13s | OK
+  t=   88.68s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  112.07s | END   resnet50        | runtime=23.39s | OK
+  t=  112.07s | START vgg16           | 1 GPUs [0] | NUMA 0
+  t=  124.40s | END   vgg16           | runtime=12.33s | OK
+  t=  124.40s | START vgg19           | 1 GPUs [0] | NUMA 0
+  t=  136.87s | END   vgg19           | runtime=12.47s | OK
+  t=  136.88s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=  152.09s | END   MonteCarloMultiGPU | runtime=15.21s | OK
+  t=  152.09s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  179.20s | END   simpleP2P       | runtime=27.11s | FAILED(rc=1)
+  t=  179.20s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  201.35s | END   streamOrderedAllocationP2P | runtime=22.15s | OK
+  t=  201.35s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  223.98s | END   gpt2            | runtime=22.63s | OK
 
 ================================================================================
 Sequential summary:
 App              #GPUs      GPU IDs  Runtime (s)
 ----------------------------------------------------
-hpgmg                1          [0]         8.40
-miniweather          1          [0]        58.74
-gpt2                 3    [0, 1, 2]        19.64
-pot3d                4 [0, 1, 2, 3]       110.28
-vgg16                1          [0]        12.71
-vgg19                1          [0]        12.54
-MonteCarloMultiGPU      1          [0]        15.32
-simpleP2P            2       [0, 1]        27.10
-streamOrderedAllocationP2P      2       [0, 1]        22.12
+hpgmg                1          [0]         8.71
+miniweather          1          [0]        58.84
+gpt2                 3    [0, 1, 2]        21.13
+resnet50             4 [0, 1, 2, 3]        23.39
+vgg16                1          [0]        12.33
+vgg19                1          [0]        12.47
+MonteCarloMultiGPU      1          [0]        15.21
+simpleP2P            2       [0, 1]        27.11
+streamOrderedAllocationP2P      2       [0, 1]        22.15
+gpt2                 3    [0, 1, 2]        22.63
 ----------------------------------------------------
 
-Total makespan: 286.86s
+Total makespan: 223.98s
 
-Power monitoring: 598 samples over 286.7s
-Total GPU energy: 163019.42 J (163.02 kJ)
+Power monitoring: 448 samples over 223.3s
+Total GPU energy: 132588.06 J (132.59 kJ)

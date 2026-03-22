@@ -7,41 +7,53 @@ Selected Marble GPU counts:
   MonteCarloMultiGPU -> 1 GPUs (runtime=31.07s)
   simpleP2P       -> 2 GPUs (runtime=68.42s)
   streamOrderedAllocationP2P -> 2 GPUs (runtime=32.18s)
-  pot3d           -> 4 GPUs (runtime=38.59s)
-  gpt2            -> 4 GPUs (runtime=20.85s)
+  simpleP2P       -> 2 GPUs (runtime=68.42s)
+  vgg16           -> 3 GPUs (runtime=24.35s)
+  simpleP2P       -> 2 GPUs (runtime=68.42s)
+  vgg16           -> 3 GPUs (runtime=24.35s)
+  streamOrderedAllocationP2P -> 2 GPUs (runtime=32.18s)
 
-Co-scheduling 7 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
+Co-scheduling 10 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
   t=    0.00s | START vgg16           | 3 GPUs [2, 3, 1] | NUMA 1
   t=   27.03s | END   vgg16           | freed 3 GPUs [2, 3, 1] | NUMA 1 | runtime=27.03s | OK
   t=   27.04s | START MonteCarloMultiGPU | 1 GPUs [2] | NUMA 1
-  t=   31.04s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=31.04s | OK
-  t=   31.04s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=   57.07s | END   MonteCarloMultiGPU | freed 1 GPUs [2] | NUMA 1 | runtime=30.04s | OK
-  t=   57.07s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1
-  t=   89.11s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=32.04s | OK
-  t=  101.13s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
-  t=  101.13s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  161.20s | END   pot3d           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=60.07s | OK
-  t=  161.20s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  184.22s | END   gpt2            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=23.03s | OK
+  t=   32.04s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=32.04s | OK
+  t=   32.04s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=   58.07s | END   MonteCarloMultiGPU | freed 1 GPUs [2] | NUMA 1 | runtime=31.04s | OK
+  t=   58.07s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1
+  t=   90.11s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=32.04s | OK
+  t=   90.11s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1
+  t=  102.12s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
+  t=  102.12s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  160.19s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=70.08s | FAILED(rc=1)
+  t=  160.19s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1
+  t=  172.20s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
+  t=  193.23s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=33.04s | OK
+  t=  193.23s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  220.26s | END   vgg16           | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=27.03s | OK
+  t=  220.26s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  245.29s | END   vgg16           | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=25.03s | OK
 
 ================================================================================
 Co-schedule summary:
 App              #GPUs      GPU IDs  NUMA  Runtime (s)
 ------------------------------------------------------
 vgg16                3    [2, 3, 1]     1        27.03
-MonteCarloMultiGPU      1          [0]     0        31.04
-MonteCarloMultiGPU      1          [2]     1        30.04
+MonteCarloMultiGPU      1          [0]     0        32.04
+MonteCarloMultiGPU      1          [2]     1        31.04
 streamOrderedAllocationP2P      2       [2, 3]     1        32.04
 simpleP2P            2       [0, 1]     0        70.08
-pot3d                4 [0, 1, 2, 3]     0        60.07
-gpt2                 4 [0, 1, 2, 3]     0        23.03
+simpleP2P            2       [2, 3]     1        70.08
+simpleP2P            2       [0, 1]     0        70.08
+streamOrderedAllocationP2P      2       [2, 3]     1        33.04
+vgg16                3    [0, 1, 2]     0        27.03
+vgg16                3    [0, 1, 2]     0        25.03
 ------------------------------------------------------
 
-Total makespan: 184.22s
+Total makespan: 245.29s
 
-Power monitoring: 552 samples over 184.2s
-Total GPU energy: 94275.79 J (94.28 kJ)
+Power monitoring: 736 samples over 245.3s
+Total GPU energy: 101734.55 J (101.73 kJ)

@@ -1,58 +1,58 @@
 Results log: /home/cc/power/GPGPU/coSched/results/A100/high/solver_execution_run.txt
 Planned solver decisions:
 ================================================================================
-  1. t=0.00s | vgg19           | 1 GPUs | placement (1, 0) | planned_end=22.88s
-  2. t=0.00s | pot3d           | 3 GPUs | placement (1, 2) | planned_end=37.91s
-  3. t=22.88s | vgg16           | 1 GPUs | placement (1, 0) | planned_end=45.78s
-  4. t=22.88s | vgg16           | 1 GPUs | placement (1, 0) | planned_end=45.78s
-  5. t=37.91s | MonteCarloMultiGPU | 1 GPUs | placement (1, 0) | planned_end=64.00s
-  6. t=45.78s | resnet101       | 2 GPUs | placement (0, 2) | planned_end=119.59s
-  7. t=89.48s | resnet152       | 2 GPUs | placement (2, 0) | planned_end=188.92s
-  8. t=119.59s | simpleP2P       | 2 GPUs | placement (0, 2) | planned_end=132.70s
-  9. t=132.70s | conjugateGradientMultiDeviceCG | 2 GPUs | placement (0, 2) | planned_end=164.74s
-  10. t=164.74s | streamOrderedAllocationP2P | 2 GPUs | placement (0, 2) | planned_end=188.34s
+  1. t=0.00s | resnet152       | 2 GPUs | placement (2, 0) | planned_end=99.44s
+  2. t=0.00s | resnet152       | 2 GPUs | placement (2, 0) | planned_end=99.44s
+  3. t=99.44s | resnet101       | 2 GPUs | placement (2, 0) | planned_end=173.25s
+  4. t=112.55s | conjugateGradientMultiDeviceCG | 2 GPUs | placement (0, 2) | planned_end=144.59s
+  5. t=144.59s | streamOrderedAllocationP2P | 2 GPUs | placement (0, 2) | planned_end=168.19s
+  6. t=168.19s | vgg19           | 1 GPUs | placement (0, 1) | planned_end=191.07s
+  7. t=173.25s | MonteCarloMultiGPU | 1 GPUs | placement (0, 1) | planned_end=199.34s
+  8. t=191.07s | vgg16           | 1 GPUs | placement (1, 0) | planned_end=213.97s
+  9. t=199.34s | simpleP2P       | 2 GPUs | placement (0, 2) | planned_end=212.45s
+  10. t=199.34s | simpleP2P       | 2 GPUs | placement (0, 2) | planned_end=212.45s
 
 Solver-driven execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
-  t=    0.00s | START vgg19           | 1 GPUs [0] | NUMA 0 | planned=0.00s | delay=+0.00s
-  t=    0.00s | START pot3d           | 3 GPUs [2, 3, 1] | NUMA 1 | planned=0.00s | delay=+0.00s
-  t=   23.03s | END   vgg19           | freed 1 GPUs [0] | NUMA 0 | runtime=23.03s | OK
-  t=   23.03s | START vgg16           | 1 GPUs [0] | NUMA 0 | planned=22.88s | delay=+0.15s
-  t=   38.04s | END   pot3d           | freed 3 GPUs [2, 3, 1] | NUMA 1 | runtime=38.04s | OK
-  t=   38.04s | START vgg16           | 1 GPUs [1] | NUMA 0 | planned=22.88s | delay=+15.16s
-  t=   46.05s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=23.03s | OK
-  t=   46.05s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0 | planned=37.91s | delay=+8.14s
-  t=   61.07s | END   vgg16           | freed 1 GPUs [1] | NUMA 0 | runtime=23.03s | OK
-  t=   61.07s | START resnet101       | 2 GPUs [2, 3] | NUMA 1 | planned=45.78s | delay=+15.29s
-  t=   73.08s | END   MonteCarloMultiGPU | freed 1 GPUs [0] | NUMA 0 | runtime=27.03s | OK
-  t=   90.10s | START resnet152       | 2 GPUs [0, 1] | NUMA 0 | planned=89.48s | delay=+0.62s
-  t=  121.14s | END   resnet101       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=60.06s | OK
-  t=  121.14s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1 | planned=119.59s | delay=+1.55s
-  t=  135.15s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=14.01s | FAILED(rc=1)
-  t=  135.15s | START conjugateGradientMultiDeviceCG | 2 GPUs [2, 3] | NUMA 1 | planned=132.70s | delay=+2.45s
-  t=  167.19s | END   conjugateGradientMultiDeviceCG | freed 2 GPUs [2, 3] | NUMA 1 | runtime=32.03s | OK
-  t=  167.19s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1 | planned=164.74s | delay=+2.45s
-  t=  173.20s | END   resnet152       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=83.09s | OK
-  t=  188.21s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=21.02s | OK
+  t=    0.00s | START resnet152       | 2 GPUs [0, 1] | NUMA 0 | planned=0.00s | delay=+0.00s
+  t=   83.09s | END   resnet152       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=83.09s | OK
+  t=   83.09s | START resnet152       | 2 GPUs [0, 1] | NUMA 0 | planned=0.00s | delay=+83.09s
+  t=  113.12s | START conjugateGradientMultiDeviceCG | 2 GPUs [2, 3] | NUMA 1 | planned=112.55s | delay=+0.57s
+  t=  145.16s | END   conjugateGradientMultiDeviceCG | freed 2 GPUs [2, 3] | NUMA 1 | runtime=32.03s | OK
+  t=  145.16s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1 | planned=144.59s | delay=+0.57s
+  t=  166.18s | END   resnet152       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=83.09s | OK
+  t=  166.18s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=21.02s | OK
+  t=  166.18s | START resnet101       | 2 GPUs [0, 1] | NUMA 0 | planned=99.44s | delay=+66.74s
+  t=  169.18s | START vgg19           | 1 GPUs [2] | NUMA 1 | planned=168.19s | delay=+0.99s
+  t=  192.21s | END   vgg19           | freed 1 GPUs [2] | NUMA 1 | runtime=23.02s | OK
+  t=  192.21s | START MonteCarloMultiGPU | 1 GPUs [2] | NUMA 1 | planned=173.25s | delay=+18.96s
+  t=  218.24s | END   MonteCarloMultiGPU | freed 1 GPUs [2] | NUMA 1 | runtime=26.03s | OK
+  t=  218.24s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1 | planned=199.34s | delay=+18.90s
+  t=  226.25s | END   resnet101       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=60.07s | OK
+  t=  226.25s | START vgg16           | 1 GPUs [0] | NUMA 0 | planned=191.07s | delay=+35.18s
+  t=  232.26s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=14.02s | FAILED(rc=1)
+  t=  232.26s | START simpleP2P       | 2 GPUs [2, 3] | NUMA 1 | planned=199.34s | delay=+32.92s
+  t=  245.27s | END   simpleP2P       | freed 2 GPUs [2, 3] | NUMA 1 | runtime=13.01s | FAILED(rc=1)
+  t=  248.27s | END   vgg16           | freed 1 GPUs [0] | NUMA 0 | runtime=22.02s | OK
 
 ================================================================================
 Solver-driven summary:
 App              #GPUs      GPU IDs  NUMA  Planned (s)  Runtime (s)
 --------------------------------------------------------------------------
-vgg19                1          [0]     0         0.00        23.03
-pot3d                3    [2, 3, 1]     1         0.00        38.04
-vgg16                1          [0]     0        22.88        23.03
-vgg16                1          [1]     0        22.88        23.03
-MonteCarloMultiGPU      1          [0]     0        37.91        27.03
-resnet101            2       [2, 3]     1        45.78        60.06
-simpleP2P            2       [2, 3]     1       119.59        14.01
-conjugateGradientMultiDeviceCG      2       [2, 3]     1       132.70        32.03
-resnet152            2       [0, 1]     0        89.48        83.09
-streamOrderedAllocationP2P      2       [2, 3]     1       164.74        21.02
+resnet152            2       [0, 1]     0         0.00        83.09
+conjugateGradientMultiDeviceCG      2       [2, 3]     1       112.55        32.03
+resnet152            2       [0, 1]     0         0.00        83.09
+streamOrderedAllocationP2P      2       [2, 3]     1       144.59        21.02
+vgg19                1          [2]     1       168.19        23.02
+MonteCarloMultiGPU      1          [2]     1       173.25        26.03
+resnet101            2       [0, 1]     0        99.44        60.07
+simpleP2P            2       [2, 3]     1       199.34        14.02
+simpleP2P            2       [2, 3]     1       199.34        13.01
+vgg16                1          [0]     0       191.07        22.02
 --------------------------------------------------------------------------
 
-Total makespan: 188.21s
+Total makespan: 248.27s
 
-Power monitoring: 523 samples over 187.9s
-Total GPU energy: 142949.29 J (142.95 kJ)
+Power monitoring: 692 samples over 248.1s
+Total GPU energy: 174717.22 J (174.72 kJ)

@@ -3,29 +3,35 @@ Exact offline energy-optimal schedule
 ================================================================================================
 Idle power per GPU: 43.00 W
 Slowdown tolerance vs max-GPU baseline: 0.20
-Makespan: 162.65 s
-Active energy: 94194.86 J (94.19 kJ)
-Idle energy: 4528.33 J (4.53 kJ)
-Total energy: 98723.19 J (98.72 kJ)
-Objective value: 95578.67 J
-Best bound: 95578.67 J
-Solver wall time: 24.11 s
+Makespan: 225.47 s
+Active energy: 105473.29 J (105.47 kJ)
+Idle energy: 0.00 J (0.00 kJ)
+Total energy: 105473.29 J (105.47 kJ)
+Objective value: 105900.21 J
+Best bound: 105900.21 J
+Solver wall time: 114.68 s
 
 #       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
 ------------------------------------------------------------------------------------------------
-1       31.99    60.31 vgg16              2    (2,0)    28.32     260.00     520.00     14726.40
-2       31.99   100.41 simpleP2P          2    (0,2)    68.42      78.29     156.58     10713.20
-3       60.31    92.49 streamOrderedAllocationP2P    2    (2,0)    32.18      67.44     134.88      4340.44
-4       92.49   123.56 MonteCarloMultiGPU    1    (1,0)    31.07     296.59     296.59      9215.05
-5       92.49   123.56 MonteCarloMultiGPU    1    (1,0)    31.07     296.59     296.59      9215.05
-6      100.41   124.06 gpt2               3    (1,2)    23.65     224.71     674.13     15943.17
-7      124.06   162.65 pot3d              4    (2,2)    38.59     194.62     778.48     30041.54
+1        0.00    28.32 vgg16              2    (2,0)    28.32     260.00     520.00     14726.40
+2        0.00    28.32 vgg16              2    (2,0)    28.32     260.00     520.00     14726.40
+3        0.00    28.32 vgg16              2    (2,0)    28.32     260.00     520.00     14726.40
+4       28.32    60.31 MonteCarloMultiGPU    4    (2,2)    31.99      80.00     320.00     10236.80
+5       28.32    60.31 MonteCarloMultiGPU    4    (2,2)    31.99      80.00     320.00     10236.80
+6      157.05   225.47 simpleP2P          2    (0,2)    68.42      78.29     156.58     10713.20
+7      157.05   225.47 simpleP2P          2    (0,2)    68.42      78.29     156.58     10713.20
+8      157.05   225.47 simpleP2P          2    (0,2)    68.42      78.29     156.58     10713.20
+9      191.98   224.16 streamOrderedAllocationP2P    2    (2,0)    32.18      67.44     134.88      4340.44
+10     191.98   224.16 streamOrderedAllocationP2P    2    (2,0)    32.18      67.44     134.88      4340.44
 
 Execution order:
-  1. t=31.99s start vgg16 on 2 GPU(s) at placement (2, 0)
-  2. t=31.99s start simpleP2P on 2 GPU(s) at placement (0, 2)
-  3. t=60.31s start streamOrderedAllocationP2P on 2 GPU(s) at placement (2, 0)
-  4. t=92.49s start MonteCarloMultiGPU on 1 GPU(s) at placement (1, 0)
-  5. t=92.49s start MonteCarloMultiGPU on 1 GPU(s) at placement (1, 0)
-  6. t=100.41s start gpt2 on 3 GPU(s) at placement (1, 2)
-  7. t=124.06s start pot3d on 4 GPU(s) at placement (2, 2)
+  1. t=0.00s start vgg16 on 2 GPU(s) at placement (2, 0)
+  2. t=0.00s start vgg16 on 2 GPU(s) at placement (2, 0)
+  3. t=0.00s start vgg16 on 2 GPU(s) at placement (2, 0)
+  4. t=28.32s start MonteCarloMultiGPU on 4 GPU(s) at placement (2, 2)
+  5. t=28.32s start MonteCarloMultiGPU on 4 GPU(s) at placement (2, 2)
+  6. t=157.05s start simpleP2P on 2 GPU(s) at placement (0, 2)
+  7. t=157.05s start simpleP2P on 2 GPU(s) at placement (0, 2)
+  8. t=157.05s start simpleP2P on 2 GPU(s) at placement (0, 2)
+  9. t=191.98s start streamOrderedAllocationP2P on 2 GPU(s) at placement (2, 0)
+  10. t=191.98s start streamOrderedAllocationP2P on 2 GPU(s) at placement (2, 0)

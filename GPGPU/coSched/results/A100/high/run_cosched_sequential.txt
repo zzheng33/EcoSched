@@ -1,8 +1,8 @@
 Results log: /home/cc/power/GPGPU/coSched/results/A100/high/run_cosched_sequential.txt
 Sequential GPU strategy: max (maximum available GPU count)
 Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):
-  vgg16           -> 4 GPUs
-  pot3d           -> 4 GPUs
+  resnet152       -> 4 GPUs
+  simpleP2P       -> 2 GPUs
   resnet101       -> 4 GPUs
   resnet152       -> 4 GPUs
   vgg16           -> 4 GPUs
@@ -15,45 +15,46 @@ Job queue and GPU assignments (sequential uses max available GPUs from perf_metr
 Sequential execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
-  t=    0.00s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   24.59s | END   vgg16           | runtime=24.59s | OK
-  t=   24.59s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   55.61s | END   pot3d           | runtime=31.02s | OK
-  t=   55.61s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   95.96s | END   resnet101       | runtime=40.35s | OK
-  t=   95.96s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  149.22s | END   resnet152       | runtime=53.26s | OK
-  t=  149.22s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  173.81s | END   vgg16           | runtime=24.59s | OK
-  t=  173.81s | START vgg19           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  199.50s | END   vgg19           | runtime=25.68s | OK
-  t=  199.50s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  227.08s | END   MonteCarloMultiGPU | runtime=27.59s | OK
-  t=  227.08s | START conjugateGradientMultiDeviceCG | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  259.60s | END   conjugateGradientMultiDeviceCG | runtime=32.51s | OK
-  t=  259.60s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  272.59s | END   simpleP2P       | runtime=13.00s | FAILED(rc=1)
+  t=    0.00s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   53.60s | END   resnet152       | runtime=53.60s | OK
+  t=   53.60s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=   66.71s | END   simpleP2P       | runtime=13.11s | FAILED(rc=1)
   ERROR: simpleP2P failed, check ./log.txt for details
-  t=  272.59s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
-  t=  293.19s | END   streamOrderedAllocationP2P | runtime=20.59s | OK
+  t=   66.71s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  107.08s | END   resnet101       | runtime=40.36s | OK
+  t=  107.08s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  160.77s | END   resnet152       | runtime=53.69s | OK
+  t=  160.77s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  185.52s | END   vgg16           | runtime=24.75s | OK
+  t=  185.52s | START vgg19           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  210.04s | END   vgg19           | runtime=24.53s | OK
+  t=  210.04s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  237.65s | END   MonteCarloMultiGPU | runtime=27.61s | OK
+  t=  237.65s | START conjugateGradientMultiDeviceCG | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  270.39s | END   conjugateGradientMultiDeviceCG | runtime=32.74s | OK
+  t=  270.40s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  283.37s | END   simpleP2P       | runtime=12.97s | FAILED(rc=1)
+  ERROR: simpleP2P failed, check ./log.txt for details
+  t=  283.37s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  304.03s | END   streamOrderedAllocationP2P | runtime=20.66s | OK
 
 ================================================================================
 Sequential summary:
 App              #GPUs      GPU IDs  Runtime (s)
 ----------------------------------------------------
-vgg16                4 [0, 1, 2, 3]        24.59
-pot3d                4 [0, 1, 2, 3]        31.02
-resnet101            4 [0, 1, 2, 3]        40.35
-resnet152            4 [0, 1, 2, 3]        53.26
-vgg16                4 [0, 1, 2, 3]        24.59
-vgg19                4 [0, 1, 2, 3]        25.68
-MonteCarloMultiGPU      4 [0, 1, 2, 3]        27.59
-conjugateGradientMultiDeviceCG      4 [0, 1, 2, 3]        32.51
-simpleP2P            2       [0, 1]        13.00
-streamOrderedAllocationP2P      2       [0, 1]        20.59
+resnet152            4 [0, 1, 2, 3]        53.60
+simpleP2P            2       [0, 1]        13.11
+resnet101            4 [0, 1, 2, 3]        40.36
+resnet152            4 [0, 1, 2, 3]        53.69
+vgg16                4 [0, 1, 2, 3]        24.75
+vgg19                4 [0, 1, 2, 3]        24.53
+MonteCarloMultiGPU      4 [0, 1, 2, 3]        27.61
+conjugateGradientMultiDeviceCG      4 [0, 1, 2, 3]        32.74
+simpleP2P            2       [0, 1]        12.97
+streamOrderedAllocationP2P      2       [0, 1]        20.66
 ----------------------------------------------------
 
-Total makespan: 293.19s
+Total makespan: 304.03s
 
-Power monitoring: 828 samples over 293.2s
-Total GPU energy: 206974.78 J (206.97 kJ)
+Power monitoring: 852 samples over 303.8s
+Total GPU energy: 226790.41 J (226.79 kJ)

@@ -3,35 +3,35 @@ Exact offline energy-optimal schedule
 ================================================================================================
 Idle power per GPU: 70.00 W
 Slowdown tolerance vs max-GPU baseline: 0.20
-Makespan: 188.92 s
-Active energy: 154673.23 J (154.67 kJ)
-Idle energy: 4422.60 J (4.42 kJ)
-Total energy: 159095.83 J (159.10 kJ)
-Objective value: 158534.54 J
-Best bound: 147280.06 J
-Solver wall time: 120.13 s
+Makespan: 213.97 s
+Active energy: 172478.70 J (172.48 kJ)
+Idle energy: 5243.70 J (5.24 kJ)
+Total energy: 177722.40 J (177.72 kJ)
+Objective value: 177722.40 J
+Best bound: 166329.20 J
+Solver wall time: 120.11 s
 
 #       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
 ------------------------------------------------------------------------------------------------
-1        0.00    22.88 vgg19              1    (1,0)    22.88     251.46     251.46      5753.40
-2        0.00    37.91 pot3d              3    (1,2)    37.91     232.15     696.45     26402.42
-3       22.88    45.78 vgg16              1    (1,0)    22.90     214.50     214.50      4912.05
-4       22.88    45.78 vgg16              1    (1,0)    22.90     214.50     214.50      4912.05
-5       37.91    64.00 MonteCarloMultiGPU    1    (1,0)    26.09     284.69     284.69      7427.56
-6       45.78   119.59 resnet101          2    (0,2)    73.81     256.43     512.86     37854.20
-7       89.48   188.92 resnet152          2    (2,0)    99.44     228.71     457.42     45485.84
-8      119.59   132.70 simpleP2P          2    (0,2)    13.11     138.60     277.20      3634.09
-9      132.70   164.74 conjugateGradientMultiDeviceCG    2    (0,2)    32.04     217.92     435.84     13964.31
-10     164.74   188.34 streamOrderedAllocationP2P    2    (0,2)    23.60      91.68     183.36      4327.30
+1        0.00    99.44 resnet152          2    (2,0)    99.44     228.71     457.42     45485.84
+2        0.00    99.44 resnet152          2    (2,0)    99.44     228.71     457.42     45485.84
+3       99.44   173.25 resnet101          2    (2,0)    73.81     256.43     512.86     37854.20
+4      112.55   144.59 conjugateGradientMultiDeviceCG    2    (0,2)    32.04     217.92     435.84     13964.31
+5      144.59   168.19 streamOrderedAllocationP2P    2    (0,2)    23.60      91.68     183.36      4327.30
+6      168.19   191.07 vgg19              1    (0,1)    22.88     251.46     251.46      5753.40
+7      173.25   199.34 MonteCarloMultiGPU    1    (0,1)    26.09     284.69     284.69      7427.56
+8      191.07   213.97 vgg16              1    (1,0)    22.90     214.50     214.50      4912.05
+9      199.34   212.45 simpleP2P          2    (0,2)    13.11     138.60     277.20      3634.09
+10     199.34   212.45 simpleP2P          2    (0,2)    13.11     138.60     277.20      3634.09
 
 Execution order:
-  1. t=0.00s start vgg19 on 1 GPU(s) at placement (1, 0)
-  2. t=0.00s start pot3d on 3 GPU(s) at placement (1, 2)
-  3. t=22.88s start vgg16 on 1 GPU(s) at placement (1, 0)
-  4. t=22.88s start vgg16 on 1 GPU(s) at placement (1, 0)
-  5. t=37.91s start MonteCarloMultiGPU on 1 GPU(s) at placement (1, 0)
-  6. t=45.78s start resnet101 on 2 GPU(s) at placement (0, 2)
-  7. t=89.48s start resnet152 on 2 GPU(s) at placement (2, 0)
-  8. t=119.59s start simpleP2P on 2 GPU(s) at placement (0, 2)
-  9. t=132.70s start conjugateGradientMultiDeviceCG on 2 GPU(s) at placement (0, 2)
-  10. t=164.74s start streamOrderedAllocationP2P on 2 GPU(s) at placement (0, 2)
+  1. t=0.00s start resnet152 on 2 GPU(s) at placement (2, 0)
+  2. t=0.00s start resnet152 on 2 GPU(s) at placement (2, 0)
+  3. t=99.44s start resnet101 on 2 GPU(s) at placement (2, 0)
+  4. t=112.55s start conjugateGradientMultiDeviceCG on 2 GPU(s) at placement (0, 2)
+  5. t=144.59s start streamOrderedAllocationP2P on 2 GPU(s) at placement (0, 2)
+  6. t=168.19s start vgg19 on 1 GPU(s) at placement (0, 1)
+  7. t=173.25s start MonteCarloMultiGPU on 1 GPU(s) at placement (0, 1)
+  8. t=191.07s start vgg16 on 1 GPU(s) at placement (1, 0)
+  9. t=199.34s start simpleP2P on 2 GPU(s) at placement (0, 2)
+  10. t=199.34s start simpleP2P on 2 GPU(s) at placement (0, 2)

@@ -6,41 +6,53 @@ Job queue and GPU assignments (sequential uses max available GPUs from perf_metr
   MonteCarloMultiGPU -> 1 GPUs
   simpleP2P       -> 2 GPUs
   streamOrderedAllocationP2P -> 2 GPUs
-  pot3d           -> 4 GPUs
-  gpt2            -> 4 GPUs
+  simpleP2P       -> 2 GPUs
+  vgg16           -> 3 GPUs
+  simpleP2P       -> 2 GPUs
+  vgg16           -> 3 GPUs
+  streamOrderedAllocationP2P -> 2 GPUs
 
-Sequential execution: 7 apps on 4 GPUs
+Sequential execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
-  t=   30.28s | END   MonteCarloMultiGPU | runtime=30.27s | OK
-  t=   30.28s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
-  t=   55.24s | END   vgg16           | runtime=24.97s | OK
-  t=   55.24s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
-  t=   85.58s | END   MonteCarloMultiGPU | runtime=30.34s | OK
-  t=   85.58s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  154.71s | END   simpleP2P       | runtime=69.13s | FAILED(rc=1)
-  t=  154.72s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
-  t=  187.09s | END   streamOrderedAllocationP2P | runtime=32.37s | OK
-  t=  187.09s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  247.09s | END   pot3d           | runtime=60.01s | OK
-  t=  247.09s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  269.70s | END   gpt2            | runtime=22.60s | OK
+  t=   31.23s | END   MonteCarloMultiGPU | runtime=31.23s | OK
+  t=   31.23s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=   56.94s | END   vgg16           | runtime=25.70s | OK
+  t=   56.94s | START MonteCarloMultiGPU | 1 GPUs [0] | NUMA 0
+  t=   88.30s | END   MonteCarloMultiGPU | runtime=31.36s | OK
+  t=   88.30s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  157.42s | END   simpleP2P       | runtime=69.12s | FAILED(rc=1)
+  t=  157.42s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  189.49s | END   streamOrderedAllocationP2P | runtime=32.07s | OK
+  t=  189.49s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  258.60s | END   simpleP2P       | runtime=69.11s | FAILED(rc=1)
+  t=  258.60s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  284.72s | END   vgg16           | runtime=26.13s | OK
+  t=  284.72s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  353.85s | END   simpleP2P       | runtime=69.13s | FAILED(rc=1)
+  t=  353.85s | START vgg16           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  378.95s | END   vgg16           | runtime=25.10s | OK
+  t=  378.95s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  411.17s | END   streamOrderedAllocationP2P | runtime=32.22s | OK
 
 ================================================================================
 Sequential summary:
 App              #GPUs      GPU IDs  Runtime (s)
 ----------------------------------------------------
-MonteCarloMultiGPU      1          [0]        30.27
-vgg16                3    [0, 1, 2]        24.97
-MonteCarloMultiGPU      1          [0]        30.34
+MonteCarloMultiGPU      1          [0]        31.23
+vgg16                3    [0, 1, 2]        25.70
+MonteCarloMultiGPU      1          [0]        31.36
+simpleP2P            2       [0, 1]        69.12
+streamOrderedAllocationP2P      2       [0, 1]        32.07
+simpleP2P            2       [0, 1]        69.11
+vgg16                3    [0, 1, 2]        26.13
 simpleP2P            2       [0, 1]        69.13
-streamOrderedAllocationP2P      2       [0, 1]        32.37
-pot3d                4 [0, 1, 2, 3]        60.01
-gpt2                 4 [0, 1, 2, 3]        22.60
+vgg16                3    [0, 1, 2]        25.10
+streamOrderedAllocationP2P      2       [0, 1]        32.22
 ----------------------------------------------------
 
-Total makespan: 269.70s
+Total makespan: 411.17s
 
-Power monitoring: 807 samples over 269.6s
-Total GPU energy: 108370.57 J (108.37 kJ)
+Power monitoring: 1233 samples over 411.1s
+Total GPU energy: 132082.36 J (132.08 kJ)

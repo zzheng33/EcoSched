@@ -10,9 +10,10 @@ Selected Marble GPU counts:
   bert            -> 4 GPUs (runtime=32.83s)
   gpt2            -> 3 GPUs (runtime=17.96s)
   resnet50        -> 4 GPUs (runtime=29.20s)
-  resnet50        -> 4 GPUs (runtime=29.20s)
+  streamOrderedAllocationP2P -> 2 GPUs (runtime=23.60s)
+  conjugateGradientMultiDeviceCG -> 2 GPUs (runtime=32.04s)
 
-Co-scheduling 9 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
+Co-scheduling 10 apps on 4 GPUs (max 2 concurrent, policy=fcfs)
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
@@ -22,17 +23,19 @@ NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
   t=   51.06s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0
   t=  108.12s | END   minisweep       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=57.06s | OK
   t=  108.12s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  140.15s | END   pot3d           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=32.03s | OK
-  t=  140.15s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  163.18s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=23.02s | FAILED(rc=1)
+  t=  139.15s | END   pot3d           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=31.03s | OK
+  t=  139.15s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  163.18s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=24.02s | FAILED(rc=1)
   t=  163.18s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
   t=  196.21s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=33.03s | FAILED(rc=127)
   t=  196.21s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0
-  t=  214.23s | END   gpt2            | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=18.02s | FAILED(rc=127)
-  t=  214.23s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  243.26s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=29.03s | OK
-  t=  243.26s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  272.30s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=29.03s | OK
+  t=  215.24s | END   gpt2            | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=19.02s | FAILED(rc=127)
+  t=  215.24s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  245.27s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=30.03s | OK
+  t=  245.27s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  245.27s | START conjugateGradientMultiDeviceCG | 2 GPUs [2, 3] | NUMA 1
+  t=  266.29s | END   streamOrderedAllocationP2P | freed 2 GPUs [0, 1] | NUMA 0 | runtime=21.02s | OK
+  t=  278.31s | END   conjugateGradientMultiDeviceCG | freed 2 GPUs [2, 3] | NUMA 1 | runtime=33.03s | OK
 
 ================================================================================
 Co-schedule summary:
@@ -41,15 +44,16 @@ App              #GPUs      GPU IDs  NUMA  Runtime (s)
 cloverleaf           4 [0, 1, 2, 3]     0        22.02
 lbm                  4 [0, 1, 2, 3]     0        29.03
 minisweep            4 [0, 1, 2, 3]     0        57.06
-pot3d                4 [0, 1, 2, 3]     0        32.03
-tealeaf              4 [0, 1, 2, 3]     0        23.02
+pot3d                4 [0, 1, 2, 3]     0        31.03
+tealeaf              4 [0, 1, 2, 3]     0        24.02
 bert                 4 [0, 1, 2, 3]     0        33.03
-gpt2                 3    [0, 1, 2]     0        18.02
-resnet50             4 [0, 1, 2, 3]     0        29.03
-resnet50             4 [0, 1, 2, 3]     0        29.03
+gpt2                 3    [0, 1, 2]     0        19.02
+resnet50             4 [0, 1, 2, 3]     0        30.03
+streamOrderedAllocationP2P      2       [0, 1]     0        21.02
+conjugateGradientMultiDeviceCG      2       [2, 3]     1        33.03
 ------------------------------------------------------
 
-Total makespan: 272.30s
+Total makespan: 278.31s
 
-Power monitoring: 763 samples over 272.3s
-Total GPU energy: 194883.69 J (194.88 kJ)
+Power monitoring: 782 samples over 278.1s
+Total GPU energy: 187718.56 J (187.72 kJ)

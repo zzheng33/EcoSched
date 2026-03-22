@@ -6,49 +6,53 @@ Planned solver decisions:
   3. t=89.18s | lbm             | 4 GPUs | placement (2, 2) | planned_end=117.64s
   4. t=117.64s | cloverleaf      | 4 GPUs | placement (2, 2) | planned_end=139.36s
   5. t=139.36s | tealeaf         | 4 GPUs | placement (2, 2) | planned_end=160.96s
-  6. t=160.96s | gpt2            | 3 GPUs | placement (2, 1) | planned_end=178.92s
-  7. t=178.92s | resnet50        | 4 GPUs | placement (2, 2) | planned_end=208.12s
-  8. t=178.92s | resnet50        | 4 GPUs | placement (2, 2) | planned_end=208.12s
-  9. t=237.32s | pot3d           | 4 GPUs | placement (2, 2) | planned_end=268.92s
+  6. t=160.96s | pot3d           | 4 GPUs | placement (2, 2) | planned_end=192.56s
+  7. t=192.56s | gpt2            | 3 GPUs | placement (2, 1) | planned_end=210.52s
+  8. t=210.52s | streamOrderedAllocationP2P | 2 GPUs | placement (2, 0) | planned_end=234.12s
+  9. t=210.52s | conjugateGradientMultiDeviceCG | 2 GPUs | placement (0, 2) | planned_end=242.56s
+  10. t=242.56s | resnet50        | 4 GPUs | placement (2, 2) | planned_end=271.76s
 
-Solver-driven execution: 9 apps on 4 GPUs
+Solver-driven execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=0.00s | delay=+0.00s
   t=   56.06s | END   minisweep       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=56.06s | OK
   t=   56.35s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=56.35s | delay=+0.00s
-  t=   89.39s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=33.04s | FAILED(rc=127)
-  t=   89.39s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=89.18s | delay=+0.21s
-  t=  118.42s | END   lbm             | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=29.03s | OK
-  t=  118.42s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=117.64s | delay=+0.78s
-  t=  140.44s | END   cloverleaf      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=22.02s | OK
-  t=  140.44s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=139.36s | delay=+1.08s
-  t=  162.47s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=22.02s | FAILED(rc=1)
-  t=  162.47s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0 | planned=160.96s | delay=+1.51s
-  t=  180.49s | END   gpt2            | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=18.02s | FAILED(rc=127)
-  t=  180.49s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=178.92s | delay=+1.57s
-  t=  210.52s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=30.03s | OK
-  t=  210.52s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=178.92s | delay=+31.60s
-  t=  239.55s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=29.03s | OK
-  t=  239.55s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=237.32s | delay=+2.23s
-  t=  270.58s | END   pot3d           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=31.03s | OK
+  t=   88.39s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=32.03s | FAILED(rc=127)
+  t=   89.18s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=89.18s | delay=+0.00s
+  t=  118.21s | END   lbm             | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=29.03s | OK
+  t=  118.21s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=117.64s | delay=+0.57s
+  t=  140.24s | END   cloverleaf      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=22.02s | OK
+  t=  140.24s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=139.36s | delay=+0.88s
+  t=  164.26s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=24.02s | FAILED(rc=1)
+  t=  164.26s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=160.96s | delay=+3.30s
+  t=  196.30s | END   pot3d           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=32.03s | OK
+  t=  196.30s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0 | planned=192.56s | delay=+3.74s
+  t=  215.32s | END   gpt2            | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=19.02s | FAILED(rc=127)
+  t=  215.32s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0 | planned=210.52s | delay=+4.80s
+  t=  215.32s | START conjugateGradientMultiDeviceCG | 2 GPUs [2, 3] | NUMA 1 | planned=210.52s | delay=+4.80s
+  t=  236.35s | END   streamOrderedAllocationP2P | freed 2 GPUs [0, 1] | NUMA 0 | runtime=21.02s | OK
+  t=  247.36s | END   conjugateGradientMultiDeviceCG | freed 2 GPUs [2, 3] | NUMA 1 | runtime=32.03s | OK
+  t=  247.36s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=242.56s | delay=+4.80s
+  t=  276.39s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=29.03s | OK
 
 ================================================================================
 Solver-driven summary:
 App              #GPUs      GPU IDs  NUMA  Planned (s)  Runtime (s)
 --------------------------------------------------------------------------
 minisweep            4 [0, 1, 2, 3]     0         0.00        56.06
-bert                 4 [0, 1, 2, 3]     0        56.35        33.04
+bert                 4 [0, 1, 2, 3]     0        56.35        32.03
 lbm                  4 [0, 1, 2, 3]     0        89.18        29.03
 cloverleaf           4 [0, 1, 2, 3]     0       117.64        22.02
-tealeaf              4 [0, 1, 2, 3]     0       139.36        22.02
-gpt2                 3    [0, 1, 2]     0       160.96        18.02
-resnet50             4 [0, 1, 2, 3]     0       178.92        30.03
-resnet50             4 [0, 1, 2, 3]     0       178.92        29.03
-pot3d                4 [0, 1, 2, 3]     0       237.32        31.03
+tealeaf              4 [0, 1, 2, 3]     0       139.36        24.02
+pot3d                4 [0, 1, 2, 3]     0       160.96        32.03
+gpt2                 3    [0, 1, 2]     0       192.56        19.02
+streamOrderedAllocationP2P      2       [0, 1]     0       210.52        21.02
+conjugateGradientMultiDeviceCG      2       [2, 3]     1       210.52        32.03
+resnet50             4 [0, 1, 2, 3]     0       242.56        29.03
 --------------------------------------------------------------------------
 
-Total makespan: 270.58s
+Total makespan: 276.40s
 
-Power monitoring: 756 samples over 270.5s
-Total GPU energy: 192923.24 J (192.92 kJ)
+Power monitoring: 773 samples over 276.3s
+Total GPU energy: 182221.93 J (182.22 kJ)

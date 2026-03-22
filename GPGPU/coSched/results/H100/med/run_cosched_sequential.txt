@@ -16,43 +16,43 @@ Sequential execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   16.97s | END   cloverleaf      | runtime=16.97s | OK
-  t=   16.97s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   36.34s | END   lbm             | runtime=19.38s | OK
-  t=   36.34s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  146.02s | END   pot3d           | runtime=109.68s | OK
-  t=  146.02s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  172.95s | END   bert            | runtime=26.93s | OK
-  t=  172.95s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  195.23s | END   resnet50        | runtime=22.28s | OK
-  t=  195.23s | START hpgmg           | 3 GPUs [0, 1, 2] | NUMA 0
-  t=  221.40s | END   hpgmg           | runtime=26.16s | OK
-  t=  221.40s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  243.60s | END   gpt2            | runtime=22.20s | OK
-  t=  243.60s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  261.41s | END   vgg16           | runtime=17.81s | OK
-  t=  261.41s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  279.13s | END   MonteCarloMultiGPU | runtime=17.72s | OK
-  t=  279.13s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  305.91s | END   simpleP2P       | runtime=26.78s | FAILED(rc=1)
+  t=   17.23s | END   cloverleaf      | runtime=17.23s | OK
+  t=   17.23s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   36.91s | END   lbm             | runtime=19.68s | OK
+  t=   36.91s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  146.46s | END   pot3d           | runtime=109.54s | OK
+  t=  146.46s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  172.91s | END   bert            | runtime=26.45s | OK
+  t=  172.91s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  195.10s | END   resnet50        | runtime=22.19s | OK
+  t=  195.10s | START hpgmg           | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  228.62s | END   hpgmg           | runtime=33.52s | OK
+  t=  228.62s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  250.06s | END   gpt2            | runtime=21.45s | OK
+  t=  250.06s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  268.01s | END   vgg16           | runtime=17.95s | OK
+  t=  268.02s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  285.66s | END   MonteCarloMultiGPU | runtime=17.64s | OK
+  t=  285.66s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  312.48s | END   simpleP2P       | runtime=26.82s | FAILED(rc=1)
 
 ================================================================================
 Sequential summary:
 App              #GPUs      GPU IDs  Runtime (s)
 ----------------------------------------------------
-cloverleaf           4 [0, 1, 2, 3]        16.97
-lbm                  4 [0, 1, 2, 3]        19.38
-pot3d                4 [0, 1, 2, 3]       109.68
-bert                 4 [0, 1, 2, 3]        26.93
-resnet50             4 [0, 1, 2, 3]        22.28
-hpgmg                3    [0, 1, 2]        26.16
-gpt2                 4 [0, 1, 2, 3]        22.20
-vgg16                4 [0, 1, 2, 3]        17.81
-MonteCarloMultiGPU      4 [0, 1, 2, 3]        17.72
-simpleP2P            2       [0, 1]        26.78
+cloverleaf           4 [0, 1, 2, 3]        17.23
+lbm                  4 [0, 1, 2, 3]        19.68
+pot3d                4 [0, 1, 2, 3]       109.54
+bert                 4 [0, 1, 2, 3]        26.45
+resnet50             4 [0, 1, 2, 3]        22.19
+hpgmg                3    [0, 1, 2]        33.52
+gpt2                 4 [0, 1, 2, 3]        21.45
+vgg16                4 [0, 1, 2, 3]        17.95
+MonteCarloMultiGPU      4 [0, 1, 2, 3]        17.64
+simpleP2P            2       [0, 1]        26.82
 ----------------------------------------------------
 
-Total makespan: 305.91s
+Total makespan: 312.48s
 
-Power monitoring: 611 samples over 305.9s
-Total GPU energy: 224143.56 J (224.14 kJ)
+Power monitoring: 620 samples over 312.0s
+Total GPU energy: 227476.86 J (227.48 kJ)

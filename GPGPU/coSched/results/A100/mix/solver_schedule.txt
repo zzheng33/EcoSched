@@ -1,7 +1,7 @@
 Solver schedule output: /home/cc/power/GPGPU/coSched/results/solver_schedule.txt
 Exact offline energy-optimal schedule
 ================================================================================================
-Idle power per GPU: 70.00 W
+Idle power per GPU: 53.00 W
 Slowdown tolerance vs max-GPU baseline: 0.20
 Makespan: 376.36 s
 Active energy: 312349.98 J (312.35 kJ)

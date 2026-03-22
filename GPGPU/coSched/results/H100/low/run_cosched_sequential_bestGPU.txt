@@ -9,46 +9,50 @@ Job queue and GPU assignments (sequential uses max available GPUs from perf_metr
   bert            -> 4 GPUs
   resnet50        -> 4 GPUs
   resnet101       -> 4 GPUs
-  conjugateGradientMultiDeviceCG -> 4 GPUs
+  miniweather     -> 1 GPUs
+  gpt2            -> 3 GPUs
 
-Sequential execution: 9 apps on 4 GPUs
+Sequential execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   17.33s | END   cloverleaf      | runtime=17.33s | OK
-  t=   17.33s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   36.60s | END   lbm             | runtime=19.27s | OK
-  t=   36.60s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   80.68s | END   minisweep       | runtime=44.08s | OK
-  t=   80.68s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  190.47s | END   pot3d           | runtime=109.79s | OK
-  t=  190.47s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  208.84s | END   tealeaf         | runtime=18.37s | FAILED(rc=1)
-  t=  208.84s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  235.17s | END   bert            | runtime=26.33s | OK
-  t=  235.17s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  257.73s | END   resnet50        | runtime=22.56s | OK
-  t=  257.74s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  285.74s | END   resnet101       | runtime=28.01s | OK
-  t=  285.74s | START conjugateGradientMultiDeviceCG | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  299.26s | END   conjugateGradientMultiDeviceCG | runtime=13.52s | OK
+  t=   17.12s | END   cloverleaf      | runtime=17.12s | OK
+  t=   17.12s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   36.45s | END   lbm             | runtime=19.33s | OK
+  t=   36.45s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   81.14s | END   minisweep       | runtime=44.68s | OK
+  t=   81.14s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  190.67s | END   pot3d           | runtime=109.54s | OK
+  t=  190.68s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  209.14s | END   tealeaf         | runtime=18.46s | FAILED(rc=1)
+  t=  209.14s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  235.52s | END   bert            | runtime=26.38s | OK
+  t=  235.52s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  257.84s | END   resnet50        | runtime=22.32s | OK
+  t=  257.84s | START resnet101       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  286.10s | END   resnet101       | runtime=28.26s | OK
+  t=  286.10s | START miniweather     | 1 GPUs [0] | NUMA 0
+  t=  344.68s | END   miniweather     | runtime=58.58s | OK
+  t=  344.68s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  364.95s | END   gpt2            | runtime=20.27s | OK
 
 ================================================================================
 Sequential summary:
 App              #GPUs      GPU IDs  Runtime (s)
 ----------------------------------------------------
-cloverleaf           4 [0, 1, 2, 3]        17.33
-lbm                  4 [0, 1, 2, 3]        19.27
-minisweep            4 [0, 1, 2, 3]        44.08
-pot3d                4 [0, 1, 2, 3]       109.79
-tealeaf              4 [0, 1, 2, 3]        18.37
-bert                 4 [0, 1, 2, 3]        26.33
-resnet50             4 [0, 1, 2, 3]        22.56
-resnet101            4 [0, 1, 2, 3]        28.01
-conjugateGradientMultiDeviceCG      4 [0, 1, 2, 3]        13.52
+cloverleaf           4 [0, 1, 2, 3]        17.12
+lbm                  4 [0, 1, 2, 3]        19.33
+minisweep            4 [0, 1, 2, 3]        44.68
+pot3d                4 [0, 1, 2, 3]       109.54
+tealeaf              4 [0, 1, 2, 3]        18.46
+bert                 4 [0, 1, 2, 3]        26.38
+resnet50             4 [0, 1, 2, 3]        22.32
+resnet101            4 [0, 1, 2, 3]        28.26
+miniweather          1          [0]        58.58
+gpt2                 3    [0, 1, 2]        20.27
 ----------------------------------------------------
 
-Total makespan: 299.26s
+Total makespan: 364.95s
 
-Power monitoring: 601 samples over 299.1s
-Total GPU energy: 244704.45 J (244.70 kJ)
+Power monitoring: 727 samples over 364.9s
+Total GPU energy: 282849.20 J (282.85 kJ)
