@@ -98,15 +98,15 @@ run_one_preset() {
     echo "JOBS        : $jobs"
     echo "================================================================================"
 
-    # "$PYTHON" ecoPack.py \
-    #     --policy cmab \
-    #     --idle-power "$idle_power" \
-    #     --results-dir "$results_dir" \
-    #     --jobs $jobs
+    "$PYTHON" ecoPack.py \
+        --policy cmab \
+        --idle-power "$idle_power" \
+        --results-dir "$results_dir" \
+        --jobs $jobs
 
-    # "$PYTHON" run_cosched_marble.py \
-    #     --results-dir "$results_dir" \
-    #     --jobs $jobs
+    "$PYTHON" run_cosched_marble.py \
+        --results-dir "$results_dir" \
+        --jobs $jobs
 
     "$PYTHON" run_cosched_sequential.py \
         --policy sequential \
@@ -120,15 +120,15 @@ run_one_preset() {
         --results-dir "$results_dir" \
         --jobs $jobs
 
-    # "$PYTHON" solve_energy_optimal_cpsat.py \
-    #     --idle-power "$idle_power" \
-    #     --time-limit 10 \
-    #     --output-file "$solver_schedule_file" \
-    #     --jobs $jobs
+    "$PYTHON" solve_energy_optimal_cpsat.py \
+        --idle-power "$idle_power" \
+        --time-limit 20 \
+        --output-file "$solver_schedule_file" \
+        --jobs $jobs
 
-    # "$PYTHON" run_solver_schedule.py \
-    #     --schedule-file "$solver_schedule_file" \
-    #     --results-dir "$results_dir"
+    "$PYTHON" run_solver_schedule.py \
+        --schedule-file "$solver_schedule_file" \
+        --results-dir "$results_dir"
 
 
 }

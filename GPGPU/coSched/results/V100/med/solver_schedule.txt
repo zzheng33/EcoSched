@@ -1,0 +1,37 @@
+Solver schedule output: /home/ac.zzheng/power/GPGPU/coSched/results/V100/med/solver_schedule.txt
+Exact offline energy-optimal schedule
+================================================================================================
+Idle power per GPU: 43.00 W
+Slowdown tolerance vs max-GPU baseline: 0.20
+Makespan: 359.10 s
+Active energy: 258400.77 J (258.40 kJ)
+Idle energy: 1947.47 J (1.95 kJ)
+Total energy: 260348.24 J (260.35 kJ)
+Objective value: 260348.24 J
+Best bound: 251667.40 J
+Solver wall time: 20.09 s
+
+#       Start      End App              GPU    Place  Runtime   P_gpu(W)   P_tot(W)     E_act(J)
+------------------------------------------------------------------------------------------------
+1        0.00    37.17 cloverleaf         4    (2,2)    37.17     174.46     697.84     25938.71
+2       37.17    71.23 bert               4    (2,2)    34.06     214.06     856.24     29163.53
+3       71.23   108.97 resnet50           4    (2,2)    37.74     228.45     913.80     34486.81
+4      108.97   140.04 MonteCarloMultiGPU    1    (0,1)    31.07     296.59     296.59      9215.05
+5      108.97   177.61 pot3d              3    (2,1)    68.64     199.37     598.11     41054.27
+6      177.61   258.50 resnet152          4    (2,2)    80.89     241.22     964.88     78049.14
+7      258.50   290.68 streamOrderedAllocationP2P    2    (0,2)    32.18      67.44     134.88      4340.44
+8      258.50   326.92 simpleP2P#1        2    (2,0)    68.42      78.29     156.58     10713.20
+9      290.68   359.10 simpleP2P#2        2    (0,2)    68.42      78.29     156.58     10713.20
+10     326.92   355.24 vgg16              2    (2,0)    28.32     260.00     520.00     14726.40
+
+Execution order:
+  1. t=0.00s start cloverleaf on 4 GPU(s) at placement (2, 2)
+  2. t=37.17s start bert on 4 GPU(s) at placement (2, 2)
+  3. t=71.23s start resnet50 on 4 GPU(s) at placement (2, 2)
+  4. t=108.97s start MonteCarloMultiGPU on 1 GPU(s) at placement (0, 1)
+  5. t=108.97s start pot3d on 3 GPU(s) at placement (2, 1)
+  6. t=177.61s start resnet152 on 4 GPU(s) at placement (2, 2)
+  7. t=258.50s start streamOrderedAllocationP2P on 2 GPU(s) at placement (0, 2)
+  8. t=258.50s start simpleP2P#1 on 2 GPU(s) at placement (2, 0)
+  9. t=290.68s start simpleP2P#2 on 2 GPU(s) at placement (0, 2)
+  10. t=326.92s start vgg16 on 2 GPU(s) at placement (2, 0)

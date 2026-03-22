@@ -8,51 +8,51 @@ Job queue and GPU assignments (sequential uses max available GPUs from perf_metr
   resnet152       -> 4 GPUs
   MonteCarloMultiGPU -> 4 GPUs
   vgg16           -> 4 GPUs
-  MonteCarloMultiGPU -> 4 GPUs
-  simpleP2P       -> 2 GPUs
+  simpleP2P#1     -> 2 GPUs
+  simpleP2P#2     -> 2 GPUs
   streamOrderedAllocationP2P -> 2 GPUs
 
 Sequential execution: 10 apps on 4 GPUs
 NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
 ================================================================================
   t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   37.29s | END   cloverleaf      | runtime=37.29s | OK
-  t=   37.29s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=   96.70s | END   pot3d           | runtime=59.41s | OK
-  t=   96.70s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  132.53s | END   bert            | runtime=35.83s | OK
-  t=  132.53s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  170.83s | END   resnet50        | runtime=38.30s | OK
-  t=  170.83s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  251.21s | END   resnet152       | runtime=80.38s | OK
-  t=  251.21s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  283.04s | END   MonteCarloMultiGPU | runtime=31.83s | OK
-  t=  283.04s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  307.91s | END   vgg16           | runtime=24.88s | OK
-  t=  307.91s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
-  t=  339.63s | END   MonteCarloMultiGPU | runtime=31.71s | OK
-  t=  339.63s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
-  t=  408.77s | END   simpleP2P       | runtime=69.14s | FAILED(rc=1)
-  t=  408.77s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
-  t=  440.93s | END   streamOrderedAllocationP2P | runtime=32.15s | OK
+  t=   37.51s | END   cloverleaf      | runtime=37.51s | OK
+  t=   37.51s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   97.50s | END   pot3d           | runtime=59.99s | OK
+  t=   97.50s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  133.13s | END   bert            | runtime=35.63s | OK
+  t=  133.13s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  171.41s | END   resnet50        | runtime=38.29s | OK
+  t=  171.42s | START resnet152       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  252.45s | END   resnet152       | runtime=81.04s | OK
+  t=  252.46s | START MonteCarloMultiGPU | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  283.45s | END   MonteCarloMultiGPU | runtime=31.00s | OK
+  t=  283.45s | START vgg16           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  308.56s | END   vgg16           | runtime=25.11s | OK
+  t=  308.56s | START simpleP2P#1     | 2 GPUs [0, 1] | NUMA 0
+  t=  377.67s | END   simpleP2P#1     | runtime=69.11s | FAILED(rc=1)
+  t=  377.67s | START simpleP2P#2     | 2 GPUs [0, 1] | NUMA 0
+  t=  446.81s | END   simpleP2P#2     | runtime=69.14s | FAILED(rc=1)
+  t=  446.81s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  479.18s | END   streamOrderedAllocationP2P | runtime=32.37s | OK
 
 ================================================================================
 Sequential summary:
 App              #GPUs      GPU IDs  Runtime (s)
 ----------------------------------------------------
-cloverleaf           4 [0, 1, 2, 3]        37.29
-pot3d                4 [0, 1, 2, 3]        59.41
-bert                 4 [0, 1, 2, 3]        35.83
-resnet50             4 [0, 1, 2, 3]        38.30
-resnet152            4 [0, 1, 2, 3]        80.38
-MonteCarloMultiGPU      4 [0, 1, 2, 3]        31.83
-vgg16                4 [0, 1, 2, 3]        24.88
-MonteCarloMultiGPU      4 [0, 1, 2, 3]        31.71
-simpleP2P            2       [0, 1]        69.14
-streamOrderedAllocationP2P      2       [0, 1]        32.15
+cloverleaf           4 [0, 1, 2, 3]        37.51
+pot3d                4 [0, 1, 2, 3]        59.99
+bert                 4 [0, 1, 2, 3]        35.63
+resnet50             4 [0, 1, 2, 3]        38.29
+resnet152            4 [0, 1, 2, 3]        81.04
+MonteCarloMultiGPU      4 [0, 1, 2, 3]        31.00
+vgg16                4 [0, 1, 2, 3]        25.11
+simpleP2P#1          2       [0, 1]        69.11
+simpleP2P#2          2       [0, 1]        69.14
+streamOrderedAllocationP2P      2       [0, 1]        32.37
 ----------------------------------------------------
 
-Total makespan: 440.93s
+Total makespan: 479.18s
 
-Power monitoring: 1318 samples over 440.6s
-Total GPU energy: 299892.65 J (299.89 kJ)
+Power monitoring: 1435 samples over 479.1s
+Total GPU energy: 276091.87 J (276.09 kJ)
