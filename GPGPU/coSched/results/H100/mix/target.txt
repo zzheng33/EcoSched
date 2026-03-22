@@ -1,0 +1,6 @@
+MonteCarloMultiGPU  16.02, 15.12
+conjugate           15.02, 13.55
+simpleP2P           30.03, 27.09
+tealeaf             18.02, 16.24
+vgg16               15.02, 13.36
+vgg19               14.02, 12.94

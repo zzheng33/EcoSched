@@ -1,0 +1,66 @@
+Results log: results/H100/mix/replay_run.txt
+Replay execution: 17 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START pot3d                          | 2 GPUs [0, 1] | NUMA 0
+  t=    0.00s | START simpleP2P                      | 2 GPUs [2, 3] | NUMA 1
+  t=   30.04s | END   simpleP2P                      | freed 2 GPUs [2, 3] | NUMA 1 | runtime=30.03s | FAILED(rc=1)
+  t=   30.04s | START streamOrderedAllocationP2P     | 2 GPUs [2, 3] | NUMA 1
+  t=   53.06s | END   streamOrderedAllocationP2P     | freed 2 GPUs [2, 3] | NUMA 1 | runtime=23.02s | OK
+  t=   53.06s | START MonteCarloMultiGPU             | 1 GPUs [2] | NUMA 1
+  t=   69.08s | END   MonteCarloMultiGPU             | freed 1 GPUs [2] | NUMA 1 | runtime=16.02s | OK
+  t=   69.08s | START miniweather                    | 1 GPUs [2] | NUMA 1
+  t=  121.14s | END   pot3d                          | freed 2 GPUs [0, 1] | NUMA 0 | runtime=121.13s | OK
+  t=  121.14s | START gpt2                           | 3 GPUs [0, 1, 3] | NUMA 0
+  t=  129.14s | END   miniweather                    | freed 1 GPUs [2] | NUMA 1 | runtime=60.06s | OK
+  t=  129.14s | START vgg16                          | 1 GPUs [2] | NUMA 1
+  t=  146.17s | END   gpt2                           | freed 3 GPUs [0, 1, 3] | NUMA 0 | runtime=25.03s | OK
+  t=  146.17s | START cloverleaf                     | 3 GPUs [0, 1, 3] | NUMA 0
+  t=  150.17s | END   vgg16                          | freed 1 GPUs [2] | NUMA 1 | runtime=21.02s | OK
+  t=  150.17s | START vgg19                          | 1 GPUs [2] | NUMA 1
+  t=  164.19s | END   vgg19                          | freed 1 GPUs [2] | NUMA 1 | runtime=14.01s | OK
+  t=  166.19s | END   cloverleaf                     | freed 3 GPUs [0, 1, 3] | NUMA 0 | runtime=20.02s | OK
+  t=  166.19s | START lbm                            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  186.21s | END   lbm                            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=20.02s | OK
+  t=  186.21s | START tealeaf                        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  208.24s | END   tealeaf                        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=22.02s | FAILED(rc=1)
+  t=  208.24s | START bert                           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  236.27s | END   bert                           | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=28.03s | OK
+  t=  236.27s | START minisweep                      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  281.32s | END   minisweep                      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=45.05s | OK
+  t=  281.32s | START resnet50                       | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  306.35s | END   resnet50                       | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=25.03s | OK
+  t=  306.35s | START resnet152                      | 2 GPUs [0, 1] | NUMA 0
+  t=  358.41s | END   resnet152                      | freed 2 GPUs [0, 1] | NUMA 0 | runtime=52.05s | OK
+  t=  358.41s | START resnet101                      | 3 GPUs [0, 1, 2] | NUMA 0
+  t=  389.44s | END   resnet101                      | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=31.03s | OK
+  t=  389.44s | START conjugateGradientMultiDeviceCG | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  407.46s | END   conjugateGradientMultiDeviceCG | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=18.02s | OK
+
+================================================================================
+Replay summary:
+App                             #GPUs        GPU IDs  NUMA  Runtime (s)
+------------------------------------------------------------------------
+simpleP2P                           2         [2, 3]     1        30.03
+streamOrderedAllocationP2P          2         [2, 3]     1        23.02
+MonteCarloMultiGPU                  1            [2]     1        16.02
+pot3d                               2         [0, 1]     0       121.13
+miniweather                         1            [2]     1        60.06
+gpt2                                3      [0, 1, 3]     0        25.03
+vgg16                               1            [2]     1        21.02
+vgg19                               1            [2]     1        14.01
+cloverleaf                          3      [0, 1, 3]     0        20.02
+lbm                                 4   [0, 1, 2, 3]     0        20.02
+tealeaf                             4   [0, 1, 2, 3]     0        22.02
+bert                                4   [0, 1, 2, 3]     0        28.03
+minisweep                           4   [0, 1, 2, 3]     0        45.05
+resnet50                            3      [0, 1, 2]     0        25.03
+resnet152                           2         [0, 1]     0        52.05
+resnet101                           3      [0, 1, 2]     0        31.03
+conjugateGradientMultiDeviceCG      4   [0, 1, 2, 3]     0        18.02
+------------------------------------------------------------------------
+
+Total makespan: 407.46s
+
+Power monitoring: 795 samples over 407.1s
+Total GPU energy: 356123.80 J (356.12 kJ)
