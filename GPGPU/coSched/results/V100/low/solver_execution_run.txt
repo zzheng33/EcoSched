@@ -1,0 +1,58 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/low/solver_execution_run.txt
+Planned solver decisions:
+================================================================================
+  1. t=0.00s | cloverleaf      | 4 GPUs | placement (2, 2) | planned_end=37.17s
+  2. t=37.17s | lbm             | 4 GPUs | placement (2, 2) | planned_end=58.90s
+  3. t=58.90s | minisweep       | 4 GPUs | placement (2, 2) | planned_end=124.20s
+  4. t=124.20s | pot3d           | 3 GPUs | placement (2, 1) | planned_end=192.84s
+  5. t=192.84s | tealeaf         | 4 GPUs | placement (2, 2) | planned_end=230.46s
+  6. t=230.46s | bert            | 4 GPUs | placement (2, 2) | planned_end=264.52s
+  7. t=264.52s | resnet50        | 4 GPUs | placement (2, 2) | planned_end=302.26s
+  8. t=302.26s | streamOrderedAllocationP2P | 2 GPUs | placement (0, 2) | planned_end=334.44s
+  9. t=302.26s | simpleP2P       | 2 GPUs | placement (2, 0) | planned_end=370.68s
+  10. t=370.68s | gpt2            | 3 GPUs | placement (2, 1) | planned_end=394.33s
+
+Solver-driven execution: 10 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=0.00s | delay=+0.00s
+  t=   38.05s | END   cloverleaf      | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=38.04s | OK
+  t=   38.05s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=37.17s | delay=+0.88s
+  t=   60.07s | END   lbm             | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=22.02s | OK
+  t=   60.07s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=58.90s | delay=+1.17s
+  t=  124.15s | END   minisweep       | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=64.07s | OK
+  t=  124.20s | START pot3d           | 3 GPUs [0, 1, 2] | NUMA 0 | planned=124.20s | delay=+0.00s
+  t=  194.28s | END   pot3d           | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=70.08s | OK
+  t=  194.28s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=192.84s | delay=+1.44s
+  t=  234.32s | END   tealeaf         | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=40.04s | FAILED(rc=1)
+  t=  234.32s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=230.46s | delay=+3.86s
+  t=  271.37s | END   bert            | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=37.04s | OK
+  t=  271.37s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0 | planned=264.52s | delay=+6.85s
+  t=  310.42s | END   resnet50        | freed 4 GPUs [0, 1, 2, 3] | NUMA 0 | runtime=39.05s | OK
+  t=  310.42s | START streamOrderedAllocationP2P | 2 GPUs [2, 3] | NUMA 1 | planned=302.26s | delay=+8.16s
+  t=  310.42s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0 | planned=302.26s | delay=+8.16s
+  t=  343.46s | END   streamOrderedAllocationP2P | freed 2 GPUs [2, 3] | NUMA 1 | runtime=33.04s | OK
+  t=  380.50s | END   simpleP2P       | freed 2 GPUs [0, 1] | NUMA 0 | runtime=70.08s | FAILED(rc=1)
+  t=  380.50s | START gpt2            | 3 GPUs [0, 1, 2] | NUMA 0 | planned=370.68s | delay=+9.82s
+  t=  405.53s | END   gpt2            | freed 3 GPUs [0, 1, 2] | NUMA 0 | runtime=25.03s | OK
+
+================================================================================
+Solver-driven summary:
+App              #GPUs      GPU IDs  NUMA  Planned (s)  Runtime (s)
+--------------------------------------------------------------------------
+cloverleaf           4 [0, 1, 2, 3]     0         0.00        38.04
+lbm                  4 [0, 1, 2, 3]     0        37.17        22.02
+minisweep            4 [0, 1, 2, 3]     0        58.90        64.07
+pot3d                3    [0, 1, 2]     0       124.20        70.08
+tealeaf              4 [0, 1, 2, 3]     0       192.84        40.04
+bert                 4 [0, 1, 2, 3]     0       230.46        37.04
+resnet50             4 [0, 1, 2, 3]     0       264.52        39.05
+streamOrderedAllocationP2P      2       [2, 3]     1       302.26        33.04
+simpleP2P            2       [0, 1]     0       302.26        70.08
+gpt2                 3    [0, 1, 2]     0       370.68        25.03
+--------------------------------------------------------------------------
+
+Total makespan: 405.53s
+
+Power monitoring: 1210 samples over 405.3s
+Total GPU energy: 207202.75 J (207.20 kJ)

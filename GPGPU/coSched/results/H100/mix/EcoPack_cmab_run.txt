@@ -93,7 +93,7 @@ MonteCarloMultiGPU      1          [2]     1        16.02
 pot3d                2       [0, 1]     0       121.13
 miniweather          1          [2]     1        59.06
 gpt2                 3    [0, 1, 3]     0        20.02
-vgg16                1          [2]     1        17.02
+vgg16                1          [2]     1        15.02
 vgg19                1          [2]     1        14.02
 cloverleaf           3    [0, 1, 3]     0        20.02
 lbm                  4 [0, 1, 2, 3]     0        20.02

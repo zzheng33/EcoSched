@@ -1,0 +1,58 @@
+Results log: /home/ac.zzheng/power/GPGPU/coSched/results/V100/low/run_cosched_sequential_bestGPU.txt
+Sequential GPU strategy: best (lowest runtime per app)
+Job queue and GPU assignments (sequential uses max available GPUs from perf_metrics.txt):
+  cloverleaf      -> 4 GPUs
+  lbm             -> 4 GPUs
+  minisweep       -> 4 GPUs
+  pot3d           -> 4 GPUs
+  tealeaf         -> 4 GPUs
+  bert            -> 4 GPUs
+  gpt2            -> 4 GPUs
+  resnet50        -> 4 GPUs
+  simpleP2P       -> 2 GPUs
+  streamOrderedAllocationP2P -> 2 GPUs
+
+Sequential execution: 10 apps on 4 GPUs
+NUMA 0 GPUs: [0, 1]  |  NUMA 1 GPUs: [2, 3]
+================================================================================
+  t=    0.00s | START cloverleaf      | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   37.37s | END   cloverleaf      | runtime=37.36s | OK
+  t=   37.37s | START lbm             | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=   59.03s | END   lbm             | runtime=21.66s | OK
+  t=   59.03s | START minisweep       | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  124.38s | END   minisweep       | runtime=65.36s | OK
+  t=  124.39s | START pot3d           | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  183.94s | END   pot3d           | runtime=59.56s | OK
+  t=  183.94s | START tealeaf         | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  224.09s | END   tealeaf         | runtime=40.14s | FAILED(rc=1)
+  t=  224.09s | START bert            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  260.71s | END   bert            | runtime=36.62s | OK
+  t=  260.71s | START gpt2            | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  280.48s | END   gpt2            | runtime=19.77s | OK
+  t=  280.48s | START resnet50        | 4 GPUs [0, 1, 2, 3] | NUMA 0
+  t=  318.85s | END   resnet50        | runtime=38.37s | OK
+  t=  318.85s | START simpleP2P       | 2 GPUs [0, 1] | NUMA 0
+  t=  387.99s | END   simpleP2P       | runtime=69.14s | FAILED(rc=1)
+  t=  387.99s | START streamOrderedAllocationP2P | 2 GPUs [0, 1] | NUMA 0
+  t=  420.03s | END   streamOrderedAllocationP2P | runtime=32.04s | OK
+
+================================================================================
+Sequential summary:
+App              #GPUs      GPU IDs  Runtime (s)
+----------------------------------------------------
+cloverleaf           4 [0, 1, 2, 3]        37.36
+lbm                  4 [0, 1, 2, 3]        21.66
+minisweep            4 [0, 1, 2, 3]        65.36
+pot3d                4 [0, 1, 2, 3]        59.56
+tealeaf              4 [0, 1, 2, 3]        40.14
+bert                 4 [0, 1, 2, 3]        36.62
+gpt2                 4 [0, 1, 2, 3]        19.77
+resnet50             4 [0, 1, 2, 3]        38.37
+simpleP2P            2       [0, 1]        69.14
+streamOrderedAllocationP2P      2       [0, 1]        32.04
+----------------------------------------------------
+
+Total makespan: 420.03s
+
+Power monitoring: 1255 samples over 419.9s
+Total GPU energy: 214292.90 J (214.29 kJ)
