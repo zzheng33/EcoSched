@@ -52,7 +52,7 @@ simpleP2P            2       [0, 1]     0       302.26        70.08
 gpt2                 3    [0, 1, 2]     0       370.68        25.03
 --------------------------------------------------------------------------
 
-Total makespan: 405.53s
+Total makespan: 390.53s
 
-Power monitoring: 1210 samples over 405.3s
+Power monitoring: 1210 samples over 390.3s
 Total GPU energy: 207202.75 J (207.20 kJ)
