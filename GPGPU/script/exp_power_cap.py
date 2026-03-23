@@ -74,7 +74,7 @@ ecp_benchmarks = ["gpt2","bert"]
 
 spec_benchmarks = ['lbm', 'cloverleaf', 'tealeaf', 'minisweep', 'pot3d', 'miniweather', 'hpgmg']
 
-spec_benchmarks = ['pot3d']
+spec_benchmarks = ['miniweather']
 
 cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simpleCUBLASXT',
                    'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU','simpleMultiGPU','simpleP2P',
@@ -88,7 +88,7 @@ ml_models = ["resnet101","resnet152"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-GPU_ct = [3,2,1]
+GPU_ct = [4]
 gpu_caps = [2800]
 
 
@@ -428,10 +428,10 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
     # For ECP BERT/GPT2, store both throughput and GPU metrics under ml_power_motif.
     if is_bert:
         output_dir = os.path.abspath(
-            os.path.join(script_dir, "..", "data", system, "ml_power_motif", benchmark)
+            os.path.join(script_dir, "..","coSched", "data", system, "ml_power_motif", benchmark)
         )
     else:
-        output_dir = f"../data/{system}/{suite}_power_motif/{benchmark}"
+        output_dir = f"../coSched/data/{system}/{suite}_power_motif/{benchmark}"
     os.makedirs(output_dir, exist_ok=True)
     output_runtime = f"{output_dir}/runtime.csv"
 
