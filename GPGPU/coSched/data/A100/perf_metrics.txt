@@ -11,7 +11,7 @@ gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 1	12.50	225.50	0.275	1346.25	0.16
-3	28.93	102.83	0.085	4230.00	0.05
+3	31.18	118.64	0.159	4230.00	0.08
 2	45.07	162.36	0.252	2802.86	0.14
 4	167.53	123.79	0.223	5640.00	0.10
 
