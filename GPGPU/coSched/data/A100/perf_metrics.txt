@@ -82,7 +82,7 @@ gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 ===== ML/resnet152 =====
 cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-2	99.44	228.71	0.806	2666.79	0.00
+2	99.44	228.71	0.946	2666.79	0.00
 3	100.33	206.43	0.938	4120.71	0.00
 4	106.76	169.68	0.839	5571.43	0.00
 1	152.73	290.23	0.521	1279.62	0.00
