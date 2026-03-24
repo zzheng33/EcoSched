@@ -88,7 +88,7 @@ ml_models = ["vgg16"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-# GPU_ct = [1]
+GPU_ct = [2,3,4]
 gpu_caps = [2800]
 
 
