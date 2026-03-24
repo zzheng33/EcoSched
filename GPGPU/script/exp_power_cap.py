@@ -84,11 +84,11 @@ cuda_benchmarks = ['conjugateGradientMultiDeviceCG','MonteCarloMultiGPU','simple
 
 
 ml_models = ["resnet101","resnet152", "vgg19","vgg16","resnet50"]
-ml_models = ["resnet50"]
+ml_models = ["vgg16"]
 
 cpu_caps = [700]
 GPU_ct = [1,2,3,4]
-GPU_ct = [1]
+# GPU_ct = [1]
 gpu_caps = [2800]
 
 
@@ -314,7 +314,7 @@ def run_ml_experiment(model_name=None):
         models = ml_models
 
     output_root_dir = os.path.abspath(
-        os.path.join(script_dir, "..", "data", system, "ml_power_motif")
+        os.path.join(script_dir, "..", "coSched","data", system, "ml_power_motif")
     )
     os.makedirs(output_root_dir, exist_ok=True)
     throughput_csv_by_model = {}
