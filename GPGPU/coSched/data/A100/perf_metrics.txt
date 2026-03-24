@@ -7,6 +7,13 @@ gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 2	34.41	287.15	1.449	2796.92	0.36
 1	63.81	298.62	0.775	1380.00	0.20
 
+===== SPEC/hpgmg =====
+cap=2800
+gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
+1	12.50	225.50	0.275	1346.25	0.16
+3	31.18	118.64	0.159	4230.00	0.08
+2	45.07	162.36	0.252	2802.86	0.14
+4	167.53	123.79	0.223	5640.00	0.10
 
 ===== SPEC/lbm =====
 cap=2800
@@ -69,7 +76,7 @@ cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 2	73.81	256.43	0.892	2672.14	0.00
 4	83.72	189.52	0.591	5611.07	0.00
-3	89.22	205.10	0.573	4207.50	0.00
+3	89.22	205.10	0.653	4207.50	0.00
 1	108.51	290.38	0.524	1300.38	0.00
 
 ===== ML/resnet152 =====
@@ -99,7 +106,7 @@ gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 ===== ML/vgg19 =====
 cap=2800
 gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-1	22.88	251.46	0.223	1378.85	0.00
+1	22.88	251.46	0.253	1378.85	0.00
 2	25.28	156.13	0.247	2820.00	0.00
 3	25.48	139.43	0.212	4230.00	0.00
 4	30.89	125.00	0.204	5640.00	0.00
@@ -119,15 +126,6 @@ gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
 4	33.49	155.27	0.838	5640.00	0.01
 3	34.48	163.57	0.841	4230.00	0.01
 1	45.50	242.38	0.586	1410.00	0.01
-
-
-===== ML/simpleMultiGPU =====
-cap=2800
-gpu_count	performance	avg_power	dram_sum	sm_sum	fp_sum
-4	17.89	84.45	0.048	5640.00	0.00
-3	22.93	94.02	0.063	4230.00	0.00
-2	31.64	97.15	0.045	2820.00	0.00
-1	60.81	99.92	0.023	1410.00	0.00
 
 ===== ML/simpleP2P =====
 cap=2800
