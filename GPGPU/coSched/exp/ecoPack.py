@@ -1047,6 +1047,7 @@ def main():
     results_dir = args.results_dir
     results_dir.mkdir(parents=True, exist_ok=True)
     mode = "dryrun" if args.dry_run else "run"
+    tol_suffix = int(round(args.slowdown_tol * 100))
     if args.policy == "heuristic":
         log_path = results_dir / "EcoPack_{}.txt".format(mode)
     else:

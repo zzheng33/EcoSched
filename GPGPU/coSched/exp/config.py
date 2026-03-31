@@ -36,7 +36,7 @@ CUDA_BUILD_DIR = {
 }
 
 RESULTS_DIR = HOME / f"power/GPGPU/coSched/results/{SYSTEM}"
-PERF_METRICS_FILE = HOME / f"power/GPGPU/data/{SYSTEM}/perf_metrics.txt"
+PERF_METRICS_FILE = HOME / f"power/GPGPU/coSched/data/{SYSTEM}/perf_metrics.txt"
 SCRIPT_DIR = HOME / "power/GPGPU/script"
 SPEC_SCRIPT_DIR = SCRIPT_DIR / "run_benchmark/spec_script"
 ECP_SCRIPT_DIR = SCRIPT_DIR / "run_benchmark/ecp_script"
@@ -122,9 +122,9 @@ DEFAULT_JOB_QUEUE = [
     "resnet101", "resnet152", "vgg19", "vgg16",
 ]
 
-DEFAULT_JOB_QUEUE = [
-    "vgg16" 
-]
+# DEFAULT_JOB_QUEUE = [
+#     "vgg16" 
+# ]
 
 
 # ---------------------------------------------------------------------------
