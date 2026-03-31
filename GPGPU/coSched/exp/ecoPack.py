@@ -50,7 +50,7 @@ from run_cosched_sequential import (
 SCRIPT_DIR = Path(__file__).resolve().parent
 DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results" / SYSTEM
 DEFAULT_IDLE_POWER = IDLE_POWER_PER_GPU.get(SYSTEM, 70.0)
-DEFAULT_SLOWDOWN_TOL = 0.2
+DEFAULT_SLOWDOWN_TOL = 0.1
 DEFAULT_SCORE_METRIC = "energy"
 DEFAULT_ANCHOR_APP = "pot3d"
 DEFAULT_MAX_CONCURRENT = 2
@@ -1049,9 +1049,9 @@ def main():
     mode = "dryrun" if args.dry_run else "run"
     tol_suffix = int(round(args.slowdown_tol * 100))
     if args.policy == "heuristic":
-        log_path = results_dir / "EcoPack_{}.txt".format(mode)
+        log_path = results_dir / "EcoPack_{}_{}.txt".format(mode, tol_suffix)
     else:
-        log_path = results_dir / "EcoPack_{}_{}.txt".format(args.policy, mode)
+        log_path = results_dir / "EcoPack_{}_{}_{}.txt".format(args.policy, mode, tol_suffix)
 
     original_stdout = sys.stdout
     original_stderr = sys.stderr
