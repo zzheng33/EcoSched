@@ -117,9 +117,10 @@ APP_LOG_ENABLED = False
 DEFAULT_JOB_QUEUE = [
     'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
     'miniweather', 'bert', 'gpt2', 'resnet50',
-    'conjugateGradientMultiDeviceCG', 'pot3d', 'MonteCarloMultiGPU',
+    'conjugateGradientMultiDeviceCG', 'pot3d',
     'simpleP2P', 'streamOrderedAllocationP2P',
     "resnet101", "resnet152", "vgg19", "vgg16",
+    'MonteCarloMultiGPU'
 ]
 
 # DEFAULT_JOB_QUEUE = [
