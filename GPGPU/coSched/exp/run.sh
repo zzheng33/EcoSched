@@ -35,8 +35,7 @@ cd "$SCRIPT_DIR"
 # $PYTHON run_solver_schedule.py
 
 
-# $PYTHON run_cosched_marble.py
+# $PYTHON run_cosched_marble.py 
 
 
-results_dir="$HOME/power/GPGPU/coSched/results/$SYSTEM/mix"
-$PYTHON ecoPack.py --policy cmab --results-dir "$results_dir"
+$PYTHON ecoPack.py --policy cmab 

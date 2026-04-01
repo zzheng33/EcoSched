@@ -30,7 +30,7 @@ from run_cosched_sequential import (
 )
 
 DEFAULT_METRICS_FILE = PERF_METRICS_FILE
-DEFAULT_PERF_TOL = 0.05
+DEFAULT_PERF_TOL = 0
 SECTION_RE = re.compile(r"^===== .*?/([^/ ]+) =====$")
 
 
