@@ -29,13 +29,13 @@ cd "$SCRIPT_DIR"
 # $PYTHON run_cosched_sequential.py --policy sequential --sequential-gpu-strategy max
 
 
-# $PYTHON solve_energy_optimal_cpsat.py --time-limit 120
+$PYTHON solve_energy_optimal_cpsat.py --time-limit 60
 
 
-# $PYTHON run_solver_schedule.py
+$PYTHON run_solver_schedule.py
 
 
 # $PYTHON run_cosched_marble.py 
 
 
-$PYTHON ecoPack.py --policy cmab 
+# $PYTHON ecoPack.py --policy cmab 

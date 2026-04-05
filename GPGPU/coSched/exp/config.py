@@ -114,18 +114,25 @@ ML_VENV_ACTIVATE = HOME / "env/ml/bin/activate" if SERVER == "jlse" else None
 APP_LOG_ENABLED = False
 
 # 'simpleCUBLASXT', 'simpleCUFFT_MGPU', 'simpleCUFFT_2d_MGPU' 'hpgmg' 'simpleMultiGPU'
+# DEFAULT_JOB_QUEUE = [
+#     'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
+#     'miniweather', 'bert', 'gpt2', 'resnet50',
+#     'conjugateGradientMultiDeviceCG', 'pot3d',
+#     'simpleP2P', 'streamOrderedAllocationP2P',
+#     "resnet101", "resnet152", "vgg19", "vgg16",
+#     'MonteCarloMultiGPU'
+# ]
+
 DEFAULT_JOB_QUEUE = [
     'minisweep', 'lbm', 'cloverleaf', 'tealeaf',
     'miniweather', 'bert', 'gpt2', 'resnet50',
     'conjugateGradientMultiDeviceCG', 'pot3d',
     'simpleP2P', 'streamOrderedAllocationP2P',
     "resnet101", "resnet152", "vgg19", "vgg16",
-    'MonteCarloMultiGPU'
+    'MonteCarloMultiGPU', 'resnet50','resnet50',
+    'resnet50', "vgg16","vgg16","vgg16","vgg16",
+    "vgg16"
 ]
-
-# DEFAULT_JOB_QUEUE = [
-#     "vgg16" 
-# ]
 
 
 # ---------------------------------------------------------------------------
