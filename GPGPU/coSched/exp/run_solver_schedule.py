@@ -36,7 +36,7 @@ from run_cosched_sequential import (
 from config import APP_LOG_ENABLED, SYSTEM
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-DEFAULT_RESULTS_DIR = SCRIPT_DIR / "results" / SYSTEM
+DEFAULT_RESULTS_DIR = Path("../results") / SYSTEM
 DEFAULT_SCHEDULE_FILE = DEFAULT_RESULTS_DIR / "solver_schedule.txt"
 
 
