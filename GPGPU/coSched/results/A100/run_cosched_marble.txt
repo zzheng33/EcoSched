@@ -81,7 +81,7 @@ resnet50             4 [0, 1, 2, 3]     0        29.03
 pot3d                4 [0, 1, 2, 3]     0        31.03
 ------------------------------------------------------
 
-Total makespan: 393.43s
+Total makespan: 410.43s
 
-Power monitoring: 1100 samples over 393.3s
-Total GPU energy: 288306.54 J (288.31 kJ)
+Power monitoring: 1100 samples over 410.3s
+Total GPU energy: 310306.54 J (310.31 kJ)
