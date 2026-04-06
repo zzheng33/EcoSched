@@ -29,7 +29,7 @@ cd "$SCRIPT_DIR"
 # $PYTHON run_cosched_sequential.py --policy sequential --sequential-gpu-strategy max
 
 
-$PYTHON solve_energy_optimal_cpsat.py --time-limit 360
+$PYTHON solve_energy_optimal_cpsat.py --time-limit 
 
 
 $PYTHON run_solver_schedule.py

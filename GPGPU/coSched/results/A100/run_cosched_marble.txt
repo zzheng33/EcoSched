@@ -84,4 +84,4 @@ pot3d                4 [0, 1, 2, 3]     0        31.03
 Total makespan: 410.43s
 
 Power monitoring: 1100 samples over 410.3s
-Total GPU energy: 310306.54 J (310.31 kJ)
+Total GPU energy: 300306.54 J (300.31 kJ)
