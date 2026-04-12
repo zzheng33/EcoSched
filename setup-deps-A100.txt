@@ -1,0 +1,70 @@
+# Dependencies for building and running benchmarks on A100 system
+# Date: 2026-03-19
+
+sudo install numactl
+
+absl-py==1.4.0
+ortools==9.0.9048
+protobuf==3.19.6
+
+
+# ============================================================
+# System Packages (apt)
+# ============================================================
+# CUDA is pre-installed at /usr/local/cuda-12.6
+# OpenMPI is pre-installed at /usr/lib/x86_64-linux-gnu/openmpi/
+
+# NVHPC SDK 24.11 (for POT3D - nvfortran, nvc, nvc++)
+#   Install via:
+#     curl https://developer.download.nvidia.com/hpc-sdk/ubuntu/DEB-GPG-KEY-NVIDIA-HPC-SDK | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-hpcsdk-archive-keyring.gpg
+#     echo 'deb [signed-by=/usr/share/keyrings/nvidia-hpcsdk-archive-keyring.gpg] https://developer.download.nvidia.com/hpc-sdk/ubuntu/amd64 /' | sudo tee /etc/apt/sources.list.d/nvhpc.list
+#     sudo apt update && sudo apt install nvhpc-24-11
+#   Installed at: /opt/nvidia/hpc_sdk/Linux_x86_64/24.11
+
+# HDF5 1.14.5 built from source with NVHPC compilers (for POT3D)
+#   Download: https://github.com/HDFGroup/hdf5/releases/download/hdf5_1.14.5/hdf5-1.14.5.tar.gz
+#   Build:
+#     export PATH=/opt/nvidia/hpc_sdk/Linux_x86_64/24.11/compilers/bin:$PATH
+#     export CC=nvc FC=nvfortran CXX=nvc++
+#     ./configure --prefix=/home/cc/hdf5-nvhpc --enable-fortran --enable-shared --disable-tests --disable-tools
+#     make -j$(nproc) && make install
+#   Installed at: /home/cc/hdf5-nvhpc
+
+# ============================================================
+# Python Virtual Environment (for coSched solver)
+# ============================================================
+# Created at: /home/cc/venv
+#   python3 -m venv /home/cc/venv
+#   source /home/cc/venv/bin/activate
+#   pip install absl-py==1.4.0 ortools protobuf
+
+# ============================================================
+# Python Packages (pip, system python)
+# ============================================================
+# For ECP benchmarks (gpt2, bert, UNet, Resnet50, etc.)
+torch
+datasets
+transformers
+tokenizers
+
+# ============================================================
+# Runtime Environment Variables
+# ============================================================
+# For SPEC benchmarks (especially POT3D):
+#   export NVHPC=/opt/nvidia/hpc_sdk/Linux_x86_64/24.11
+#   export PATH=$NVHPC/comm_libs/openmpi4/bin:$NVHPC/compilers/bin:$PATH
+#   export LD_LIBRARY_PATH=/home/cc/hdf5-nvhpc/lib:$NVHPC/compilers/lib:$NVHPC/comm_libs/openmpi4/lib:$LD_LIBRARY_PATH
+
+# For ECP benchmarks:
+#   export PATH=$HOME/.local/bin:$PATH
+
+# ============================================================
+# Key Paths Summary
+# ============================================================
+# CUDA_DIR:      /usr/local/cuda-12.6
+# MPI_INCLUDE:   /usr/lib/x86_64-linux-gnu/openmpi/include
+# NVHPC:         /opt/nvidia/hpc_sdk/Linux_x86_64/24.11
+# NVHPC OpenMPI: /opt/nvidia/hpc_sdk/Linux_x86_64/24.11/comm_libs/openmpi4
+# HDF5_DIR:      /home/cc/hdf5-nvhpc
+# Python venv:   /home/cc/venv
+# GPU:           NVIDIA A100 80GB PCIe (sm_80)
