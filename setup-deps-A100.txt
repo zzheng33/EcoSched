@@ -68,3 +68,19 @@ tokenizers
 # HDF5_DIR:      /home/cc/hdf5-nvhpc
 # Python venv:   /home/cc/venv
 # GPU:           NVIDIA A100 80GB PCIe (sm_80)
+
+setup_cudnn() {
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+    sudo dpkg -i cuda-keyring_1.1-1_all.deb
+    sudo apt-get update
+    sudo apt-get -y install cudnn
+}
+
+setup_DCGM() {
+    wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.0-1_all.deb
+    sudo dpkg -i cuda-keyring_1.0-1_all.deb
+    sudo add-apt-repository "deb https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/ /"
+    sudo apt install -y datacenter-gpu-manager
+    sudo systemctl enable nvidia-dcgm
+    sudo systemctl start nvidia-dcgm
+}

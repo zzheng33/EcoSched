@@ -20,7 +20,7 @@ ML_EPOCHS = 3
 ML_LR = 0.001
 
 num_gpu = 4
-system = "V100"
+system = "A100"
 
 # System-dependent benchmark paths
 SYSTEM_CONFIG = {
@@ -48,7 +48,7 @@ os.environ["SPEC_BENCHMARK_ROOT"] = _sys_cfg.get("spec_benchmark_root", "")
 os.environ["BENCHMARK_BUILD_ROOT"] = os.path.join(
     script_dir, "run_benchmark", _sys_cfg.get("cuda_build_root", "build-sm90")
 )
-python_executable = os.path.join(home_dir, "env/ml/bin/python3")
+python_executable = "python3" if system == "A100" else os.path.join(home_dir, "env/ml/bin/python3")
 
 # scripts for CPU, GPU power monitoring
 read_cpu_power = os.path.join(script_dir, "power_util/read_cpu_power.py")
@@ -169,6 +169,30 @@ def _upsert_csv_row(csv_path, fieldnames, key_fields, row_values):
 
 def _select_ml_python():
     return python_executable
+
+
+def _ecp_torchrun_command(benchmark, gpu_count):
+    if system != "A100" or not _is_throughput_benchmark("ecp", benchmark):
+        return None, None
+
+    os.environ.setdefault("TOKENIZERS_PARALLELISM", "false")
+    os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+    os.environ.setdefault("HF_HUB_OFFLINE", "1")
+
+    benchmark_dir = os.path.join(
+        home_dir,
+        "benchmark",
+        "ECP",
+        "bert-large" if benchmark == "bert" else benchmark,
+    )
+    cmd = [
+        _select_ml_python(),
+        "-m",
+        "torch.distributed.run",
+        f"--nproc_per_node={gpu_count}",
+        "training.py",
+    ]
+    return cmd, benchmark_dir
 
 
 def _extract_avg_train_throughput(stdout_text):
@@ -460,11 +484,14 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
 
             output_gpu_metrics = f"{output_dir}/{total_gpu_cap}_{g_cnt}_gpu_metrics.csv"
             # _set_power_cap(cpu_cap, per_gpu_cap)
-            run_benchmark_command = [
-                "bash",
-                os.path.join(home_dir, benchmark_script_dir, f"{benchmark}.sh"),
-                str(g_cnt),
-            ]
+            run_benchmark_command, benchmark_cwd = _ecp_torchrun_command(benchmark, g_cnt)
+            if run_benchmark_command is None:
+                run_benchmark_command = [
+                    "bash",
+                    os.path.join(home_dir, benchmark_script_dir, f"{benchmark}.sh"),
+                    str(g_cnt),
+                ]
+                benchmark_cwd = None
 
             print(
                 f"[{suite.upper()}] Running benchmark={benchmark} total_cap={total_gpu_cap} "
@@ -473,7 +500,7 @@ def run_benchmark(benchmark_script_dir,benchmark, suite, test, size,cap_type):
             start = time.time()
             return_code, run_output, _, monitor_stderr = _run_with_gpu_monitor(
                 cmd=run_benchmark_command,
-                cwd=None,
+                cwd=benchmark_cwd,
                 output_gpu_metrics=output_gpu_metrics,
                 num_gpu_to_monitor=g_cnt,
             )
