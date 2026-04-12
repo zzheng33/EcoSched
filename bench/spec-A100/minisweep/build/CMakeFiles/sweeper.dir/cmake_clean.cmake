@@ -1,0 +1,23 @@
+file(REMOVE_RECURSE
+  "CMakeFiles/sweeper.dir/src/1_base/sweeper_generated_arguments.cu.o"
+  "CMakeFiles/sweeper.dir/src/1_base/sweeper_generated_env.cu.o"
+  "CMakeFiles/sweeper.dir/src/1_base/sweeper_generated_env_assert.cu.o"
+  "CMakeFiles/sweeper.dir/src/1_base/sweeper_generated_env_cuda.cu.o"
+  "CMakeFiles/sweeper.dir/src/1_base/sweeper_generated_env_mpi.cu.o"
+  "CMakeFiles/sweeper.dir/src/1_base/sweeper_generated_pointer.cu.o"
+  "CMakeFiles/sweeper.dir/src/2_sweeper_base/sweeper_generated_array_operations.cu.o"
+  "CMakeFiles/sweeper.dir/src/2_sweeper_base/sweeper_generated_dimensions.cu.o"
+  "CMakeFiles/sweeper.dir/src/3_sweeper/sweeper_generated_faces_kba.cu.o"
+  "CMakeFiles/sweeper.dir/src/3_sweeper/sweeper_generated_quantities.cu.o"
+  "CMakeFiles/sweeper.dir/src/3_sweeper/sweeper_generated_stepscheduler_kba.cu.o"
+  "CMakeFiles/sweeper.dir/src/3_sweeper/sweeper_generated_sweeper.cu.o"
+  "CMakeFiles/sweeper.dir/src/3_sweeper/sweeper_generated_sweeper_kernels.cu.o"
+  "CMakeFiles/sweeper.dir/src/4_driver/sweeper_generated_runner.cu.o"
+  "libsweeper.a"
+  "libsweeper.pdb"
+)
+
+# Per-language clean rules from dependency scanning.
+foreach(lang )
+  include(CMakeFiles/sweeper.dir/cmake_clean_${lang}.cmake OPTIONAL)
+endforeach()

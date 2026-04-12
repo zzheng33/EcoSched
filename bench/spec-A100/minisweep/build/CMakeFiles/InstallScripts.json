@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/cc/benchmark/spec/minisweep/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

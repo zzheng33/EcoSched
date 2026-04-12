@@ -1,0 +1,9 @@
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/sweeper.dir
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/sweep.dir
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/tester.dir
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/edit_cache.dir
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/rebuild_cache.dir
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/list_install_components.dir
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/install.dir
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/install/local.dir
+/home/cc/benchmark/spec/minisweep/build/CMakeFiles/install/strip.dir

@@ -1,0 +1,15 @@
+/src/pot3d
+
+*.mod
+*.o
+*.err
+*.log
+*.out
+
+Makefile
+
+bin/pot3d
+src/pot3d.F90~
+src/pot3d_cpp.f90
+
+__pycache__/

@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!DOCTYPE flagsdescription SYSTEM
+       "http://www.spec.org/dtd/cpuflags2.dtd">
+
+<!-- This file defines portability flags that may be used when compiling
+     605.lbm_s.
+
+  Copyright 2019 Standard Performance Evaluation Corporation
+
+  $Revision$
+  $Date$
+-->
+<flagsdescription>
+
+<filename>605.lbm_s.flags</filename>
+
+<title>605.lbm_s Approved Portability Flags</title>
+
+<header>
+<![CDATA[
+<p>This is the complete set of approved portability flags for 605.lbm_s.</p>
+]]>
+</header>
+<flag name="DSPEC_DIST_REMAINDER" class="portability">
+Distribute the remaining X and Y blocks more evenly amongst ranks.  Default is to place the remainder on the last rank of a group.
+The option may give a small performance boost for rank counts that are not divisible by the workload's X and Y dimensions.
+Note that early testing of this feature showed that at some rank counts when using a particular compiler and MPI version, the use of
+this flag resulted in verification errors.
+</flag>
+
+<flag name="DSPEC_OPENACC_NO_SELF" class="portability">
+Use for compilers that do not support the OpenACC 'self' clause.
+</flag>
+
+<flag name="DADIABATIC" class="forbidden">
+Enable computation for the adiabatic process.  Not supported in the SPEC version of LBM.
+</flag>
+
+<flag name="DCHECK_MASS" class="forbidden">
+Enables the mass check for the systems.  Used for verification of results and enabled by default in the "common.h" header file.
+</flag>
+
+<flag name="DNMPIX" class="forbidden">
+Sets the number of MPI ranks to be used for the X dimension.  The SPEC version automatically decomposes the domain based on the number of ranks uses so this option should not be used. 
+</flag>
+
+<flag name="DNMPIY" class="forbidden">
+Sets the number of MPI ranks to be used for the Y dimension.  The SPEC version automatically decomposes the domain based on the number of ranks uses so this option should not be used. 
+</flag>
+
+<flag name="DSPEC_RAND" class="forbidden">
+Use SPEC's random number generator.  Allows for reproducability accross multiple platforms and is enabled by default in the "common.h" header file.
+</flag>
+
+<flag name="DSPEC_Y_MAJOR_ORDER" class="optimization">
+By default, 605.lbm will decompose the domain across ranks in X major order.  This flag changes the major order to the Y dimension.
+</flag>
+
+<flag name="DUSE_DEBUG" class="forbidden">
+Enables some debugging output.
+</flag>
+
+<flag name="DX_MAJOR_ORDER" class="forbidden">
+Indicates that the domain decomposition should be performed accross the X dimension.  (Default)
+</flag>
+
+<flag name="DY_MAJOR_ORDER" class="forbidden">
+Indicates that the domain decomposition should be performed accross the Y dimension.  Please use "-DSPEC_Y_MAJOR_ORDER" to use Y major order. 
+</flag>
+
+<flag name="D_BC_CUDA_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_BC_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_COLLIDE_CUDA_H" class="forbidden">
+Header file guard.
+_COLLIDE_CUDA_H appears in src/collide_kernel.cuh (1 times)! What does it mean?
+</flag>
+
+<flag name="D_COLLIDE_H" class="forbidden">
+Header file guard.
+_COLLIDE_H appears in src/collide_kernel.h (1 times)! What does it mean?
+</flag>
+
+<flag name="D_COMMON_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_INIT_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_PACKUNPACK_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_PBC_CUH" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_PHYSVAR_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_PROPAGATE_COLLIDE_CUDA_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_PROPAGATE_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_PROPAGATE_KERNEL_CUH" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D_UTILS_M_H" class="forbidden">
+Header file guard.
+</flag>
+
+<flag name="D__DOUBLE__" class="forbidden">
+Use double precission for floating point numbers.  Defined by default in the "common.h" header file.
+</flag>
+
+<flag name="D__FLOAT__" class="forbidden">
+Use single precission for floating point numbers. 
+</flag>
+
+<flag name="D__cplusplus" class="forbidden">
+Implicitly defined when using a C++ compiler for compilation.
+</flag>
+
+</flagsdescription>
